@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { keyFor, diffSection, diffRecords, SECTIONS } from '../../js/diff.js';
+import { pickDefaultVersions } from '../../js/app.js';
 
 test('keyFor uses title for feature sections', () => {
   assert.equal(keyFor('whats_new', { title: 'A', description: 'x' }), 'A');
@@ -36,4 +37,21 @@ test('diffRecords covers all five sections', () => {
   assert.deepEqual(SECTIONS, ['certification', 'whats_new', 'behavior_changes', 'deprecated', 'desupported']);
   assert.equal(r.whats_new.added.length, 1);
   assert.equal(r.certification.added.length, 0);
+});
+
+test('pickDefaultVersions returns [previous, latest] by order desc', () => {
+  const versions = [
+    { version: '21c', order: 1 },
+    { version: '23ai', order: 2 },
+    { version: '19c', order: 0 }
+  ];
+  const [older, newer] = pickDefaultVersions(versions);
+  assert.equal(newer.version, '23ai');
+  assert.equal(older.version, '21c');
+});
+
+test('pickDefaultVersions handles a single version', () => {
+  const [older, newer] = pickDefaultVersions([{ version: '23ai', order: 2 }]);
+  assert.equal(older.version, '23ai');
+  assert.equal(newer.version, '23ai');
 });
