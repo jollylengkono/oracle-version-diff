@@ -39,7 +39,8 @@ Implemented continuation:
   data is fetched) — kept intact for a future Supabase swap.
 - Current UI = **range aggregation** (`js/diff.js` → `aggregateRange`,
   `js/render.js` → `renderAggregated`, driven by `js/app.js`).
-- Product selector supports Oracle GoldenGate and Oracle Database.
+- Product selector supports Oracle GoldenGate, Oracle Database, and Oracle
+  WebLogic Server.
 - Version selector labels show LTS status when known, for example `Oracle Database
   19c (LTS)` and `Oracle Database 21c (Non-LTS)`.
 - Current/target release selectors are directional. `19c -> 21c` shows items after

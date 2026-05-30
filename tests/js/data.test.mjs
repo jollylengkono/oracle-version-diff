@@ -27,7 +27,6 @@ test('Oracle Database 26ai record has release delta sections', () => {
   assert.ok(record.sections.behavior_changes.length > 0);
   assert.ok(record.sections.deprecated.length > 0);
 });
-
 test('index includes Oracle WebLogic Server from 11g to 15c with LTS metadata', () => {
   const product = index.products.find(p => p.id === 'oracle-weblogic-server');
 
