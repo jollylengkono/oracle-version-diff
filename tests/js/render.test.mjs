@@ -41,22 +41,23 @@ test('renderSideBySide shows both version labels and their items in two columns'
   assert.match(html, /NewFeature/);
 });
 
-test('renderAggregated shows one list with release badges', () => {
+test('renderAggregated shows one list with release version labels', () => {
   const html = renderAggregated('whats_new', [
     {
       title: 'RangeFeature',
       description: 'introduced in range',
       source_url: 'https://docs.oracle.com/r',
-      introduced_label: 'Release 23.5'
+      introduced_label: 'Release 23.5',
+      introduced_version: '23.5'
     }
   ]);
 
   assert.doesNotMatch(html, /class="cols"/);
   assert.match(html, /RangeFeature/);
-  assert.match(html, /Release 23\.5/);
+  assert.match(html, />23\.5</);
 });
 
-test('renderAggregated marks release badges for dark console styling', () => {
+test('renderAggregated marks release versions for card styling', () => {
   const html = renderAggregated('whats_new', [
     {
       title: 'ConsoleFeature',
@@ -67,6 +68,18 @@ test('renderAggregated marks release badges for dark console styling', () => {
     }
   ]);
 
-  assert.match(html, /item__badge/);
-  assert.match(html, /Release 23\.6/);
+  assert.match(html, /class="item__version"/);
+  assert.match(html, />23\.6</);
+  assert.doesNotMatch(html, /Release 23\.6/);
+});
+
+test('renderItem marks source links as documentation buttons', () => {
+  const html = renderItem({
+    title: 'DocsFeature',
+    description: 'links to docs',
+    source_url: 'https://docs.oracle.com/docs-feature'
+  });
+
+  assert.match(html, /class="item__source"/);
+  assert.match(html, />Official doc</);
 });

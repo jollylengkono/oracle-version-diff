@@ -8,14 +8,18 @@ export function escapeHtml(s) {
 
 export function renderItem(item) {
   const desc = item.description ? `<p class="item__desc">${escapeHtml(item.description)}</p>` : '';
-  const badge = item.introduced_label
-    ? `<span class="item__badge">${escapeHtml(item.introduced_label)}</span>`
+  const versionLabel = item.introduced_version || item.introduced_label;
+  const version = versionLabel
+    ? `<span class="item__version">${escapeHtml(versionLabel)}</span>`
     : '';
   const link = item.source_url
     ? `<a class="item__source" href="${escapeHtml(item.source_url)}" target="_blank" rel="noopener">Official doc</a>`
     : '';
   return `<article class="item">
-  <h4 class="item__title">${escapeHtml(item.title)}${badge}</h4>
+  <div class="item__head">
+    <h4 class="item__title">${escapeHtml(item.title)}</h4>
+    ${version}
+  </div>
   ${desc}
   ${link}
 </article>`;

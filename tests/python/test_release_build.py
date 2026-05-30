@@ -65,3 +65,11 @@ def test_build_records_includes_curated_legacy_baselines():
     assert versions[-2:] == ["21c", "19c"]
     assert next(r for r in recs if r["version"] == "19c")["record_type"] == "baseline"
     assert next(r for r in recs if r["version"] == "23.26.2.0.0")["record_type"] == "release"
+
+
+def test_build_records_includes_21c_baseline_items_for_dynamic_compare():
+    recs = build_records(fake_fetch_factory(), BASE, today="2026-05-30")
+    baseline = next(r for r in recs if r["version"] == "21c")
+
+    assert baseline["sections"]["whats_new"]
+    assert baseline["sections"]["whats_new"][0]["source_url"].startswith("https://docs.oracle.com/")
