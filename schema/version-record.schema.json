@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Oracle product version record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["product", "version", "release_label", "last_updated", "sections"],
+  "properties": {
+    "product": { "type": "string" },
+    "version": { "type": "string" },
+    "release_label": { "type": "string" },
+    "last_updated": { "type": "string", "format": "date" },
+    "sections": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["certification", "whats_new", "behavior_changes", "deprecated", "desupported"],
+      "properties": {
+        "certification": { "type": "array", "items": { "$ref": "#/definitions/cert" } },
+        "whats_new": { "type": "array", "items": { "$ref": "#/definitions/feature" } },
+        "behavior_changes": { "type": "array", "items": { "$ref": "#/definitions/feature" } },
+        "deprecated": { "type": "array", "items": { "$ref": "#/definitions/feature" } },
+        "desupported": { "type": "array", "items": { "$ref": "#/definitions/feature" } }
+      }
+    }
+  },
+  "definitions": {
+    "cert": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["category", "value", "source_url"],
+      "properties": {
+        "category": { "type": "string" },
+        "value": { "type": "string" },
+        "source_url": { "type": "string", "format": "uri" }
+      }
+    },
+    "feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description", "source_url"],
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "source_url": { "type": "string", "format": "uri" }
+      }
+    }
+  }
+}

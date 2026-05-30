@@ -1,0 +1,22 @@
+{
+  "product": "oracle-goldengate",
+  "version": "23ai",
+  "release_label": "Oracle GoldenGate 23ai",
+  "last_updated": "2026-05-30",
+  "sections": {
+    "certification": [
+      { "category": "Oracle Database", "value": "Oracle Database 23ai", "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/23/" }
+    ],
+    "whats_new": [
+      { "title": "AI vector replication", "description": "Support for replicating vector data types.", "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/23/whats-new.html" },
+      { "title": "Microservices-only architecture", "description": "Classic Architecture deprecated in favor of Microservices.", "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/23/whats-new.html" }
+    ],
+    "behavior_changes": [
+      { "title": "Default deployment is Microservices", "description": "Installs default to the Microservices Architecture; classic install paths removed.", "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/23/whats-new.html" }
+    ],
+    "deprecated": [],
+    "desupported": [
+      { "title": "Classic Architecture", "description": "Classic Architecture is desupported and removed.", "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/23/whats-new.html" }
+    ]
+  }
+}

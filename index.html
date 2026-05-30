@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oracle Version Diff — GoldenGate</title>
+  <link rel="stylesheet" href="css/theme.css" />
+</head>
+<body>
+  <header class="masthead">
+    <h1 class="masthead__title">Oracle Version Diff</h1>
+    <p class="masthead__subtitle">Oracle GoldenGate — head-to-head release comparison</p>
+  </header>
+
+  <main class="container">
+    <section class="picker">
+      <label class="picker__field">Older
+        <select id="older"></select>
+      </label>
+      <span class="picker__vs">vs</span>
+      <label class="picker__field">Newer
+        <select id="newer"></select>
+      </label>
+    </section>
+
+    <nav id="tabs" class="tabs" aria-label="Comparison sections"></nav>
+    <div id="panels"></div>
+    <p id="updated" class="updated"></p>
+  </main>
+
+  <footer class="footer">
+    Data sourced from official Oracle documentation (docs.oracle.com).
+    Oracle-inspired theme for an educational tool; not affiliated with or endorsed by Oracle.
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
