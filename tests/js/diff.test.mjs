@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { keyFor, diffSection, diffRecords, aggregateRange, SECTIONS } from '../../js/diff.js';
-import { pickDefaultVersions } from '../../js/app.js';
+import { pickDefaultProduct, pickDefaultVersions, releaseDeltaHeading, releaseDeltaSubheading } from '../../js/app.js';
 
 test('keyFor uses title for feature sections', () => {
   assert.equal(keyFor('whats_new', { title: 'A', description: 'x' }), 'A');
@@ -68,6 +68,23 @@ test('pickDefaultVersions chooses latest baseline as older and latest release as
 
   assert.equal(older.version, '21c');
   assert.equal(newer.version, '23.26.2.0.0');
+});
+
+test('pickDefaultProduct prefers Oracle Database when available', () => {
+  const products = [
+    { id: 'oracle-goldengate', label: 'Oracle GoldenGate' },
+    { id: 'oracle-database', label: 'Oracle Database' }
+  ];
+
+  assert.equal(pickDefaultProduct(products).id, 'oracle-database');
+});
+
+test('release delta copy describes directional current-to-target flow', () => {
+  assert.equal(releaseDeltaHeading('19c', '26ai'), 'Release delta from 19c to 26ai');
+  assert.equal(
+    releaseDeltaSubheading('19c', '26ai'),
+    'Changes introduced after 19c through 26ai'
+  );
 });
 
 test('aggregateRange concatenates releases after older through newer and badges source release', () => {

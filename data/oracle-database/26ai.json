@@ -1,0 +1,83 @@
+{
+  "product": "oracle-database",
+  "version": "26ai",
+  "release_label": "Oracle AI Database 26ai",
+  "record_type": "release",
+  "released": "2026-01-01",
+  "last_updated": "2026-05-31",
+  "sections": {
+    "certification": [],
+    "whats_new": [
+      {
+        "title": "AI Vector Search",
+        "description": "Oracle AI Vector Search supports AI workloads by storing vector embeddings and querying data by semantic similarity inside Oracle Database.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+      },
+      {
+        "title": "JSON-Relational Duality Views",
+        "description": "JSON-relational duality views let application data be accessed and updated as either JSON documents or relational tables.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+      },
+      {
+        "title": "Property Graphs in SQL",
+        "description": "Oracle Database adds SQL property graph query support so graph relationships can be queried inside the database.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+      },
+      {
+        "title": "Select AI enhancements",
+        "description": "Select AI extends natural-language database interaction and adds support for additional AI providers.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+      },
+      {
+        "title": "Globally Distributed Database Raft replication",
+        "description": "Oracle Globally Distributed Database adds built-in Raft replication for distributed database deployments.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+      }
+    ],
+    "behavior_changes": [
+      {
+        "title": "Oracle Database release number changes",
+        "description": "The VERSION, VERSION_LEGACY, and VERSION_FULL release number values are updated in Oracle AI Database 26ai.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "SQL/JSON JSON_VALUE can return SQL BOOLEAN",
+        "description": "After COMPATIBLE is set to 23.0.0 or higher, SQL/JSON path item methods can return SQL BOOLEAN values.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "SYSDATE and SYSTIMESTAMP reflect PDB time zone",
+        "description": "SYSDATE and SYSTIMESTAMP can be managed separately for each database using the individual database time zone setting.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+      }
+    ],
+    "deprecated": [
+      {
+        "title": "Oracle Enterprise Manager Database Express desupported",
+        "description": "Oracle Enterprise Manager Database Express is desupported in Oracle AI Database 26ai.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "Oracle Wallet Manager desupported",
+        "description": "Oracle Wallet Manager is desupported starting with Oracle AI Database 26ai.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "Traditional auditing desupported",
+        "description": "Traditional auditing is desupported in Oracle AI Database 26ai.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "DBUA and manual upgrade methods desupported",
+        "description": "AutoUpgrade and Replay Upgrade are the supported upgrade methods for Oracle AI Database 26ai; DBUA and manual upgrade methods are desupported.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "Oracle JDBC-OCI thick driver deprecated",
+        "description": "The Oracle JDBC OCI Type 2 client driver is deprecated in Oracle AI Database 26ai.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+      }
+    ],
+    "desupported": []
+  }
+}

@@ -3,24 +3,32 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Oracle Version Diff — GoldenGate</title>
+  <title>Oracle Release Delta</title>
   <link rel="stylesheet" href="css/theme.css" />
 </head>
 <body>
   <header class="masthead">
-    <h1 class="masthead__title">Oracle Version Diff</h1>
-    <p class="masthead__subtitle">Oracle GoldenGate upgrade range intelligence</p>
+    <h1 class="masthead__title">Oracle Release Delta</h1>
+    <p class="masthead__subtitle">Understand what changed after your current release.</p>
   </header>
 
   <main class="container">
     <section class="picker">
-      <label class="picker__field">Older
+      <label class="picker__field">Product
+        <select id="product"></select>
+      </label>
+      <label class="picker__field">Current release
         <select id="older"></select>
       </label>
-      <span class="picker__vs">vs</span>
-      <label class="picker__field">Newer
+      <span class="picker__vs">to</span>
+      <label class="picker__field">Target release
         <select id="newer"></select>
       </label>
+    </section>
+
+    <section class="delta-summary" aria-live="polite">
+      <h2 id="delta-heading">Release delta</h2>
+      <p id="delta-subheading"></p>
     </section>
 
     <nav id="tabs" class="tabs" aria-label="Comparison sections"></nav>
@@ -29,7 +37,7 @@
   </main>
 
   <footer class="footer">
-    Data sourced from official Oracle documentation (docs.oracle.com).
+    Release delta data sourced from official Oracle documentation (docs.oracle.com).
     Oracle-inspired theme for an educational tool; not affiliated with or endorsed by Oracle.
   </footer>
 
