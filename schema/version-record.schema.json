@@ -3,11 +3,13 @@
   "title": "Oracle product version record",
   "type": "object",
   "additionalProperties": false,
-  "required": ["product", "version", "release_label", "last_updated", "sections"],
+  "required": ["product", "version", "release_label", "record_type", "released", "last_updated", "sections"],
   "properties": {
     "product": { "type": "string" },
     "version": { "type": "string" },
     "release_label": { "type": "string" },
+    "record_type": { "type": "string", "enum": ["baseline", "release"] },
+    "released": { "type": "string", "format": "date" },
     "last_updated": { "type": "string", "format": "date" },
     "sections": {
       "type": "object",

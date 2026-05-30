@@ -8,6 +8,37 @@ DOCS_INDEX_URL = "https://docs.oracle.com/en/middleware/goldengate/index.html"
 # so adding a future doc line only requires updating this base.
 RELEASE_NOTES_BASE = "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/"
 
+LEGACY_BASELINES = [
+    {
+        "product": PRODUCT_ID,
+        "version": "19c",
+        "release_label": "Oracle GoldenGate 19c",
+        "record_type": "baseline",
+        "released": "2019-01-01",
+        "sections": {
+            "certification": [],
+            "whats_new": [],
+            "behavior_changes": [],
+            "deprecated": [],
+            "desupported": [],
+        },
+    },
+    {
+        "product": PRODUCT_ID,
+        "version": "21c",
+        "release_label": "Oracle GoldenGate 21c",
+        "record_type": "baseline",
+        "released": "2021-01-01",
+        "sections": {
+            "certification": [],
+            "whats_new": [],
+            "behavior_changes": [],
+            "deprecated": [],
+            "desupported": [],
+        },
+    },
+]
+
 # version -> { release_label, urls: { section: url } }
 SOURCES = {
     "21c": {

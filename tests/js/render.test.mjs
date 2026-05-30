@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { escapeHtml, renderItem, renderItems, renderSideBySide } from '../../js/render.js';
+import { escapeHtml, renderItem, renderItems, renderSideBySide, renderAggregated } from '../../js/render.js';
 
 test('escapeHtml neutralizes angle brackets and ampersands', () => {
   assert.equal(escapeHtml('<a>&"'), '&lt;a&gt;&amp;&quot;');
@@ -39,4 +39,34 @@ test('renderSideBySide shows both version labels and their items in two columns'
   assert.match(html, /Release 26ai/);
   assert.match(html, /OldFeature/);
   assert.match(html, /NewFeature/);
+});
+
+test('renderAggregated shows one list with release badges', () => {
+  const html = renderAggregated('whats_new', [
+    {
+      title: 'RangeFeature',
+      description: 'introduced in range',
+      source_url: 'https://docs.oracle.com/r',
+      introduced_label: 'Release 23.5'
+    }
+  ]);
+
+  assert.doesNotMatch(html, /class="cols"/);
+  assert.match(html, /RangeFeature/);
+  assert.match(html, /Release 23\.5/);
+});
+
+test('renderAggregated marks release badges for dark console styling', () => {
+  const html = renderAggregated('whats_new', [
+    {
+      title: 'ConsoleFeature',
+      description: 'visible in console',
+      source_url: 'https://docs.oracle.com/c',
+      introduced_label: 'Release 23.6',
+      introduced_version: '23.6'
+    }
+  ]);
+
+  assert.match(html, /item__badge/);
+  assert.match(html, /Release 23\.6/);
 });

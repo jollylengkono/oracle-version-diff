@@ -1,5 +1,10 @@
 # Oracle Version Diff Implementation Plan
 
+> **Status:** Historical v1 build plan. The product pivoted after calibration from
+> snapshot/side-by-side comparison to range aggregation. Use `docs/HANDOVER.md`
+> and `docs/superpowers/specs/2026-05-30-oracle-version-diff-design.md` as the
+> current source of truth for new work.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build a free, static website that shows a head-to-head comparison of two Oracle GoldenGate versions (certification, what's new, behavior changes, deprecated, desupported), fed by a human-reviewed GitHub Actions data pipeline that parses official Oracle docs.

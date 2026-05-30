@@ -40,9 +40,28 @@ def test_build_records_merges_sections_per_release():
     assert top["last_updated"] == "2026-05-30"
     assert top["release_label"].startswith("Release")
 
-    wn_titles = [i["title"] for i in top["sections"]["whats_new"]]
+    record_with_new_features = next(r for r in recs if r["sections"]["whats_new"])
+    wn_titles = [i["title"] for i in record_with_new_features["sections"]["whats_new"]]
     assert any("YugabyteDB" in t for t in wn_titles)
 
     # at least one release carries deprecated content from the deprecated page
     assert any(r["sections"]["deprecated"] for r in recs)
     # records validate against the schema (build_records validates internally)
+
+
+def test_build_records_sorts_by_released_descending_and_keeps_patch_releases_distinct():
+    recs = build_records(fake_fetch_factory(), BASE, today="2026-05-30")
+    released = [r["released"] for r in recs]
+    assert released == sorted(released, reverse=True)
+
+    versions = [r["version"] for r in recs]
+    assert versions.index("23.7.1.25.02") < versions.index("23.7.0.25.01")
+
+
+def test_build_records_includes_curated_legacy_baselines():
+    recs = build_records(fake_fetch_factory(), BASE, today="2026-05-30")
+    versions = [r["version"] for r in recs]
+
+    assert versions[-2:] == ["21c", "19c"]
+    assert next(r for r in recs if r["version"] == "19c")["record_type"] == "baseline"
+    assert next(r for r in recs if r["version"] == "23.26.2.0.0")["record_type"] == "release"

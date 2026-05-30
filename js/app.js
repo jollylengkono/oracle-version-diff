@@ -1,5 +1,6 @@
 // js/app.js
-import { renderSideBySide } from './render.js';
+import { aggregateRange } from './diff.js';
+import { renderAggregated } from './render.js';
 import { loadIndex, loadRecord } from './datasource.js';
 
 // Sections shown in the UI. The rolling release notes populate these three;
@@ -14,8 +15,8 @@ const SECTION_LABELS = {
 
 export function pickDefaultVersions(versions) {
   const sorted = [...versions].sort((a, b) => b.order - a.order);
-  const newer = sorted[0];
-  const older = sorted[1] || sorted[0];
+  const newer = sorted.find(v => v.record_type === 'release') || sorted[0];
+  const older = sorted.find(v => v.record_type === 'baseline') || sorted[1] || sorted[0];
   return [older, newer];
 }
 
@@ -29,7 +30,7 @@ function renderTabs(container, panels) {
   container.innerHTML = SECTIONS
     .map((s, i) => `<button class="tab ${i === 0 ? 'tab--active' : ''}" data-section="${s}">${SECTION_LABELS[s]}</button>`)
     .join('');
-  container.addEventListener('click', (e) => {
+  container.onclick = (e) => {
     const btn = e.target.closest('.tab');
     if (!btn) return;
     container.querySelectorAll('.tab').forEach(t => t.classList.remove('tab--active'));
@@ -37,22 +38,21 @@ function renderTabs(container, panels) {
     Object.entries(panels).forEach(([section, el]) => {
       el.hidden = section !== btn.dataset.section;
     });
-  });
+  };
 }
 
-async function loadVersion(product, version) {
-  const meta = product.versions.find(v => v.version === version);
-  return loadRecord(meta.file);
+async function loadAllRecords(product) {
+  return Promise.all(product.versions.map(meta => loadRecord(meta.file)));
 }
 
-function renderComparison(panelsHost, older, newer) {
+function renderComparison(panelsHost, aggregated) {
   panelsHost.innerHTML = '';
   const panels = {};
   SECTIONS.forEach((section, i) => {
     const panel = document.createElement('section');
     panel.className = 'panel';
     panel.hidden = i !== 0;
-    panel.innerHTML = renderSideBySide(section, older, newer);
+    panel.innerHTML = renderAggregated(section, aggregated[section] || []);
     panelsHost.appendChild(panel);
     panels[section] = panel;
   });
@@ -71,15 +71,14 @@ async function main() {
   const [defOlder, defNewer] = pickDefaultVersions(product.versions);
   fillSelect(olderSel, product.versions, defOlder.version);
   fillSelect(newerSel, product.versions, defNewer.version);
+  const records = await loadAllRecords(product);
 
   async function refresh() {
-    const [older, newer] = await Promise.all([
-      loadVersion(product, olderSel.value),
-      loadVersion(product, newerSel.value)
-    ]);
-    const panels = renderComparison(panelsHost, older, newer);
+    const aggregated = aggregateRange(records, olderSel.value, newerSel.value);
+    const panels = renderComparison(panelsHost, aggregated);
     renderTabs(tabsHost, panels);
-    updated.textContent = `Data last updated: ${newer.last_updated}`;
+    const selected = records.find(r => r.version === newerSel.value) || records[0];
+    updated.textContent = `Data last updated: ${selected.last_updated}`;
   }
 
   olderSel.addEventListener('change', refresh);

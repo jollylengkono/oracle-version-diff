@@ -6,7 +6,7 @@
 
 ---
 
-## REVISION (2026-05-30, post-calibration): Side-by-side Release Notes Tracker
+## REVISION (2026-05-30, post-calibration): Range-Aggregation Upgrade Diff
 
 Investigating the **live** Oracle GoldenGate docs invalidated two original assumptions:
 
@@ -16,42 +16,47 @@ Investigating the **live** Oracle GoldenGate docs invalidated two original assum
    (New Features, Default Behavior Changes, Deprecated & Desupported). Each page is
    organised **per release** via `<h3>` headings; individual items inside are loose
    `<div>/<p>` blocks (not reliably headed).
-2. **No true cross-version delta exists.** Release notes describe what changed *in
-   that release only*; Oracle publishes no "diff between version A and B". An
-   item-level computed diff is therefore not meaningful (especially across
-   generations like 19c vs 23.26, which live in different doc systems entirely).
+2. **No item-level snapshot delta exists.** Release notes describe what changed *in
+   that release only*; Oracle publishes no complete "state of version A vs state of
+   version B" inventory. Set-differencing two release-note records is therefore not
+   meaningful.
 
-**Revised model — a side-by-side viewer, not a diff engine:**
-- A "version" is a **record** (a release, or any generation) holding its own section
-  content. Comparison = showing **two records side by side**, two columns per section.
-- Because no delta is computed, comparing a rolling release (23.26 vs 23.10) and
-  comparing different generations (19c vs 23.26) both work the same way — each side
-  is just a record. Adding any version later (incl. legacy 19c) = adding one record.
+**Revised model — range aggregation, not snapshot set-diff:**
+- A "version" is either a **release record** holding the release-note items
+  introduced in that release, or a curated **baseline record** for legacy
+  generations such as `19c` and `21c`. All records include a `released` date for
+  chronological ordering and `record_type` metadata.
+- When the user chooses an older and newer release, comparison means showing the
+  combined set of all release-note items introduced in `(older, newer]`, grouped by
+  section. Each item is badged with the release that introduced it.
+- Same-version selection shows that release's own items. Reversed selections are
+  normalized so users can choose either dropdown order.
 - **v1 data source:** auto-crawl the modern rolling stream via `toc.js`, splitting
   each section page on its `<h3>` release headings into per-release records. Legacy
-  generations (19c) are a later add-on with their own parser; the schema/UX already
-  support them.
+  generations `19c` and `21c` are curated baseline records; full legacy parsers are
+  a later add-on.
 
 The sections below are amended by this revision where they conflict: §1 job becomes
-"side-by-side view of two version records"; §3a pipeline is `toc.js`-driven and
-release-based; §6 UX is two-column side-by-side (no Added/Changed/Removed delta).
-The schema (§4), provenance links, hosting (§7), and Supabase-readiness (§9a) are
-unchanged.
+"upgrade changes introduced across a selected release range"; §3a pipeline is
+`toc.js`-driven and release-based; §6 UX is one aggregated list per section, with
+release badges instead of Added/Changed/Removed groups. Provenance links, hosting
+(§7), and Supabase-readiness (§9a) are unchanged.
 
 ---
 
 ## 1. Purpose & Single Job
 
-A website that does exactly one thing: let a user pick **two versions of an Oracle
-product** (defaulting to *latest vs. previous*) and see a structured **head-to-head
-comparison** built **only from official Oracle documentation**.
+A website that does exactly one thing: let a user pick **two Oracle GoldenGate
+releases** (defaulting to *latest vs. previous*) and see the structured set of
+changes introduced when upgrading across that range, built **only from official
+Oracle documentation**.
 
 The first and only product in v1 is **Oracle GoldenGate**. The GoldenGate data
 pipeline is built to be the template for adding other products later — but other
 products are explicitly **out of scope for v1**.
 
 ### Success criteria
-- A visitor can select any two available GoldenGate versions and see the five
+- A visitor can select any two available GoldenGate releases and see the available
   comparison sections populated.
 - Every data item links back to the exact official Oracle doc URL it came from.
 - Data refreshes happen via an automated, human-reviewed pipeline — no manual
@@ -105,6 +110,8 @@ One JSON record per product version. Indicative shape:
   "product": "oracle-goldengate",
   "version": "23ai",
   "release_label": "Oracle GoldenGate 23ai",
+  "record_type": "release",
+  "released": "2026-01-01",
   "last_updated": "2026-05-30",
   "sections": {
     "certification": [
@@ -127,59 +134,62 @@ One JSON record per product version. Indicative shape:
 }
 ```
 
-The comparison view derives Added / Changed / Removed by diffing the two selected
-versions' records.
+The comparison view aggregates records by `released` date across the selected
+upgrade range.
 
-## 5. Comparison Sections (all five in v1)
+## 5. Comparison Sections
 
 1. **Certification** — supported databases / OS / platforms, from public GG
-   certification sources.
-2. **What's New** — features added in the newer version relative to the older.
-3. **Behavior Changes** — changed defaults / behaviors.
+   certification sources. Reserved in the schema; not shown in the rolling
+   release-notes v1 UI.
+2. **What's New** — features introduced in releases within the selected range.
+3. **Behavior Changes** — changed defaults / behaviors introduced in the range.
 4. **Deprecated** — features marked deprecated.
-5. **Desupported / Removed** — features dropped.
+5. **Desupported / Removed** — features dropped. The current rolling release page
+   combines deprecated and desupported content, so v1 displays this with
+   Deprecated.
 
 Every item shows its originating Oracle doc URL (provenance = trust).
 
 ## 6. Front-End UX
 
-- Two version dropdowns at the top. Default selection = latest vs. previous.
-  User may choose **any two** available versions (e.g. 19c vs 23ai).
-- Below: the five sections as tabs (or stacked panels), each rendered as a
-  diff-style list with **Added / Changed / Removed** color coding.
+- Two version dropdowns at the top. Default selection = latest curated baseline vs.
+  latest modern release. User may choose **any two** available versions (e.g.
+  19c vs 23.26).
+- Below: the comparison sections as tabs, each rendered as one aggregated list of
+  release-note items. Each item shows the release that introduced it.
 - A "Sources & last updated" footer listing the doc pages used and the data
   refresh date.
 - Responsive and lightweight.
 - Styled with the Oracle Redwood-inspired theme (see §6a).
 
-## 6a. Visual Design & Theme (Oracle Redwood-inspired)
+## 6a. Visual Design & Theme (Dark Oracle Redwood Console)
 
-The site uses an Oracle-branded look inspired by Oracle's **Redwood** design
-language: Oracle Red as the primary accent over clean neutral surfaces.
+The site uses a restrained dark console look inspired by Oracle's **Redwood**
+design language: Oracle Red as the primary accent over charcoal work surfaces.
 
 **Color palette (CSS custom properties):**
 
 | Token | Hex | Use |
 |-------|-----|-----|
-| `--oracle-red` | `#C74634` | Primary brand accent: header bar, active tab, links, buttons |
-| `--oracle-red-dark` | `#A23824` | Hover/active states for red elements |
-| `--ink` | `#1A1A1A` | Primary text |
-| `--slate` | `#3A3F44` | Secondary text / labels |
-| `--surface` | `#FFFFFF` | Cards / panels |
-| `--bg` | `#F5F4F2` | Page background (warm neutral) |
-| `--border` | `#E0DED9` | Dividers / card borders |
-| `--added` | `#3C7A3C` | "Added" diff items (green) |
-| `--changed` | `#B5760A` | "Changed" diff items (amber) |
-| `--removed` | `#C74634` | "Removed" diff items (Oracle red) |
+| `--oracle-red` | `#C74634` | Primary brand accent: active tab, links, range affordances |
+| `--oracle-red-bright` | `#F06A59` | High-emphasis accent and hover states |
+| `--ink` | `#F5F2ED` | Primary text |
+| `--muted` | `#B8AEA6` | Secondary text / labels |
+| `--surface` | `#181514` | Cards / panels |
+| `--surface-2` | `#211D1B` | Elevated panels |
+| `--bg` | `#0F0D0C` | Page background |
+| `--border` | `#3A302C` | Dividers / card borders |
+| `--added` | `#3C7A3C` | Reserved for future status styling |
+| `--changed` | `#B5760A` | Reserved for future status styling |
+| `--removed` | `#C74634` | Reserved for future status styling |
 
 **Treatment:**
-- Top header: Oracle-red band with the product title in white, Oracle-style
-  clean sans-serif (system stack: `"Helvetica Neue", Arial, sans-serif` — close
-  to Oracle Sans without bundling licensed fonts).
-- Version dropdowns and tabs styled with the red accent; active tab underlined
-  in Oracle red.
-- Comparison items rendered as white cards on the warm-neutral background, with
-  a thin left color bar (green/amber/red) indicating Added/Changed/Removed.
+- Top header: compact product title and subtitle on the dark page surface.
+- Version dropdowns live in an elevated command panel with red range accent.
+- Tabs use dark console styling with an Oracle-red active indicator.
+- Comparison items render as dark elevated cards with release badges and Oracle-red
+  left accents.
 - Accessible contrast (WCAG AA) for all text on colored backgrounds.
 - All theme values centralized as CSS custom properties so the palette can be
   tuned in one place.
@@ -218,7 +228,8 @@ slots in without a rewrite:
   (`products`, `versions`, `section_items`), so the same data model serves files
   today and a database later.
 - **Pure logic stays portable.** `diff.js`/`render.js` are framework- and
-  source-agnostic; they work unchanged under any future front-end framework.
+  source-agnostic; range aggregation and rendering work unchanged under any future
+  front-end framework.
 - **Pipeline is backend-independent.** `build.py` writes JSON today; it could
   additionally (or instead) insert rows into a database with no change to parsers.
 

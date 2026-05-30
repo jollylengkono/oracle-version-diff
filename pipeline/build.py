@@ -50,11 +50,15 @@ def build_records(fetch, base_url, today=None):
 
     order_seq = []
     labels = {}
+    released = {}
     for section in _RN_SECTIONS:
         for rel in section_releases.get(section, []):
             if rel["version"] not in labels:
                 order_seq.append(rel["version"])
                 labels[rel["version"]] = rel["label"]
+                released[rel["version"]] = rel["released"]
+            elif not released.get(rel["version"]) and rel["released"]:
+                released[rel["version"]] = rel["released"]
 
     records = []
     for version in order_seq:
@@ -67,12 +71,20 @@ def build_records(fetch, base_url, today=None):
             "product": sources_mod.PRODUCT_ID,
             "version": version,
             "release_label": labels[version],
+            "record_type": "release",
+            "released": released[version],
             "last_updated": today,
             "sections": sections,
         }
         validate_record(record)
         records.append(record)
-    return records
+    release_records = sorted(records, key=lambda r: r["released"], reverse=True)
+    baselines = []
+    for baseline in sources_mod.LEGACY_BASELINES:
+        record = {**baseline, "last_updated": today}
+        validate_record(record)
+        baselines.append(record)
+    return release_records + sorted(baselines, key=lambda r: r["released"], reverse=True)
 
 
 def write_release_outputs(records, data_dir):
@@ -90,6 +102,8 @@ def write_release_outputs(records, data_dir):
             "version": record["version"],
             "label": record["version"],
             "order": n - pos,
+            "record_type": record["record_type"],
+            "released": record["released"],
             "file": f"{sources_mod.PRODUCT_ID}/{fname}",
         })
 
@@ -118,6 +132,8 @@ def build_record(version, source_entry, fetch=http_fetch, today=None):
         "product": sources_mod.PRODUCT_ID,
         "version": version,
         "release_label": source_entry["release_label"],
+        "record_type": source_entry.get("record_type", "release"),
+        "released": source_entry.get("released", today),
         "last_updated": today,
         "sections": sections,
     }

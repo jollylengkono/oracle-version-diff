@@ -5,100 +5,148 @@
       "label": "Oracle GoldenGate",
       "versions": [
         {
+          "version": "23.26.2.0.0",
+          "label": "23.26.2.0.0",
+          "order": 18,
+          "record_type": "release",
+          "released": "2026-04-01",
+          "file": "oracle-goldengate/23.26.2.0.0.json"
+        },
+        {
           "version": "23.26.1.0.0",
           "label": "23.26.1.0.0",
-          "order": 16,
+          "order": 17,
+          "record_type": "release",
+          "released": "2026-01-01",
           "file": "oracle-goldengate/23.26.1.0.0.json"
         },
         {
           "version": "23.10",
           "label": "23.10",
-          "order": 15,
+          "order": 16,
+          "record_type": "release",
+          "released": "2026-01-01",
           "file": "oracle-goldengate/23.10.json"
+        },
+        {
+          "version": "23.10.0.25.10",
+          "label": "23.10.0.25.10",
+          "order": 15,
+          "record_type": "release",
+          "released": "2025-10-01",
+          "file": "oracle-goldengate/23.10.0.25.10.json"
         },
         {
           "version": "23.9",
           "label": "23.9",
           "order": 14,
+          "record_type": "release",
+          "released": "2025-09-01",
           "file": "oracle-goldengate/23.9.json"
         },
         {
-          "version": "23.7",
-          "label": "23.7",
+          "version": "23.6.0.25.05",
+          "label": "23.6.0.25.05",
           "order": 13,
-          "file": "oracle-goldengate/23.7.json"
-        },
-        {
-          "version": "23.6",
-          "label": "23.6",
-          "order": 12,
-          "file": "oracle-goldengate/23.6.json"
-        },
-        {
-          "version": "23.5.2",
-          "label": "23.5.2",
-          "order": 11,
-          "file": "oracle-goldengate/23.5.2.json"
-        },
-        {
-          "version": "23.5",
-          "label": "23.5",
-          "order": 10,
-          "file": "oracle-goldengate/23.5.json"
-        },
-        {
-          "version": "23.4.2",
-          "label": "23.4.2",
-          "order": 9,
-          "file": "oracle-goldengate/23.4.2.json"
-        },
-        {
-          "version": "23.4.1",
-          "label": "23.4.1",
-          "order": 8,
-          "file": "oracle-goldengate/23.4.1.json"
-        },
-        {
-          "version": "23.4",
-          "label": "23.4",
-          "order": 7,
-          "file": "oracle-goldengate/23.4.json"
-        },
-        {
-          "version": "23.26.2.0.0",
-          "label": "23.26.2.0.0",
-          "order": 6,
-          "file": "oracle-goldengate/23.26.2.0.0.json"
-        },
-        {
-          "version": "23.10.0.25.10",
-          "label": "23.10.0.25.10",
-          "order": 5,
-          "file": "oracle-goldengate/23.10.0.25.10.json"
+          "record_type": "release",
+          "released": "2025-05-01",
+          "file": "oracle-goldengate/23.6.0.25.05.json"
         },
         {
           "version": "23.8.0.25.04",
           "label": "23.8.0.25.04",
-          "order": 4,
+          "order": 12,
+          "record_type": "release",
+          "released": "2025-04-01",
           "file": "oracle-goldengate/23.8.0.25.04.json"
         },
         {
           "version": "23.7.1.25.02",
           "label": "23.7.1.25.02",
-          "order": 3,
+          "order": 11,
+          "record_type": "release",
+          "released": "2025-02-01",
           "file": "oracle-goldengate/23.7.1.25.02.json"
         },
         {
-          "version": "23.6.0.25.05",
-          "label": "23.6.0.25.05",
-          "order": 2,
-          "file": "oracle-goldengate/23.6.0.25.05.json"
+          "version": "23.7",
+          "label": "23.7",
+          "order": 10,
+          "record_type": "release",
+          "released": "2025-01-01",
+          "file": "oracle-goldengate/23.7.json"
         },
         {
           "version": "23.7.0.25.01",
           "label": "23.7.0.25.01",
-          "order": 1,
+          "order": 9,
+          "record_type": "release",
+          "released": "2025-01-01",
           "file": "oracle-goldengate/23.7.0.25.01.json"
+        },
+        {
+          "version": "23.6",
+          "label": "23.6",
+          "order": 8,
+          "record_type": "release",
+          "released": "2024-10-01",
+          "file": "oracle-goldengate/23.6.json"
+        },
+        {
+          "version": "23.5.2",
+          "label": "23.5.2",
+          "order": 7,
+          "record_type": "release",
+          "released": "2024-08-01",
+          "file": "oracle-goldengate/23.5.2.json"
+        },
+        {
+          "version": "23.5",
+          "label": "23.5",
+          "order": 6,
+          "record_type": "release",
+          "released": "2024-07-01",
+          "file": "oracle-goldengate/23.5.json"
+        },
+        {
+          "version": "23.4.2",
+          "label": "23.4.2",
+          "order": 5,
+          "record_type": "release",
+          "released": "2024-06-01",
+          "file": "oracle-goldengate/23.4.2.json"
+        },
+        {
+          "version": "23.4.1",
+          "label": "23.4.1",
+          "order": 4,
+          "record_type": "release",
+          "released": "2024-06-01",
+          "file": "oracle-goldengate/23.4.1.json"
+        },
+        {
+          "version": "23.4",
+          "label": "23.4",
+          "order": 3,
+          "record_type": "release",
+          "released": "2024-05-01",
+          "file": "oracle-goldengate/23.4.json"
+        },
+        {
+          "version": "21c",
+          "label": "21c",
+          "order": 2,
+          "record_type": "baseline",
+          "released": "2021-01-01",
+          "file": "oracle-goldengate/21c.json"
+        },
+        {
+          "version": "19c",
+          "label": "19c",
+          "order": 1,
+          "record_type": "baseline",
+          "released": "2019-01-01",
+          "file": "oracle-goldengate/19c.json"
         }
       ]
     }

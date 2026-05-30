@@ -2,6 +2,21 @@ import re
 
 from bs4 import BeautifulSoup
 
+_MONTHS = {
+    "january": "01",
+    "february": "02",
+    "march": "03",
+    "april": "04",
+    "may": "05",
+    "june": "06",
+    "july": "07",
+    "august": "08",
+    "september": "09",
+    "october": "10",
+    "november": "11",
+    "december": "12",
+}
+
 def _text(node):
     return " ".join(node.get_text(" ", strip=True).split())
 
@@ -21,6 +36,20 @@ def release_version(label):
     return label.strip()
 
 
+def release_date(label):
+    """Extract an ISO month-start release date from a release heading."""
+    m = re.search(
+        r"\b("
+        + "|".join(_MONTHS)
+        + r")\s+((?:19|20)\d{2})\b",
+        label,
+        re.IGNORECASE,
+    )
+    if not m:
+        return None
+    return f"{m.group(2)}-{_MONTHS[m.group(1).lower()]}-01"
+
+
 def parse_release_sections(html, source_url):
     """Parse an Oracle GoldenGate release-notes section page into per-release items.
 
@@ -30,7 +59,7 @@ def parse_release_sections(html, source_url):
       - `dl > dt.dlterm` (title) with a `<dd>` (description)      — deprecated / desupported
 
     Returns a list (newest first, in document order) of:
-        {"version": str, "label": str, "items": [{title, description, source_url}]}
+        {"version": str, "label": str, "released": str, "items": [{title, description, source_url}]}
     """
     soup = BeautifulSoup(html, "html.parser")
     releases = soup.find_all("h3", class_="sect3")
@@ -60,7 +89,12 @@ def parse_release_sections(html, source_url):
                     "description": _text(dd) if dd else "",
                     "source_url": source_url,
                 })
-        results.append({"version": release_version(label), "label": label, "items": items})
+        results.append({
+            "version": release_version(label),
+            "label": label,
+            "released": release_date(label),
+            "items": items,
+        })
     return results
 
 def parse_feature_list(html, source_url, heading="h3"):

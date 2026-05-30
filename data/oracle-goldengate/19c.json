@@ -1,0 +1,15 @@
+{
+  "product": "oracle-goldengate",
+  "version": "19c",
+  "release_label": "Oracle GoldenGate 19c",
+  "record_type": "baseline",
+  "released": "2019-01-01",
+  "sections": {
+    "certification": [],
+    "whats_new": [],
+    "behavior_changes": [],
+    "deprecated": [],
+    "desupported": []
+  },
+  "last_updated": "2026-05-30"
+}
