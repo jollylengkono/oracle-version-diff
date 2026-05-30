@@ -1,0 +1,12 @@
+{
+  "products": [
+    {
+      "id": "oracle-goldengate",
+      "label": "Oracle GoldenGate",
+      "versions": [
+        { "version": "23ai", "label": "23ai", "order": 2, "file": "oracle-goldengate/23ai.json" },
+        { "version": "21c", "label": "21c", "order": 1, "file": "oracle-goldengate/21c.json" }
+      ]
+    }
+  ]
+}
