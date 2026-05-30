@@ -124,6 +124,7 @@ body {
 }
 
 .panel { display: block; }
+.panel[hidden] { display: none; }
 .group { margin-bottom: 1.5rem; }
 .group__label {
   margin: 0 0 .5rem;
