@@ -1,18 +1,21 @@
 # Oracle Version Diff
 
-A static website that compares two Oracle GoldenGate versions head-to-head —
-certification, what's new, behavior changes, deprecated, and desupported features —
-using data parsed from official Oracle documentation.
+A static website that shows what Oracle GoldenGate changes are introduced when
+upgrading across a selected release range, using data parsed from official Oracle
+documentation.
 
 ## How it works
 
-- **Front-end** (`index.html`, `css/`, `js/`): vanilla static site. Loads JSON from
-  `data/` through a single data-access seam (`js/datasource.js`, configured in
-  `js/config.js`) and renders an Added/Changed/Removed diff. No backend.
+- **Front-end** (`index.html`, `css/`, `js/`): vanilla static site with a dark
+  Oracle Redwood-inspired console theme. Loads JSON from `data/` through a single
+  data-access seam (`js/datasource.js`, configured in `js/config.js`) and renders
+  one combined list of release-note items introduced between the older and newer
+  selections. No backend.
 - **Pipeline** (`pipeline/`): a Python crawler+parser run weekly by GitHub Actions.
-  It fetches public Oracle docs, parses them, validates against
-  `schema/version-record.schema.json`, and opens a pull request with the new
-  `data/` JSON for human review.
+  It fetches the public GoldenGate rolling release notes from Oracle docs, parses
+  each release section, combines those records with curated `19c`/`21c` baseline
+  records, validates against `schema/version-record.schema.json`, and opens a pull
+  request with the new `data/` JSON for human review.
 
 ## Local development
 
@@ -27,15 +30,16 @@ python3 -m http.server 8000           # serve the site at http://localhost:8000/
 
 1. Push this repo to GitHub.
 2. Settings → Pages → Build and deployment → Source: **Deploy from a branch**,
-   Branch: `main`, folder: `/ (root)`.
+   Branch: `master`, folder: `/ (root)`.
 3. The site is served at `https://<user>.github.io/oracle-version-diff/`.
 
 ## Updating data
 
 The `Refresh GoldenGate data` workflow runs weekly (and on demand via
-"Run workflow"). It opens a PR; review the diff and merge. To add a newly released
-version, add its doc URLs to `pipeline/sources.py` (append to `SOURCES`; the list
-order is the display order).
+"Run workflow"). It opens a PR; review the diff and merge. The modern GoldenGate
+line is discovered from `pipeline/sources.py` (`RELEASE_NOTES_BASE`) and Oracle's
+`toc.js`; update that base URL if Oracle moves the rolling release-note stream.
+Curated legacy baselines live in `LEGACY_BASELINES` in the same file.
 
 ## Future backend (Supabase-ready)
 

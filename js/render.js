@@ -8,11 +8,14 @@ export function escapeHtml(s) {
 
 export function renderItem(item) {
   const desc = item.description ? `<p class="item__desc">${escapeHtml(item.description)}</p>` : '';
+  const badge = item.introduced_label
+    ? `<span class="item__badge">${escapeHtml(item.introduced_label)}</span>`
+    : '';
   const link = item.source_url
     ? `<a class="item__source" href="${escapeHtml(item.source_url)}" target="_blank" rel="noopener">Official doc</a>`
     : '';
   return `<article class="item">
-  <h4 class="item__title">${escapeHtml(item.title)}</h4>
+  <h4 class="item__title">${escapeHtml(item.title)}${badge}</h4>
   ${desc}
   ${link}
 </article>`;
@@ -35,5 +38,12 @@ export function renderSideBySide(section, older, newer) {
     <h3 class="col__head">${escapeHtml(newer.release_label || newer.version)}</h3>
     ${renderItems(newer, section)}
   </div>
+</div>`;
+}
+
+export function renderAggregated(section, items) {
+  if (!items.length) return `<p class="empty">No entries in this upgrade range.</p>`;
+  return `<div class="range-list">
+  ${items.map(renderItem).join('\n')}
 </div>`;
 }
