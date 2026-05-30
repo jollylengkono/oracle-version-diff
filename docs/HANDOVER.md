@@ -1,4 +1,4 @@
-# Handover — oracle-version-diff
+# Handover — Oracle Release Delta
 
 **Date:** 2026-05-30
 **Live site:** https://jollylengkono.github.io/oracle-version-diff/
@@ -8,10 +8,11 @@
 
 ## TL;DR — current status
 
-The product has pivoted from a **side-by-side viewer** to a **range-aggregation diff**.
-When a user picks **older** and **newer**, the app shows the
-**combined set of all changes introduced in the releases *between* them** —
-i.e. "what's new / what behavior changed / what's deprecated if I upgrade from A to B."
+The product has pivoted from a **side-by-side viewer** to **Oracle Release Delta**.
+When a user picks **Current release** and **Target release**, the app shows the
+**combined set of all changes introduced after the current release through the
+target release** — i.e. "what's new / what behavior changed / what's deprecated
+if I upgrade from A to B."
 Grouped per section, each item shows a large muted version number for the release
 that introduced it.
 
@@ -24,7 +25,7 @@ Implemented continuation:
    baseline records.
 3. `js/diff.js` exposes `aggregateRange()`.
 4. `js/app.js` loads all records and renders aggregated range results.
-5. UI is a light card style with oversized 30% opacity version numbers.
+5. UI is a GitHub-style dark card theme with large muted version numbers.
 6. `README.md` and the design spec have been updated to reflect the range model.
 
 ---
@@ -32,15 +33,15 @@ Implemented continuation:
 ## CURRENT STATE (working & deployed)
 
 - Static site: vanilla HTML/CSS/JS ES modules, no framework, served from repo root.
-- Light card theme (`css/theme.css`) with white cards, subtle shadows, compact dark
-  gray official-doc buttons, and Oracle Red `#C74634` reserved for restrained
-  accents.
+- GitHub-style dark card theme (`css/theme.css`) with dark cards, muted version
+  labels, compact official-doc buttons, and blue active/focus accents.
 - Data-access seam: `js/config.js` (`DATA_BASE`) + `js/datasource.js` (only place
   data is fetched) — kept intact for a future Supabase swap.
 - Current UI = **range aggregation** (`js/diff.js` → `aggregateRange`,
   `js/render.js` → `renderAggregated`, driven by `js/app.js`).
-- The selectors are fully independent. `19c -> 21c` now produces a 21c baseline
-  card, and future releases work automatically once the pipeline adds their JSON
+- Product selector supports Oracle GoldenGate and Oracle Database.
+- Current/target release selectors are directional. `19c -> 21c` shows items after
+  19c through 21c, and future releases work once the product data adds their JSON
   records.
 - `js/diff.js` still contains the older snapshot-style `diffRecords`/`diffSection`
   helpers for tests/backward compatibility, but the app uses `aggregateRange()`.
@@ -54,6 +55,8 @@ Implemented continuation:
   manual; runs pytest, `python -m pipeline.build`, opens a review PR.
 - Tests: JS (`node --test`) and Python (`pytest`) suites cover range aggregation,
   schema validation, release parsing, and legacy baselines.
+- Oracle Database currently has a curated seed under `data/oracle-database/` for
+  `19c -> 26ai`; it is not yet crawler-backed.
 
 ---
 
@@ -127,15 +130,16 @@ Implemented with TDD. Relevant files:
 - `renderSideBySide()` remains as unused compatibility/fallback code.
 
 ### 4. App wiring (`js/app.js`)
-- `main()` loads all small release records up front.
+- `main()` loads records for the selected product.
 - `renderComparison()` calls `aggregateRange()` and `renderAggregated()`.
-- Default selection uses the latest baseline as older and latest release as newer.
+- Default selection uses Oracle Database when present, with the latest baseline as
+  current release and latest release as target release.
 - The 3-tab layout remains: What's New, Behavior Changes, Deprecated & Desupported.
 
 ### 5. UI copy (`index.html`)
-- Subtitle reflects upgrade range intelligence.
-- Theme is a light card UI: soft gray page, white cards, compact controls, dark
-  gray official-doc buttons, and oversized muted version labels.
+- App name is Oracle Release Delta.
+- Subtitle and delta summary reflect the directional release-delta model.
+- Theme is a GitHub-style dark card UI.
 
 ### 6. Tests + finish
 - Run full JS + Python tests before completion.
@@ -160,7 +164,8 @@ Implemented with TDD. Relevant files:
   re: this pivot).
 
 ## Definition of done
-A user picks older + newer → sees one combined, deduped, correctly-ordered list per
-section of everything introduced between those releases, each item linking to its
-official Oracle doc and showing its source version prominently. Auto-crawler still
-produces correct ordered/deduped data weekly via PR. Live and verified.
+A user picks current + target → sees one combined, deduped, correctly-ordered list per
+section of everything introduced after the current release through the target
+release, each item linking to its official Oracle doc and showing its source
+version prominently. Auto-crawler still produces correct ordered/deduped data
+weekly via PR. Live and verified.

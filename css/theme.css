@@ -53,7 +53,7 @@ body {
 
 .picker {
   display: grid;
-  grid-template-columns: minmax(12rem, 1fr) auto minmax(12rem, 1fr);
+  grid-template-columns: minmax(12rem, 1.1fr) minmax(10rem, 1fr) auto minmax(10rem, 1fr);
   align-items: end;
   gap: .9rem;
   background: var(--surface);
@@ -63,6 +63,26 @@ body {
   margin: 0 auto 1.25rem;
   box-shadow: var(--shadow);
   max-width: 820px;
+}
+
+.delta-summary {
+  margin: 0 0 1rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.delta-summary h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+.delta-summary p {
+  margin: .3rem 0 0;
+  color: var(--muted);
+  font-size: .92rem;
 }
 .picker__field {
   display: flex;

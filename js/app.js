@@ -20,9 +20,27 @@ export function pickDefaultVersions(versions) {
   return [older, newer];
 }
 
+export function pickDefaultProduct(products) {
+  return products.find(p => p.id === 'oracle-database') || products[0];
+}
+
+export function releaseDeltaHeading(current, target) {
+  return `Release delta from ${current} to ${target}`;
+}
+
+export function releaseDeltaSubheading(current, target) {
+  return `Changes introduced after ${current} through ${target}`;
+}
+
 function fillSelect(select, versions, selectedVersion) {
   select.innerHTML = versions
     .map(v => `<option value="${v.version}" ${v.version === selectedVersion ? 'selected' : ''}>${v.label}</option>`)
+    .join('');
+}
+
+function fillProductSelect(select, products, selectedProductId) {
+  select.innerHTML = products
+    .map(p => `<option value="${p.id}" ${p.id === selectedProductId ? 'selected' : ''}>${p.label}</option>`)
     .join('');
 }
 
@@ -61,29 +79,45 @@ function renderComparison(panelsHost, aggregated) {
 
 async function main() {
   const index = await loadIndex();
-  const product = index.products[0]; // v1: GoldenGate only
+  const productSel = document.getElementById('product');
   const olderSel = document.getElementById('older');
   const newerSel = document.getElementById('newer');
   const tabsHost = document.getElementById('tabs');
   const panelsHost = document.getElementById('panels');
   const updated = document.getElementById('updated');
+  const deltaHeading = document.getElementById('delta-heading');
+  const deltaSubheading = document.getElementById('delta-subheading');
 
-  const [defOlder, defNewer] = pickDefaultVersions(product.versions);
-  fillSelect(olderSel, product.versions, defOlder.version);
-  fillSelect(newerSel, product.versions, defNewer.version);
-  const records = await loadAllRecords(product);
+  const defProduct = pickDefaultProduct(index.products);
+  fillProductSelect(productSel, index.products, defProduct.id);
+  let records = [];
 
   async function refresh() {
+    const product = index.products.find(p => p.id === productSel.value) || index.products[0];
     const aggregated = aggregateRange(records, olderSel.value, newerSel.value);
     const panels = renderComparison(panelsHost, aggregated);
     renderTabs(tabsHost, panels);
     const selected = records.find(r => r.version === newerSel.value) || records[0];
-    updated.textContent = `Data last updated: ${selected.last_updated}`;
+    deltaHeading.textContent = releaseDeltaHeading(olderSel.value, newerSel.value);
+    deltaSubheading.textContent = releaseDeltaSubheading(olderSel.value, newerSel.value);
+    updated.textContent = `${product.label} data last updated: ${selected.last_updated}`;
   }
 
+  async function loadProduct(product) {
+    const [defOlder, defNewer] = pickDefaultVersions(product.versions);
+    fillSelect(olderSel, product.versions, defOlder.version);
+    fillSelect(newerSel, product.versions, defNewer.version);
+    records = await loadAllRecords(product);
+    await refresh();
+  }
+
+  productSel.addEventListener('change', async () => {
+    const product = index.products.find(p => p.id === productSel.value) || index.products[0];
+    await loadProduct(product);
+  });
   olderSel.addEventListener('change', refresh);
   newerSel.addEventListener('change', refresh);
-  await refresh();
+  await loadProduct(defProduct);
 }
 
 if (typeof document !== 'undefined') {
