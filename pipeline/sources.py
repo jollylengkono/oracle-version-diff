@@ -8,7 +8,7 @@ DOCS_INDEX_URL = "https://docs.oracle.com/en/middleware/goldengate/index.html"
 # so adding a future doc line only requires updating this base.
 RELEASE_NOTES_BASE = "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/"
 
-LEGACY_BASELINES = [
+STATIC_LEGACY_BASELINES = [
     {
         "product": PRODUCT_ID,
         "version": "19c",
@@ -23,28 +23,26 @@ LEGACY_BASELINES = [
             "desupported": [],
         },
     },
+]
+
+LEGACY_RELEASE_NOTE_SOURCES = [
     {
         "product": PRODUCT_ID,
         "version": "21c",
         "release_label": "Oracle GoldenGate 21c",
         "record_type": "baseline",
         "released": "2021-01-01",
-        "sections": {
-            "certification": [],
+        "urls": {
             "whats_new": [
-                {
-                    "title": "Oracle GoldenGate 21c release baseline",
-                    "description": (
-                        "Curated Oracle GoldenGate 21c baseline entry used for "
-                        "upgrade comparisons from older 19c estates into the 21c "
-                        "documentation line."
-                    ),
-                    "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/whats-new.html",
-                },
+                "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.14.0.0.0-april-2024.html",
+                "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.12.0.0.4-november-2023-db2-i-update.html",
+                "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.10.0.0.0-april-2023-adb-update.html",
+                "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.4.0-october-2021.html",
+                "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html",
+                "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html",
             ],
-            "behavior_changes": [],
-            "deprecated": [],
-            "desupported": [],
+            "behavior_changes": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html",
+            "deprecated": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/deprecated-features.html",
         },
     },
 ]

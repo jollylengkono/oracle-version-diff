@@ -10,11 +10,20 @@ def fake_fetch_factory():
         "new-features.html": read_fixture("real/new-features.html"),
         "default-behaviour-updates-23ai.html": read_fixture("real/default-behaviour.html"),
         "deprecated-features.html": read_fixture("real/deprecated-features.html"),
+        "21c-new-features.html": read_fixture("release_notes_sample.html"),
+        "21c-default-behavior-changes.html": read_fixture("release_notes_sample.html"),
+        "21c-deprecated-features.html": read_fixture("release_notes_sample.html"),
     }
 
     def fetch(url):
         if url.endswith("toc.js"):
             return toc
+        if "21.3/release-notes/release-21." in url or "21.3/release-notes/oggcore-new-features" in url:
+            return pages["21c-new-features.html"]
+        if "21.3/release-notes/default-behavior-changes.html" in url:
+            return pages["21c-default-behavior-changes.html"]
+        if "21.3/release-notes/deprecated-features.html" in url:
+            return pages["21c-deprecated-features.html"]
         for name, html in pages.items():
             if name in url:
                 return html
@@ -73,3 +82,17 @@ def test_build_records_includes_21c_baseline_items_for_dynamic_compare():
 
     assert baseline["sections"]["whats_new"]
     assert baseline["sections"]["whats_new"][0]["source_url"].startswith("https://docs.oracle.com/")
+
+
+def test_build_records_populates_21c_behavior_and_deprecated_sections():
+    recs = build_records(fake_fetch_factory(), BASE, today="2026-05-30")
+    baseline = next(r for r in recs if r["version"] == "21c")
+
+    assert baseline["sections"]["behavior_changes"]
+    assert baseline["sections"]["deprecated"]
+    assert baseline["sections"]["behavior_changes"][0]["source_url"].endswith(
+        "/21.3/release-notes/default-behavior-changes.html"
+    )
+    assert baseline["sections"]["deprecated"][0]["source_url"].endswith(
+        "/21.3/release-notes/deprecated-features.html"
+    )

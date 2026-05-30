@@ -13,9 +13,10 @@ documentation.
   backend.
 - **Pipeline** (`pipeline/`): a Python crawler+parser run weekly by GitHub Actions.
   It fetches the public GoldenGate rolling release notes from Oracle docs, parses
-  each release section, combines those records with curated `19c`/`21c` baseline
-  records, validates against `schema/version-record.schema.json`, and opens a pull
-  request with the new `data/` JSON for human review.
+  each release section, combines those records with a static `19c` anchor and a
+  parsed `21c` legacy release-notes baseline, validates against
+  `schema/version-record.schema.json`, and opens a pull request with the new
+  `data/` JSON for human review.
 - **Comparison behavior**: the selectors are independent. Comparing `19c` to `21c`
   shows curated 21c baseline cards, while comparing `19c` to a modern or future
   release includes every generated release record after 19c up through the selected
@@ -43,7 +44,9 @@ The `Refresh GoldenGate data` workflow runs weekly (and on demand via
 "Run workflow"). It opens a PR; review the diff and merge. The modern GoldenGate
 line is discovered from `pipeline/sources.py` (`RELEASE_NOTES_BASE`) and Oracle's
 `toc.js`; update that base URL if Oracle moves the rolling release-note stream.
-Curated legacy baselines live in `LEGACY_BASELINES` in the same file.
+Legacy baselines live in `pipeline/sources.py`: `19c` is a static anchor, and
+`21c` is parsed from the official 21c release-note pages listed in
+`LEGACY_RELEASE_NOTE_SOURCES`.
 
 ## Future backend (Supabase-ready)
 
