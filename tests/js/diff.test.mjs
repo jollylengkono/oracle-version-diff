@@ -137,3 +137,31 @@ test('aggregateRange includes release items between baseline and modern release'
 
   assert.deepEqual(aggregateRange(records, '19c', '23.6').whats_new.map(i => i.title), ['23.5 item', '23.6 item']);
 });
+
+test('aggregateRange includes the newer baseline when comparing 19c to 21c', () => {
+  const records = [
+    {
+      version: '21c',
+      release_label: 'Oracle GoldenGate 21c',
+      record_type: 'baseline',
+      released: '2021-01-01',
+      sections: {
+        whats_new: [{ title: '21c baseline item', source_url: 'https://docs.oracle.com/21c' }],
+        behavior_changes: [],
+        deprecated: []
+      }
+    },
+    {
+      version: '19c',
+      release_label: 'Oracle GoldenGate 19c',
+      record_type: 'baseline',
+      released: '2019-01-01',
+      sections: { whats_new: [], behavior_changes: [], deprecated: [] }
+    }
+  ];
+
+  const result = aggregateRange(records, '19c', '21c');
+
+  assert.deepEqual(result.whats_new.map(i => i.title), ['21c baseline item']);
+  assert.deepEqual(result.whats_new.map(i => i.introduced_version), ['21c']);
+});

@@ -12,7 +12,8 @@ The product has pivoted from a **side-by-side viewer** to a **range-aggregation 
 When a user picks **older** and **newer**, the app shows the
 **combined set of all changes introduced in the releases *between* them** —
 i.e. "what's new / what behavior changed / what's deprecated if I upgrade from A to B."
-Grouped per section, each item badged with the release that introduced it.
+Grouped per section, each item shows a large muted version number for the release
+that introduced it.
 
 This is computed from the data we already crawl (each release record holds "what
 changed in *that* release"). It is **not** an item-level snapshot diff.
@@ -23,7 +24,7 @@ Implemented continuation:
    baseline records.
 3. `js/diff.js` exposes `aggregateRange()`.
 4. `js/app.js` loads all records and renders aggregated range results.
-5. UI is a dark Redwood Console style.
+5. UI is a light card style with oversized 30% opacity version numbers.
 6. `README.md` and the design spec have been updated to reflect the range model.
 
 ---
@@ -31,11 +32,16 @@ Implemented continuation:
 ## CURRENT STATE (working & deployed)
 
 - Static site: vanilla HTML/CSS/JS ES modules, no framework, served from repo root.
-- Dark Oracle Redwood Console theme (`css/theme.css`), Oracle Red `#C74634`.
+- Light card theme (`css/theme.css`) with white cards, subtle shadows, compact dark
+  gray official-doc buttons, and Oracle Red `#C74634` reserved for restrained
+  accents.
 - Data-access seam: `js/config.js` (`DATA_BASE`) + `js/datasource.js` (only place
   data is fetched) — kept intact for a future Supabase swap.
 - Current UI = **range aggregation** (`js/diff.js` → `aggregateRange`,
   `js/render.js` → `renderAggregated`, driven by `js/app.js`).
+- The selectors are fully independent. `19c -> 21c` now produces a 21c baseline
+  card, and future releases work automatically once the pipeline adds their JSON
+  records.
 - `js/diff.js` still contains the older snapshot-style `diffRecords`/`diffSection`
   helpers for tests/backward compatibility, but the app uses `aggregateRange()`.
 - Python pipeline (`pipeline/`): crawls Oracle GoldenGate release notes via `toc.js`,
@@ -112,7 +118,8 @@ Implemented with TDD. Relevant files:
 
 ### 3. Render (`js/render.js`)
 - `renderAggregated(section, items)` renders one combined list.
-- `renderItem()` shows a release badge when aggregation metadata is present.
+- `renderItem()` shows the raw source version as a large, 30% opacity card label
+  when aggregation metadata is present.
 - `renderSideBySide()` remains as unused compatibility/fallback code.
 
 ### 4. App wiring (`js/app.js`)
@@ -123,8 +130,8 @@ Implemented with TDD. Relevant files:
 
 ### 5. UI copy (`index.html`)
 - Subtitle reflects upgrade range intelligence.
-- Theme is dark Redwood Console: charcoal surfaces, Oracle-red accents, compact
-  controls, and refined release badges.
+- Theme is a light card UI: soft gray page, white cards, compact controls, dark
+  gray official-doc buttons, and oversized muted version labels.
 
 ### 6. Tests + finish
 - Run full JS + Python tests before completion.
@@ -151,5 +158,5 @@ Implemented with TDD. Relevant files:
 ## Definition of done
 A user picks older + newer → sees one combined, deduped, correctly-ordered list per
 section of everything introduced between those releases, each item linking to its
-official Oracle doc and badged with its release. Auto-crawler still produces correct
-ordered/deduped data weekly via PR. Live and verified.
+official Oracle doc and showing its source version prominently. Auto-crawler still
+produces correct ordered/deduped data weekly via PR. Live and verified.
