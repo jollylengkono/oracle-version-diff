@@ -1,0 +1,43 @@
+{
+  "product": "oracle-database",
+  "version": "12c",
+  "release_label": "Oracle Database 12c Release 2",
+  "record_type": "baseline",
+  "released": "2017-03-01",
+  "last_updated": "2026-05-31",
+  "sections": {
+    "certification": [],
+    "whats_new": [
+      {
+        "title": "Long identifiers",
+        "description": "Oracle Database 12c Release 2 increases the maximum length of most identifiers from 30 bytes to 128 bytes.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/newft/new-features.html"
+      },
+      {
+        "title": "JSON support enhancements",
+        "description": "Oracle Database 12c Release 2 adds JSON search and query improvements, including JSON data guide support.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/newft/new-features.html"
+      },
+      {
+        "title": "Online table redefinition improvements",
+        "description": "Online redefinition gains restart, rollback, progress monitoring, and broader table support.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/newft/new-features.html"
+      }
+    ],
+    "behavior_changes": [
+      {
+        "title": "Grid Infrastructure installation uses zip images",
+        "description": "Oracle Grid Infrastructure 12c Release 2 installation media is delivered as a zip image for the installer.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/newft/new-features.html"
+      }
+    ],
+    "deprecated": [
+      {
+        "title": "12c Release 2 upgrade changes should be reviewed",
+        "description": "Oracle documents behavior changes, deprecated features, and desupported features for Oracle Database 12c Release 2 upgrade planning.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/upgrd/behavior-change-deprecate-desupport-oracle-12c-rel-2.html"
+      }
+    ],
+    "desupported": []
+  }
+}

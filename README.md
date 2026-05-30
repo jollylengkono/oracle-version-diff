@@ -17,8 +17,9 @@ target release, using data sourced from official Oracle documentation.
   `schema/version-record.schema.json`, and opens a pull request with the new
   `data/` JSON for human review.
 - **Products**: Oracle GoldenGate data is crawler-backed. Oracle Database currently
-  has a curated seed from `19c` to latest `26ai`, using official 26ai New Features
-  and Upgrade Guide pages.
+  has curated seed records from `12c` through latest `26ai`, with LTS/non-LTS
+  indicators in the release selectors. Oracle WebLogic Server has curated seed
+  records from `11g` through latest `15c`.
 - **Release delta behavior**: selecting `Current release = 19c` and
   `Target release = 26ai` shows what was introduced after 19c through 26ai:
   what's new, behavior changes, and deprecated/desupported items.
@@ -49,8 +50,9 @@ Legacy baselines live in `pipeline/sources.py`: `19c` is a static anchor, and
 `21c` is parsed from the official 21c release-note pages listed in
 `LEGACY_RELEASE_NOTE_SOURCES`.
 
-Oracle Database seed records live under `data/oracle-database/`. Expand these
-records or add an Oracle Database crawler before treating them as exhaustive.
+Oracle Database seed records live under `data/oracle-database/`. Oracle WebLogic
+Server seed records live under `data/oracle-weblogic-server/`. Expand these
+records or add product-specific crawlers before treating them as exhaustive.
 
 ## Future backend (Supabase-ready)
 

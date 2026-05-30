@@ -1,0 +1,48 @@
+{
+  "product": "oracle-weblogic-server",
+  "version": "15c",
+  "release_label": "Oracle WebLogic Server 15c (15.1.1.0.0)",
+  "record_type": "release",
+  "released": "2025-10-01",
+  "last_updated": "2026-05-31",
+  "sections": {
+    "certification": [],
+    "whats_new": [
+      {
+        "title": "Jakarta EE 9.1 full platform support",
+        "description": "WebLogic Server 15.1.1.0.0 is a fully compatible implementation of Jakarta EE 9.1.",
+        "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+      },
+      {
+        "title": "Java SE 17 and 21 certification",
+        "description": "WebLogic Server 15c provides Java SE 17 and Java SE 21 certification.",
+        "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+      },
+      {
+        "title": "OpenRewrite upgrade recipes",
+        "description": "WebLogic Server application upgrade tooling provides OpenRewrite recipes for Jakarta namespace, descriptor, Java, Maven, and Spring migration tasks.",
+        "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+      }
+    ],
+    "behavior_changes": [
+      {
+        "title": "Jakarta namespace migration",
+        "description": "Applications must move from Java EE javax namespaces to Jakarta EE jakarta namespaces for the WebLogic Server 15.1.1.0.0 application environment.",
+        "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+      },
+      {
+        "title": "Applications must be modified and recompiled",
+        "description": "Oracle documents that applications from WebLogic Server 12.2.1.4.0, 14.1.1.0.0, and 14.1.2.0.0 must be modified and recompiled for WebLogic Server 15.1.1.0.0.",
+        "source_url": "https://docs.oracle.com/pls/topic/lookup?ctx=en%2Fmiddleware%2Fstandalone%2Fweblogic-server%2F15.1.1%2Fintro&id=WLUPG107"
+      }
+    ],
+    "deprecated": [
+      {
+        "title": "Legacy Jakarta EE specifications removed",
+        "description": "Jakarta EE 9 removes legacy specifications such as JAXR, XML RPC, Deployment, Management, and Distributed Interoperability.",
+        "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+      }
+    ],
+    "desupported": []
+  }
+}

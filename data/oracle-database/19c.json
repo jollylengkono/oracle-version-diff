@@ -7,9 +7,42 @@
   "last_updated": "2026-05-31",
   "sections": {
     "certification": [],
-    "whats_new": [],
-    "behavior_changes": [],
-    "deprecated": [],
+    "whats_new": [
+      {
+        "title": "Automatic indexing",
+        "description": "Oracle Database 19c can automatically create, rebuild, and drop indexes based on application workload changes.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+      },
+      {
+        "title": "Real-time statistics",
+        "description": "Oracle Database 19c automatically gathers online statistics during conventional DML operations.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+      },
+      {
+        "title": "SQL quarantine",
+        "description": "Oracle Database 19c can quarantine execution plans for SQL statements that consume excessive CPU or I/O resources.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+      }
+    ],
+    "behavior_changes": [
+      {
+        "title": "Oracle Database changes, desupports, and deprecations consolidated",
+        "description": "Oracle Database 19c upgrade documentation consolidates release behavior changes, deprecations, and desupport notices to help upgrade planning.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/oracle-database-changes-deprecations-desupports.html"
+      }
+    ],
+    "deprecated": [
+      {
+        "title": "Oracle Text FILE_DATASTORE deprecated",
+        "description": "Starting with Oracle Database 19c, the Oracle Text FILE_DATASTORE type is deprecated; Oracle recommends DIRECTORY_DATASTORE.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "Oracle Text URL_DATASTORE deprecated",
+        "description": "Starting with Oracle Database 19c, the Oracle Text URL_DATASTORE type is deprecated; Oracle recommends NETWORK_DATASTORE.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/oracle-database-changes-deprecations-desupports.html"
+      }
+    ],
     "desupported": []
   }
 }

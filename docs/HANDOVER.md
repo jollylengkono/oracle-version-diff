@@ -39,7 +39,10 @@ Implemented continuation:
   data is fetched) — kept intact for a future Supabase swap.
 - Current UI = **range aggregation** (`js/diff.js` → `aggregateRange`,
   `js/render.js` → `renderAggregated`, driven by `js/app.js`).
-- Product selector supports Oracle GoldenGate and Oracle Database.
+- Product selector supports Oracle GoldenGate, Oracle Database, and Oracle
+  WebLogic Server.
+- Version selector labels show LTS status when known, for example `Oracle Database
+  19c (LTS)` and `Oracle Database 21c (Non-LTS)`.
 - Current/target release selectors are directional. `19c -> 21c` shows items after
   19c through 21c, and future releases work once the product data adds their JSON
   records.
@@ -56,7 +59,9 @@ Implemented continuation:
 - Tests: JS (`node --test`) and Python (`pytest`) suites cover range aggregation,
   schema validation, release parsing, and legacy baselines.
 - Oracle Database currently has a curated seed under `data/oracle-database/` for
-  `19c -> 26ai`; it is not yet crawler-backed.
+  `12c -> 26ai`; it is not yet crawler-backed.
+- Oracle WebLogic Server currently has a curated seed under
+  `data/oracle-weblogic-server/` for `11g -> 15c`; it is not yet crawler-backed.
 
 ---
 

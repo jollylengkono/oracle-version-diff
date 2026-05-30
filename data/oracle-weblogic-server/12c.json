@@ -1,0 +1,48 @@
+{
+  "product": "oracle-weblogic-server",
+  "version": "12c",
+  "release_label": "Oracle WebLogic Server 12c (12.2.1.4.0)",
+  "record_type": "release",
+  "released": "2019-09-01",
+  "last_updated": "2026-05-31",
+  "sections": {
+    "certification": [],
+    "whats_new": [
+      {
+        "title": "Java EE 7 application platform",
+        "description": "WebLogic Server 12c Release 2 provides a Java EE 7 application server line for enterprise Java applications.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/index.html"
+      },
+      {
+        "title": "Runtime improvements",
+        "description": "WebLogic Server 12.2.1.4 includes runtime improvements for deployment, JDBC data sources, JTA, messaging, monitoring WebSocket applications, RESTful web services, and dynamic clusters.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+      },
+      {
+        "title": "WebLogic Kubernetes Toolkit integration",
+        "description": "Oracle documents Kubernetes tooling for migration, domain management, deployment, monitoring, and image patching of WebLogic Server environments.",
+        "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/kubernetes_toolkit.html"
+      }
+    ],
+    "behavior_changes": [
+      {
+        "title": "Application name behavior change",
+        "description": "WebLogic Server 12.2.1 includes deployment behavior changes, including behavior for application names.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+      }
+    ],
+    "deprecated": [
+      {
+        "title": "Multitenant domain partitions deprecated",
+        "description": "WebLogic Server Multitenant domain partitions, resource groups, resource group templates, and virtual targets are deprecated in WebLogic Server 12.2.1.4.0.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/tasks/appdeployments.html"
+      },
+      {
+        "title": "JAXR removed",
+        "description": "The Java API for XML Registries is removed from Oracle WebLogic Server as of version 12.2.1.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+      }
+    ],
+    "desupported": []
+  }
+}

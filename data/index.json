@@ -156,19 +156,81 @@
       "versions": [
         {
           "version": "26ai",
-          "label": "26ai",
-          "order": 2,
+          "label": "Oracle AI Database 26ai",
+          "order": 4,
           "record_type": "release",
           "released": "2026-01-01",
+          "is_lts": true,
           "file": "oracle-database/26ai.json"
         },
         {
+          "version": "21c",
+          "label": "Oracle Database 21c",
+          "order": 3,
+          "record_type": "release",
+          "released": "2021-01-01",
+          "is_lts": false,
+          "file": "oracle-database/21c.json"
+        },
+        {
           "version": "19c",
-          "label": "19c",
-          "order": 1,
+          "label": "Oracle Database 19c",
+          "order": 2,
           "record_type": "baseline",
           "released": "2019-01-01",
+          "is_lts": true,
           "file": "oracle-database/19c.json"
+        },
+        {
+          "version": "12c",
+          "label": "Oracle Database 12c Release 2",
+          "order": 1,
+          "record_type": "baseline",
+          "released": "2017-03-01",
+          "is_lts": false,
+          "file": "oracle-database/12c.json"
+        }
+      ]
+    },
+    {
+      "id": "oracle-weblogic-server",
+      "label": "Oracle WebLogic Server",
+      "versions": [
+        {
+          "version": "15c",
+          "label": "WebLogic Server 15c (15.1.1.0.0)",
+          "order": 4,
+          "record_type": "release",
+          "released": "2025-10-01",
+          "is_lts": false,
+          "file": "oracle-weblogic-server/15c.json"
+        },
+        {
+          "version": "14c",
+          "label": "WebLogic Server 14c (14.1.2.0.0)",
+          "order": 3,
+          "record_type": "release",
+          "released": "2024-12-01",
+          "is_lts": false,
+          "file": "oracle-weblogic-server/14c.json"
+        },
+        {
+          "version": "12c",
+          "label": "WebLogic Server 12c (12.2.1.4.0)",
+          "order": 2,
+          "record_type": "release",
+          "released": "2019-09-01",
+          "is_lts": false,
+          "file": "oracle-weblogic-server/12c.json"
+        },
+        {
+          "version": "11g",
+          "label": "WebLogic Server 11g (10.3.6)",
+          "order": 1,
+          "record_type": "baseline",
+          "released": "2011-12-01",
+          "is_lts": false,
+          "file": "oracle-weblogic-server/11g.json"
         }
       ]
     }
