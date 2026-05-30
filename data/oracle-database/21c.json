@@ -1,0 +1,58 @@
+{
+  "product": "oracle-database",
+  "version": "21c",
+  "release_label": "Oracle Database 21c",
+  "record_type": "release",
+  "released": "2021-01-01",
+  "last_updated": "2026-05-31",
+  "sections": {
+    "certification": [],
+    "whats_new": [
+      {
+        "title": "Native JSON data type",
+        "description": "Oracle Database 21c introduces a SQL and PL/SQL JSON data type for binary JSON storage and direct client access.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/nfcon/application-development.html"
+      },
+      {
+        "title": "Blockchain tables",
+        "description": "Blockchain tables provide tamper-resistant, insert-only tables with retention controls for rows and table data.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/whats-new.html"
+      },
+      {
+        "title": "SQL macros",
+        "description": "SQL macros improve developer productivity by allowing PL/SQL functions to return SQL text that is expanded into a statement.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Changes-in-This-Release-for-Oracle-Database-SQL-Language-Reference.html"
+      }
+    ],
+    "behavior_changes": [
+      {
+        "title": "Read-only Oracle homes by default",
+        "description": "Oracle Database 21c configures Oracle Database homes in read-only mode by default, separating installation files from configuration and log files.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "Multitenant architecture required",
+        "description": "Starting with Oracle Database 21c, Oracle Database is only supported using the multitenant architecture.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/oracle-database-changes-deprecations-desupports.html"
+      }
+    ],
+    "deprecated": [
+      {
+        "title": "Traditional auditing deprecated",
+        "description": "Traditional auditing is deprecated in Oracle Database 21c; Oracle recommends using unified auditing.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "DBMS_OBFUSCATION_TOOLKIT desupported",
+        "description": "The DBMS_OBFUSCATION_TOOLKIT package is desupported in Oracle Database 21c and replaced with DBMS_CRYPTO.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "Oracle OLAP deprecated",
+        "description": "Analytic workspaces, the OLAP DML programming language, and the OLAP Java API are deprecated in Oracle Database 21c.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/oracle-database-changes-deprecations-desupports.html"
+      }
+    ],
+    "desupported": []
+  }
+}

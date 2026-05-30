@@ -32,9 +32,19 @@ export function releaseDeltaSubheading(current, target) {
   return `Changes introduced after ${current} through ${target}`;
 }
 
+export function supportTrackLabel(version) {
+  if (!version) return '';
+  return version.is_lts === true ? 'LTS' : 'Non-LTS';
+}
+
+export function versionOptionLabel(version) {
+  const track = supportTrackLabel(version);
+  return track ? `${version.label} (${track})` : version.label;
+}
+
 function fillSelect(select, versions, selectedVersion) {
   select.innerHTML = versions
-    .map(v => `<option value="${v.version}" ${v.version === selectedVersion ? 'selected' : ''}>${v.label}</option>`)
+    .map(v => `<option value="${v.version}" ${v.version === selectedVersion ? 'selected' : ''}>${versionOptionLabel(v)}</option>`)
     .join('');
 }
 

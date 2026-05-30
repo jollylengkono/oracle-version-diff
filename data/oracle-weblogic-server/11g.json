@@ -1,0 +1,26 @@
+{
+  "product": "oracle-weblogic-server",
+  "version": "11g",
+  "release_label": "Oracle WebLogic Server 11g (10.3.6)",
+  "record_type": "baseline",
+  "released": "2011-12-01",
+  "last_updated": "2026-05-31",
+  "sections": {
+    "certification": [],
+    "whats_new": [
+      {
+        "title": "Java SE 7 support",
+        "description": "WebLogic Server 10.3.6 adds Java SE 7 support for supported configurations.",
+        "source_url": "https://docs.oracle.com/cd/E28280_01/web.1111/e13852/whatsnew.htm"
+      },
+      {
+        "title": "Updated WebLogic Server 11g feature set",
+        "description": "Oracle documents new and changed functionality for configuration, deployment, JDBC, JMS, JTA, security, Spring, TopLink, web applications, and web services in WebLogic Server 10.3.6.",
+        "source_url": "https://docs.oracle.com/cd/E28280_01/web.1111/e13852/whatsnew.htm"
+      }
+    ],
+    "behavior_changes": [],
+    "deprecated": [],
+    "desupported": []
+  }
+}

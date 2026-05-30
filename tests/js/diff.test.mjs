@@ -1,7 +1,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { keyFor, diffSection, diffRecords, aggregateRange, SECTIONS } from '../../js/diff.js';
-import { pickDefaultProduct, pickDefaultVersions, releaseDeltaHeading, releaseDeltaSubheading } from '../../js/app.js';
+import {
+  pickDefaultProduct,
+  pickDefaultVersions,
+  releaseDeltaHeading,
+  releaseDeltaSubheading,
+  supportTrackLabel,
+  versionOptionLabel
+} from '../../js/app.js';
 
 test('keyFor uses title for feature sections', () => {
   assert.equal(keyFor('whats_new', { title: 'A', description: 'x' }), 'A');
@@ -85,6 +92,14 @@ test('release delta copy describes directional current-to-target flow', () => {
     releaseDeltaSubheading('19c', '26ai'),
     'Changes introduced after 19c through 26ai'
   );
+});
+
+test('version labels expose LTS status in selectors', () => {
+  assert.equal(supportTrackLabel({ is_lts: true }), 'LTS');
+  assert.equal(supportTrackLabel({ is_lts: false }), 'Non-LTS');
+  assert.equal(supportTrackLabel({}), 'Non-LTS');
+  assert.equal(versionOptionLabel({ label: 'Oracle Database 19c', is_lts: true }), 'Oracle Database 19c (LTS)');
+  assert.equal(versionOptionLabel({ label: 'Oracle Database 21c', is_lts: false }), 'Oracle Database 21c (Non-LTS)');
 });
 
 test('aggregateRange concatenates releases after older through newer and badges source release', () => {
