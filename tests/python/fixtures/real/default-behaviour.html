@@ -1,0 +1,463 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xml:lang="en-us" lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="DC.Type" content="concept">
+      <meta name="DC.Title" content="Default Behavior Changes">
+      <meta name="DC.Creator" content="Preeti Shukla, Priyanka Deondi">
+      <meta name="DC.Publisher" content="April2026">
+      <meta name="DC.Format" content="XHTML">
+      <meta name="DC.Identifier" content="GUID-BD631C70-4D97-410D-9E8E-031C1241E565">
+      <meta name="DC.Language" content="en-US">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Default Behavior Changes</title>
+      <meta property="og:site_name" content="Oracle Help Center">
+      <meta property="og:title" content="Release Notes">
+      <meta property="og:description" content>
+      <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+      <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+      <meta name="application-name" content="Release Notes">
+      <meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)">
+      <meta name="plugin" content="SP_docbuilder HTML plugin release 18.2.2">
+      <link rel="alternate" href="oracle-goldengate-release-notes.pdf" title="PDF File" type="application/pdf">
+      <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+      <meta name="dcterms.created" content="2026-04-24T11:10:19-07:00">
+      
+      <meta name="dcterms.dateCopyrighted" content="2017, 2026">
+      <meta name="dcterms.category" content="database">
+      <meta name="dcterms.identifier" content="G49010-09">
+      
+      <meta name="dcterms.product" content="en/database/goldengate/core/26">
+      
+      <link rel="prev" href="new-enhancements.html" title="Previous" type="text/html">
+      <link rel="next" href="deprecated-features.html" title="Next" type="text/html">
+      <script>
+        document.write('<style type="text/css">');
+        document.write('body > .noscript, body > .noscript ~ * { visibility: hidden; }');
+        document.write('</style>');
+     </script>
+      <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"></script>
+      <script>
+            if (window.require === undefined) {
+                document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+            }
+        </script>
+      <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"database","element_name":"Database","display_in_url":true},"suite":{"short_name":"goldengate","element_name":"GoldenGate","display_in_url":true},"product_group":{"short_name":"not-applicable","element_name":"Not Applicable","display_in_url":false},"product":{"short_name":"core","element_name":"Oracle GoldenGate","display_in_url":true},"release":{"short_name":"26","element_name":"Release 26","display_in_url":true}}}</script>
+      
+    <meta name="dcterms.title" content="Oracle GoldenGate Release Notes">
+    <meta name="dcterms.release" content="Release 26">
+    <meta name="dcterms.isVersionOf" content="OGGRN">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Default Behavior Changes","datePublished":"2026-04-24 CST","dateModified":"2026-04-24 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+   <body>
+      <div class="noscript alert alert-danger text-center" role="alert">
+         <a href="new-enhancements.html" class="pull-left"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Previous</a>
+         <a href="deprecated-features.html" class="pull-right">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+         <span class="fa fa-exclamation-triangle" aria-hidden="true"></span> JavaScript must be enabled to correctly display this content
+        
+      </div>
+      <article class>
+         <a id="GUID-BD631C70-4D97-410D-9E8E-031C1241E565" name="GUID-BD631C70-4D97-410D-9E8E-031C1241E565"></a>
+         
+         <h2 id="OGGRN-GUID-BD631C70-4D97-410D-9E8E-031C1241E565" class="sect2"><span class="enumeration_chapter">4 </span>Default Behavior Changes
+         </h2>
+         <div class="ind">
+            <div>
+               <p>This section describes the default behavior changes made to Oracle GoldenGate in
+            relation to the last release.</p>
+            </div>
+            <div class="sect2"><a id="GUID-39C4A0CF-45D3-4C4B-BBF4-540EFBD2FE3C" name="GUID-39C4A0CF-45D3-4C4B-BBF4-540EFBD2FE3C"></a><h3 id="OGGRN-GUID-39C4A0CF-45D3-4C4B-BBF4-540EFBD2FE3C" class="sect3">Release 26ai (23.26.2.0.0) - April
+        2026 </h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-39C4A0CF-45D3-4C4B-BBF4-540EFBD2FE3C__GUID-67515599-D2D0-4375-8F1F-200902C03AA6">Bug 39184390: Generic - Replicat
+                no longer captures tagged DDLs issued by the Oracle Data Pump</p>
+                     
+                     
+                     <p>Beginning with Oracle GoldenGate 26ai (23.26), DDL operations tagged in
+                the redo stream are filtered by default and are not captured by Extract. Oracle Data
+                Pump generated DDLs are tagged with <code class="codeph">00</code>, and therefore are excluded
+                from capture under this default behavior. If required, customers can override this
+                behavior and capture these DDLs by configuring <code class="codeph">DDLOPTIONS INCLUDETAG
+                    00</code>.
+                     </p>
+                     
+                     <div class="infoboxnote" id="GUID-39C4A0CF-45D3-4C4B-BBF4-540EFBD2FE3C__GUID-70F748DA-0FFC-4EAF-94F9-7E83B4D965E5">
+                        <p class="notep1">Note:</p>
+                        
+                        <p>In Bi-directional configurations, enabling tag inclusion may also allow other
+                    tagged DDLs to be captured, potentially introducing replication loops or
+                    duplicate DDL execution.</p>
+                        
+                     </div>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-A5C07432-2333-462C-94D5-919D759331BE" name="GUID-A5C07432-2333-462C-94D5-919D759331BE"></a><h3 id="OGGRN-GUID-A5C07432-2333-462C-94D5-919D759331BE" class="sect3">Release 26ai (23.26.1.0.0) -
+        January 2026 </h3>
+               <div>
+                  <p>
+                     
+                     
+                  </p>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-A5C07432-2333-462C-94D5-919D759331BE__GUID-67515599-D2D0-4375-8F1F-200902C03AA6">Oracle GoldenGate Microservices are available from a single console</p>
+                     
+                     
+                     <p>Oracle GoldenGate web interface displays all Oracle GoldenGate processes and
+                Microservices from a single console. Logging in to each Microservice separately, is
+                not required. This implies that you can access Extract, Replicats, Distribution
+                Service Paths, Receiver Service Paths, Data Streams, and performance metrics from a
+                single window console.</p>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-2A56F1E9-07B4-4D18-B4A3-54AD0BA73E92" name="GUID-2A56F1E9-07B4-4D18-B4A3-54AD0BA73E92"></a><h3 id="OGGRN-GUID-2A56F1E9-07B4-4D18-B4A3-54AD0BA73E92" class="sect3">Release 23.10.0.25.10-
+                October 2025</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-2A56F1E9-07B4-4D18-B4A3-54AD0BA73E92__GUID-05476996-4B84-4DB3-BB6A-852DBC7F9ADF">Bug 37236254: Generic
+                                - Change default trail file size from 500MB to 2GB </p>
+                     
+                     
+                     <p>Updated the default trail file size from 500MB to 2GB. </p>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-6D838B72-1BAF-4E74-9B27-EC68A3CED637" name="GUID-6D838B72-1BAF-4E74-9B27-EC68A3CED637"></a><h3 id="OGGRN-GUID-6D838B72-1BAF-4E74-9B27-EC68A3CED637" class="sect3">Release 23.9- July
+                2025</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-6D838B72-1BAF-4E74-9B27-EC68A3CED637__GUID-E0863E6F-5841-4F52-94A0-7E4AF8D513BC">Bug 38080969: Generic
+                                - Extract should fail with Parse error when second BRDIR is present
+                                in the Extract param file</p>
+                     
+                     
+                     <p>Extract will not allow multiple <code class="codeph">BRDIR</code>
+                                entries in the parameter file. If more than one
+                                        <code class="codeph">BRDIR</code> parameter is defined, then Extract
+                                will exit with a parse error.
+                     </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-6D838B72-1BAF-4E74-9B27-EC68A3CED637__GUID-95F44B25-EF4B-45AB-AD95-81A9AF41BB1B">Bug 37909236: MariaDB - Remove the requirement for MariaDB
+                                binlog_annotate_row_events=OFF </p>
+                     
+                     
+                     <p>Starting with this version of Oracle GoldenGate, the
+                                requirement to set <code class="codeph">binlog_annotate_row_events</code> to
+                                        <code class="codeph">OFF</code> has been removed for MariaDB.
+                     </p>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-A79A929A-5FAE-483B-A575-CBDE5F37C3CD" name="GUID-A79A929A-5FAE-483B-A575-CBDE5F37C3CD"></a><h3 id="OGGRN-GUID-A79A929A-5FAE-483B-A575-CBDE5F37C3CD" class="sect3">Release 23.8.0.25.04-
+                April 2025</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-A79A929A-5FAE-483B-A575-CBDE5F37C3CD__GUID-6D62B554-858F-487F-8E21-028840FC191C">Bug 37757820: Generic
+                                - Enable NOCHECKUNIQUEKEYS as default for BATCHSQL for all
+                                Non-Oracle AI Databases</p>
+                     
+                     
+                     <p>Enabled <code class="codeph">NOCHECKUNIQUEKEYS</code> as default for
+                                        <code class="codeph">BATCHSQL</code> for all non-<span>Oracle AI Database</span>.
+                     </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-A79A929A-5FAE-483B-A575-CBDE5F37C3CD__GUID-406341C1-7445-4E4B-A175-87B3BA043483">Bug 29709965: MySQL - Extract to skip XA transactions and log a
+                                Warning instead of Abend </p>
+                     
+                     
+                     <p>Changed the functionality in Oracle GoldenGate Extract for MySQL to skip
+                                XA transactions with a warning, instead of abending.</p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-A79A929A-5FAE-483B-A575-CBDE5F37C3CD__GUID-CEA055DC-0600-4C56-AF24-9C458FBA9A37">Bug 37465578: MySQL - Change the default capture for Extract CDC to
+                                be remote capture</p>
+                     
+                     
+                     <p>Changed the default capture of Oracle GoldenGate for MySQL from local to
+                                remote capture for Linux-x64 platform.</p>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-493A239E-9988-43C6-B061-4E0210AD14A5" name="GUID-493A239E-9988-43C6-B061-4E0210AD14A5"></a><h3 id="OGGRN-GUID-493A239E-9988-43C6-B061-4E0210AD14A5" class="sect3">Release 23.7.1.25.02-
+                February 2025</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-493A239E-9988-43C6-B061-4E0210AD14A5__GUID-018FC780-9879-496B-A4E9-70AAECC505FD">Bug 37581809: Oracle -
+                                Allow IR to run with nodbcheckpoint</p>
+                     
+                     
+                     <p>All Replicats are required to create and maintain a database
+                                checkpoint table, which serves as a mechanism for ensuring data
+                                consistency and facilitating recovery processes. The only exception
+                                to this requirement is the integrated Replicat. However, it is
+                                strongly recommended that you create and maintain a checkpoint table
+                                for the integrated Replicat.</p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-493A239E-9988-43C6-B061-4E0210AD14A5__GUID-D4E6A0C4-7675-4982-BF2A-38759B54AB89">Bug 37643197: SQL Server - Upgrade odbcinst.ini contents to the
+                                absolute path and driver descriptions</p>
+                     
+                     
+                     <p>When upgrading an Oracle GoldenGate deployment for SQL
+                                Server to Oracle GoldenGate 23.7 from the previous versions or the
+                                21c release using OPATCH, you must reset the contents of the
+                                        <code class="codeph">odbcinst.ini</code> file. For details on
+                                performing this task, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-7DA61B77-B7B6-4978-B8E5-941547139011" target="_blank">Upgrading Oracle
+                                        GoldenGate Microservices GUI</a>.
+                     </p>
+                     
+                     <div class="infoboxnote" id="GUID-493A239E-9988-43C6-B061-4E0210AD14A5__GUID-5671D0A4-6C1E-4AFA-B060-56C14B1ECD05">
+                        <p class="notep1">Note:</p>
+                        
+                        <p>You do not need to follow this step if upgrading from Oracle
+                                        GoldenGate 23.7 to later releases. </p>
+                        
+                     </div>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-2C3BA0F5-5320-4789-88D1-D227FA970ED2" name="GUID-2C3BA0F5-5320-4789-88D1-D227FA970ED2"></a><h3 id="OGGRN-GUID-2C3BA0F5-5320-4789-88D1-D227FA970ED2" class="sect3">Release 23.6.0.25.05- May
+                2025</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-2C3BA0F5-5320-4789-88D1-D227FA970ED2__GUID-406341C1-7445-4E4B-A175-87B3BA043483">Bug 36862037: SQL
+                                Server - Standardize the SQL Server driver string in odbcinst.ini </p>
+                     
+                     
+                     <p>Beginning with Oracle GoldenGate 23.6, the provided ODBC
+                                driver for SQL Server changed from
+                                        <code class="codeph">libmsodbcsql-18.3.so.2.1</code> to
+                                        <code class="codeph">libmsodbcsql.so</code> and the driver’s name in
+                                the <code class="codeph">odbcinst.ini</code> file has changed from ODBC Driver
+                                18 for SQL Server to Microsoft ODBC Driver for SQL Server.
+                     </p>
+                     
+                     <p>When patching an Oracle GoldenGate deployment for SQL Server
+                                from version 23.4 or 23.5 to Oracle GoldenGate 23.6 or later, you
+                                must update the contents of the <code class="codeph">odbcinst.ini</code> and
+                                        <code class="codeph">odbc.ini</code> (if exists) files. 
+                     </p>
+                     
+                     <p>For details on performing this task, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-47DD50E1-F5EE-4083-93B5-CD4642554B89" target="_blank">Patching Oracle
+                                        GoldenGate for SQL Server</a>.
+                     </p>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-CF5166A0-E0D6-4116-8299-377192D26339" name="GUID-CF5166A0-E0D6-4116-8299-377192D26339"></a><h3 id="OGGRN-GUID-CF5166A0-E0D6-4116-8299-377192D26339" class="sect3">Release 23.7.0.25.01-
+                January 2025</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-CF5166A0-E0D6-4116-8299-377192D26339__GUID-7DEC7551-999A-4480-B473-150B170418FC">Bug 37298528 - MySQL:
+                                Make TRANLOGOPTIONS TRACKSCHEMACHANGES enabled by default</p>
+                     
+                     
+                     <p>Enhanced <code class="codeph">TRANLOGOPTIONS TRACKSCHEMACHANGES</code>
+                                option to be enabled by default.
+                     </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-CF5166A0-E0D6-4116-8299-377192D26339__GUID-D8D36537-ED96-4B2B-9587-1147BB8E67B2">Bug 37539434: Oracle -
+                                All Replicats without checkpoints are desupported</p>
+                     
+                     
+                     <p>The creation of integrated and
+                                classic Replicat without checkpoint tables is not supported in <span>Oracle AI Database</span>. Additionally, any
+                                Replicats that were created without the checkpoint tables, will not
+                                start successfully.
+                     </p>
+                     
+                     <p>For existing Replicats to run successfully, you must alter
+                                the Replicat to add a checkpoint table or add the checkpoint table
+                                to GLOBALS and then restart the Replicat. See <code class="codeph"><a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GCLIR-GUID-540A171A-71C2-49C3-964E-5D57B27257D4" target="_blank">ADD REPLICAT
+                                                CHECKPOINTTABLE</a>
+                           </code> in the <span id="GUID-CF5166A0-E0D6-4116-8299-377192D26339__GCLIR"><cite>Command Line Interface
+                    Reference for Oracle GoldenGate</cite></span> for
+                                details.
+                     </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-CF5166A0-E0D6-4116-8299-377192D26339__GUID-4628A2AD-412D-4F96-ACF9-0D3AE43DCACC">Bug 35569409: PostgreSQL - Use Microservices Architecture task
+                                scheduler to update the heartbeat tables instead of relying on cron
+                                job</p>
+                     
+                     
+                     <p>Configured an Administration Service task to update the heartbeat table
+                                to avoid replying on the cron job to do it.</p>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-60FFAB61-1848-406B-853E-2837B6EF7BC5" name="GUID-60FFAB61-1848-406B-853E-2837B6EF7BC5"></a><h3 id="OGGRN-GUID-60FFAB61-1848-406B-853E-2837B6EF7BC5" class="sect3">Release 23.5- July
+                2024</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-60FFAB61-1848-406B-853E-2837B6EF7BC5__GUID-55D1FA2B-ED74-4326-8C2A-393171798856">Oracle GoldenGate does
+                                not need the OGG_SERVICEMANAGER_ID environment variable to be set
+                                for using the command line utilities that access database
+                                credentials</p>
+                     
+                     
+                     
+                     <p>In Oracle GoldenGate 23.5 release, there is no requirement
+                                to set up the <code class="codeph">OGG_SERVICEMANAGER_ID</code> environment
+                                variable for using command line utilities that access database
+                                credentials. This is required in the Oracle GoldenGate 23.4
+                                release.
+                     </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-60FFAB61-1848-406B-853E-2837B6EF7BC5__GUID-8BC8BC3B-CA8D-441A-8043-4D451BDF3BD7">MySQL - Removed the
+                                remote (RMTTRAIL) option from the WebUI </p>
+                     
+                     
+                     <p>For MySQL, the <span class="bold">Remote</span> button that was used for adding
+                                an Extract, has been removed from the WebUI.
+                     </p>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-40452E1C-F923-4B75-921D-3B6DD435CC58" name="GUID-40452E1C-F923-4B75-921D-3B6DD435CC58"></a><h3 id="OGGRN-GUID-40452E1C-F923-4B75-921D-3B6DD435CC58" class="sect3">Release 23.4.2- June
+                2024</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-40452E1C-F923-4B75-921D-3B6DD435CC58__GUID-1FA06095-16F8-4E11-99A6-F23A52102B09">Behavior change in
+                                Oracle GoldenGate</p>
+                     
+                     
+                     <p>Oracle GoldenGate introduces the following feature, which
+                                impacts the behavior of configuring and using Oracle GoldenGate: </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-40452E1C-F923-4B75-921D-3B6DD435CC58__GUID-8BC8BC3B-CA8D-441A-8043-4D451BDF3BD7">Microsoft ODBC Driver 18 for SQL Server</p>
+                     
+                     
+                     <p>Oracle GoldenGate for SQL Server now packages the Microsoft
+                                ODBC Driver 18 along with the Oracle GoldenGate for SQL Server
+                                installation, and database connections will use this driver by
+                                default.</p>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-B48B15D0-C054-4326-97C9-9E2C089D4C6F" name="GUID-B48B15D0-C054-4326-97C9-9E2C089D4C6F"></a><h3 id="OGGRN-GUID-B48B15D0-C054-4326-97C9-9E2C089D4C6F" class="sect3">Release 23.4 - May
+                2024</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-B48B15D0-C054-4326-97C9-9E2C089D4C6F__GUID-1FA06095-16F8-4E11-99A6-F23A52102B09">Behavior change in
+                                Oracle GoldenGate </p>
+                     
+                     
+                     <div class="p">Oracle GoldenGate introduces the following features, which
+                                impacts the behavior of configuring and using Oracle GoldenGate: 
+                        <ul style="list-style-type: disc;" id="GUID-B48B15D0-C054-4326-97C9-9E2C089D4C6F__UL_HVV_DCX_TYB">
+                           <li>
+                              
+                              <p>In OGGCA, you must use the
+                                                  <code class="codeph">#pkcs8</code> format to upload server,
+                                                  client, and rootCA certificates. Uploading wallets
+                                                  (<code class="codeph">#pkcs12</code>) is not supported. Fore
+                                                  more information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-BFA3A56A-0D4D-4257-9A2E-45DBC7A88D22" target="_blank">About
+                                                  Service Manager</a>.
+                              </p>
+                              
+                           </li>
+                           <li>
+                              
+                              <p>When setting up <span>Oracle AI Database</span>  users for Oracle
+                                                  GoldenGate, make sure to use Oracle GoldenGate
+                                                  user roles to assign privileges. Fore more
+                                                  information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-05FAD59C-D4B7-40B3-9A51-E1B3CDB19620" target="_blank">Grant
+                                                  User Privileges for Oracle AI Database and
+                                                  Higher</a>.
+                              </p>
+                              
+                           </li>
+                           <li>
+                              
+                              <p>Support for Oracle
+                                                  <code class="codeph">Boolean</code> and
+                                                  <code class="codeph">vector</code> data type for <span>Oracle AI Database</span>. Fore more
+                                                  information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-2F0178C5-B77F-4EF9-A47A-833E904D7691" target="_blank">Oracle:
+                                                  Details of Support for Oracle Data Types and
+                                                  Objects</a>.
+                              </p>
+                              
+                           </li>
+                           <li>
+                              
+                              <p>Support for PostgreSQL
+                                                  <code class="codeph">pgvector</code> extension,
+                                                  <code class="codeph">array</code>, <code class="codeph">tsquery</code>,
+                                                  and <code class="codeph">tsvector</code> datatypes. 
+                              </p>
+                              
+                           </li>
+                           <li>
+                              
+                              <p>Only per-PDB Extract is used for
+                                                  Extract rather than root-level Extract except for
+                                                  Downstream Capture, where rool-level Extract is
+                                                  configured.</p>
+                              
+                           </li>
+                           <li>
+                              
+                              <p>Using Integrated Diagnostics rather
+                                                  than ULT_RPADV Diagnostics integrated in Oracle
+                                                  GoldenGate .</p>
+                              
+                           </li>
+                        </ul>
+                     </div>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-B48B15D0-C054-4326-97C9-9E2C089D4C6F__GUID-EB49BCA7-DA53-48B9-ABEB-A0CFEA7698C7">Oracle GoldenGate
+                                features for <span>Oracle AI Database</span>
+                        
+                     </p>
+                     
+                     
+                     <p><span class="bold">User roles to grant role-based privileges for <span>Oracle AI Database</span>
+                           </span></p>
+                     
+                     <p>Oracle GoldenGate for <span>Oracle AI Database</span> has introduced user roles to grant role-based
+                                privileges.
+                     </p>
+                     
+                     <p>For details, see the <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-05FAD59C-D4B7-40B3-9A51-E1B3CDB19620" target="_blank">Grant User
+                                        Privileges</a> topic in <span class="italic">Oracle GoldenGate
+                                        Microservices Documentation</span>.
+                     </p>
+                     
+                  </div>
+               </div>
+            </div>
+         </div>
+      </article>
+   </body>
+</html>

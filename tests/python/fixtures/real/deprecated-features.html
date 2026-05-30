@@ -1,0 +1,345 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xml:lang="en-us" lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="DC.Type" content="concept">
+      <meta name="DC.Title" content="Deprecated and Desupported Features and Parameters">
+      <meta name="DC.Creator" content="Preeti Shukla, Priyanka Deondi">
+      <meta name="DC.Publisher" content="April2026">
+      <meta name="DC.Format" content="XHTML">
+      <meta name="DC.Identifier" content="GUID-B77F09DF-5A96-42F8-B3F2-EB4D7B32102D">
+      <meta name="DC.Language" content="en-US">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Deprecated and Desupported Features and Parameters</title>
+      <meta property="og:site_name" content="Oracle Help Center">
+      <meta property="og:title" content="Release Notes">
+      <meta property="og:description" content>
+      <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+      <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+      <meta name="application-name" content="Release Notes">
+      <meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)">
+      <meta name="plugin" content="SP_docbuilder HTML plugin release 18.2.2">
+      <link rel="alternate" href="oracle-goldengate-release-notes.pdf" title="PDF File" type="application/pdf">
+      <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+      <meta name="dcterms.created" content="2026-04-24T11:10:19-07:00">
+      
+      <meta name="dcterms.dateCopyrighted" content="2017, 2026">
+      <meta name="dcterms.category" content="database">
+      <meta name="dcterms.identifier" content="G49010-09">
+      
+      <meta name="dcterms.product" content="en/database/goldengate/core/26">
+      
+      <link rel="prev" href="default-behaviour-updates-23ai.html" title="Previous" type="text/html">
+      <link rel="next" href="known-issues-and-workarounds.html" title="Next" type="text/html">
+      <script>
+        document.write('<style type="text/css">');
+        document.write('body > .noscript, body > .noscript ~ * { visibility: hidden; }');
+        document.write('</style>');
+     </script>
+      <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"></script>
+      <script>
+            if (window.require === undefined) {
+                document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+            }
+        </script>
+      <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"database","element_name":"Database","display_in_url":true},"suite":{"short_name":"goldengate","element_name":"GoldenGate","display_in_url":true},"product_group":{"short_name":"not-applicable","element_name":"Not Applicable","display_in_url":false},"product":{"short_name":"core","element_name":"Oracle GoldenGate","display_in_url":true},"release":{"short_name":"26","element_name":"Release 26","display_in_url":true}}}</script>
+      
+    <meta name="dcterms.title" content="Oracle GoldenGate Release Notes">
+    <meta name="dcterms.release" content="Release 26">
+    <meta name="dcterms.isVersionOf" content="OGGRN">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Deprecated and Desupported Features and Parameters","datePublished":"2026-04-24 CST","dateModified":"2026-04-24 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+   <body>
+      <div class="noscript alert alert-danger text-center" role="alert">
+         <a href="default-behaviour-updates-23ai.html" class="pull-left"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Previous</a>
+         <a href="known-issues-and-workarounds.html" class="pull-right">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+         <span class="fa fa-exclamation-triangle" aria-hidden="true"></span> JavaScript must be enabled to correctly display this content
+        
+      </div>
+      <article class>
+         <a id="GUID-B77F09DF-5A96-42F8-B3F2-EB4D7B32102D" name="GUID-B77F09DF-5A96-42F8-B3F2-EB4D7B32102D"></a>
+         
+         <h2 id="OGGRN-GUID-B77F09DF-5A96-42F8-B3F2-EB4D7B32102D" class="sect2"><span class="enumeration_chapter">5 </span>Deprecated and Desupported
+        Features and Parameters
+         </h2>
+         <div class="ind">
+            <div>
+               <p>This section describes the deprecated and no longer supported features of <span>Oracle GoldenGate</span>.
+               </p>
+            </div>
+            <div class="sect2"><a id="GUID-D39F6C97-95FE-455F-A132-220809345963" name="GUID-D39F6C97-95FE-455F-A132-220809345963"></a><h3 id="OGGRN-GUID-D39F6C97-95FE-455F-A132-220809345963" class="sect3">Release 26ai (23.26.1.0.0) -
+        Deprecated and Desupported Features - January 2026 </h3>
+               <div>
+                  <div class="section">
+                     
+                     
+                     <dl>
+                        <dt class="dlterm"><a name="GUID-D39F6C97-95FE-455F-A132-220809345963__GUID-BCC93CFB-C8B5-4CEF-8D34-77454602322D">
+                              <!-- --></a>Sybase ASE has been deprecated with Oracle GoldenGate
+                        </dt>
+                        <dd>
+                           
+                           <p>Starting with Oracle GoldenGate, support for Sybase ASE
+                            Capture and Delivery will be deprecated, and no new features will be
+                            added. Support for Sybase ASE may be desupported in a future release of
+                            Oracle GoldenGate. </p>
+                           
+                        </dd>
+                     </dl>
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-7B773BFB-C5F8-44AB-A577-140F661BE0C8" name="GUID-7B773BFB-C5F8-44AB-A577-140F661BE0C8"></a><h3 id="OGGRN-GUID-7B773BFB-C5F8-44AB-A577-140F661BE0C8" class="sect3">Release 23.9 Deprecated and
+        Desupported Features and Parameters - July 2025 </h3>
+               <div>
+                  <div class="section">
+                     
+                     <dl>
+                        <dt class="dlterm"><a name="GUID-7B773BFB-C5F8-44AB-A577-140F661BE0C8__GUID-BCC93CFB-C8B5-4CEF-8D34-77454602322D">
+                              <!-- --></a>FORMATASCII, FORMATXML, FORMATSQL Parameters are
+                        Desupported
+                        </dt>
+                        <dd>
+                           
+                           
+                           <p>The <code class="codeph">FORMATASCII</code>,
+                            <code class="codeph">FORMATXML</code>, and <code class="codeph">FORMATSQL</code> Extract
+                            parameters have been desupported. Use the OUTPUTFORMAT parameter instead
+                            of these parameters in the Extract parameter file. 
+                           </p>
+                           
+                        </dd>
+                     </dl>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-C75BC0DD-63E5-49C3-AD47-CE50CB2994DD" name="GUID-C75BC0DD-63E5-49C3-AD47-CE50CB2994DD"></a><h3 id="OGGRN-GUID-C75BC0DD-63E5-49C3-AD47-CE50CB2994DD" class="sect3">Release 23.5 Deprecated and
+        Desupported Features and Parameters - July 2024 </h3>
+               <div>
+                  <div class="section">
+                     
+                     <dl>
+                        <dt class="dlterm"><a name="GUID-C75BC0DD-63E5-49C3-AD47-CE50CB2994DD__GUID-BCC93CFB-C8B5-4CEF-8D34-77454602322D">
+                              <!-- --></a>Oracle GoldenGate for Oracle TimesTen no longer supports the
+                        TimesTen Scaleout architecture
+                        </dt>
+                        <dd>
+                           
+                           <p>Starting with Oracle GoldenGate, Oracle GoldenGate for
+                            Oracle TimesTen does not support the Scaleout architecture. </p>
+                           
+                           <p>Use Oracle GoldenGate 21c for delivery to TimesTen Scaleout
+                            architecture for TimesTen versions 18.1 and 22.1. </p>
+                           
+                        </dd>
+                     </dl>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-F7D6E087-9099-466C-A867-6BAA7F5BBF5D" name="GUID-F7D6E087-9099-466C-A867-6BAA7F5BBF5D"></a><h3 id="OGGRN-GUID-F7D6E087-9099-466C-A867-6BAA7F5BBF5D" class="sect3">Release 23.4.2 Deprecated and
+        Desupported Features and Parameters - June 2024 </h3>
+               <div>
+                  <div class="section">
+                     
+                     <dl>
+                        <dt class="dlterm"><a name="GUID-F7D6E087-9099-466C-A867-6BAA7F5BBF5D__GUID-011A1D3F-3706-4F06-9E4B-0DD7B877AE2D">
+                              <!-- --></a>Oracle GoldenGate has deprecated DBOPTIONS
+                        USEREPLICATIONUSER
+                        </dt>
+                        <dd>
+                           
+                           <p><code class="codeph">DBOPTIONS USEREPLICATIONUSER</code> option has
+                            been deprecated. 
+                           </p>
+                           
+                           <p>All SQL Server builds automatically set the connection with
+                                <code class="codeph">Replication=yes</code>, and the functionality of
+                                <code class="codeph">DBOPTIONS USEREPLICATIONUSER</code> remains the same as
+                            long as SQL Server ODBC driver is version 17.8.1 or higher.
+                           </p>
+                           
+                        </dd>
+                     </dl>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC" name="GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC"></a><h3 id="OGGRN-GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC" class="sect3">Release 23.4 Deprecated and
+        Desupported Features and Parameters - May 2024 </h3>
+               <div>
+                  <div class="section">
+                     
+                     <dl>
+                        <dt class="dlterm"><a name="GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC__GUID-011A1D3F-3706-4F06-9E4B-0DD7B877AE2D">
+                              <!-- --></a>Oracle GoldenGate has deprecated Integrated Replicat
+                        </dt>
+                        <dd>
+                           
+                           <p>Starting with Oracle GoldenGate, integrated
+                            Replicat has been deprecated. As an alternative, you can use parallel
+                            Replicat in Integrated mode. </p>
+                           
+                        </dd>
+                     </dl>
+                     
+                  </div>
+                  <div class="section">
+                     
+                     <dl>
+                        <dt class="dlterm"><a name="GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC__GUID-BCC93CFB-C8B5-4CEF-8D34-77454602322D">
+                              <!-- --></a>Oracle GoldenGate has desupported Oracle GoldenGate Classic
+                        Architecture
+                        </dt>
+                        <dd>
+                           
+                           <p>Starting with Oracle GoldenGate, Oracle GoldenGate Classic
+                            Architecture has been desupported.</p>
+                           
+                        </dd>
+                     </dl>
+                     
+                     <dl>
+                        <dt class="dlterm"><a name="GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC__GUID-DFB15700-F8D6-4FFF-8BE7-5DAEDD9EC0AB">
+                              <!-- --></a>Oracle GoldenGate has desupported the following
+                        parameters:
+                        </dt>
+                        <dd>
+                           
+                           <div class="p">Starting with Oracle GoldenGate, the following parameters
+                            have been desupported:
+                              <ul style="list-style-type: disc;" id="GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC__UL_I2W_5KS_BBC">
+                                 <li><code class="codeph">FILTERTABLE</code></li>
+                                 <li><code class="codeph">GETREPLICATES</code></li>
+                                 <li><code class="codeph">GETAPPLOPS</code></li>
+                                 <li><code class="codeph">IGNOREREPLICATES</code></li>
+                                 <li><code class="codeph">IGNOREAPPLOPS</code></li>
+                                 <li><code class="codeph">SHOWSYNTAX</code></li>
+                              </ul>
+                           </div>
+                           
+                           <div class="p">
+                              
+                              <div class="infoboxnote" id="GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC__GUID-11193110-3C0F-43AA-BDE5-D4B9B8D0DB6A">
+                                 <p class="notep1">Note:</p>The
+                                    <code class="codeph">TRANLOGOPTIONS</code>
+                                 <code class="codeph">FILTERTABLE</code> parameter has been replaced with the
+                                    <code class="codeph">EXCLUDEFILTERTABLE</code> parameter, but with the same
+                                functionality. 
+                              </div>
+                              
+                           </div>
+                           
+                        </dd>
+                     </dl>
+                     
+                     <dl>
+                        <dt class="dlterm"><a name="GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC__GUID-03759CD8-98AF-4C9A-AA8E-B5AD7BF7E7E2">
+                              <!-- --></a>Oracle GoldenGate has desupported Blowfish encryption 
+                        </dt>
+                        <dd>
+                           
+                           <p>Starting with Oracle GoldenGate, Blowfish encryption
+                            algorithm has been desupported. </p>
+                           
+                        </dd>
+                     </dl>
+                     
+                     <dl>
+                        <dt class="dlterm"><a name="GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC__GUID-B4CC4EDE-8437-4991-BE51-7359631DDA4F">
+                              <!-- --></a>Oracle GoldenGate has desupported the Trace Table
+                        functionality
+                        </dt>
+                        <dd>
+                           
+                           <div class="p">Starting with Oracle GoldenGate, the trace table
+                            functionality has been desupported for <span>Oracle AI Database</span>. Therefore, the following parameters and commands are
+                            also desupported:
+                              <ul style="list-style-type: disc;" id="GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC__UL_V5H_QV2_2BC">
+                                 <li>
+                                    
+                                    <div class="p"><span class="bold">Parameters</span>: 
+                                       <ul style="list-style-type: disc;" id="GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC__UL_RHN_TV2_2BC">
+                                          <li>
+                                             
+                                             <p><code class="codeph">TRACETABLE</code></p>
+                                             
+                                          </li>
+                                          <li>
+                                             
+                                             <p><code class="codeph">NOTRACETABLE</code></p>
+                                             
+                                          </li>
+                                       </ul>
+                                    </div>
+                                    
+                                 </li>
+                                 <li>
+                                    
+                                    <p><span class="bold">Commands</span>:
+                                    </p>
+                                    
+                                    <ul style="list-style-type: disc;" id="GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC__UL_SMS_WV2_2BC">
+                                       <li>
+                                          
+                                          <p><code class="codeph">ADD TRACETABLE</code></p>
+                                          
+                                       </li>
+                                       <li>
+                                          
+                                          <p><code class="codeph">DELETE TRACETABLE</code></p>
+                                          
+                                       </li>
+                                       <li>
+                                          
+                                          <p><code class="codeph">INFO TRACETABLE</code></p>
+                                          
+                                       </li>
+                                    </ul>
+                                    
+                                 </li>
+                              </ul>
+                           </div>
+                           
+                        </dd>
+                     </dl>
+                     
+                     <dl>
+                        <dt class="dlterm"><a name="GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC__GUID-FB4D37D4-2B28-4B60-A907-DCC59F86F81B">
+                              <!-- --></a>Oracle GoldenGate has desupported six-digit trail file
+                        </dt>
+                        <dd>
+                           
+                           <p>Starting with Oracle GoldenGate, the six-digit trail file
+                            has been desupported. </p>
+                           
+                        </dd>
+                     </dl>
+                     
+                     <dl>
+                        <dt class="dlterm"><a name="GUID-5A8CD6A2-62D4-4264-A255-B4D98809B9EC__GUID-063A738E-5196-433F-9C27-778833DC712C">
+                              <!-- --></a>Oracle GoldenGate has desupported the use of userid and password
+                        in Extract and Replicat parameter files
+                        </dt>
+                        <dd>
+                           
+                           <p>Starting with Oracle GoldenGate, the use of
+                                <code class="codeph">userid</code> and <code class="codeph">password</code> in the Extract
+                            and Replicat parameter files has been desupported. Alternatively, you
+                            need to use the <code class="codeph">useridalias</code> option. 
+                           </p>
+                           
+                        </dd>
+                     </dl>
+                     
+                  </div>
+               </div>
+            </div>
+         </div>
+      </article>
+   </body>
+</html>

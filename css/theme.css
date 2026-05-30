@@ -75,3 +75,13 @@ body {
 .error { color: var(--oracle-red-dark); font-weight: 600; }
 .updated { color: var(--slate); font-size: .8rem; margin-top: 1.5rem; }
 .footer { max-width: 960px; margin: 0 auto; padding: 1.5rem; color: var(--slate); font-size: .78rem; }
+
+/* Side-by-side comparison columns */
+.cols { display: flex; gap: 1rem; align-items: flex-start; }
+.col { flex: 1 1 0; min-width: 0; }
+.col__head {
+  position: sticky; top: 0; background: var(--bg); z-index: 1;
+  font-size: .9rem; margin: 0 0 .6rem; padding: .45rem .2rem;
+  color: var(--oracle-red); border-bottom: 2px solid var(--oracle-red);
+}
+@media (max-width: 680px) { .cols { flex-direction: column; } }

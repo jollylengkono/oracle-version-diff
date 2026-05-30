@@ -1,14 +1,15 @@
 // js/app.js
-import { diffRecords, SECTIONS } from './diff.js';
-import { renderSection } from './render.js';
+import { renderSideBySide } from './render.js';
 import { loadIndex, loadRecord } from './datasource.js';
 
+// Sections shown in the UI. The rolling release notes populate these three;
+// certification/desupported are reserved in the schema but not shown in v1.
+const SECTIONS = ['whats_new', 'behavior_changes', 'deprecated'];
+
 const SECTION_LABELS = {
-  certification: 'Certification',
   whats_new: "What's New",
   behavior_changes: 'Behavior Changes',
-  deprecated: 'Deprecated',
-  desupported: 'Desupported / Removed'
+  deprecated: 'Deprecated & Desupported'
 };
 
 export function pickDefaultVersions(versions) {
@@ -45,14 +46,13 @@ async function loadVersion(product, version) {
 }
 
 function renderComparison(panelsHost, older, newer) {
-  const diff = diffRecords(older, newer);
   panelsHost.innerHTML = '';
   const panels = {};
   SECTIONS.forEach((section, i) => {
     const panel = document.createElement('section');
     panel.className = 'panel';
     panel.hidden = i !== 0;
-    panel.innerHTML = renderSection(section, diff[section]);
+    panel.innerHTML = renderSideBySide(section, older, newer);
     panelsHost.appendChild(panel);
     panels[section] = panel;
   });

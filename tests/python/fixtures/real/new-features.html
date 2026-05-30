@@ -1,0 +1,669 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xml:lang="en-us" lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="DC.Type" content="concept">
+      <meta name="DC.Title" content="New Features">
+      <meta name="DC.Creator" content="Preeti Shukla, Priyanka Deondi">
+      <meta name="DC.Publisher" content="April2026">
+      <meta name="DC.Format" content="XHTML">
+      <meta name="DC.Identifier" content="GUID-D85D0190-05E6-47A3-9C1D-3645C2CBCBCB">
+      <meta name="DC.Language" content="en-US">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>New Features</title>
+      <meta property="og:site_name" content="Oracle Help Center">
+      <meta property="og:title" content="Release Notes">
+      <meta property="og:description" content>
+      <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+      <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+      <meta name="application-name" content="Release Notes">
+      <meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)">
+      <meta name="plugin" content="SP_docbuilder HTML plugin release 18.2.2">
+      <link rel="alternate" href="oracle-goldengate-release-notes.pdf" title="PDF File" type="application/pdf">
+      <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+      <meta name="dcterms.created" content="2026-04-24T11:10:19-07:00">
+      
+      <meta name="dcterms.dateCopyrighted" content="2017, 2026">
+      <meta name="dcterms.category" content="database">
+      <meta name="dcterms.identifier" content="G49010-09">
+      
+      <meta name="dcterms.product" content="en/database/goldengate/core/26">
+      
+      <link rel="prev" href="introduction.html" title="Previous" type="text/html">
+      <link rel="next" href="new-enhancements.html" title="Next" type="text/html">
+      <script>
+        document.write('<style type="text/css">');
+        document.write('body > .noscript, body > .noscript ~ * { visibility: hidden; }');
+        document.write('</style>');
+     </script>
+      <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"></script>
+      <script>
+            if (window.require === undefined) {
+                document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+            }
+        </script>
+      <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"database","element_name":"Database","display_in_url":true},"suite":{"short_name":"goldengate","element_name":"GoldenGate","display_in_url":true},"product_group":{"short_name":"not-applicable","element_name":"Not Applicable","display_in_url":false},"product":{"short_name":"core","element_name":"Oracle GoldenGate","display_in_url":true},"release":{"short_name":"26","element_name":"Release 26","display_in_url":true}}}</script>
+      
+    <meta name="dcterms.title" content="Oracle GoldenGate Release Notes">
+    <meta name="dcterms.release" content="Release 26">
+    <meta name="dcterms.isVersionOf" content="OGGRN">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"New Features","datePublished":"2026-04-24 CST","dateModified":"2026-04-24 CST"}</script>
+    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+   <body>
+      <div class="noscript alert alert-danger text-center" role="alert">
+         <a href="introduction.html" class="pull-left"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Previous</a>
+         <a href="new-enhancements.html" class="pull-right">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+         <span class="fa fa-exclamation-triangle" aria-hidden="true"></span> JavaScript must be enabled to correctly display this content
+        
+      </div>
+      <article class>
+         <a id="GUID-D85D0190-05E6-47A3-9C1D-3645C2CBCBCB" name="GUID-D85D0190-05E6-47A3-9C1D-3645C2CBCBCB"></a>
+         
+         <h2 id="OGGRN-GUID-D85D0190-05E6-47A3-9C1D-3645C2CBCBCB" class="sect2"><span class="enumeration_chapter">2 </span>New Features
+         </h2>
+         <div class="ind">
+            <div>
+               <p>This section highlights new features available with the current release of Oracle
+            GoldenGate.</p>
+            </div>
+            <div class="sect2"><a id="GUID-400BD438-BCC9-4965-8071-ABBCED566CF4" name="GUID-400BD438-BCC9-4965-8071-ABBCED566CF4"></a><h3 id="OGGRN-GUID-400BD438-BCC9-4965-8071-ABBCED566CF4" class="sect3">Release 26ai (23.26.1.0.0):
+        January 2026</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-400BD438-BCC9-4965-8071-ABBCED566CF4__GUID-47FE9E0F-A1A9-49E6-B28C-95C5832D0DC2">Support for Capture and Delivery
+                of YugabyteDB and YugabyteDB Anywhere</p>
+                     
+                     
+                     <p>Oracle GoldenGate supports capture and delivery for YugabyteDB and
+                Yugabyte DB Anywhere version 2024.2.7.0 and higher. See <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-B20834C3-85BF-4721-96CC-E9189AA021AA" target="_blank">Prepare YugabyteDB</a>.
+                     </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-400BD438-BCC9-4965-8071-ABBCED566CF4__GUID-DA633E23-FBCA-4B43-B042-0F707901678C">Support for Capture and Delivery
+                for EDB Postgres Advanced Server</p>
+                     
+                     
+                     <p>Oracle GoldenGate supports capture and delivery for EDB Postgres
+                Advanced Server versions 13, 14, 15, 16, and 17.</p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-400BD438-BCC9-4965-8071-ABBCED566CF4__GUID-08D16BB9-9978-49DF-AFE0-BD84B36CDC37">Embedded AI Service Providers and
+                Models</p>
+                     
+                     
+                     <p>Oracle GoldenGate web interface provides the option to embed various AI
+                service providers and models, including Gemini, OpenAI, OCI Generative AI, and
+                Voyager AI. See <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-389C1BF8-4663-48C6-A5EA-9338E154DFFE" target="_blank">About Oracle GoldenGate AI
+                    Service</a>.
+                     </p>
+                     
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-F48FEF44-A714-4216-8BA0-4A7B9A220CBA" name="GUID-F48FEF44-A714-4216-8BA0-4A7B9A220CBA"></a><h4 id="OGGRN-GUID-F48FEF44-A714-4216-8BA0-4A7B9A220CBA" class="sect4">Release 26ai (23.26.1.0.1)
+        Preview: January 2026</h4>
+                  <div>
+                     <div class="infoboxnote" id="GUID-F48FEF44-A714-4216-8BA0-4A7B9A220CBA__GUID-89F974A2-CCB9-4B0A-8A39-6AD1B209F5A5">
+                        <p class="notep1">Note:</p>
+                        
+                        
+                        <p>Preview features are provided for evaluation purposes only and may be
+                subject to change before general availability. If you are interested in evaluating
+                this feature, then contact Oracle Support for supplemental documentation and
+                configuration guidance specific to the preview implementation. </p>
+                        
+                     </div>
+                     <div class="section">
+                        <p class="subhead3" id="GUID-F48FEF44-A714-4216-8BA0-4A7B9A220CBA__GUID-47FE9E0F-A1A9-49E6-B28C-95C5832D0DC2">Automatic Schema Evolution
+                (Preview)</p>
+                        
+                        
+                        <p>Automatic Schema Evolution is available as a preview feature in Oracle
+                GoldenGate <span>26ai</span>. This capability enables Oracle
+                GoldenGate to automatically detect and propagate supported schema changes as part of
+                the replication flow, reducing manual intervention during schema evolution
+                scenarios. 
+                        </p>
+                        
+                     </div>
+                     <div class="section">
+                        <p class="subhead3" id="GUID-F48FEF44-A714-4216-8BA0-4A7B9A220CBA__GUID-DA633E23-FBCA-4B43-B042-0F707901678C">Google Spanner Delivery Support
+                (Preview)</p>
+                        
+                        
+                        <p>Google Spanner Delivery support is available as a preview capability,
+                allowing Oracle GoldenGate to apply replicated data to Google Spanner database.</p>
+                        
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-83A2157E-8117-4946-AEF9-64C4E94A47C3" name="GUID-83A2157E-8117-4946-AEF9-64C4E94A47C3"></a><h3 id="OGGRN-GUID-83A2157E-8117-4946-AEF9-64C4E94A47C3" class="sect3">Release 23.10: January
+        2026</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-83A2157E-8117-4946-AEF9-64C4E94A47C3__GUID-47FE9E0F-A1A9-49E6-B28C-95C5832D0DC2">Support special number types
+                including +/-INFINITY and NaN for non-Oracle databases</p>
+                     
+                     
+                     <p>Oracle GoldenGate supports special number types including
+                    <code class="codeph">+/-INFINITY</code>, <code class="codeph">sNaN</code> and <code class="codeph">NaN</code> for
+                Extract and Replicat processes for non-Oracle databases. See <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-BB0F261D-771F-4B0E-A985-B059D44B2DC7" target="_blank">Supported Special Values by Data Type</a>.
+                     </p>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-CFFE8182-96B6-44E0-BC18-B7BD7FC34B86" name="GUID-CFFE8182-96B6-44E0-BC18-B7BD7FC34B86"></a><h3 id="OGGRN-GUID-CFFE8182-96B6-44E0-BC18-B7BD7FC34B86" class="sect3">Release 23.9: September
+        2025</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-CFFE8182-96B6-44E0-BC18-B7BD7FC34B86__GUID-47FE9E0F-A1A9-49E6-B28C-95C5832D0DC2">Oracle recommends creating Extract
+                for per-PDB capture rather than Root Level Extract </p>
+                     
+                     
+                     <p>Setting up Extract with root level access using common user
+                    <code class="codeph">c##ggadmin</code> is not recommended,  except when configuring Extract
+                for downstream mining.
+                     </p>
+                     
+                     <p>This feature supercedes the feature introduced in <a href="new-features.html#GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA">Release 23.4: May 2024</a>.
+                     </p>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-A21E259F-976A-44FA-AD1D-A3C5C5623E35" name="GUID-A21E259F-976A-44FA-AD1D-A3C5C5623E35"></a><h3 id="OGGRN-GUID-A21E259F-976A-44FA-AD1D-A3C5C5623E35" class="sect3">Release 23.7: January 2025</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-A21E259F-976A-44FA-AD1D-A3C5C5623E35__GUID-F16CF53A-4B27-481C-90D6-00A513835B34">Oracle GoldenGate supports capture
+                from standby from PostgreSQL 16 onwards </p>
+                     
+                     
+                     <p>Oracle GoldenGate supports capture from PostgreSQL standby database from
+                PostgreSQL version 16 and higher.</p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-A21E259F-976A-44FA-AD1D-A3C5C5623E35__GUID-47FE9E0F-A1A9-49E6-B28C-95C5832D0DC2">Oracle GoldenGate Extract supports
+                capture from OCI PostgreSQL</p>
+                     
+                     
+                     <p>Oracle GoldenGate Extract supported for OCI PostgreSQL.</p>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-F789097A-7C34-4FCD-B92A-B4AB5846F89D" name="GUID-F789097A-7C34-4FCD-B92A-B4AB5846F89D"></a><h3 id="OGGRN-GUID-F789097A-7C34-4FCD-B92A-B4AB5846F89D" class="sect3">Release 23.6: October 2024</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-F789097A-7C34-4FCD-B92A-B4AB5846F89D__GUID-53CC9790-E0F5-48BD-937B-C1A0F53A8491">Support for JSON Relational Duality</p>
+                     
+                     
+                     <p>Oracle GoldenGate supports replicating full-featured business objects in
+                an event-based, pub/sub architecture with Oracle JSON Relational Duality and
+                GoldenGate Data Streams. This is implemented by combining two new Oracle technology
+                features: <span>Oracle AI Database</span> JSON Relational Duality Views
+                and Oracle GoldenGate Data Streams.
+                     </p>
+                     
+                     <div class="p">For more information, see the following:
+                        <ul style="list-style-type: disc;" id="GUID-F789097A-7C34-4FCD-B92A-B4AB5846F89D__UL_ARF_FV5_1DC">
+                           <li>
+                              
+                              <p><a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-2B7A2E68-6430-44C1-A9BF-C5ED47B3543F" target="_blank">Replicating Business Objects with
+                                Oracle JSON Relational Duality and GoldenGate Data Streams</a>
+                                 
+                              </p>
+                              
+                           </li>
+                           <li>
+                              
+                              <p><a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-390D12F9-E973-4CD4-8EC9-8F05DE4066B5" target="_blank">Support for JSON-Relational Duality
+                                Views and JSON Collection Tables</a></p>
+                              
+                           </li>
+                           <li>
+                              
+                              <p><a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-3B9C4C50-1198-46BD-AA7A-ECA208DEA7E6" target="_blank">Enable Supplemental Logging for JSON
+                                Relational Duality Views and JSON Collection Tables</a>
+                                 
+                              </p>
+                              
+                           </li>
+                           <li>
+                              
+                              <p><a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GCLIR-GUID-D3FD004B-81E4-4185-92D3-812834A5DEFC" target="_blank">ADD TRANDATA</a> and <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GCLIR-GUID-5DA7C3DC-5D87-4A8B-AD23-6EF587A5CF41" target="_blank">ADD SCHEMATRANDATA</a>
+                                 
+                              </p>
+                              
+                           </li>
+                        </ul>
+                     </div>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-F789097A-7C34-4FCD-B92A-B4AB5846F89D__GUID-5D26A5AA-0D5E-487D-8326-BAD78C8DD299">Support for Database Password
+                Plugin</p>
+                     
+                     
+                     <p>Oracle GoldenGate (starting with 23.5 and higher) includes a
+                user-friendly plugin that enables writing custom code to retrieve database
+                credentials from a third-party vault and then return it in a predefined API to
+                Oracle GoldenGate.</p>
+                     
+                     <p>For more information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-D6D48453-497F-4DF1-A0BB-92B612B32A7A" target="_blank">Authenticate the Database Connection Using the Database
+                    Password Plugin</a>.
+                     </p>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-5EA46814-EA8D-45CC-BE46-8715B2C195C3" name="GUID-5EA46814-EA8D-45CC-BE46-8715B2C195C3"></a><h3 id="OGGRN-GUID-5EA46814-EA8D-45CC-BE46-8715B2C195C3" class="sect3">Release 23.5.2: August
+        2024</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-5EA46814-EA8D-45CC-BE46-8715B2C195C3__GUID-5D26A5AA-0D5E-487D-8326-BAD78C8DD299">Oracle GoldenGate for Sybase
+                supports Microservices Architecture</p>
+                     
+                     
+                     <p>Oracle GoldenGate for Sybase now supports Microservices Architecture. </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-5EA46814-EA8D-45CC-BE46-8715B2C195C3__GUID-27EED722-B563-43E8-AB79-423432F90253">Support for MySQL Releases 9.0 and 8.4</p>
+                     
+                     
+                     <p>Oracle GoldenGate for MySQL now supports releases 9.0 and 8.4.</p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-5EA46814-EA8D-45CC-BE46-8715B2C195C3__GUID-9D5E7F3F-9F72-4D96-AA38-50B5F4332712">Support for VECTOR datatype in
+                Oracle GoldenGate for MySQL</p>
+                     
+                     
+                     <p>Oracle GoldenGate (23.5 onwards) for MySQL 9.0 and higher supports the
+                vector data type.</p>
+                     
+                  </div>
+                  <div class="section">
+                     
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-A793FFDE-0920-4E12-900A-537440BAE94C" name="GUID-A793FFDE-0920-4E12-900A-537440BAE94C"></a><h3 id="OGGRN-GUID-A793FFDE-0920-4E12-900A-537440BAE94C" class="sect3">Release 23.5: July 2024</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-A793FFDE-0920-4E12-900A-537440BAE94C__GUID-83D45C36-E14B-4383-AF10-43E6B89DEEBB">Oracle GoldenGate for Db2 for i
+                and Oracle GoldenGate for Db2 LUW support Microservices Architecture</p>
+                     
+                     
+                     <p>Oracle GoldenGate for Db2 for i and Oracle GoldenGate for Db2 LUW now
+                support Microservices Architecture.</p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-A793FFDE-0920-4E12-900A-537440BAE94C__GUID-A4A95B6D-4CC7-4CBE-9F86-B1F226516A03">Oracle GoldenGate for Oracle
+                TimesTen supports Microservices Architecture</p>
+                     
+                     
+                     <p>Oracle GoldenGate for Oracle TimesTen now supports Microservices
+                Architecture. </p>
+                     
+                  </div>
+                  <div class="section">
+                     
+                     
+                  </div>
+                  <div class="section">
+                     
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-D34FA70E-D2EA-4534-BFCC-C7492AAB2077" name="GUID-D34FA70E-D2EA-4534-BFCC-C7492AAB2077"></a><h3 id="OGGRN-GUID-D34FA70E-D2EA-4534-BFCC-C7492AAB2077" class="sect3">Release 23.4.2: June 2024</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D34FA70E-D2EA-4534-BFCC-C7492AAB2077__GUID-5D26A5AA-0D5E-487D-8326-BAD78C8DD299">Oracle GoldenGate supports direct
+                connectivity (DSN-less) for SQL Server database connections</p>
+                     
+                     
+                     <p>Oracle GoldenGate adds direct connectivity support for SQL Server
+                connections, allowing server host/IP and instance port entries for database
+                connections.</p>
+                     
+                     <p>For more information see, <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-9599C398-983C-47F1-B120-9C5658885571" target="_blank">Add Database Connections</a>.
+                     </p>
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-397287A0-6302-46E4-905E-F2EFB7149D1E" name="GUID-397287A0-6302-46E4-905E-F2EFB7149D1E"></a><h3 id="OGGRN-GUID-397287A0-6302-46E4-905E-F2EFB7149D1E" class="sect3">Release 23.4.1: June 2024</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-397287A0-6302-46E4-905E-F2EFB7149D1E__GUID-5D26A5AA-0D5E-487D-8326-BAD78C8DD299">Oracle GoldenGate for Teradata
+                supports Microservices Architecture</p>
+                     
+                     
+                     <p>Oracle GoldenGate for Teradata now supports Microservices Architecture. </p>
+                     
+                     <p>For more information, see the Installation Requirements for Teradata and
+                Configure Teradata topics in the <span class="italic">Oracle GoldenGate Microservices Architecture
+                    Documentation.</span></p>
+                     
+                  </div>
+                  <div class="section">
+                     
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="sect2"><a id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA" name="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA"></a><h3 id="OGGRN-GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA" class="sect3">Release 23.4: May 2024</h3>
+               <div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GUID-EE16BB53-2DE5-4428-B869-074929CF17F6">Oracle GoldenGate support for
+                database artificial intelligence (AI)</p>
+                     
+                     
+                     <p>Oracle GoldenGate adds artificial intelligence support with the
+                following data types:</p>
+                     
+                     <ul style="list-style-type: disc;" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__UL_ZNY_M3V_DBC">
+                        <li>
+                           
+                           <p><span>Oracle AI Database</span> uses the new
+                            <code class="codeph">vector</code> data type to store vector embeddings, which are
+                        mathematical vector representations of data. Oracle GoldenGate supports
+                        capture and delivery of the <code class="codeph">vector</code> data type for <span>Oracle AI Database</span> to enable real-time vector
+                        processing for embedding flow. For more infromation, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-2F0178C5-B77F-4EF9-A47A-833E904D7691" target="_blank">Oracle: Details of Support
+                            for Oracle Data Types and Objects</a>.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Oracle GoldenGate can replicate vector data heterogeneously and
+                        homogeneously if the embedding algorithm is same in terms of type and
+                        dimension, across the databases, allowing migration of vector data from one
+                        database to another.</p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p>Oracle GoldenGate also supports the capture and delivery of
+                            <code class="codeph">array</code>, <code class="codeph">pgvector</code> extension,
+                            <code class="codeph">tsquery</code> and <code class="codeph">tsvector</code> for PostgreSQL
+                        and most vendor derivatives. For more information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-9F74FE41-DB71-4212-BDDB-095B0513D2FA" target="_blank">PostgreSQL: Supported Data
+                            Types</a>.
+                           </p>
+                           
+                        </li>
+                     </ul>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GUID-5D26A5AA-0D5E-487D-8326-BAD78C8DD299">Configuration service to store
+                critical configuration data</p>
+                     
+                     
+                     <p>Oracle GoldenGate now supports a new Configuration Service for managing
+                the configuration files of Oracle GoldenGate for high availability (HA) purposes.
+                For more information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-D87A0441-9509-4E76-842C-B5D93BC63A6C" target="_blank">Configuration Service</a>.
+                     </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GUID-4C20E328-A641-4BE2-AB76-7761728AF1E9">Data streaming service</p>
+                     
+                     
+                     <p>Oracle GoldenGate introduces the data streaming service. This service
+                enables simplified access to database change records, provides continuous ETL, and
+                real-time analytics over a web socket connection. For more information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-7659077F-4006-4BB2-8550-515E408FF387" target="_blank">About Data Streaming Service</a>.
+                     </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GUID-D3B54140-5B4C-4D5A-AFEE-CC319A345198">Monitor Oracle GoldenGate
+                statistics</p>
+                     
+                     
+                     <p>Oracle GoldenGate supports StatsD, which is an open-source network daemon
+                that listens for statistics, like counters and timers, sent over TCP and sends
+                aggregates to one or more pluggable backend services. Oracle GoldenGate Microservice
+                Architecture sends metrics to the Performance Metrics Service and writes metrics in
+                StatsD format to a StatsD daemon or a time series databases that supports ingestion
+                of StatsD metrics.</p>
+                     
+                     <p>For more information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-D01C9D4E-10FB-4B7F-993C-99016D4C7814" target="_blank">Using StatsD with OGG</a></p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GUID-FE2166C1-1479-42E9-873A-6C870E00ED4B">Trail file management</p>
+                     
+                     
+                     <p>Oracle GoldenGate has introduced the ability to manage trail files
+                directly, including the ability to create archive tasks and delete trail files. </p>
+                     
+                     <p>For more information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-6D56CE1A-73DE-4ABC-9D8A-274EB50093C6" target="_blank">Trail File Management</a>. 
+                     </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GUID-6E57C9B9-7CF4-4707-B147-D9240A4461AF">Support for new TRANLOGOPTIONS
+                parameter </p>
+                     
+                     
+                     <p>Oracle GoldenGate adds support for the new
+                    <code class="codeph">TRANLOGOPTIONS</code>
+                        <code class="codeph">EXCLUDEFILTERTABLE</code> parameter. This parameter replaces the
+                    <code class="codeph">TRANLOGOPTIONS</code>
+                        <code class="codeph">FILTERTABLE</code> parameter but supports the same functionality. For more
+                information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GWURF-GUID-B6ADFEC9-10E6-456D-9477-088513E113AF" target="_blank">TRANLOGOPTIONS</a>.
+                     </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GUID-AA5C6EEC-014F-456B-9B85-7D78875974F8">Support for Db2 version 13 for z/OS </p>
+                     
+                     
+                     <p>Oracle GoldenGate now supports Db2 version 13 for z/OS.</p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GUID-C3084545-1BDD-434D-8FF0-28586833B55A">Support for new DISTINCT data
+                type</p>
+                     
+                     
+                     <p>Oracle GoldenGate now supports the new <code class="codeph">DISTINCT</code> data
+                type for Db2 for i, Db2 LUW, and Db2 z/OS.
+                     </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GUID-0B79CE0D-3D2A-4D4D-BD47-1630BFF52756">New user interface for Oracle GoldenGate Microservices Architecture</p>
+                     
+                     
+                     <p>The Oracle GoldenGate Microservices Architecture web interface has been renewed with
+                improved capabilities and enhanced user experience. </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GUID-1FA06095-16F8-4E11-99A6-F23A52102B09">Oracle GoldenGate features for <span>Oracle AI Database</span>
+                        
+                     </p>
+                     
+                     
+                     <ul style="list-style-type: disc;" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__UL_HVV_DCX_TYB">
+                        <li>
+                           
+                           <p><span class="bold">Oracle GoldenGate supports Lock-free Reservable
+                        Columns</span></p>
+                           
+                           <p>Lock-free reservable columns are supported with Oracle
+                        GoldenGate. For more information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-66B8BEF6-5413-406E-92BB-966002573A4A" target="_blank">Support for Lock-free
+                            Reservation</a>.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p><span class="bold">Oracle GoldenGate supports Blockchain and Immutable
+                            Tables</span></p>
+                           
+                           <p>Blockchain and immutable tables are supported. For more
+                        information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-2488A9A7-2536-4106-9212-1303BF0B3682" target="_blank">Tables, Views, and
+                            Materialized Views</a>.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p><span class="bold">Support for Oracle SQL Domains</span></p>
+                           
+                           <p>Oracle GoldenGate supports Oracle SQL Domains. For more
+                        information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-2F0178C5-B77F-4EF9-A47A-833E904D7691" target="_blank">Details of Support for Oracle
+                            Data Types and Objects</a>.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p><span class="bold">Support for Boolean data type</span></p>
+                           
+                           <p>Oracle GoldenGate supports Boolean data type. For more
+                        information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-2F0178C5-B77F-4EF9-A47A-833E904D7691" target="_blank">Details of Support for Oracle
+                            Data Types and Objects</a>.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p><span class="bold">Oracle GoldenGate supports tables with 4K columns for <span>Oracle AI Database</span>
+                                 </span></p>
+                           
+                           <p>Oracle GoldenGate supports tables with 4K columns for <span>Oracle AI Database</span>. For more information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-2488A9A7-2536-4106-9212-1303BF0B3682" target="_blank">Tables, Views, and
+                            Materialized Views</a>.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p><span class="bold">Support for <span>Oracle AI Database</span> online
+                            DDL </span></p>
+                           
+                           <p>Oracle GoldenGate Extract and Replicat processes can manage
+                        replication for DDL operations in cases where minimal supplemental logging
+                        is enabled. This provides more flexibility for online application upgrades
+                        using Edition Based Redefinition.</p>
+                           
+                           <p>For more information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-325B336B-EC9A-4178-9B44-0FDDC4270718" target="_blank">Using Edition-Based
+                            Redefinition</a> section in <span class="italic">Oracle GoldenGate Microservices
+                            Documentation</span>.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p><span class="bold">JSON diff data type is supported with Oracle
+                        GoldenGate</span></p>
+                           
+                           <p>JSON diff data type is supported with Oracle GoldenGate. For
+                        more information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-2F0178C5-B77F-4EF9-A47A-833E904D7691" target="_blank">Details of Support for Oracle
+                            Data Types and Objects</a>.
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p><span class="bold">Oracle GoldenGate works with per-PDB Extract level users
+                            only</span></p>
+                           
+                           <p>Oracle GoldenGate captures using per-PDB Extract only. Root level
+                        access using common user (<code class="codeph">c##ggadmin</code>) is not available. For
+                        more information, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-623D9EEC-B480-4833-8DC7-AE8FBB119A6B" target="_blank">Configure Multitenant
+                            Container Database</a> in the <span id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GGABB"><cite>Oracle GoldenGate
+                    Microservices Documentation</cite></span>. 
+                           </p>
+                           
+                           <p>This feature has been updated. See <a href="new-features.html#GUID-CFFE8182-96B6-44E0-BC18-B7BD7FC34B86">Release 23.9: September 2025</a> for details. 
+                           </p>
+                           
+                        </li>
+                        <li>
+                           
+                           <p><span class="bold">Support for <code class="codeph">VECTOR</code> data type</span></p>
+                           
+                           <p>Oracle GoldenGate now supports <code class="codeph">VECTOR</code> data type
+                        to store vector embeddings.
+                           </p>
+                           
+                        </li>
+                     </ul>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GUID-44E80A21-4F51-4EEF-BE4D-2EFFF8E03272">Integrated health checks and
+                alerts for integrated Replicat and Extract in Oracle GoldenGate
+                Microservices</p>
+                     
+                     
+                     <p>Diagnose and troubleshoot integrated Replicat and Extract processes in
+                    <span>Oracle AI Database</span> from Oracle GoldenGate
+                Microservices.
+                     </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GUID-272424BB-5C55-4DBC-9B01-D6BFA0208B71">DDL notification on target tables
+                for Replicat</p>
+                     
+                     
+                     
+                     <p>Starting with Oracle GoldenGate, Replicat uses efficient table DDL
+                change notification to invalidate any cached metadata when you perform a DDL
+                operation on the target table.</p>
+                     
+                     <p>For details, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-71C85189-51D3-4112-827C-E3634F65C214" target="_blank">DDL Notification on Target Tables </a>.
+                     </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GUID-6272E8AB-EEED-40BF-8F6E-A3B22B182A5A">Support coexistence of Oracle
+                GoldenGate with Data Guard Pluggable Database (DGPDB)</p>
+                     
+                     
+                     <p><span>Oracle AI Database</span> functionality has been extended
+                to allow using Oracle GoldenGate in a PDB-based Data Guard (DGPDB) environment in
+                parallel. See <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-CCFA242E-8D8A-4425-8237-A29D10680AFC" target="_blank">Support for DGPDB</a>.
+                     </p>
+                     
+                  </div>
+                  <div class="section">
+                     <p class="subhead2" id="GUID-D39ECCF3-C0ED-4D75-A695-F43D2D58CFBA__GUID-9C85DB51-EAE5-4101-940B-5179CCFE8E8D">New CHKPTDUMP utility</p>
+                     
+                     
+                     <p>Oracle GoldenGate includes a new utility called
+                    <code class="codeph">chkptdump</code>, which enables dumping content from checkpoint files.
+                For details, see <a href="/pls/topic/lookup?ctx=en/database/goldengate/core/26/release-notes&amp;id=GGABB-GUID-926E1D40-673A-4523-B60B-2C7415FFB7CA" target="_blank">Location of Programs and Utilities
+                    Accessible from the Admin Client</a>.
+                     </p>
+                     
+                     <p>
+                        
+                        
+                        
+                        
+                     </p>
+                     
+                  </div>
+               </div>
+            </div>
+         </div>
+      </article>
+   </body>
+</html>

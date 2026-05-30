@@ -1,14 +1,105 @@
 import datetime
 import json
 import pathlib
+import re
 
 import requests
 
 from pipeline import sources as sources_mod
-from pipeline.parse import parse_feature_list, parse_certification
+from pipeline.parse import parse_feature_list, parse_certification, parse_release_sections
 from pipeline.validate import validate_record
 
 FEATURE_SECTIONS = ("whats_new", "behavior_changes", "deprecated", "desupported")
+
+# Release-notes section page -> schema section. The deprecated page covers both
+# deprecated and desupported; we place its items under "deprecated" for v1.
+_RN_SECTIONS = ("whats_new", "behavior_changes", "deprecated")
+_RN_TITLE_MATCH = {
+    "whats_new": "New Features",
+    "behavior_changes": "Default Behavior Changes",
+    "deprecated": "Deprecated and Desupported",
+}
+
+
+def resolve_section_urls(toc_text, base_url):
+    """Resolve section page URLs from a GoldenGate release-notes toc.js."""
+    m = re.search(r"define\((.*)\);", toc_text, re.S)
+    data = json.loads(m.group(1) if m else toc_text)
+    topics = []
+    for group in data.get("toc", []):
+        topics.extend(group.get("topics", []))
+
+    def find(title_substr):
+        for t in topics:
+            title = re.sub(r"<[^>]+>", "", t.get("title", "")).strip()
+            if title_substr.lower() in title.lower():
+                return base_url + t["href"]
+        return None
+
+    return {section: find(match) for section, match in _RN_TITLE_MATCH.items()}
+
+
+def build_records(fetch, base_url, today=None):
+    """Crawl the rolling release-notes stream into per-release version records."""
+    today = today or datetime.date.today().isoformat()
+    urls = resolve_section_urls(fetch(base_url + "toc.js"), base_url)
+    section_releases = {
+        section: parse_release_sections(fetch(url), url)
+        for section, url in urls.items() if url
+    }
+
+    order_seq = []
+    labels = {}
+    for section in _RN_SECTIONS:
+        for rel in section_releases.get(section, []):
+            if rel["version"] not in labels:
+                order_seq.append(rel["version"])
+                labels[rel["version"]] = rel["label"]
+
+    records = []
+    for version in order_seq:
+        sections = {s: [] for s in ("certification", *FEATURE_SECTIONS)}
+        for section in _RN_SECTIONS:
+            for rel in section_releases.get(section, []):
+                if rel["version"] == version:
+                    sections[section].extend(rel["items"])
+        record = {
+            "product": sources_mod.PRODUCT_ID,
+            "version": version,
+            "release_label": labels[version],
+            "last_updated": today,
+            "sections": sections,
+        }
+        validate_record(record)
+        records.append(record)
+    return records
+
+
+def write_release_outputs(records, data_dir):
+    """Write one JSON per release plus index.json (newest first, higher order = newer)."""
+    data_dir = pathlib.Path(data_dir)
+    product_dir = data_dir / sources_mod.PRODUCT_ID
+    product_dir.mkdir(parents=True, exist_ok=True)
+
+    n = len(records)
+    versions_index = []
+    for pos, record in enumerate(records):
+        fname = f"{record['version']}.json"
+        (product_dir / fname).write_text(json.dumps(record, indent=2), encoding="utf-8")
+        versions_index.append({
+            "version": record["version"],
+            "label": record["version"],
+            "order": n - pos,
+            "file": f"{sources_mod.PRODUCT_ID}/{fname}",
+        })
+
+    index = {"products": [{
+        "id": sources_mod.PRODUCT_ID,
+        "label": sources_mod.PRODUCT_LABEL,
+        "versions": versions_index,
+    }]}
+    (data_dir / "index.json").write_text(json.dumps(index, indent=2), encoding="utf-8")
+
 
 def http_fetch(url):
     resp = requests.get(url, timeout=30, headers={"User-Agent": "oracle-version-diff/0.1"})
@@ -60,11 +151,8 @@ def write_outputs(sources, version_order, fetch=http_fetch, data_dir=None, today
 
 def main():
     repo_root = pathlib.Path(__file__).resolve().parents[1]
-    write_outputs(
-        sources_mod.SOURCES,
-        sources_mod.VERSION_ORDER,
-        data_dir=repo_root / "data",
-    )
+    records = build_records(http_fetch, sources_mod.RELEASE_NOTES_BASE)
+    write_release_outputs(records, repo_root / "data")
 
 if __name__ == "__main__":
     main()

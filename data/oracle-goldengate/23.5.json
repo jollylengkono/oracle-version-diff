@@ -1,0 +1,41 @@
+{
+  "product": "oracle-goldengate",
+  "version": "23.5",
+  "release_label": "Release 23.5: July 2024",
+  "last_updated": "2026-05-30",
+  "sections": {
+    "certification": [],
+    "whats_new": [
+      {
+        "title": "Oracle GoldenGate for Db2 for i and Oracle GoldenGate for Db2 LUW support Microservices Architecture",
+        "description": "Oracle GoldenGate for Db2 for i and Oracle GoldenGate for Db2 LUW now support Microservices Architecture.",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/new-features.html#GUID-D85D0190-05E6-47A3-9C1D-3645C2CBCBCB"
+      },
+      {
+        "title": "Oracle GoldenGate for Oracle TimesTen supports Microservices Architecture",
+        "description": "Oracle GoldenGate for Oracle TimesTen now supports Microservices Architecture.",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/new-features.html#GUID-D85D0190-05E6-47A3-9C1D-3645C2CBCBCB"
+      }
+    ],
+    "behavior_changes": [
+      {
+        "title": "Oracle GoldenGate does not need the OGG_SERVICEMANAGER_ID environment variable to be set for using the command line utilities that access database credentials",
+        "description": "In Oracle GoldenGate 23.5 release, there is no requirement to set up the OGG_SERVICEMANAGER_ID environment variable for using command line utilities that access database credentials. This is required in the Oracle GoldenGate 23.4 release.",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/default-behaviour-updates-23ai.html#GUID-BD631C70-4D97-410D-9E8E-031C1241E565"
+      },
+      {
+        "title": "MySQL - Removed the remote (RMTTRAIL) option from the WebUI",
+        "description": "For MySQL, the Remote button that was used for adding an Extract, has been removed from the WebUI.",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/default-behaviour-updates-23ai.html#GUID-BD631C70-4D97-410D-9E8E-031C1241E565"
+      }
+    ],
+    "deprecated": [
+      {
+        "title": "Oracle GoldenGate for Oracle TimesTen no longer supports the TimesTen Scaleout architecture",
+        "description": "Starting with Oracle GoldenGate, Oracle GoldenGate for Oracle TimesTen does not support the Scaleout architecture. Use Oracle GoldenGate 21c for delivery to TimesTen Scaleout architecture for TimesTen versions 18.1 and 22.1.",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/deprecated-features.html#GUID-B77F09DF-5A96-42F8-B3F2-EB4D7B32102D"
+      }
+    ],
+    "desupported": []
+  }
+}

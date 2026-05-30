@@ -1,0 +1,19 @@
+{
+  "product": "oracle-goldengate",
+  "version": "23.10",
+  "release_label": "Release 23.10: January 2026",
+  "last_updated": "2026-05-30",
+  "sections": {
+    "certification": [],
+    "whats_new": [
+      {
+        "title": "Support special number types including +/-INFINITY and NaN for non-Oracle databases",
+        "description": "Oracle GoldenGate supports special number types including +/-INFINITY , sNaN and NaN for Extract and Replicat processes for non-Oracle databases. See Supported Special Values by Data Type .",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/new-features.html#GUID-D85D0190-05E6-47A3-9C1D-3645C2CBCBCB"
+      }
+    ],
+    "behavior_changes": [],
+    "deprecated": [],
+    "desupported": []
+  }
+}

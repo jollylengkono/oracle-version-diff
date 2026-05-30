@@ -1,0 +1,29 @@
+{
+  "product": "oracle-goldengate",
+  "version": "23.7.0.25.01",
+  "release_label": "Release 23.7.0.25.01- January 2025",
+  "last_updated": "2026-05-30",
+  "sections": {
+    "certification": [],
+    "whats_new": [],
+    "behavior_changes": [
+      {
+        "title": "Bug 37298528 - MySQL: Make TRANLOGOPTIONS TRACKSCHEMACHANGES enabled by default",
+        "description": "Enhanced TRANLOGOPTIONS TRACKSCHEMACHANGES option to be enabled by default.",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/default-behaviour-updates-23ai.html#GUID-BD631C70-4D97-410D-9E8E-031C1241E565"
+      },
+      {
+        "title": "Bug 37539434: Oracle - All Replicats without checkpoints are desupported",
+        "description": "The creation of integrated and classic Replicat without checkpoint tables is not supported in Oracle AI Database . Additionally, any Replicats that were created without the checkpoint tables, will not start successfully.",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/default-behaviour-updates-23ai.html#GUID-BD631C70-4D97-410D-9E8E-031C1241E565"
+      },
+      {
+        "title": "Bug 35569409: PostgreSQL - Use Microservices Architecture task scheduler to update the heartbeat tables instead of relying on cron job",
+        "description": "Configured an Administration Service task to update the heartbeat table to avoid replying on the cron job to do it.",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/default-behaviour-updates-23ai.html#GUID-BD631C70-4D97-410D-9E8E-031C1241E565"
+      }
+    ],
+    "deprecated": [],
+    "desupported": []
+  }
+}

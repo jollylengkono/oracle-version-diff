@@ -6,30 +6,34 @@ export function escapeHtml(s) {
     .replaceAll('"', '&quot;');
 }
 
-export function renderItem(status, section, item) {
-  const heading = section === 'certification'
-    ? `${escapeHtml(item.category)}: ${escapeHtml(item.value)}`
-    : escapeHtml(item.title);
+export function renderItem(item) {
   const desc = item.description ? `<p class="item__desc">${escapeHtml(item.description)}</p>` : '';
-  return `<article class="item item--${status}">
-  <h4 class="item__title">${heading}</h4>
+  const link = item.source_url
+    ? `<a class="item__source" href="${escapeHtml(item.source_url)}" target="_blank" rel="noopener">Official doc</a>`
+    : '';
+  return `<article class="item">
+  <h4 class="item__title">${escapeHtml(item.title)}</h4>
   ${desc}
-  <a class="item__source" href="${escapeHtml(item.source_url)}" target="_blank" rel="noopener">Official doc</a>
+  ${link}
 </article>`;
 }
 
-const GROUPS = [['added', 'Added'], ['changed', 'Changed'], ['removed', 'Removed']];
+export function renderItems(record, section) {
+  const items = (record.sections && record.sections[section]) || [];
+  if (!items.length) return `<p class="empty">No entries for this release.</p>`;
+  return items.map(renderItem).join('\n');
+}
 
-export function renderSection(section, diff) {
-  const blocks = [];
-  for (const [status, label] of GROUPS) {
-    const items = diff[status];
-    if (!items.length) continue;
-    blocks.push(`<div class="group group--${status}">
-  <h3 class="group__label">${label} <span class="group__count">${items.length}</span></h3>
-  ${items.map(i => renderItem(status, section, i)).join('\n')}
-</div>`);
-  }
-  if (!blocks.length) return `<p class="empty">No differences in this section.</p>`;
-  return blocks.join('\n');
+// Two columns for one section: the two selected version records side by side.
+export function renderSideBySide(section, older, newer) {
+  return `<div class="cols">
+  <div class="col">
+    <h3 class="col__head">${escapeHtml(older.release_label || older.version)}</h3>
+    ${renderItems(older, section)}
+  </div>
+  <div class="col">
+    <h3 class="col__head">${escapeHtml(newer.release_label || newer.version)}</h3>
+    ${renderItems(newer, section)}
+  </div>
+</div>`;
 }

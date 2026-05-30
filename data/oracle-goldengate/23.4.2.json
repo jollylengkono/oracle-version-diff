@@ -1,0 +1,36 @@
+{
+  "product": "oracle-goldengate",
+  "version": "23.4.2",
+  "release_label": "Release 23.4.2: June 2024",
+  "last_updated": "2026-05-30",
+  "sections": {
+    "certification": [],
+    "whats_new": [
+      {
+        "title": "Oracle GoldenGate supports direct connectivity (DSN-less) for SQL Server database connections",
+        "description": "Oracle GoldenGate adds direct connectivity support for SQL Server connections, allowing server host/IP and instance port entries for database connections.",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/new-features.html#GUID-D85D0190-05E6-47A3-9C1D-3645C2CBCBCB"
+      }
+    ],
+    "behavior_changes": [
+      {
+        "title": "Behavior change in Oracle GoldenGate",
+        "description": "Oracle GoldenGate introduces the following feature, which impacts the behavior of configuring and using Oracle GoldenGate:",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/default-behaviour-updates-23ai.html#GUID-BD631C70-4D97-410D-9E8E-031C1241E565"
+      },
+      {
+        "title": "Microsoft ODBC Driver 18 for SQL Server",
+        "description": "Oracle GoldenGate for SQL Server now packages the Microsoft ODBC Driver 18 along with the Oracle GoldenGate for SQL Server installation, and database connections will use this driver by default.",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/default-behaviour-updates-23ai.html#GUID-BD631C70-4D97-410D-9E8E-031C1241E565"
+      }
+    ],
+    "deprecated": [
+      {
+        "title": "Oracle GoldenGate has deprecated DBOPTIONS USEREPLICATIONUSER",
+        "description": "DBOPTIONS USEREPLICATIONUSER option has been deprecated. All SQL Server builds automatically set the connection with Replication=yes , and the functionality of DBOPTIONS USEREPLICATIONUSER remains the same as long as SQL Server ODBC driver is version 17.8.1 or higher.",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/deprecated-features.html#GUID-B77F09DF-5A96-42F8-B3F2-EB4D7B32102D"
+      }
+    ],
+    "desupported": []
+  }
+}

@@ -1,8 +1,44 @@
 # Oracle Version Diff — Design Spec
 
 **Date:** 2026-05-30
-**Status:** Approved (pending written-spec review)
+**Status:** Approved
 **First product:** Oracle GoldenGate
+
+---
+
+## REVISION (2026-05-30, post-calibration): Side-by-side Release Notes Tracker
+
+Investigating the **live** Oracle GoldenGate docs invalidated two original assumptions:
+
+1. **Not discrete major versions.** GoldenGate now publishes a single *rolling*
+   release-notes stream (`database/goldengate/core/26/release-notes/`, branded
+   "26ai / 23.26.x"), with a machine-readable `toc.js` listing the section pages
+   (New Features, Default Behavior Changes, Deprecated & Desupported). Each page is
+   organised **per release** via `<h3>` headings; individual items inside are loose
+   `<div>/<p>` blocks (not reliably headed).
+2. **No true cross-version delta exists.** Release notes describe what changed *in
+   that release only*; Oracle publishes no "diff between version A and B". An
+   item-level computed diff is therefore not meaningful (especially across
+   generations like 19c vs 23.26, which live in different doc systems entirely).
+
+**Revised model — a side-by-side viewer, not a diff engine:**
+- A "version" is a **record** (a release, or any generation) holding its own section
+  content. Comparison = showing **two records side by side**, two columns per section.
+- Because no delta is computed, comparing a rolling release (23.26 vs 23.10) and
+  comparing different generations (19c vs 23.26) both work the same way — each side
+  is just a record. Adding any version later (incl. legacy 19c) = adding one record.
+- **v1 data source:** auto-crawl the modern rolling stream via `toc.js`, splitting
+  each section page on its `<h3>` release headings into per-release records. Legacy
+  generations (19c) are a later add-on with their own parser; the schema/UX already
+  support them.
+
+The sections below are amended by this revision where they conflict: §1 job becomes
+"side-by-side view of two version records"; §3a pipeline is `toc.js`-driven and
+release-based; §6 UX is two-column side-by-side (no Added/Changed/Removed delta).
+The schema (§4), provenance links, hosting (§7), and Supabase-readiness (§9a) are
+unchanged.
+
+---
 
 ## 1. Purpose & Single Job
 

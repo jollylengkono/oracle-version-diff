@@ -1,0 +1,19 @@
+{
+  "product": "oracle-goldengate",
+  "version": "23.26.2.0.0",
+  "release_label": "Release 26ai (23.26.2.0.0) - April 2026",
+  "last_updated": "2026-05-30",
+  "sections": {
+    "certification": [],
+    "whats_new": [],
+    "behavior_changes": [
+      {
+        "title": "Bug 39184390: Generic - Replicat no longer captures tagged DDLs issued by the Oracle Data Pump",
+        "description": "Beginning with Oracle GoldenGate 26ai (23.26), DDL operations tagged in the redo stream are filtered by default and are not captured by Extract. Oracle Data Pump generated DDLs are tagged with 00 , and therefore are excluded from capture under this default behavior. If required, customers can override this behavior and capture these DDLs by configuring DDLOPTIONS INCLUDETAG 00 .",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/default-behaviour-updates-23ai.html#GUID-BD631C70-4D97-410D-9E8E-031C1241E565"
+      }
+    ],
+    "deprecated": [],
+    "desupported": []
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "product": "oracle-goldengate",
+  "version": "23.26.1.0.0",
+  "release_label": "Release 26ai (23.26.1.0.0): January 2026",
+  "last_updated": "2026-05-30",
+  "sections": {
+    "certification": [],
+    "whats_new": [
+      {
+        "title": "Support for Capture and Delivery of YugabyteDB and YugabyteDB Anywhere",
+        "description": "Oracle GoldenGate supports capture and delivery for YugabyteDB and Yugabyte DB Anywhere version 2024.2.7.0 and higher. See Prepare YugabyteDB .",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/new-features.html#GUID-D85D0190-05E6-47A3-9C1D-3645C2CBCBCB"
+      },
+      {
+        "title": "Support for Capture and Delivery for EDB Postgres Advanced Server",
+        "description": "Oracle GoldenGate supports capture and delivery for EDB Postgres Advanced Server versions 13, 14, 15, 16, and 17.",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/new-features.html#GUID-D85D0190-05E6-47A3-9C1D-3645C2CBCBCB"
+      },
+      {
+        "title": "Embedded AI Service Providers and Models",
+        "description": "Oracle GoldenGate web interface provides the option to embed various AI service providers and models, including Gemini, OpenAI, OCI Generative AI, and Voyager AI. See About Oracle GoldenGate AI Service .",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/new-features.html#GUID-D85D0190-05E6-47A3-9C1D-3645C2CBCBCB"
+      }
+    ],
+    "behavior_changes": [
+      {
+        "title": "Oracle GoldenGate Microservices are available from a single console",
+        "description": "Oracle GoldenGate web interface displays all Oracle GoldenGate processes and Microservices from a single console. Logging in to each Microservice separately, is not required. This implies that you can access Extract, Replicats, Distribution Service Paths, Receiver Service Paths, Data Streams, and performance metrics from a single window console.",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/default-behaviour-updates-23ai.html#GUID-BD631C70-4D97-410D-9E8E-031C1241E565"
+      }
+    ],
+    "deprecated": [
+      {
+        "title": "Sybase ASE has been deprecated with Oracle GoldenGate",
+        "description": "Starting with Oracle GoldenGate, support for Sybase ASE Capture and Delivery will be deprecated, and no new features will be added. Support for Sybase ASE may be desupported in a future release of Oracle GoldenGate.",
+        "source_url": "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/deprecated-features.html#GUID-B77F09DF-5A96-42F8-B3F2-EB4D7B32102D"
+      }
+    ],
+    "desupported": []
+  }
+}
