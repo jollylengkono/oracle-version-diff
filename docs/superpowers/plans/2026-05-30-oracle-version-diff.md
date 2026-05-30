@@ -6,7 +6,7 @@
 
 **Architecture:** Two cleanly separated halves that meet only at committed JSON files. (1) A Python pipeline (run in GitHub Actions) fetches public Oracle GoldenGate doc pages, parses them into per-version JSON, validates against a schema, and opens a PR. (2) A vanilla HTML/CSS/JS static site (GitHub Pages, served from repo root) loads that JSON and renders an Added/Changed/Removed diff in an Oracle Redwood-inspired theme.
 
-**Tech Stack:** Front-end: vanilla ES-module JS, CSS custom properties, no framework. Tests: Node's built-in `node:test` for pure JS. Pipeline: Python 3.11, `requests`, `beautifulsoup4`, `jsonschema`; tests with `pytest` against saved HTML fixtures. CI: GitHub Actions + `peter-evans/create-pull-request`.
+**Tech Stack:** Front-end: vanilla ES-module JS, CSS custom properties, no framework, with a single data-access seam (`datasource.js`) for a future Supabase/REST backend. Tests: Node's built-in `node:test` for pure JS. Pipeline: Python 3.11, `requests`, `beautifulsoup4`, `jsonschema`; tests with `pytest` against saved HTML fixtures. CI: GitHub Actions + `peter-evans/create-pull-request`. Hosting: GitHub Pages (static).
 
 **Spec:** `docs/superpowers/specs/2026-05-30-oracle-version-diff-design.md`
 
@@ -20,7 +20,9 @@ oracle-version-diff/
 ├── css/theme.css                     # Oracle Redwood theme (CSS custom properties)
 ├── js/diff.js                        # PURE: diff two version records → added/changed/removed
 ├── js/render.js                      # PURE: diff result → HTML strings
-├── js/app.js                         # bootstrap: fetch data, wire dropdowns/tabs (DOM)
+├── js/config.js                      # data-source base setting (single place to repoint)
+├── js/datasource.js                  # the ONLY data-access seam (swap to Supabase here later)
+├── js/app.js                         # bootstrap: wire dropdowns/tabs (DOM); data via datasource.js
 ├── data/index.json                   # product + versions registry (with display order)
 ├── data/oracle-goldengate/23ai.json  # one record per version
 ├── data/oracle-goldengate/21c.json
@@ -44,6 +46,8 @@ oracle-version-diff/
 ```
 
 Responsibilities are split so each unit is independently testable: `diff.js`/`render.js`/`parse.py`/`detect.py`/`validate.py` are pure (no I/O, no DOM, no network); `app.js` and `build.py` are the only units that touch DOM/network/filesystem, and both take their pure dependencies as plain function calls.
+
+**Future-backend seam:** `js/datasource.js` is the single place the front-end loads data. Today it fetches static JSON under the base set in `js/config.js`. To move to a Supabase/REST backend later, only `datasource.js` changes — `app.js` and all pure logic stay untouched. The JSON schema (Task 1) is intentionally relational-shaped so it maps 1:1 to future DB tables.
 
 ---
 
@@ -423,17 +427,80 @@ git commit -m "feat: add pure HTML rendering for diff sections"
 
 ---
 
-## Task 4: Default-version selection helper + app bootstrap (`js/app.js`)
+## Task 4: Data-access seam + default-version helper + app bootstrap
 
 **Files:**
+- Create: `js/config.js`
+- Create: `js/datasource.js`
 - Create: `js/app.js`
-- Test: `tests/js/diff.test.mjs` (append) — only the pure helper is unit-tested; DOM wiring is verified manually in Task 6.
+- Test: `tests/js/datasource.test.mjs`
+- Test: `tests/js/diff.test.mjs` (append the `pickDefaultVersions` tests)
 
-`pickDefaultVersions` is pure and tested. The rest of `app.js` (fetch + DOM wiring) is verified by opening the site in Task 6.
+`datasource.js` is the **single seam** for all data loading — the only file that
+changes when migrating to a Supabase/REST backend later. Its pure path-builders
+are unit-tested; the `fetch`-based loaders and `app.js` DOM wiring are verified by
+opening the site in Task 5. `pickDefaultVersions` is pure and tested.
 
-- [ ] **Step 1: Append the failing test to `tests/js/diff.test.mjs`**
+- [ ] **Step 1: Create `js/config.js`**
 
-Add this import line at the top of the file (next to the existing import) and the test below the others:
+```js
+// js/config.js
+// Single place to repoint the data source. For a future Supabase/REST backend,
+// change DATA_BASE (and the loader bodies in datasource.js) here only.
+export const DATA_BASE = 'data';
+```
+
+- [ ] **Step 2: Write the failing datasource test**
+
+```js
+// tests/js/datasource.test.mjs
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { indexPath, recordPath } from '../../js/datasource.js';
+
+test('indexPath points at the index under the data base', () => {
+  assert.equal(indexPath(), 'data/index.json');
+});
+
+test('recordPath joins the data base with the record file', () => {
+  assert.equal(recordPath('oracle-goldengate/23ai.json'), 'data/oracle-goldengate/23ai.json');
+});
+```
+
+- [ ] **Step 3: Run test to verify it fails**
+
+Run: `npm test`
+Expected: FAIL — `Cannot find module '../../js/datasource.js'`.
+
+- [ ] **Step 4: Write `js/datasource.js`**
+
+```js
+// js/datasource.js
+// The ONLY data-access seam. To move to Supabase/REST later, replace the bodies
+// of loadIndex/loadRecord with API calls — app.js and pure logic stay unchanged.
+import { DATA_BASE } from './config.js';
+
+export function indexPath() { return `${DATA_BASE}/index.json`; }
+export function recordPath(file) { return `${DATA_BASE}/${file}`; }
+
+async function fetchJson(path) {
+  const res = await fetch(path);
+  if (!res.ok) throw new Error(`Failed to load ${path}: ${res.status}`);
+  return res.json();
+}
+
+export async function loadIndex() { return fetchJson(indexPath()); }
+export async function loadRecord(file) { return fetchJson(recordPath(file)); }
+```
+
+- [ ] **Step 5: Run test to verify it passes**
+
+Run: `npm test`
+Expected: PASS (the two datasource path tests).
+
+- [ ] **Step 6: Append the failing `pickDefaultVersions` tests to `tests/js/diff.test.mjs`**
+
+Add this import line at the top of the file (next to the existing import) and the tests below the others:
 
 ```js
 import { pickDefaultVersions } from '../../js/app.js';
@@ -456,17 +523,18 @@ test('pickDefaultVersions handles a single version', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [ ] **Step 7: Run test to verify it fails**
 
 Run: `npm test`
 Expected: FAIL — `Cannot find module '../../js/app.js'`.
 
-- [ ] **Step 3: Write `js/app.js`**
+- [ ] **Step 8: Write `js/app.js`**
 
 ```js
 // js/app.js
 import { diffRecords, SECTIONS } from './diff.js';
 import { renderSection } from './render.js';
+import { loadIndex, loadRecord } from './datasource.js';
 
 const SECTION_LABELS = {
   certification: 'Certification',
@@ -481,12 +549,6 @@ export function pickDefaultVersions(versions) {
   const newer = sorted[0];
   const older = sorted[1] || sorted[0];
   return [older, newer];
-}
-
-async function fetchJson(path) {
-  const res = await fetch(path);
-  if (!res.ok) throw new Error(`Failed to load ${path}: ${res.status}`);
-  return res.json();
 }
 
 function fillSelect(select, versions, selectedVersion) {
@@ -510,9 +572,9 @@ function renderTabs(container, panels) {
   });
 }
 
-async function loadRecord(product, version) {
+async function loadVersion(product, version) {
   const meta = product.versions.find(v => v.version === version);
-  return fetchJson(`data/${meta.file}`);
+  return loadRecord(meta.file);
 }
 
 function renderComparison(panelsHost, older, newer) {
@@ -531,7 +593,7 @@ function renderComparison(panelsHost, older, newer) {
 }
 
 async function main() {
-  const index = await fetchJson('data/index.json');
+  const index = await loadIndex();
   const product = index.products[0]; // v1: GoldenGate only
   const olderSel = document.getElementById('older');
   const newerSel = document.getElementById('newer');
@@ -545,8 +607,8 @@ async function main() {
 
   async function refresh() {
     const [older, newer] = await Promise.all([
-      loadRecord(product, olderSel.value),
-      loadRecord(product, newerSel.value)
+      loadVersion(product, olderSel.value),
+      loadVersion(product, newerSel.value)
     ]);
     const panels = renderComparison(panelsHost, older, newer);
     renderTabs(tabsHost, panels);
@@ -566,16 +628,16 @@ if (typeof document !== 'undefined') {
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [ ] **Step 9: Run test to verify it passes**
 
 Run: `npm test`
 Expected: PASS (the two new `pickDefaultVersions` tests plus all prior tests).
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 10: Commit**
 
 ```bash
-git add js/app.js tests/js/diff.test.mjs
-git commit -m "feat: add app bootstrap and default-version selection"
+git add js/config.js js/datasource.js js/app.js tests/js/datasource.test.mjs tests/js/diff.test.mjs
+git commit -m "feat: add data-access seam, app bootstrap, and default-version selection"
 ```
 
 ---
@@ -1334,7 +1396,16 @@ using data parsed from official Oracle documentation.
 ## How it works
 
 - **Front-end** (`index.html`, `css/`, `js/`): vanilla static site. Loads JSON from
-  `data/` and renders an Added/Changed/Removed diff. No backend.
+  `data/` through a single data-access seam (`js/datasource.js`, configured in
+  `js/config.js`) and renders an Added/Changed/Removed diff. No backend.
+
+## Future backend (Supabase-ready)
+
+v1 is intentionally static. All data loading is isolated in `js/datasource.js`, and
+the JSON schema is relational-shaped, so a future move to Supabase (Postgres + Auth +
+REST) only requires changing that one module — unlocking features like update-email
+subscriptions, saved comparisons, community notes, and search. See the design spec
+§9a for details.
 - **Pipeline** (`pipeline/`): a Python crawler+parser run weekly by GitHub Actions.
   It fetches public Oracle docs, parses them, validates against
   `schema/version-record.schema.json`, and opens a pull request with the new
@@ -1417,4 +1488,4 @@ git commit -m "chore: calibrate parsers and fixtures against live Oracle docs"
 
 **Placeholder scan:** No TBD/TODO; every code step includes complete code; the "calibration" step is a deliberate, explicit live-tuning task, not a placeholder.
 
-**Type consistency:** `SECTIONS` order is identical in `diff.js` (Task 2) and `app.js` labels (Task 4). Record shape (`product`/`version`/`release_label`/`last_updated`/`sections`) matches across schema (Task 1), `build_record` (Task 9), and JS consumers. `keyFor`/`diffSection`/`diffRecords`/`renderSection`/`renderItem`/`pickDefaultVersions` signatures are consistent between definitions and call sites. Index record fields (`version`/`label`/`order`/`file`) match between `index.json` (Task 1), `write_outputs` (Task 9), and `app.js` (Task 4).
+**Type consistency:** Data loading goes only through `datasource.js` (`loadIndex`/`loadRecord`, with pure `indexPath`/`recordPath`); `app.js` wraps it as `loadVersion(product, version)` and no longer defines its own `fetchJson`. `SECTIONS` order is identical in `diff.js` (Task 2) and `app.js` labels (Task 4). Record shape (`product`/`version`/`release_label`/`last_updated`/`sections`) matches across schema (Task 1), `build_record` (Task 9), and JS consumers. `keyFor`/`diffSection`/`diffRecords`/`renderSection`/`renderItem`/`pickDefaultVersions` signatures are consistent between definitions and call sites. Index record fields (`version`/`label`/`order`/`file`) match between `index.json` (Task 1), `write_outputs` (Task 9), and `app.js` (Task 4).

@@ -168,7 +168,29 @@ language: Oracle Red as the primary accent over clean neutral surfaces.
   rather than publishing bad data.
 - **Front-end** rendered/tested against a sample JSON fixture.
 
-## 9. Out of Scope (v1)
+## 9a. Extensibility & Future Backend (Supabase-ready)
+
+v1 ships on the static JSON architecture (free, nothing to break), but is
+deliberately built so a future backend (e.g. **Supabase** Postgres + Auth + REST)
+slots in without a rewrite:
+
+- **Single data-access seam.** The front-end never calls `fetch` directly in UI
+  code. All data loading goes through one module (`js/datasource.js`) with a
+  `js/config.js` base setting. Switching from "load a static JSON file" to
+  "call a REST/Supabase API" means changing only `datasource.js`.
+- **DB-shaped schema.** `version-record.schema.json` maps 1:1 to relational tables
+  (`products`, `versions`, `section_items`), so the same data model serves files
+  today and a database later.
+- **Pure logic stays portable.** `diff.js`/`render.js` are framework- and
+  source-agnostic; they work unchanged under any future front-end framework.
+- **Pipeline is backend-independent.** `build.py` writes JSON today; it could
+  additionally (or instead) insert rows into a database with no change to parsers.
+
+Adopting Supabase later would unlock: version-update email subscriptions,
+user accounts / saved comparisons, community notes, full-text search across
+products, and a public API. None of these are built in v1.
+
+## 9b. Out of Scope (v1)
 
 - Products other than Oracle GoldenGate.
 - The gated MOS certification matrix.
