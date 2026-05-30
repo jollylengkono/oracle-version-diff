@@ -30,6 +30,9 @@ def release_version(label):
     m = re.search(r"\(([\d.]+)\)", label)
     if m:
         return m.group(1)
+    m = re.search(r"Release\s+\S+\s+\(([\d.]+)\)", label)
+    if m:
+        return m.group(1)
     m = re.search(r"Release\s+([0-9][0-9.]*)", label)
     if m:
         return m.group(1)
@@ -62,15 +65,26 @@ def parse_release_sections(html, source_url):
         {"version": str, "label": str, "released": str, "items": [{title, description, source_url}]}
     """
     soup = BeautifulSoup(html, "html.parser")
-    releases = soup.find_all("h3", class_="sect3")
+    releases = [
+        node for node in soup.find_all(["h2", "h3"])
+        if any(cls in ("sect2", "sect3") for cls in (node.get("class") or []))
+        and "Release" in _text(node)
+    ]
     results = []
     for h3 in releases:
         label = _text(h3)
+        parse_bold_paragraph_items = h3.name == "h2"
         items = []
         for node in h3.find_all_next():
             if node is h3:
                 continue
             if node.name == "h3" and "sect3" in (node.get("class") or []):
+                break  # reached the next release
+            if (
+                node.name in ("h2", "h3")
+                and any(cls in ("sect2", "sect3") for cls in (node.get("class") or []))
+                and "Release" in _text(node)
+            ):
                 break  # reached the next release
             if not getattr(node, "get", None):
                 continue
@@ -87,6 +101,13 @@ def parse_release_sections(html, source_url):
                 items.append({
                     "title": _text(node),
                     "description": _text(dd) if dd else "",
+                    "source_url": source_url,
+                })
+            elif parse_bold_paragraph_items and node.name == "p" and node.find("span", class_="bold"):
+                desc = node.find_next_sibling("p")
+                items.append({
+                    "title": _text(node),
+                    "description": _text(desc) if desc else "",
                     "source_url": source_url,
                 })
         results.append({

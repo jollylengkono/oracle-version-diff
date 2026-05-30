@@ -20,7 +20,7 @@ changed in *that* release"). It is **not** an item-level snapshot diff.
 
 Implemented continuation:
 1. Records and index now carry `released` ISO dates.
-2. `data/index.json` is chronologically ordered and includes curated `21c`/`19c`
+2. `data/index.json` is chronologically ordered and includes `21c`/`19c`
    baseline records.
 3. `js/diff.js` exposes `aggregateRange()`.
 4. `js/app.js` loads all records and renders aggregated range results.
@@ -46,7 +46,8 @@ Implemented continuation:
   helpers for tests/backward compatibility, but the app uses `aggregateRange()`.
 - Python pipeline (`pipeline/`): crawls Oracle GoldenGate release notes via `toc.js`,
   splits each section page on `<h3 class="sect3">` release headings into per-release
-  records, merges curated `LEGACY_BASELINES` for `21c` and `19c`, validates against
+  records, merges a static `19c` anchor plus a parsed `21c` baseline from the
+  official 21c release-note pages, validates against
   `schema/version-record.schema.json`, writes `data/index.json` +
   `data/oracle-goldengate/<version>.json`.
 - GitHub Action `.github/workflows/refresh-data.yml`: weekly (Mon 06:00 UTC) +
@@ -92,6 +93,9 @@ distinct because the real headings show distinct release months.
   a tie-breaker, not date filtering alone.
 - The parser still uses month-start dates because Oracle headings provide month
   granularity, not exact day-level release dates.
+- The `desupported` JSON section is currently empty. Oracle's release-note page
+  groups "Deprecated and Desupported" together, and the app displays those entries
+  through the `deprecated` section/tab.
 
 > Investigation command that worked:
 > `grep -oE 'sect3"[^>]*>[^<]+' tests/python/fixtures/real/<page>.html | sed 's/sect3"[^>]*>//'`

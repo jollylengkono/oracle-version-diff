@@ -35,6 +35,30 @@ def test_parse_release_sections_groups_items_by_release():
     assert "Sybase ASE has been deprecated" in t2
 
 
+def test_parse_release_sections_supports_legacy_21c_feature_pages():
+    html = """
+    <article>
+      <h2 class="sect2">Release 21c (21.14) - April 2024</h2>
+      <div class="ind">
+        <div>
+          <p><span class="bold">Oracle Access Manager</span></p>
+          <p>Oracle GoldenGate now supports Oracle Access Manager.</p>
+        </div>
+      </div>
+    </article>
+    """
+
+    rels = parse_release_sections(html, source_url=SRC)
+
+    assert [r["version"] for r in rels] == ["21.14"]
+    assert rels[0]["released"] == "2024-04-01"
+    assert rels[0]["items"] == [{
+        "title": "Oracle Access Manager",
+        "description": "Oracle GoldenGate now supports Oracle Access Manager.",
+        "source_url": SRC,
+    }]
+
+
 def test_parse_release_sections_on_real_new_features_page():
     src = "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/new-features.html"
     rels = parse_release_sections(read_fixture("real/new-features.html"), source_url=src)

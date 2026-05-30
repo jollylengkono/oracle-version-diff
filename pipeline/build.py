@@ -80,11 +80,40 @@ def build_records(fetch, base_url, today=None):
         records.append(record)
     release_records = sorted(records, key=lambda r: r["released"], reverse=True)
     baselines = []
-    for baseline in sources_mod.LEGACY_BASELINES:
+    for baseline in sources_mod.STATIC_LEGACY_BASELINES:
         record = {**baseline, "last_updated": today}
         validate_record(record)
         baselines.append(record)
+    for source in sources_mod.LEGACY_RELEASE_NOTE_SOURCES:
+        record = build_legacy_release_note_record(source, fetch=fetch, today=today)
+        validate_record(record)
+        baselines.append(record)
     return release_records + sorted(baselines, key=lambda r: r["released"], reverse=True)
+
+
+def build_legacy_release_note_record(source, fetch=None, today=None):
+    """Build one legacy baseline from release-note section pages."""
+    today = today or datetime.date.today().isoformat()
+    fetch = fetch or http_fetch
+    urls = source["urls"]
+    sections = {s: [] for s in ("certification", *FEATURE_SECTIONS)}
+    for section in _RN_SECTIONS:
+        section_urls = urls[section]
+        if isinstance(section_urls, str):
+            section_urls = [section_urls]
+        for url in section_urls:
+            releases = parse_release_sections(fetch(url), url)
+            for release in releases:
+                sections[section].extend(release["items"])
+    return {
+        "product": source["product"],
+        "version": source["version"],
+        "release_label": source["release_label"],
+        "record_type": source["record_type"],
+        "released": source["released"],
+        "last_updated": today,
+        "sections": sections,
+    }
 
 
 def write_release_outputs(records, data_dir):

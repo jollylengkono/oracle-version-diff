@@ -4,18 +4,485 @@
   "release_label": "Oracle GoldenGate 21c",
   "record_type": "baseline",
   "released": "2021-01-01",
+  "last_updated": "2026-05-30",
   "sections": {
     "certification": [],
     "whats_new": [
       {
-        "title": "Oracle GoldenGate 21c release baseline",
-        "description": "Curated Oracle GoldenGate 21c baseline entry used for upgrade comparisons from older 19c estates into the 21c documentation line.",
-        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/whats-new.html"
+        "title": "Oracle Access Manager",
+        "description": "Oracle GoldenGate now supports Oracle Access Manager (OAM) as an external identity provider for authentication.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.14.0.0.0-april-2024.html"
+      },
+      {
+        "title": "Db2 for i",
+        "description": "The Oracle GoldenGate for Db2 for i release version 21.12 includes the following enhancements: Db2 for i Installation Process The installation process of Oracle GoldenGate for Db2 for i has been updated. For more information, see: Installing Oracle GoldenGate Files for IBM DB2 for i . Support for IBM i Access ODBC Driver Oracle GoldenGate for Db2 for i now supports the IBM i Access ODBC driver. For more information, see Supported ODBC Driver . SSL Connections SSL connections can now be enabled for Db2 for i by setting SSL=1 in the DSN configuration file. For more information, see Enabling SSL . User Profiles and Security It is recommended that the Oracle GoldenGate processes are operated using a dedicated user profile that is not used for any other purpose. For more information, see User Profiles and Security Privileges .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.12.0.0.4-november-2023-db2-i-update.html"
+      },
+      {
+        "title": "Db2 for i Installation Process",
+        "description": "The installation process of Oracle GoldenGate for Db2 for i has been updated. For more information, see: Installing Oracle GoldenGate Files for IBM DB2 for i .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.12.0.0.4-november-2023-db2-i-update.html"
+      },
+      {
+        "title": "Support for IBM i Access ODBC Driver",
+        "description": "Oracle GoldenGate for Db2 for i now supports the IBM i Access ODBC driver. For more information, see Supported ODBC Driver .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.12.0.0.4-november-2023-db2-i-update.html"
+      },
+      {
+        "title": "SSL Connections",
+        "description": "SSL connections can now be enabled for Db2 for i by setting SSL=1 in the DSN configuration file. For more information, see Enabling SSL .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.12.0.0.4-november-2023-db2-i-update.html"
+      },
+      {
+        "title": "User Profiles and Security",
+        "description": "It is recommended that the Oracle GoldenGate processes are operated using a dedicated user profile that is not used for any other purpose. For more information, see User Profiles and Security Privileges .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.12.0.0.4-november-2023-db2-i-update.html"
+      },
+      {
+        "title": "Oracle Autonomous Database on Shared Exadata Infrastructure",
+        "description": "Oracle GoldenGate Parallel Replicat (Integrated Mode) Integrated Parallel Replicat (iPR) supports GoldenGate replication apply for procedural replication, Automatic CDR, and DML handlers. See Deciding Which Apply Method to Use Deciding Which Apply Method to Use and About Parallel Replicat About Parallel Replicat for more information.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.10.0.0.0-april-2023-adb-update.html"
+      },
+      {
+        "title": "Oracle GoldenGate Parallel Replicat (Integrated Mode)",
+        "description": "Integrated Parallel Replicat (iPR) supports GoldenGate replication apply for procedural replication, Automatic CDR, and DML handlers. See Deciding Which Apply Method to Use Deciding Which Apply Method to Use and About Parallel Replicat About Parallel Replicat for more information.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.10.0.0.0-april-2023-adb-update.html"
+      },
+      {
+        "title": "All Databases",
+        "description": "Administration Service Configuration page allows cloning of existing credentials Administration Service web interface allows cloning of existing credentials. Web Workers and Axios 21.1 implemented for Microservices Architecture web interface Microservices Architecture web interface is enhanced with the implementation of Web Workers and Axios 21.1. Webworkers allows running scripts in the background threads, which allows performing tasks without interfering with the web interface. Axios is an promise-based HTML client for the web browser and node.js.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.4.0-october-2021.html"
+      },
+      {
+        "title": "Administration Service Configuration page allows cloning of existing credentials",
+        "description": "Administration Service web interface allows cloning of existing credentials.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.4.0-october-2021.html"
+      },
+      {
+        "title": "Web Workers and Axios 21.1 implemented for Microservices Architecture web interface",
+        "description": "Microservices Architecture web interface is enhanced with the implementation of Web Workers and Axios 21.1. Webworkers allows running scripts in the background threads, which allows performing tasks without interfering with the web interface. Axios is an promise-based HTML client for the web browser and node.js.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.4.0-october-2021.html"
+      },
+      {
+        "title": "SQL Server",
+        "description": "The CDC Cleanup job is part of the Microservices Architecture Administration Service A new Purge Change Data task has been added to the Administration Service in Oracle GoldenGate Microservices Architecture for SQL Server, which replaces the previous requirement of installing the Oracle GoldenGate CDC Cleanup job through the ogg_cdc_cleanup_setup program.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.4.0-october-2021.html"
+      },
+      {
+        "title": "The CDC Cleanup job is part of the Microservices Architecture Administration Service",
+        "description": "A new Purge Change Data task has been added to the Administration Service in Oracle GoldenGate Microservices Architecture for SQL Server, which replaces the previous requirement of installing the Oracle GoldenGate CDC Cleanup job through the ogg_cdc_cleanup_setup program.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.4.0-october-2021.html"
+      },
+      {
+        "title": "All Databases",
+        "description": "Heartbeat TARGETONLY is supported for heterogeneous database targets The TARGETONLY option for ADD and ALTER HEARTBEATTABLE is now available for DB2 LUW, DB2 for i Series, DB2 z/OS, MySQL, and PostgreSQL databases. Parallel Replicat is supported for Heterogeneous Databases All heterogeneous databases available with Oracle GoldenGate 21c (21.3.0) support parallel Replicat. Integration with External Identity Management (IdM) system using OpenID/OAuth2.0 Oracle GoldenGate Microservices Architecture supports integration with Identity Cloud Service (IDCS), which is an external Identity Management system, using OpenID/OAuth2.0 protocol.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "Heartbeat TARGETONLY is supported for heterogeneous database targets",
+        "description": "The TARGETONLY option for ADD and ALTER HEARTBEATTABLE is now available for DB2 LUW, DB2 for i Series, DB2 z/OS, MySQL, and PostgreSQL databases.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "Parallel Replicat is supported for Heterogeneous Databases",
+        "description": "All heterogeneous databases available with Oracle GoldenGate 21c (21.3.0) support parallel Replicat.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "Integration with External Identity Management (IdM) system using OpenID/OAuth2.0",
+        "description": "Oracle GoldenGate Microservices Architecture supports integration with Identity Cloud Service (IDCS), which is an external Identity Management system, using OpenID/OAuth2.0 protocol.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "DB2 LUW",
+        "description": "Capture and delivery for DB2 LUW 11.5 is supported Support for capture and delivery with DB2 LUW 11.5 is available.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "Capture and delivery for DB2 LUW 11.5 is supported",
+        "description": "Support for capture and delivery with DB2 LUW 11.5 is available.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "DB2 for iSeries",
+        "description": "Remote capture and delivery is supported from DB2 iSeries Remote capture and delivery is available with DB2 iSeries. IBM iSeries version 7.4 is now available Oracle GoldenGate supports IBM iSeries version 7.4.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "Remote capture and delivery is supported from DB2 iSeries",
+        "description": "Remote capture and delivery is available with DB2 iSeries.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "IBM iSeries version 7.4 is now available",
+        "description": "Oracle GoldenGate supports IBM iSeries version 7.4.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "MySQL",
+        "description": "MySQL Database Service (MDS) Remote Capture and Delivery Support Oracle GoldenGate now supports remote capture and delivery for the Oracle MySQL Database Service.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "MySQL Database Service (MDS) Remote Capture and Delivery Support",
+        "description": "Oracle GoldenGate now supports remote capture and delivery for the Oracle MySQL Database Service.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "PostgreSQL",
+        "description": "Oracle GoldenGate Microservices Architecture supports PostgreSQL PostgreSQL support is available with Oracle GoldenGate Microservices Architecture. PostgreSQL 13 is supported PostgreSQL 13 is supported with Oracle GoldenGate 21c (21.3.0). Oracle native JSON datatype is supported for PostgreSQL JSON datatype is supported with Oracle GoldenGate MA and Classic on PostgreSQL.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "Oracle GoldenGate Microservices Architecture supports PostgreSQL",
+        "description": "PostgreSQL support is available with Oracle GoldenGate Microservices Architecture.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "PostgreSQL 13 is supported",
+        "description": "PostgreSQL 13 is supported with Oracle GoldenGate 21c (21.3.0).",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "Oracle native JSON datatype is supported for PostgreSQL",
+        "description": "JSON datatype is supported with Oracle GoldenGate MA and Classic on PostgreSQL.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/release-21.3.0-initial-release.html"
+      },
+      {
+        "title": "Oracle GoldenGate Microservices Architecture is available with Oracle and heterogeneous databases",
+        "description": "Oracle GoldenGate 21c supports the following databases: Oracle Database DB2 z/OS MySQL SQL Server",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "All Databases",
+        "description": "Parallel Replicat Core Infrastructure Support for Heterogeneous Databases Parallel Replicat is supported with SQL Server, DB2 z/OS, and MySQL. Heartbeat History Endpoints Display Historic Heartbeat and Lag Information for ER Processes Historic and lag information for ER processes and heartbeat records is retrieved and is available from the Administration Server's Replicat Process Information page.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Parallel Replicat Core Infrastructure Support for Heterogeneous Databases",
+        "description": "Parallel Replicat is supported with SQL Server, DB2 z/OS, and MySQL.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Heartbeat History Endpoints Display Historic Heartbeat and Lag Information for ER Processes",
+        "description": "Historic and lag information for ER processes and heartbeat records is retrieved and is available from the Administration Server's Replicat Process Information page.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Oracle Database",
+        "description": "Unified Build Support Oracle GoldenGate uses a single, unified build for capturing from and applying to multiple major Oracle Database versions for supported operating systems by including the latest Oracle database client libraries as part of Oracle GoldenGate. Automatic Extract of tables with supplemental logging is supported Oracle GoldenGate provides a new auto_capture mode to capture changes for all the tables that are enabled for logical replication. You can list the tables enabled for auto-capture using the LIST TABLES AUTO_CAPTURE command option. Use the TRANLOGOPTIONS ENABLE_AUTO_CAPTURE option to set up automatic capture. When this parameter is enabled in Extract, any table that has supplemental logging on it will be automatically captured by Extract and you don't need to add the table as a TABLE parameter. You can use the new DDL options for ALTER TABLE ... ENABLE LOGICAL REPLICATION ALL KEYS , ALTER TABLE ... ENABLE LOGICAL REPLICATION ALLOW NOVALIDATE KEYS , CREATE TABLE ... ENABLE LOGICAL REPLICATION ALL KEYS , or CREATE TABLE ... ENABLE LOGICAL REPLICATION NOVALIDATE KEYS to add supplemental logging to a table and allow Oracle GoldenGate to automatically capture it. This also requires Oracle Database 21c and higher. Oracle native JSON datatype is supported Oracle GoldenGate capture and apply processes now support the new native JSON datatype, which is supported by Oracle Database 21c and higher. Automatic Conflict Detection and Resolution for Oracle Database 21c is available This feature provides support in Oracle Database 21c and Oracle GoldenGate to enhance Automatic CDR to support: Earliest timestamp resolution Delete always win Site priority resolution These features can be enabled in the DBMS_GOLDENGATE.ADD_AUTO_CDR procedure. Kerberos Authentication is supported Oracle GoldenGate supports external authentication for database login ( DBLOGIN ) for Kerberos user accounts. Oracle Cloud Infrastructure Key Management Service (OCI KMS) integration is available Oracle GoldenGate supports integration with the OCI KMS for trail file encryption, which simplifies securing Oracle GoldenGate cloud deployments. Autonomous Database Extract is supported Oracle GoldenGate can now capture from the Autonomous Databases in OCI. This feature allows capturing data out of specific Autonomous environment in a secure way without allowing access to any other data in that shared environment. For additional details, see Capturing from Pluggable Databases in Using Oracle GoldenGate for Oracle Database . Replicat Compatibility Constraint Replicat compatibility with different trail file formats is ensured using this feature. The Replicat compatibility constraint is associated to the record (LCR) by the primary Extract to restrict certain record to apply by specific version of Replicat in Oracle GoldenGate 21c or higher releases without bumping up the trail file format version. This feature is displayed by the LogDump utility. Large DDL (greater than 4 MB) replication is supported DDLs that are greater than 4 MB in size will be provided replication support. Certificate management is available from the Microservices Architecture Web UI Server certificates and multiple client certificates can be managed from the Servicer Manager. Each deployment has a Certificate Store that holds the server, client certificates, and CA certificates, which are used when setting up a secure communication channels for a deployment. Support for multiple client certificates for wss protocol is available You can store multiple client certificates in the Certificate Store and explicitly specify the type of authentication mechanism for the distribution paths and target-initiated paths as part of the specification. You can select one of the three authentication mechanisms, Credentials, Client Certificates, or OAuht2.0 (available with Oracle GoldenGate 21.3.0). If you choose the client certificate authentication mechansim, then you can chose a specific client certificate. DB_UNIQUE_NAME with heartbeat table DB_UNIQUE_NAME is available with the heartbeat table to allow users to uniquely identify the source of the heartbeat. DB_UNIQUE_NAME will allow better use of the heartbeat table in active-active environments, where, typically all the replicas have the same DB_NAME but identify each replica site uniquely using the DB_UNIQUE_NAME . DB_UNIQUE_NAME with trail file header DB_UNIQUE_NAME is added in the trail file header along with DB_NAME , which helps in troubleshooting replication in active-active environments, where mostly all replicas have the same DB_NAME but identify each replica site uniquely using the DB_UNIQUE_NAME . Oracle GoldenGate Upgrade Simplification The process to upgrade to Oracle GoldenGate 21c has been further simplified. There are fewer steps necessary for the administrator to upgrade to the latest Oracle GoldenGate release. This includes automatic repositioning of Replicat after a trail file format upgrade. Partition Name Filtering The Partition Filtering option filters explicitly on the partition name of tables. Data can be filtered based on source partition names in Extract, Pump, Distribution Service, and Replicat. Bounded Recovery Checkpoint Performance The Bounded Recovery (BR) Checkpoint has been enhanced to allow Extract to continue mining the redo log and generate trail files during the BR checkpoint, which decreases the BR intervals and improves Extract restart times. Active Data Guard (ADG) Redirection If ADG is configured in a cascaded mode to transport redo logs to a downstream database, Oracle GoldenGate can connect to ADG as a source database for the REGISTER command instead of connecting to the database where redo is originated. There is no source database connection needed for registering Extract. New Replicat parameter INCLUDETAG Oracle GoldenGate for Oracle now supports INCLUDETAG in addition to the existing EXCLUDETAG parameter to allow more flexibility in configuring multi-way replication topologies.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Unified Build Support",
+        "description": "Oracle GoldenGate uses a single, unified build for capturing from and applying to multiple major Oracle Database versions for supported operating systems by including the latest Oracle database client libraries as part of Oracle GoldenGate.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Automatic Extract of tables with supplemental logging is supported",
+        "description": "Oracle GoldenGate provides a new auto_capture mode to capture changes for all the tables that are enabled for logical replication. You can list the tables enabled for auto-capture using the LIST TABLES AUTO_CAPTURE command option. Use the TRANLOGOPTIONS ENABLE_AUTO_CAPTURE option to set up automatic capture. When this parameter is enabled in Extract, any table that has supplemental logging on it will be automatically captured by Extract and you don't need to add the table as a TABLE parameter. You can use the new DDL options for ALTER TABLE ... ENABLE LOGICAL REPLICATION ALL KEYS , ALTER TABLE ... ENABLE LOGICAL REPLICATION ALLOW NOVALIDATE KEYS , CREATE TABLE ... ENABLE LOGICAL REPLICATION ALL KEYS , or CREATE TABLE ... ENABLE LOGICAL REPLICATION NOVALIDATE KEYS to add supplemental logging to a table and allow Oracle GoldenGate to automatically capture it. This also requires Oracle Database 21c and higher.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Oracle native JSON datatype is supported",
+        "description": "Oracle GoldenGate capture and apply processes now support the new native JSON datatype, which is supported by Oracle Database 21c and higher.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Automatic Conflict Detection and Resolution for Oracle Database 21c is available",
+        "description": "This feature provides support in Oracle Database 21c and Oracle GoldenGate to enhance Automatic CDR to support: Earliest timestamp resolution Delete always win Site priority resolution These features can be enabled in the DBMS_GOLDENGATE.ADD_AUTO_CDR procedure.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Kerberos Authentication is supported",
+        "description": "Oracle GoldenGate supports external authentication for database login ( DBLOGIN ) for Kerberos user accounts.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Oracle Cloud Infrastructure Key Management Service (OCI KMS) integration is available",
+        "description": "Oracle GoldenGate supports integration with the OCI KMS for trail file encryption, which simplifies securing Oracle GoldenGate cloud deployments.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Autonomous Database Extract is supported",
+        "description": "Oracle GoldenGate can now capture from the Autonomous Databases in OCI. This feature allows capturing data out of specific Autonomous environment in a secure way without allowing access to any other data in that shared environment. For additional details, see Capturing from Pluggable Databases in Using Oracle GoldenGate for Oracle Database .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Replicat Compatibility Constraint",
+        "description": "Replicat compatibility with different trail file formats is ensured using this feature. The Replicat compatibility constraint is associated to the record (LCR) by the primary Extract to restrict certain record to apply by specific version of Replicat in Oracle GoldenGate 21c or higher releases without bumping up the trail file format version. This feature is displayed by the LogDump utility.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Large DDL (greater than 4 MB) replication is supported",
+        "description": "DDLs that are greater than 4 MB in size will be provided replication support.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Certificate management is available from the Microservices Architecture Web UI",
+        "description": "Server certificates and multiple client certificates can be managed from the Servicer Manager. Each deployment has a Certificate Store that holds the server, client certificates, and CA certificates, which are used when setting up a secure communication channels for a deployment.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Support for multiple client certificates for wss protocol is available",
+        "description": "You can store multiple client certificates in the Certificate Store and explicitly specify the type of authentication mechanism for the distribution paths and target-initiated paths as part of the specification. You can select one of the three authentication mechanisms, Credentials, Client Certificates, or OAuht2.0 (available with Oracle GoldenGate 21.3.0). If you choose the client certificate authentication mechansim, then you can chose a specific client certificate.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "DB_UNIQUE_NAME with heartbeat table",
+        "description": "DB_UNIQUE_NAME is available with the heartbeat table to allow users to uniquely identify the source of the heartbeat. DB_UNIQUE_NAME will allow better use of the heartbeat table in active-active environments, where, typically all the replicas have the same DB_NAME but identify each replica site uniquely using the DB_UNIQUE_NAME .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "DB_UNIQUE_NAME with trail file header",
+        "description": "DB_UNIQUE_NAME is added in the trail file header along with DB_NAME , which helps in troubleshooting replication in active-active environments, where mostly all replicas have the same DB_NAME but identify each replica site uniquely using the DB_UNIQUE_NAME .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Oracle GoldenGate Upgrade Simplification",
+        "description": "The process to upgrade to Oracle GoldenGate 21c has been further simplified. There are fewer steps necessary for the administrator to upgrade to the latest Oracle GoldenGate release. This includes automatic repositioning of Replicat after a trail file format upgrade.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Partition Name Filtering",
+        "description": "The Partition Filtering option filters explicitly on the partition name of tables. Data can be filtered based on source partition names in Extract, Pump, Distribution Service, and Replicat.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Bounded Recovery Checkpoint Performance",
+        "description": "The Bounded Recovery (BR) Checkpoint has been enhanced to allow Extract to continue mining the redo log and generate trail files during the BR checkpoint, which decreases the BR intervals and improves Extract restart times.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Active Data Guard (ADG) Redirection",
+        "description": "If ADG is configured in a cascaded mode to transport redo logs to a downstream database, Oracle GoldenGate can connect to ADG as a source database for the REGISTER command instead of connecting to the database where redo is originated. There is no source database connection needed for registering Extract.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "New Replicat parameter INCLUDETAG",
+        "description": "Oracle GoldenGate for Oracle now supports INCLUDETAG in addition to the existing EXCLUDETAG parameter to allow more flexibility in configuring multi-way replication topologies.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "DB2 z/OS",
+        "description": "Capture from temporal tables is supported Capture from temporal tables is supported with DB2 z/OS. ECSA Storage is reduced when capturing from DB2 z/OS ECSA storage requirements is reduced by using 64-bit common storage for storing log read buffers . EOF option is supported for ADD/ALTER EXTRACT The EOF option is supported to allow Extract to support various starting positions.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Capture from temporal tables is supported",
+        "description": "Capture from temporal tables is supported with DB2 z/OS.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "ECSA Storage is reduced when capturing from DB2 z/OS",
+        "description": "ECSA storage requirements is reduced by using 64-bit common storage for storing log read buffers .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "EOF option is supported for ADD/ALTER EXTRACT",
+        "description": "The EOF option is supported to allow Extract to support various starting positions.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "MySQL",
+        "description": "DDL replication with remote capture Oracle GoldenGate supports DDL replication with remote capture from MySQL 8.0 onwards. Capture DDL metadata from BINLOG Supports capturing DDL and metadata directly from MySQL BINLOG for MySQL version 8.0 and higher. JSON Datatype Support MySQL capture and delivery of JSON data is now supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "DDL replication with remote capture",
+        "description": "Oracle GoldenGate supports DDL replication with remote capture from MySQL 8.0 onwards.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Capture DDL metadata from BINLOG",
+        "description": "Supports capturing DDL and metadata directly from MySQL BINLOG for MySQL version 8.0 and higher.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "JSON Datatype Support",
+        "description": "MySQL capture and delivery of JSON data is now supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "SQL Server",
+        "description": "Support SQL Server 2019 Standard and Enterprise Capture and Delivery for SQL Server 2019 Enterprise and Standard Editions is supported. Support Azure SQL Server Database Managed Instance Capture and delivery for Azure SQL Server database managed instance is supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Support SQL Server 2019 Standard and Enterprise",
+        "description": "Capture and Delivery for SQL Server 2019 Enterprise and Standard Editions is supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
+      },
+      {
+        "title": "Support Azure SQL Server Database Managed Instance",
+        "description": "Capture and delivery for Azure SQL Server database managed instance is supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/oggcore-new-features-may-2021.html"
       }
     ],
-    "behavior_changes": [],
-    "deprecated": [],
+    "behavior_changes": [
+      {
+        "title": "Bug 37757820: Generic - Enable NOCHECKUNIQUEKEYS as Default for BATCHSQL for all non-Oracle Databases",
+        "description": "Enabled NOCHECKUNIQUEKEYS as default for BATCHSQL for all the non-Oracle databases.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Bug 37909236: MySQL - Extract fails when MariaDB has binlog_annotate_row_events variable enabled",
+        "description": "Starting with this version of Oracle GoldenGate, the requirement to set binlog_annotate_row_events to OFF has been removed for MariaDB.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Oracle GoldenGate Wallets Security Update",
+        "description": "Auto-login property removed from the Oracle GoldenGate wallets To enhance the security of Oracle GoldenGate wallets that store credential information (login information of Microservices users), the auto-login property of Oracle GoldenGate wallets has been removed. As a result, after the deployment has been patched to Oracle GoldenGate release 21.15 and higher and started, rolling back to the previous Oracle GoldenGate release of 21.14 or lower, is not feasible as the password protected wallets cannot be converted back to auto-login wallets automatically. A short-term workaround to get the information stored in the wallets before patching to Oracle GoldenGate Release 21.15 or higher, is to save the auto-login wallets from the earlier version and manually restore these wallets on a rollback.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Auto-login property removed from the Oracle GoldenGate wallets",
+        "description": "To enhance the security of Oracle GoldenGate wallets that store credential information (login information of Microservices users), the auto-login property of Oracle GoldenGate wallets has been removed. As a result, after the deployment has been patched to Oracle GoldenGate release 21.15 and higher and started, rolling back to the previous Oracle GoldenGate release of 21.14 or lower, is not feasible as the password protected wallets cannot be converted back to auto-login wallets automatically. A short-term workaround to get the information stored in the wallets before patching to Oracle GoldenGate Release 21.15 or higher, is to save the auto-login wallets from the earlier version and manually restore these wallets on a rollback.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "MySQL - Removed the remote (RMTTRAIL) option from the WebUI",
+        "description": "For MySQL, the Remote button that was used to add an Extract, has been removed from the WebUI.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "PostgreSQL - Capture and delivery support for base partitioned tables",
+        "description": "For PostgreSQL, capturing from base partitioned tables is now supported. This is a change from the previous version of Oracle GoldenGate where Extract might have been configured to capture directly against inidividual partitions, such as TABLE schema.basetable_part1 or TABLE schema.basetable_part2 . If you have configured the Extract to capture from PostgreSQL individual partitions in earlier versions of Oracle GoldenGate and are now upgrading or patching to Oracle GoldenGate 21.14 or after, you need to perform steps specified in Doc ID 3017127.1 to avoid data loss.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Oracle Database and MA Deployments",
+        "description": "Opatches bundled with JDK for all Oracle and Microservices Architecture deployments The JDK is now packaged in the Oracle GoldenGate patch starting release version 21.10 and 19.1.0.0.230418. Please note that only <GG_HOME>/jdk directory is updated with the GoldenGate patch releases. See Doc ID 2359395.1 for more information and additional references for updating JDK either through GoldenGate patch or independently. You still have the option to install the latest JDK patch into <GG_HOME>/jdk directory independently at any time. See Doc ID 1492980.1 for more information.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Opatches bundled with JDK for all Oracle and Microservices Architecture deployments",
+        "description": "The JDK is now packaged in the Oracle GoldenGate patch starting release version 21.10 and 19.1.0.0.230418. Please note that only <GG_HOME>/jdk directory is updated with the GoldenGate patch releases. See Doc ID 2359395.1 for more information and additional references for updating JDK either through GoldenGate patch or independently. You still have the option to install the latest JDK patch into <GG_HOME>/jdk directory independently at any time. See Doc ID 1492980.1 for more information.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "SQL Server",
+        "description": "For Oracle GoldenGate Microservices Architecture installations against a source SQL Server database, the Oracle GoldenGate CDC Cleanup job has been replaced with a new Purge Change Data task. A new task is required for Extract to run. You can create the task from the Administration Service, Configuration, Tasks tab. Create the task after enabling supplemental logging for the tables in a source database and prior to starting the Extract. Oracle GoldenGate Replicat for SQL Server no longer supports OLE DB and Replicat will only use ODBC for its connectivity and to deliver DML operations, and if connecting with the Microsoft ODBC Driver 17 for SQL Server, version 17.8.1 or newer, Replicat will set the connection as the Replication User automatically, which replaces the need to use the DBOPTIONS USEREPLICATIONUSER parameter.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "",
+        "description": "For Oracle GoldenGate Microservices Architecture installations against a source SQL Server database, the Oracle GoldenGate CDC Cleanup job has been replaced with a new Purge Change Data task. A new task is required for Extract to run. You can create the task from the Administration Service, Configuration, Tasks tab. Create the task after enabling supplemental logging for the tables in a source database and prior to starting the Extract.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "",
+        "description": "Oracle GoldenGate Replicat for SQL Server no longer supports OLE DB and Replicat will only use ODBC for its connectivity and to deliver DML operations, and if connecting with the Microsoft ODBC Driver 17 for SQL Server, version 17.8.1 or newer, Replicat will set the connection as the Replication User automatically, which replaces the need to use the DBOPTIONS USEREPLICATIONUSER parameter.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "DB2 for i",
+        "description": "For DB2 for i, the ADD HEARTBEATTABLE command has been enhanced to handle upgrade or misconfiguration of heartbeat table functionality. Now, you can run the ADD HEARTBEATTABLE command again to repair the functionality of an existing heartbeat table setup without deleting the existing heartbeat data.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "SQL Server",
+        "description": "Extract for SQL Server no longer abends when DDL changes are made to the underlying user tables. In prior releases, if the Extract encountered a mismatch between the user table metadata and the CDC Capture Change Tracking table metadata, due to columns added after TRANDATA was enabled for the table, the Extract would abend. From Oracle GoldenGate 21c (21.3.0) onward, Extract will not abend when table changes are made to the user table. It will continue to process the data as it exists in the CDC Capture Change Tracking table. This allows the Extract to continue to run when DDL changes occur, but you should use governance to properly handle DDL changes so that Extract can pick up the data for changed columns. For more information, see the Requirements for Table Level DDL Changes in the SQL Server chapter of the Using Oracle GoldenGate for Heterogeneous Databases guide.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Oracle GoldenGate binaries are no longer installed on a shared drive",
+        "description": "Oracle always recommended installing the Oracle GoldenGate binaries ( OGG_HOME ) on a local file system as a best practice. From this release onward, it is a requirement. The binaries must be installed on local drives. For more information refer to MOS note DOC ID 2689857.1.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Simplified heartbeat administration for Oracle Databases",
+        "description": "Heartbeat table administration operations are only be done in the schema of the DBLOGIN user. GGSCHEMA is now only required for CDB root Extracts.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Logging of full metadata enabled when upgrading from Oracle GoldenGate 19c to 21c and the database is MySQL 8.0",
+        "description": "This change is applicable when upgrading from Oracle GoldenGate 19c to 21c with MySQL 8.0.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Table containing IDENTITY columns with default sequence needs to be created with primary key",
+        "description": "For Oracle database, table with identity column needs to be created with primary key, otherwise the Replicat will abend with errors similar to the following: 2020-02-07 08:17:53 ERROR OGG-00516 Fatal error executing DDLreplication: error [Error code [1430], ORA-01430: column being added already exists intable]",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "One shiphome supporting all Oracle Database versions",
+        "description": "Instant Client 21c is bundled with Oracle GoldenGate. When launching the Oracle GoldenGate executables with Oracle data layer dependency, it is mandatory to go through the bundled instant client connectivity, libraries, and tools..",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Microservices Architecture does not support the management of individual threads for coordinated Replicat",
+        "description": "Microservices Architecture does not support the management of individual threads for coordinated Replicat. If you are using individual threads in Classic Architecture and are migrating to MA, you may need to remove those threads before migrations.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "A new Extract needs to be created when the DB timezone is changed",
+        "description": "You need to create new Extract if DB timezone is changed, especially in case of Oracle Cloud deployment.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/default-behavior-changes.html"
+      }
+    ],
+    "deprecated": [
+      {
+        "title": "DBOPTIONS USEREPLICATIONUSER is deprecated for Microsoft SQL Server Replicat for Windows",
+        "description": "With Oracle GoldenGate for Microsoft SQL Server release 21.14, the DBOPTIONS USEREPLICATIONUSER option is deprecated. With Oracle GoldenGate for Microsoft SQL Server release 21.14, all SQL Server builds automatically set the connection with Replication=yes option and the functionality of DBOPTIONS USEREPLICATIONUSER remains the same as long as the SQL Server ODBC driver is version 17.8.1 or higher.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/deprecated-features.html"
+      },
+      {
+        "title": "NonStop SQL/MX",
+        "description": "Oracle GoldenGate will not support NonStop SQL/MX after Oracle GoldenGate release 21.12 and later.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/deprecated-features.html"
+      },
+      {
+        "title": "USEODBC and USEREPLICATIONUSER options for the DBOPTIONS command have been deprecated for Oracle GoldenGate Replicat for SQL Server",
+        "description": "The DBOPTIONS options of USEODBC and USEREPLICATIONUSER have been deprecated for Replicat. Replicat can continue to run with these parameters but they will be ignored and will be desupported in future. Functionality for USEREPLICATIONUSER is now automatic when using the Microsoft ODBC Driver 17 for SQL Server, version 17.8.1 or higher. Functionality for USEODBC is now the default and Replicat connections always use ODBC.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/deprecated-features.html"
+      },
+      {
+        "title": "Oracle GoldenGate Classic Architecture is deprecated",
+        "description": "Oracle GoldenGate Classic Architecture for Oracle database and heterogeneous databases DB2 z/OS, MySQL, SQL Server, and PostgreSQL is deprecated and may be desupported and unavailable in a future release. Oracle recommends using the Oracle GoldenGate Microservices Architecture.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/deprecated-features.html"
+      },
+      {
+        "title": "CUSEREXIT for Extract is deprecated and will be desupported in future",
+        "description": "The CUSEREXIT for Extract is deprecated and will be desupported in future releases.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/deprecated-features.html"
+      },
+      {
+        "title": "Oracle Database: Oracle GoldenGate Classic Extract is desupported",
+        "description": "Oracle GoldenGate does not support classic Extract.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/deprecated-features.html"
+      },
+      {
+        "title": "Oracle Database: Oracle GoldenGate Classic Architecture is deprecated",
+        "description": "Oracle GoldenGate Classic Architecture for Oracle Database is deprecated and may be desupported and unavailable in a future release. Oracle recommends using the Oracle GoldenGate Microservices Architecture.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/deprecated-features.html"
+      },
+      {
+        "title": "UDT protocol between Distribution Server and Receiver Server has been desupported",
+        "description": "In Oracle GoldenGate Microservices Architecture 21c (21.1.0), the UDT protocol that the Distribution Server uses for sending trails files has been desupported. Use the wss , ws or ogg protocol instead of UDT because this feature will be desupported in the next major Oracle GoldenGate release.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/deprecated-features.html"
+      },
+      {
+        "title": "RMTTASK desupport and deprecation",
+        "description": "The RMTTASK parameter is desupported for Oracle GoldenGate Microservices Architecture. The parameter has been deprecated for Classic Architecture and will be desupported for Classsic Architecture in future releases.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/deprecated-features.html"
+      },
+      {
+        "title": "NO_OBJECTDEFS and NO_TRAILDEFS parameters are desupported",
+        "description": "The NO_OBJECTDEFS and NO_TRAILDEFS parameters are desupported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/deprecated-features.html"
+      },
+      {
+        "title": "OPTIMIZE_PROGRESS_TABLE parameter is desupported",
+        "description": "The parameter OPTIMIZE_PROGRESS_TABLE has been desupported for Oracle GoldenGate 21c and higher releases.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/deprecated-features.html"
+      },
+      {
+        "title": "Oracle GoldenGate replication support for Oracle Sharding is deprecated",
+        "description": "Oracle GoldenGate replication support for Oracle Sharding High Availability is deprecated with Oracle Database 21c and may be desupported in the future release. For Oracle Sharding in Database 21c, the Oracle GoldenGate support is limited to one pluggable database in a multitenant database.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/deprecated-features.html"
+      }
+    ],
     "desupported": []
-  },
-  "last_updated": "2026-05-30"
+  }
 }
