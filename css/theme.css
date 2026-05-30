@@ -1,18 +1,19 @@
 :root {
-  --oracle-red: #C74634;
-  --ink: #1D1D1F;
-  --muted: rgba(29, 29, 31, .64);
-  --muted-strong: rgba(29, 29, 31, .76);
-  --surface: #FFFFFF;
-  --surface-soft: #F5F5F7;
-  --surface-raised: #FBFBFD;
-  --bg: #F5F5F7;
-  --border: #E4E4E8;
-  --border-strong: #D6D6DC;
-  --button: #1F1F21;
-  --button-hover: #0F0F10;
-  --focus: #6E6E73;
-  --shadow: 0 14px 38px rgba(0, 0, 0, .055);
+  --oracle-red: #F85149;
+  --accent: #2F81F7;
+  --ink: #E6EDF3;
+  --muted: #7D8590;
+  --muted-strong: #A5ADB8;
+  --surface: #161B22;
+  --surface-soft: #0D1117;
+  --surface-raised: #21262D;
+  --bg: #0D1117;
+  --border: #30363D;
+  --border-strong: #8B949E;
+  --button: #21262D;
+  --button-hover: #30363D;
+  --focus: #2F81F7;
+  --shadow: 0 16px 36px rgba(1, 4, 9, .36);
 }
 
 * { box-sizing: border-box; }
@@ -83,7 +84,7 @@ body {
   font-size: 1rem;
 }
 .picker__field select:focus {
-  outline: 2px solid rgba(29, 29, 31, .22);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
 .picker__vs {
@@ -118,8 +119,8 @@ body {
 }
 .tab--active {
   color: var(--ink);
-  background: var(--surface);
-  border-color: var(--ink);
+  background: var(--surface-raised);
+  border-color: var(--accent);
   box-shadow: 0 8px 24px rgba(0, 0, 0, .055);
 }
 
@@ -177,7 +178,7 @@ body {
 }
 .item__version {
   flex: 0 0 auto;
-  color: rgba(29, 29, 31, .3);
+  color: rgba(125, 133, 144, .45);
   font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 800;
   letter-spacing: 0;
@@ -195,7 +196,7 @@ body {
   justify-content: center;
   min-height: 2.15rem;
   padding: .55rem .85rem;
-  border: 1px solid #1B1B1D;
+  border: 1px solid var(--border);
   border-radius: 4px;
   background: var(--button);
   color: #FFFFFF;
