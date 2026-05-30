@@ -114,6 +114,43 @@ Every item shows its originating Oracle doc URL (provenance = trust).
 - A "Sources & last updated" footer listing the doc pages used and the data
   refresh date.
 - Responsive and lightweight.
+- Styled with the Oracle Redwood-inspired theme (see §6a).
+
+## 6a. Visual Design & Theme (Oracle Redwood-inspired)
+
+The site uses an Oracle-branded look inspired by Oracle's **Redwood** design
+language: Oracle Red as the primary accent over clean neutral surfaces.
+
+**Color palette (CSS custom properties):**
+
+| Token | Hex | Use |
+|-------|-----|-----|
+| `--oracle-red` | `#C74634` | Primary brand accent: header bar, active tab, links, buttons |
+| `--oracle-red-dark` | `#A23824` | Hover/active states for red elements |
+| `--ink` | `#1A1A1A` | Primary text |
+| `--slate` | `#3A3F44` | Secondary text / labels |
+| `--surface` | `#FFFFFF` | Cards / panels |
+| `--bg` | `#F5F4F2` | Page background (warm neutral) |
+| `--border` | `#E0DED9` | Dividers / card borders |
+| `--added` | `#3C7A3C` | "Added" diff items (green) |
+| `--changed` | `#B5760A` | "Changed" diff items (amber) |
+| `--removed` | `#C74634` | "Removed" diff items (Oracle red) |
+
+**Treatment:**
+- Top header: Oracle-red band with the product title in white, Oracle-style
+  clean sans-serif (system stack: `"Helvetica Neue", Arial, sans-serif` — close
+  to Oracle Sans without bundling licensed fonts).
+- Version dropdowns and tabs styled with the red accent; active tab underlined
+  in Oracle red.
+- Comparison items rendered as white cards on the warm-neutral background, with
+  a thin left color bar (green/amber/red) indicating Added/Changed/Removed.
+- Accessible contrast (WCAG AA) for all text on colored backgrounds.
+- All theme values centralized as CSS custom properties so the palette can be
+  tuned in one place.
+
+> Note: this is an Oracle-*inspired* theme using public brand colors for a
+> personal/educational tool. It does not use Oracle's proprietary fonts or imply
+> official Oracle endorsement.
 
 ## 7. Hosting & Security
 
