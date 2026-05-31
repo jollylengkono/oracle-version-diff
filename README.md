@@ -6,7 +6,7 @@ target release, using data sourced from Oracle-owned web properties.
 ## How it works
 
 - **Front-end** (`index.html`, `css/`, `js/`): vanilla static site with a
-  OpenClaw-inspired light card UI and a preserved GitHub dark fallback theme.
+  Supabase-inspired light card UI and a preserved GitHub dark fallback theme.
   Loads JSON from `data/` through a single data-access seam (`js/datasource.js`,
   configured in `js/config.js`) and renders one combined list of release-note
   items introduced after the current release through the target release. No backend.

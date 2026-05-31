@@ -1,19 +1,21 @@
 :root {
   --oracle-red: #C74634;
-  --accent: #111827;
-  --ink: #111827;
-  --muted: #6B6258;
-  --muted-strong: #3F3A34;
+  --accent: #3ECF8E;
+  --accent-strong: #249361;
+  --accent-soft: rgba(62, 207, 142, .14);
+  --ink: #111817;
+  --muted: #5F6F69;
+  --muted-strong: #2F3D38;
   --surface: #FFFFFF;
-  --surface-soft: #F3EFE7;
-  --surface-raised: #FFFDF8;
-  --bg: #FBFAF6;
-  --border: #E6DFD4;
-  --border-strong: #CFC5B8;
-  --button: #1F2937;
-  --button-hover: #111827;
-  --focus: #C74634;
-  --shadow: 0 18px 44px rgba(75, 63, 48, .10);
+  --surface-soft: #F1F5F3;
+  --surface-raised: #FBFDFC;
+  --bg: #F8FAF9;
+  --border: #D8E0DC;
+  --border-strong: #AEBDB6;
+  --button: #101614;
+  --button-hover: #050807;
+  --focus: #3ECF8E;
+  --shadow: 0 14px 34px rgba(24, 38, 35, .08);
 }
 
 * { box-sizing: border-box; }
@@ -107,6 +109,7 @@ body {
 .picker__field select:focus {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
+  border-color: var(--accent);
 }
 .picker__vs {
   color: var(--muted);
@@ -139,10 +142,10 @@ body {
   background: var(--surface-raised);
 }
 .tab--active {
-  color: #FFFFFF;
-  background: var(--ink);
-  border-color: var(--ink);
-  box-shadow: var(--shadow);
+  color: #062D1F;
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(62, 207, 142, .12);
 }
 
 .panel { display: block; }
@@ -199,7 +202,7 @@ body {
 }
 .item__version {
   flex: 0 0 auto;
-  color: rgba(17, 24, 39, .18);
+  color: rgba(17, 24, 23, .30);
   font-size: 2.5rem;
   font-weight: 800;
   letter-spacing: 0;
