@@ -117,3 +117,15 @@ def test_ai_refresh_workflow_opens_review_pull_request(repo_root):
     assert _contains_line(lines, "branch: data/ai-refresh")
     assert _contains_line(lines, 'title: "AI data refresh: Oracle Release Delta"')
     assert _contains_line(lines, "labels: data-refresh")
+
+
+def test_docs_describe_manual_ai_refresh(repo_root):
+    readme = (repo_root / "README.md").read_text()
+    handover = (repo_root / "docs" / "HANDOVER.md").read_text()
+
+    assert "AI Assist Oracle Release Delta data" in readme
+    assert "OPENAI_API_KEY" in readme
+    assert "manual-only" in readme
+    assert "AI Assist Oracle Release Delta data" in handover
+    assert "OPENAI_API_KEY" in handover
+    assert "manual-only" in handover
