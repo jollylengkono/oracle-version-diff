@@ -2,10 +2,18 @@ import argparse
 import copy
 import datetime
 import json
+import os
 import pathlib
+import sys
+import tempfile
 
 from pipeline.openai_extract import DEFAULT_MODEL, extract_candidates, require_openai_api_key
-from pipeline.oracle_discovery import discover_oracle_pages, load_ai_source_targets, oracle_owned_url
+from pipeline.oracle_discovery import (
+    discover_oracle_pages,
+    load_ai_source_targets,
+    oracle_owned_url,
+    oracle_source_url,
+)
 from pipeline.validate import validate_record
 
 
@@ -40,20 +48,39 @@ def _validate_record_without_last_updated(record, today):
     validate_record(validation_record)
 
 
+def _require_dict(value, name):
+    if not isinstance(value, dict):
+        raise AIRefreshError(f"candidate payload {name} must be an object")
+    return value
+
+
 def validate_candidate_payload(payload, product_id, today):
+    _require_dict(payload, "root")
     if payload.get("product") != product_id:
         raise AIRefreshError(f"OpenAI candidate product mismatch: expected {product_id}, got {payload.get('product')}")
-    for version_entry in payload.get("versions", []):
+    versions = payload.get("versions")
+    if not isinstance(versions, list):
+        raise AIRefreshError("candidate payload versions must be a list")
+    for offset, version_entry in enumerate(versions):
+        _require_dict(version_entry, f"versions[{offset}]")
+        if "record" not in version_entry:
+            raise AIRefreshError(f"candidate payload versions[{offset}] missing record")
         index = version_entry.get("index", {})
+        _require_dict(index, f"versions[{offset}].index")
         unsupported_index_keys = set(index) - {"label", "support_track"}
         if unsupported_index_keys:
             raise AIRefreshError(f"unsupported index metadata keys: {', '.join(sorted(unsupported_index_keys))}")
-        record = version_entry["record"]
+        record = _require_dict(version_entry["record"], f"versions[{offset}].record")
         if record.get("product") != product_id:
             raise AIRefreshError(f"candidate record product mismatch: {record.get('product')}")
-        _validate_record_without_last_updated(record, today)
+        try:
+            _validate_record_without_last_updated(record, today)
+        except Exception as exc:
+            raise AIRefreshError(f"candidate record validation failed: {exc}") from exc
         for source_url in candidate_source_urls(record):
-            if not oracle_owned_url(source_url):
+            if not oracle_source_url(source_url):
+                if oracle_owned_url(source_url):
+                    raise AIRefreshError(f"HTTPS Oracle source_url required: {source_url}")
                 raise AIRefreshError(f"non-Oracle source_url rejected: {source_url}")
     return payload
 
@@ -87,7 +114,10 @@ def merge_candidate_versions(source_definition, candidate_versions, today):
         existing_by_version[version] = {"index": index, "record": record}
     merged["versions"] = sorted(
         existing_by_version.values(),
-        key=lambda entry: entry["record"]["released"],
+        key=lambda entry: (
+            entry["record"]["released"],
+            entry["record"].get("version") or entry["record"].get("release_label") or "",
+        ),
         reverse=True,
     )
     return merged
@@ -98,7 +128,25 @@ def _read_source(path):
 
 
 def _write_source(path, source_definition):
-    path.write_text(f"{json.dumps(source_definition, indent=2)}\n", encoding="utf-8")
+    path = pathlib.Path(path)
+    temp_name = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            "w",
+            encoding="utf-8",
+            dir=path.parent,
+            prefix=f".{path.name}.",
+            suffix=".tmp",
+            delete=False,
+        ) as temp_file:
+            temp_name = temp_file.name
+            temp_file.write(f"{json.dumps(source_definition, indent=2)}\n")
+            temp_file.flush()
+            os.fsync(temp_file.fileno())
+        os.replace(temp_name, path)
+    finally:
+        if temp_name and os.path.exists(temp_name):
+            os.unlink(temp_name)
 
 
 def _existing_versions(source_definition):
@@ -129,6 +177,7 @@ def run_ai_refresh(
         discover = discover_oracle_pages
     if extract is None:
         extract = extract_candidates
+    pending_writes = []
     for product_id in products:
         if product_id not in source_paths:
             raise AIRefreshError(f"unsupported AI refresh product: {product_id}")
@@ -148,6 +197,8 @@ def run_ai_refresh(
         )
         payload = validate_candidate_payload(payload, product_id, today=today)
         updated = merge_candidate_versions(source_definition, payload["versions"], today=today)
+        pending_writes.append((source_path, updated))
+    for source_path, updated in pending_writes:
         _write_source(source_path, updated)
 
 
@@ -160,7 +211,11 @@ def parse_args(argv=None):
 
 def main(argv=None):
     args = parse_args(argv)
-    run_ai_refresh(products=args.products, model=args.model)
+    try:
+        run_ai_refresh(products=args.products, model=args.model)
+    except AIRefreshError as exc:
+        print(f"::error::{exc}", file=sys.stderr)
+        raise SystemExit(1) from None
 
 
 if __name__ == "__main__":
