@@ -78,5 +78,9 @@ def test_database_and_weblogic_source_definitions_build_current_versions():
 
     assert database.product_id == "oracle-database"
     assert [record["version"] for record in database.records] == ["26ai", "21c", "19c", "12c"]
+    assert database.index_metadata["26ai"]["label"] == "Oracle AI Database 26ai"
+    assert database.index_metadata["26ai"]["label"] != "26ai"
     assert weblogic.product_id == "oracle-weblogic-server"
     assert [record["version"] for record in weblogic.records] == ["15c", "14c", "12c", "11g"]
+    assert weblogic.index_metadata["15c"]["label"] == "WebLogic Server 15c (15.1.1.0.0)"
+    assert weblogic.index_metadata["15c"]["label"] != "15c"
