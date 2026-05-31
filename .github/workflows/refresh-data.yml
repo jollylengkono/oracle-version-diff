@@ -1,4 +1,4 @@
-name: Refresh GoldenGate data
+name: Refresh Oracle Release Delta data
 
 on:
   schedule:
@@ -20,10 +20,12 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: python -m pip install -r pipeline/requirements.txt
+        run: |
+          python -m pip install -r pipeline/requirements.txt
+          python -m venv --system-site-packages .venv
 
       - name: Run test suite
-        run: python -m pytest tests/python/ -q
+        run: .venv/bin/python -m pytest tests/python/ -q
 
       - name: Rebuild data from official docs
         run: python -m pipeline.build
@@ -31,10 +33,10 @@ jobs:
       - name: Open pull request with refreshed data
         uses: peter-evans/create-pull-request@v6
         with:
-          commit-message: "data: refresh GoldenGate comparison data"
+          commit-message: "data: refresh Oracle Release Delta data"
           branch: data/refresh
-          title: "Data refresh: GoldenGate comparison"
+          title: "Data refresh: Oracle Release Delta"
           body: |
-            Automated refresh of GoldenGate comparison data from official Oracle docs.
-            Review the diff before merging — a parser/selector drift would show up here.
+            Automated refresh of Oracle Release Delta data from Oracle-owned sources.
+            Review the diff before merging; parser drift or source drift will show up here.
           labels: data-refresh

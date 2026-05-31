@@ -52,20 +52,17 @@ Implemented continuation:
   records.
 - `js/diff.js` still contains the older snapshot-style `diffRecords`/`diffSection`
   helpers for tests/backward compatibility, but the app uses `aggregateRange()`.
-- Python pipeline (`pipeline/`): crawls Oracle GoldenGate release notes via `toc.js`,
-  splits each section page on `<h3 class="sect3">` release headings into per-release
-  records, merges a static `19c` anchor plus a parsed `21c` baseline from the
-  official 21c release-note pages, validates against
-  `schema/version-record.schema.json`, writes `data/index.json` +
-  `data/oracle-goldengate/<version>.json`.
+- Python pipeline (`pipeline/`): product-registry refresh. GoldenGate is crawler-backed
+  from Oracle release notes; Oracle Database and Oracle WebLogic Server are
+  source-backed curated adapters regenerated from maintained Oracle-owned source
+  definitions.
 - GitHub Action `.github/workflows/refresh-data.yml`: weekly (Mon 06:00 UTC) +
-  manual; runs pytest, `python -m pipeline.build`, opens a review PR.
+  manual; runs pytest, `python -m pipeline.build`, refreshes all registered products,
+  and opens a review PR.
 - Tests: JS (`node --test`) and Python (`pytest`) suites cover range aggregation,
   schema validation, release parsing, and legacy baselines.
-- Oracle Database currently has a curated seed under `data/oracle-database/` for
-  `12c -> 26ai`; it is not yet crawler-backed.
-- Oracle WebLogic Server currently has a curated seed under
-  `data/oracle-weblogic-server/` for `11g -> 15c`; it is not yet crawler-backed.
+- Oracle Database and Oracle WebLogic Server are not auto-discovered yet; adding
+  a new release requires updating their curated source definitions.
 - Source policy is Oracle-owned web properties: `oracle.com` or any subdomain.
   Curated Database and WebLogic tests reject non-Oracle source hosts.
 
