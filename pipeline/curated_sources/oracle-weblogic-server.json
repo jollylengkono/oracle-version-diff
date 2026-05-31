@@ -1,0 +1,291 @@
+{
+  "product": {
+    "id": "oracle-weblogic-server",
+    "label": "Oracle WebLogic Server"
+  },
+  "versions": [
+    {
+      "index": {},
+      "record": {
+        "product": "oracle-weblogic-server",
+        "version": "15c",
+        "release_label": "Oracle WebLogic Server 15c (15.1.1.0.0)",
+        "record_type": "release",
+        "released": "2025-10-01",
+        "sections": {
+          "certification": [],
+          "whats_new": [
+            {
+              "title": "Jakarta EE 9.1 full platform support",
+              "description": "WebLogic Server 15.1.1.0.0 is a fully compatible implementation of Jakarta EE 9.1.",
+              "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+            },
+            {
+              "title": "Java SE 17 and 21 certification",
+              "description": "WebLogic Server 15c provides Java SE 17 and Java SE 21 certification.",
+              "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+            },
+            {
+              "title": "OpenRewrite upgrade recipes",
+              "description": "WebLogic Server application upgrade tooling provides OpenRewrite recipes for Jakarta namespace, descriptor, Java, Maven, and Spring migration tasks.",
+              "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+            },
+            {
+              "title": "Certificate Management Service technical preview",
+              "description": "WebLogic Server 15c introduces a Certificate Management Service technical preview for obtaining and storing certificates in domain keystores.",
+              "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+            },
+            {
+              "title": "Separate XA recovery database credentials",
+              "description": "XA data sources can use separate database credentials for XA recovery processing and application processing.",
+              "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+            }
+          ],
+          "behavior_changes": [
+            {
+              "title": "Jakarta namespace migration",
+              "description": "Applications must move from Java EE javax namespaces to Jakarta EE jakarta namespaces for the WebLogic Server 15.1.1.0.0 application environment.",
+              "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+            },
+            {
+              "title": "Applications must be modified and recompiled",
+              "description": "Oracle documents that applications from WebLogic Server 12.2.1.4.0, 14.1.1.0.0, and 14.1.2.0.0 must be modified and recompiled for WebLogic Server 15.1.1.0.0.",
+              "source_url": "https://docs.oracle.com/pls/topic/lookup?ctx=en%2Fmiddleware%2Fstandalone%2Fweblogic-server%2F15.1.1%2Fintro&id=WLUPG107"
+            },
+            {
+              "title": "Jakarta EE namespace changes from javax to jakarta",
+              "description": "The primary Jakarta EE 9.1 platform change is the package namespace move from javax.* to jakarta.* APIs.",
+              "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+            },
+            {
+              "title": "Technical preview certificate service is not production-ready",
+              "description": "Oracle marks the Certificate Management Service as a technical preview for testing only, not for production environments.",
+              "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+            }
+          ],
+          "deprecated": [
+            {
+              "title": "Legacy Jakarta EE specifications removed",
+              "description": "Jakarta EE 9 removes legacy specifications such as JAXR, XML RPC, Deployment, Management, and Distributed Interoperability.",
+              "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+            },
+            {
+              "title": "javax namespace no longer matches the target platform",
+              "description": "Applications using Java EE javax.* APIs must be migrated to Jakarta EE jakarta.* APIs for WebLogic Server 15.1.1.0.0.",
+              "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+            },
+            {
+              "title": "Legacy XML RPC specification removed from Jakarta EE 9",
+              "description": "XML RPC 1.1 is among the legacy specifications removed from the Jakarta EE 9 platform supported by WebLogic Server 15c.",
+              "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+            },
+            {
+              "title": "Legacy JAXR specification removed from Jakarta EE 9",
+              "description": "Jakarta XML Registries, formerly Java API for XML Registries, is among the specifications removed from Jakarta EE 9.",
+              "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+            }
+          ],
+          "desupported": []
+        }
+      }
+    },
+    {
+      "index": {},
+      "record": {
+        "product": "oracle-weblogic-server",
+        "version": "14c",
+        "release_label": "Oracle WebLogic Server 14c (14.1.2.0.0)",
+        "record_type": "release",
+        "released": "2024-12-01",
+        "sections": {
+          "certification": [],
+          "whats_new": [
+            {
+              "title": "Jakarta EE 8 full platform support",
+              "description": "WebLogic Server 14.1.2.0.0 provides Jakarta EE 8 full platform support.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+            },
+            {
+              "title": "Java SE 17 and 21 certification",
+              "description": "WebLogic Server 14.1.2.0.0 is certified for Java SE 17 and Java SE 21.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+            },
+            {
+              "title": "WebLogic Migration Analysis Tool",
+              "description": "WebLogic Server 14.1.2.0.0 adds a command line migration analysis utility that identifies removed or unused APIs in WebLogic applications.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+            },
+            {
+              "title": "OpenRewrite recipes",
+              "description": "WebLogic Server 14.1.2.0.0 provides OpenRewrite recipes to simplify migrating WebLogic applications to a new WebLogic and Java version.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+            },
+            {
+              "title": "Secured production mode enabled by default",
+              "description": "When production mode is selected in WebLogic Server 14.1.2.0.0, secured production mode defaults are automatically enabled.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+            },
+            {
+              "title": "OpenID Connect authentication provider",
+              "description": "WebLogic Server 14.1.2.0.0 adds a WebLogic OpenID Connect provider for authentication and identity assertion.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+            },
+            {
+              "title": "Cluster-targeted JMS automatic rebalance",
+              "description": "WebLogic Server 14.1.2.0.0 adds an option to automatically rebalance running cluster-targeted JMS instances when the system is idle.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+            }
+          ],
+          "behavior_changes": [
+            {
+              "title": "14c JDK interoperability limitations",
+              "description": "Oracle documents interoperability limitations for WebLogic Server 14.1.2.0.0 instances and Java IIOP clients running on JDK 17 or 21.",
+              "source_url": "https://docs.oracle.com/pls/topic/lookup?ctx=en%2Fmiddleware%2Ffusion-middleware%2Fweblogic-server%2F14.1.2%2Fdepgd&id=INTRO-GUID-A8ABF11F-230E-4959-9B91-8AE1E7E43750"
+            },
+            {
+              "title": "Production mode enables stricter security defaults",
+              "description": "Selecting production mode automatically enables secured production mode, changing default security behavior for new domains.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+            },
+            {
+              "title": "Demo certificate authority is per-domain",
+              "description": "The demonstration certificate authority is unique to each new domain and uses PKCS12 identity and trust keystores.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+            }
+          ],
+          "deprecated": [
+            {
+              "title": "Legacy API migration analysis required",
+              "description": "Oracle recommends using migration analysis tooling to identify APIs removed or no longer used in WebLogic Server 14c.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+            }
+          ],
+          "desupported": []
+        }
+      }
+    },
+    {
+      "index": {},
+      "record": {
+        "product": "oracle-weblogic-server",
+        "version": "12c",
+        "release_label": "Oracle WebLogic Server 12c (12.2.1.4.0)",
+        "record_type": "release",
+        "released": "2019-09-01",
+        "sections": {
+          "certification": [],
+          "whats_new": [
+            {
+              "title": "Java EE 7 application platform",
+              "description": "WebLogic Server 12c Release 2 provides a Java EE 7 application server line for enterprise Java applications.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/index.html"
+            },
+            {
+              "title": "Runtime improvements",
+              "description": "WebLogic Server 12.2.1.4 includes runtime improvements for deployment, JDBC data sources, JTA, messaging, monitoring WebSocket applications, RESTful web services, and dynamic clusters.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+            },
+            {
+              "title": "WebLogic Kubernetes Toolkit integration",
+              "description": "Oracle documents Kubernetes tooling for migration, domain management, deployment, monitoring, and image patching of WebLogic Server environments.",
+              "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/kubernetes_toolkit.html"
+            },
+            {
+              "title": "WebLogic Server slim installer",
+              "description": "WebLogic Server 12.2.1.4 adds a lightweight slim installer that can be run from the command line.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+            },
+            {
+              "title": "SNMPv3 default protocol",
+              "description": "When SNMP is enabled in WebLogic Server 12.2.1.4.0 and later, SNMPv3 is enabled by default.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+            }
+          ],
+          "behavior_changes": [
+            {
+              "title": "Application name behavior change",
+              "description": "WebLogic Server 12.2.1 includes deployment behavior changes, including behavior for application names.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+            },
+            {
+              "title": "SNMPv3 replaces older SNMP defaults",
+              "description": "The default SNMP protocol changes to SNMPv3 when SNMP is enabled, because SNMPv1 and SNMPv2 use clear text passwords.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+            },
+            {
+              "title": "Latest REST management resource version changes",
+              "description": "In WebLogic Server 12.2.1.4.0, the latest REST management resource version becomes 12.2.1.4.0 while older REST resource versions are deprecated.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+            }
+          ],
+          "deprecated": [
+            {
+              "title": "Multitenant domain partitions deprecated",
+              "description": "WebLogic Server Multitenant domain partitions, resource groups, resource group templates, and virtual targets are deprecated in WebLogic Server 12.2.1.4.0.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/tasks/appdeployments.html"
+            },
+            {
+              "title": "JAXR removed",
+              "description": "The Java API for XML Registries is removed from Oracle WebLogic Server as of version 12.2.1.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+            },
+            {
+              "title": "SNMP v1 and v2 deprecated",
+              "description": "WebLogic Server 12.2.1.4.0 deprecates SNMPv1 and SNMPv2 configuration in favor of SNMPv3.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+            },
+            {
+              "title": "WebLogic jCOM deprecated",
+              "description": "WebLogic jCOM is deprecated as of WebLogic Server 12.2.1.4.0.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+            },
+            {
+              "title": "OPatchAutoFMW deprecated",
+              "description": "OPatchAutoFMW is deprecated as of WebLogic Server 12.2.1.4.0.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+            },
+            {
+              "title": "WebLogic full client deprecated",
+              "description": "The WebLogic full client wlfullclient.jar is deprecated; Oracle recommends T3 client or Install client alternatives.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+            },
+            {
+              "title": "Log4j integration deprecated",
+              "description": "Using Log4j with the WebLogic logging service is deprecated; Log4j 2 and later are not supported in WebLogic Server.",
+              "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+            }
+          ],
+          "desupported": []
+        }
+      }
+    },
+    {
+      "index": {},
+      "record": {
+        "product": "oracle-weblogic-server",
+        "version": "11g",
+        "release_label": "Oracle WebLogic Server 11g (10.3.6)",
+        "record_type": "baseline",
+        "released": "2011-12-01",
+        "sections": {
+          "certification": [],
+          "whats_new": [
+            {
+              "title": "Java SE 7 support",
+              "description": "WebLogic Server 10.3.6 adds Java SE 7 support for supported configurations.",
+              "source_url": "https://docs.oracle.com/cd/E28280_01/web.1111/e13852/whatsnew.htm"
+            },
+            {
+              "title": "Updated WebLogic Server 11g feature set",
+              "description": "Oracle documents new and changed functionality for configuration, deployment, JDBC, JMS, JTA, security, Spring, TopLink, web applications, and web services in WebLogic Server 10.3.6.",
+              "source_url": "https://docs.oracle.com/cd/E28280_01/web.1111/e13852/whatsnew.htm"
+            }
+          ],
+          "behavior_changes": [],
+          "deprecated": [],
+          "desupported": []
+        }
+      }
+    }
+  ]
+}

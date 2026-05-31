@@ -1,0 +1,349 @@
+{
+  "product": {
+    "id": "oracle-database",
+    "label": "Oracle Database"
+  },
+  "versions": [
+    {
+      "index": {
+        "support_track": "Long Term Support Release"
+      },
+      "record": {
+        "product": "oracle-database",
+        "version": "26ai",
+        "release_label": "Oracle AI Database 26ai",
+        "record_type": "release",
+        "released": "2026-01-01",
+        "sections": {
+          "certification": [],
+          "whats_new": [
+            {
+              "title": "AI Vector Search",
+              "description": "Oracle AI Vector Search supports AI workloads by storing vector embeddings and querying data by semantic similarity inside Oracle Database.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+            },
+            {
+              "title": "JSON-Relational Duality Views",
+              "description": "JSON-relational duality views let application data be accessed and updated as either JSON documents or relational tables.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+            },
+            {
+              "title": "Property Graphs in SQL",
+              "description": "Oracle Database adds SQL property graph query support so graph relationships can be queried inside the database.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+            },
+            {
+              "title": "Select AI enhancements",
+              "description": "Select AI extends natural-language database interaction and adds support for additional AI providers.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+            },
+            {
+              "title": "Globally Distributed Database Raft replication",
+              "description": "Oracle Globally Distributed Database adds built-in Raft replication for distributed database deployments.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+            },
+            {
+              "title": "SQL Firewall",
+              "description": "Oracle AI Database 26ai adds SQL Firewall capabilities to control which SQL can execute against the database.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+            },
+            {
+              "title": "True Cache",
+              "description": "True Cache provides an automatically managed, consistent, mostly diskless cache for read-only workloads against Oracle AI Database.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+            },
+            {
+              "title": "UCP asynchronous extension",
+              "description": "Universal Connection Pool adds asynchronous database-call support for scalable Java applications.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+            }
+          ],
+          "behavior_changes": [
+            {
+              "title": "Oracle Database release number changes",
+              "description": "The VERSION, VERSION_LEGACY, and VERSION_FULL release number values are updated in Oracle AI Database 26ai.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "SQL/JSON JSON_VALUE can return SQL BOOLEAN",
+              "description": "After COMPATIBLE is set to 23.0.0 or higher, SQL/JSON path item methods can return SQL BOOLEAN values.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "SYSDATE and SYSTIMESTAMP reflect PDB time zone",
+              "description": "SYSDATE and SYSTIMESTAMP can be managed separately for each database using the individual database time zone setting.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "Installation archives are digitally signed",
+              "description": "Oracle AI Database 26ai digitally signs installation archive files so deployments can verify package integrity.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+            },
+            {
+              "title": "Version banner uses 26ai release numbering",
+              "description": "Oracle AI Database 26ai updates release-number reporting while retaining the underlying full version format used by the database.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-release-numbers.html"
+            }
+          ],
+          "deprecated": [
+            {
+              "title": "Oracle Enterprise Manager Database Express desupported",
+              "description": "Oracle Enterprise Manager Database Express is desupported in Oracle AI Database 26ai.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "Oracle Wallet Manager desupported",
+              "description": "Oracle Wallet Manager is desupported starting with Oracle AI Database 26ai.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "Traditional auditing desupported",
+              "description": "Traditional auditing is desupported in Oracle AI Database 26ai.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "DBUA and manual upgrade methods desupported",
+              "description": "AutoUpgrade and Replay Upgrade are the supported upgrade methods for Oracle AI Database 26ai; DBUA and manual upgrade methods are desupported.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "Oracle JDBC-OCI thick driver deprecated",
+              "description": "The Oracle JDBC OCI Type 2 client driver is deprecated in Oracle AI Database 26ai.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "RASADM desupported",
+              "description": "The Real Application Security GUI administration tool RASADM is desupported in Oracle AI Database 26ai; Oracle recommends using the RAS PL/SQL API.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "Legacy Oracle XML DB repository access paths reviewed",
+              "description": "Oracle AI Database 26ai upgrade guidance includes legacy XML DB and related component changes that require review during upgrade planning.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+            }
+          ],
+          "desupported": []
+        }
+      }
+    },
+    {
+      "index": {
+        "support_track": "Innovation Release"
+      },
+      "record": {
+        "product": "oracle-database",
+        "version": "21c",
+        "release_label": "Oracle Database 21c",
+        "record_type": "release",
+        "released": "2021-01-01",
+        "sections": {
+          "certification": [],
+          "whats_new": [
+            {
+              "title": "Native JSON data type",
+              "description": "Oracle Database 21c introduces a SQL and PL/SQL JSON data type for binary JSON storage and direct client access.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/nfcon/application-development.html"
+            },
+            {
+              "title": "Blockchain tables",
+              "description": "Blockchain tables provide tamper-resistant, insert-only tables with retention controls for rows and table data.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/whats-new.html"
+            },
+            {
+              "title": "SQL macros",
+              "description": "SQL macros improve developer productivity by allowing PL/SQL functions to return SQL text that is expanded into a statement.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Changes-in-This-Release-for-Oracle-Database-SQL-Language-Reference.html"
+            },
+            {
+              "title": "JSON_TRANSFORM for JSON updates",
+              "description": "Oracle Database 21c adds SQL function JSON_TRANSFORM to update parts of a JSON document declaratively.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/nfcon/application-development.html"
+            },
+            {
+              "title": "Immutable tables",
+              "description": "Immutable tables protect inserted rows from update and deletion for a configured retention period.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/whats-new.html"
+            }
+          ],
+          "behavior_changes": [
+            {
+              "title": "Read-only Oracle homes by default",
+              "description": "Oracle Database 21c configures Oracle Database homes in read-only mode by default, separating installation files from configuration and log files.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "Multitenant architecture required",
+              "description": "Starting with Oracle Database 21c, Oracle Database is only supported using the multitenant architecture.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "JSON data can use native binary storage",
+              "description": "Applications can store JSON in the native JSON data type, changing storage and client-access choices for JSON workloads.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/nfcon/application-development.html"
+            }
+          ],
+          "deprecated": [
+            {
+              "title": "Traditional auditing deprecated",
+              "description": "Traditional auditing is deprecated in Oracle Database 21c; Oracle recommends using unified auditing.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "DBMS_OBFUSCATION_TOOLKIT desupported",
+              "description": "The DBMS_OBFUSCATION_TOOLKIT package is desupported in Oracle Database 21c and replaced with DBMS_CRYPTO.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "Oracle OLAP deprecated",
+              "description": "Analytic workspaces, the OLAP DML programming language, and the OLAP Java API are deprecated in Oracle Database 21c.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "Non-CDB architecture desupported",
+              "description": "Oracle Database 21c supports only the multitenant architecture, making non-CDB databases unavailable for this release line.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/oracle-database-changes-deprecations-desupports.html"
+            }
+          ],
+          "desupported": []
+        }
+      }
+    },
+    {
+      "index": {
+        "support_track": "Long Term Support Release"
+      },
+      "record": {
+        "product": "oracle-database",
+        "version": "19c",
+        "release_label": "Oracle Database 19c",
+        "record_type": "baseline",
+        "released": "2019-01-01",
+        "sections": {
+          "certification": [],
+          "whats_new": [
+            {
+              "title": "Automatic indexing",
+              "description": "Oracle Database 19c can automatically create, rebuild, and drop indexes based on application workload changes.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+            },
+            {
+              "title": "Real-time statistics",
+              "description": "Oracle Database 19c automatically gathers online statistics during conventional DML operations.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+            },
+            {
+              "title": "SQL quarantine",
+              "description": "Oracle Database 19c can quarantine execution plans for SQL statements that consume excessive CPU or I/O resources.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+            },
+            {
+              "title": "Hybrid partitioned tables",
+              "description": "Hybrid partitioned tables allow partitions to reside in both database segments and external files or sources.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+            },
+            {
+              "title": "Memoptimized rowstore fast ingest",
+              "description": "Oracle Database 19c adds fast ingest support for high-frequency single-row inserts into the memoptimized rowstore.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+            }
+          ],
+          "behavior_changes": [
+            {
+              "title": "Oracle Database changes, desupports, and deprecations consolidated",
+              "description": "Oracle Database 19c upgrade documentation consolidates release behavior changes, deprecations, and desupport notices to help upgrade planning.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "Release update model replaces patch sets",
+              "description": "Oracle Database 19c upgrade guidance aligns with the release update model rather than older patch set delivery patterns.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/oracle-database-changes-deprecations-desupports.html"
+            }
+          ],
+          "deprecated": [
+            {
+              "title": "Oracle Text FILE_DATASTORE deprecated",
+              "description": "Starting with Oracle Database 19c, the Oracle Text FILE_DATASTORE type is deprecated; Oracle recommends DIRECTORY_DATASTORE.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "Oracle Text URL_DATASTORE deprecated",
+              "description": "Starting with Oracle Database 19c, the Oracle Text URL_DATASTORE type is deprecated; Oracle recommends NETWORK_DATASTORE.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/oracle-database-changes-deprecations-desupports.html"
+            },
+            {
+              "title": "Oracle Streams desupported",
+              "description": "Oracle Streams is desupported in Oracle Database 19c upgrade planning guidance.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/oracle-database-changes-deprecations-desupports.html"
+            }
+          ],
+          "desupported": []
+        }
+      }
+    },
+    {
+      "index": {},
+      "record": {
+        "product": "oracle-database",
+        "version": "12c",
+        "release_label": "Oracle Database 12c Release 2",
+        "record_type": "baseline",
+        "released": "2017-03-01",
+        "sections": {
+          "certification": [],
+          "whats_new": [
+            {
+              "title": "Long identifiers",
+              "description": "Oracle Database 12c Release 2 increases the maximum length of most identifiers from 30 bytes to 128 bytes.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/newft/new-features.html"
+            },
+            {
+              "title": "JSON support enhancements",
+              "description": "Oracle Database 12c Release 2 adds JSON search and query improvements, including JSON data guide support.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/newft/new-features.html"
+            },
+            {
+              "title": "Online table redefinition improvements",
+              "description": "Online redefinition gains restart, rollback, progress monitoring, and broader table support.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/newft/new-features.html"
+            },
+            {
+              "title": "Online conversion to partitioned tables",
+              "description": "Nonpartitioned tables can be converted to partitioned tables online while indexes are maintained and DML continues.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/newft/new-features.html"
+            },
+            {
+              "title": "Online table move",
+              "description": "Nonpartitioned tables can be moved online without blocking concurrent DML, with automatic index maintenance as part of the move.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/newft/new-features.html"
+            }
+          ],
+          "behavior_changes": [
+            {
+              "title": "Grid Infrastructure installation uses zip images",
+              "description": "Oracle Grid Infrastructure 12c Release 2 installation media is delivered as a zip image for the installer.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/newft/new-features.html"
+            },
+            {
+              "title": "12.2 upgrade planning requires behavior-change review",
+              "description": "Oracle documents 12c Release 2 behavior changes separately from new features so upgrade projects can review compatibility impacts before moving forward.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/upgrd/behavior-change-deprecate-desupport-oracle-12c-rel-2.html"
+            }
+          ],
+          "deprecated": [
+            {
+              "title": "12c Release 2 upgrade changes should be reviewed",
+              "description": "Oracle documents behavior changes, deprecated features, and desupported features for Oracle Database 12c Release 2 upgrade planning.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/upgrd/behavior-change-deprecate-desupport-oracle-12c-rel-2.html"
+            },
+            {
+              "title": "Non-CDB architecture deprecated",
+              "description": "Oracle Database 12c Release 2 upgrade documentation identifies the non-CDB architecture as deprecated and directs users toward multitenant architecture planning.",
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/upgrd/behavior-change-deprecate-desupport-oracle-12c-rel-2.html"
+            }
+          ],
+          "desupported": []
+        }
+      }
+    }
+  ]
+}
