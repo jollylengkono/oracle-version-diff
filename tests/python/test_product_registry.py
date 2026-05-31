@@ -50,6 +50,17 @@ def test_registry_check_rejects_unregistered_data_product():
         ensure_data_products_registered(index, {"oracle-goldengate"})
 
 
+def test_registry_check_rejects_registered_product_missing_from_data():
+    index = {
+        "products": [
+            {"id": "oracle-goldengate", "label": "Oracle GoldenGate", "versions": []},
+        ]
+    }
+
+    with pytest.raises(AssertionError, match="oracle-database"):
+        ensure_data_products_registered(index, {"oracle-goldengate", "oracle-database"})
+
+
 def test_registered_product_ids_honors_explicit_empty_adapters():
     assert registered_product_ids([]) == set()
 

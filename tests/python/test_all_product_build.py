@@ -25,6 +25,11 @@ def _record(product, version, released):
 
 
 def test_write_all_product_outputs_writes_combined_index(tmp_path):
+    product_dir = tmp_path / "one"
+    product_dir.mkdir()
+    stale_file = product_dir / "stale.json"
+    stale_file.write_text("{}", encoding="utf-8")
+
     products = [
         ProductBuild(
             "one",
@@ -39,6 +44,7 @@ def test_write_all_product_outputs_writes_combined_index(tmp_path):
 
     assert (tmp_path / "one" / "2.json").exists()
     assert (tmp_path / "two" / "a.json").exists()
+    assert not stale_file.exists()
 
     index = json.loads((tmp_path / "index.json").read_text())
     assert [product["id"] for product in index["products"]] == ["one", "two"]

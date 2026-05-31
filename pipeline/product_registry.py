@@ -41,9 +41,12 @@ def ensure_data_products_registered(index, registered_ids=None):
         registered_ids = registered_product_ids()
     registered_ids = set(registered_ids)
     data_ids = {product["id"] for product in index.get("products", [])}
-    missing = sorted(data_ids - registered_ids)
-    if missing:
-        raise AssertionError(f"Products missing refresh adapters: {', '.join(missing)}")
+    missing_adapters = sorted(data_ids - registered_ids)
+    if missing_adapters:
+        raise AssertionError(f"Products missing refresh adapters: {', '.join(missing_adapters)}")
+    missing_data = sorted(registered_ids - data_ids)
+    if missing_data:
+        raise AssertionError(f"Registered products missing from data index: {', '.join(missing_data)}")
 
 
 def build_all_products(adapters=None, fetch=None, today=None):

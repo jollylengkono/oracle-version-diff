@@ -170,6 +170,10 @@ def write_all_product_outputs(products, data_dir):
         product_dir = data_dir / product.product_id
         product_dir.mkdir(parents=True, exist_ok=True)
         records = sorted(product.records, key=lambda r: r["released"], reverse=True)
+        expected_files = {f"{record['version']}.json" for record in records}
+        for existing_file in product_dir.glob("*.json"):
+            if existing_file.name not in expected_files:
+                existing_file.unlink()
         n = len(records)
         versions_index = []
         metadata_by_version = product.index_metadata or {}
