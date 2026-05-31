@@ -22,6 +22,16 @@
         "title": "SQL macros",
         "description": "SQL macros improve developer productivity by allowing PL/SQL functions to return SQL text that is expanded into a statement.",
         "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Changes-in-This-Release-for-Oracle-Database-SQL-Language-Reference.html"
+      },
+      {
+        "title": "JSON_TRANSFORM for JSON updates",
+        "description": "Oracle Database 21c adds SQL function JSON_TRANSFORM to update parts of a JSON document declaratively.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/nfcon/application-development.html"
+      },
+      {
+        "title": "Immutable tables",
+        "description": "Immutable tables protect inserted rows from update and deletion for a configured retention period.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/whats-new.html"
       }
     ],
     "behavior_changes": [
@@ -34,6 +44,11 @@
         "title": "Multitenant architecture required",
         "description": "Starting with Oracle Database 21c, Oracle Database is only supported using the multitenant architecture.",
         "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "JSON data can use native binary storage",
+        "description": "Applications can store JSON in the native JSON data type, changing storage and client-access choices for JSON workloads.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/nfcon/application-development.html"
       }
     ],
     "deprecated": [
@@ -50,6 +65,11 @@
       {
         "title": "Oracle OLAP deprecated",
         "description": "Analytic workspaces, the OLAP DML programming language, and the OLAP Java API are deprecated in Oracle Database 21c.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "Non-CDB architecture desupported",
+        "description": "Oracle Database 21c supports only the multitenant architecture, making non-CDB databases unavailable for this release line.",
         "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/oracle-database-changes-deprecations-desupports.html"
       }
     ],

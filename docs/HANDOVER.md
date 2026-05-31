@@ -41,8 +41,10 @@ Implemented continuation:
   `js/render.js` → `renderAggregated`, driven by `js/app.js`).
 - Product selector supports Oracle GoldenGate, Oracle Database, and Oracle
   WebLogic Server.
-- Version selector labels show LTS status when known, for example `Oracle Database
-  19c (LTS)` and `Oracle Database 21c (Non-LTS)`.
+- Version selector labels intentionally show clean release names only. Database
+  support-track metadata is stored in `data/index.json` only where Oracle
+  explicitly labels the release, for example `Long Term Support Release` or
+  `Innovation Release`; WebLogic entries do not carry guessed LTS metadata.
 - Current/target release selectors are directional. `19c -> 21c` shows items after
   19c through 21c, and future releases work once the product data adds their JSON
   records.

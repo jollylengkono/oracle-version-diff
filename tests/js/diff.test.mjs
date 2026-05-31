@@ -6,7 +6,6 @@ import {
   pickDefaultVersions,
   releaseDeltaHeading,
   releaseDeltaSubheading,
-  supportTrackLabel,
   versionOptionLabel
 } from '../../js/app.js';
 
@@ -94,12 +93,15 @@ test('release delta copy describes directional current-to-target flow', () => {
   );
 });
 
-test('version labels expose LTS status in selectors', () => {
-  assert.equal(supportTrackLabel({ is_lts: true }), 'LTS');
-  assert.equal(supportTrackLabel({ is_lts: false }), 'Non-LTS');
-  assert.equal(supportTrackLabel({}), 'Non-LTS');
-  assert.equal(versionOptionLabel({ label: 'Oracle Database 19c', is_lts: true }), 'Oracle Database 19c (LTS)');
-  assert.equal(versionOptionLabel({ label: 'Oracle Database 21c', is_lts: false }), 'Oracle Database 21c (Non-LTS)');
+test('version labels stay clean in selectors without support-track suffixes', () => {
+  assert.equal(
+    versionOptionLabel({ label: 'Oracle Database 19c', support_track: 'Long Term Support Release' }),
+    'Oracle Database 19c'
+  );
+  assert.equal(
+    versionOptionLabel({ label: 'Oracle Database 21c', support_track: 'Innovation Release' }),
+    'Oracle Database 21c'
+  );
 });
 
 test('aggregateRange concatenates releases after older through newer and badges source release', () => {
