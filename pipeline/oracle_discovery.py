@@ -36,9 +36,20 @@ def oracle_owned_url(url):
     return parsed.scheme in ("http", "https") and (host == "oracle.com" or host.endswith(".oracle.com"))
 
 
+def oracle_source_url(url):
+    parsed = urlparse(url)
+    return parsed.scheme == "https" and oracle_owned_url(url)
+
+
 def require_oracle_url(url):
     if not oracle_owned_url(url):
         raise OracleSourceError(f"non-Oracle URL rejected: {url}")
+    return url
+
+
+def require_oracle_source_url(url):
+    if not oracle_source_url(url):
+        raise OracleSourceError(f"HTTPS Oracle URL required: {url}")
     return url
 
 
@@ -56,7 +67,7 @@ def unique_oracle_urls(urls, base_url):
 
 
 def fetch_oracle_page(url, session=None):
-    require_oracle_url(url)
+    require_oracle_source_url(url)
     session = session or requests.Session()
     response = session.get(
         url,
@@ -66,8 +77,10 @@ def fetch_oracle_page(url, session=None):
     )
     response.raise_for_status()
     final_url = response.url or url
-    if not oracle_owned_url(final_url):
-        raise OracleSourceError(f"Oracle URL redirected to non-Oracle URL: {final_url}")
+    redirect_urls = [hop.url for hop in getattr(response, "history", []) if hop.url]
+    for redirect_url in redirect_urls + [final_url]:
+        if not oracle_source_url(redirect_url):
+            raise OracleSourceError(f"Oracle URL redirected to non-HTTPS Oracle URL: {redirect_url}")
     return OraclePage(final_url, response.text)
 
 
@@ -84,10 +97,19 @@ def _candidate_links(page):
 def discover_oracle_pages(seed_urls, session=None, max_linked_pages=12):
     pages = []
     linked_urls = []
+    seen_urls = set()
     for seed_url in seed_urls:
+        if seed_url in seen_urls:
+            continue
+        seen_urls.add(seed_url)
         seed_page = fetch_oracle_page(seed_url, session=session)
         pages.append(seed_page)
-        linked_urls.extend(_candidate_links(seed_page))
+        seen_urls.add(seed_page.url)
+        for linked_url in _candidate_links(seed_page):
+            if linked_url in seen_urls:
+                continue
+            seen_urls.add(linked_url)
+            linked_urls.append(linked_url)
     for url in linked_urls[:max_linked_pages]:
         pages.append(fetch_oracle_page(url, session=session))
     return pages
@@ -98,6 +120,9 @@ def load_ai_source_targets(path):
     for product_id, target in targets.items():
         if not target.get("label"):
             raise OracleSourceError(f"AI source target missing label: {product_id}")
-        for url in target.get("seed_urls", []):
-            require_oracle_url(url)
+        seed_urls = target.get("seed_urls")
+        if not isinstance(seed_urls, list) or not seed_urls:
+            raise OracleSourceError(f"AI source target missing seed_urls list: {product_id}")
+        for url in seed_urls:
+            require_oracle_source_url(url)
     return targets
