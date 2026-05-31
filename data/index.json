@@ -160,8 +160,8 @@
           "order": 4,
           "record_type": "release",
           "released": "2026-01-01",
-          "support_track": "Long Term Support Release",
-          "file": "oracle-database/26ai.json"
+          "file": "oracle-database/26ai.json",
+          "support_track": "Long Term Support Release"
         },
         {
           "version": "21c",
@@ -169,8 +169,8 @@
           "order": 3,
           "record_type": "release",
           "released": "2021-01-01",
-          "support_track": "Innovation Release",
-          "file": "oracle-database/21c.json"
+          "file": "oracle-database/21c.json",
+          "support_track": "Innovation Release"
         },
         {
           "version": "19c",
@@ -178,8 +178,8 @@
           "order": 2,
           "record_type": "baseline",
           "released": "2019-01-01",
-          "support_track": "Long Term Support Release",
-          "file": "oracle-database/19c.json"
+          "file": "oracle-database/19c.json",
+          "support_track": "Long Term Support Release"
         },
         {
           "version": "12c",

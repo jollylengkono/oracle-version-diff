@@ -4,7 +4,6 @@
   "release_label": "Oracle WebLogic Server 12c (12.2.1.4.0)",
   "record_type": "release",
   "released": "2019-09-01",
-  "last_updated": "2026-05-31",
   "sections": {
     "certification": [],
     "whats_new": [
@@ -89,5 +88,6 @@
       }
     ],
     "desupported": []
-  }
+  },
+  "last_updated": "2026-05-31"
 }

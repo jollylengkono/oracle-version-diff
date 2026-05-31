@@ -4,7 +4,6 @@
   "release_label": "Oracle Database 21c",
   "record_type": "release",
   "released": "2021-01-01",
-  "last_updated": "2026-05-31",
   "sections": {
     "certification": [],
     "whats_new": [
@@ -74,5 +73,6 @@
       }
     ],
     "desupported": []
-  }
+  },
+  "last_updated": "2026-05-31"
 }

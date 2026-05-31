@@ -19,6 +19,7 @@ _RN_TITLE_MATCH = {
     "behavior_changes": "Default Behavior Changes",
     "deprecated": "Deprecated and Desupported",
 }
+_ALLOWED_INDEX_METADATA_KEYS = {"label", "support_track"}
 
 
 def resolve_section_urls(toc_text, base_url):
@@ -144,6 +145,52 @@ def write_release_outputs(records, data_dir):
     (data_dir / "index.json").write_text(json.dumps(index, indent=2), encoding="utf-8")
 
 
+def _index_entry(product_id, order, record, metadata):
+    for key in metadata:
+        if key not in _ALLOWED_INDEX_METADATA_KEYS:
+            raise AssertionError(
+                f"unsupported index metadata key {key!r} for {product_id} {record['version']}"
+            )
+    entry = {
+        "version": record["version"],
+        "label": record["version"],
+        "order": order,
+        "record_type": record["record_type"],
+        "released": record["released"],
+        "file": f"{product_id}/{record['version']}.json",
+    }
+    entry.update(metadata)
+    return entry
+
+
+def write_all_product_outputs(products, data_dir):
+    data_dir = pathlib.Path(data_dir)
+    index_products = []
+    for product in products:
+        product_dir = data_dir / product.product_id
+        product_dir.mkdir(parents=True, exist_ok=True)
+        records = sorted(product.records, key=lambda r: r["released"], reverse=True)
+        expected_files = {f"{record['version']}.json" for record in records}
+        for existing_file in product_dir.glob("*.json"):
+            if existing_file.name not in expected_files:
+                existing_file.unlink()
+        n = len(records)
+        versions_index = []
+        metadata_by_version = product.index_metadata or {}
+        for pos, record in enumerate(records):
+            fname = f"{record['version']}.json"
+            (product_dir / fname).write_text(json.dumps(record, indent=2), encoding="utf-8")
+            versions_index.append(
+                _index_entry(product.product_id, n - pos, record, metadata_by_version.get(record["version"], {}))
+            )
+        index_products.append({
+            "id": product.product_id,
+            "label": product.label,
+            "versions": versions_index,
+        })
+    (data_dir / "index.json").write_text(json.dumps({"products": index_products}, indent=2), encoding="utf-8")
+
+
 def http_fetch(url):
     resp = requests.get(url, timeout=30, headers={"User-Agent": "oracle-version-diff/0.1"})
     resp.raise_for_status()
@@ -194,10 +241,26 @@ def write_outputs(sources, version_order, fetch=http_fetch, data_dir=None, today
     }]}
     (data_dir / "index.json").write_text(json.dumps(index, indent=2), encoding="utf-8")
 
+def today_iso():
+    return datetime.date.today().isoformat()
+
+
+def build_goldengate_product(fetch=None, today=None):
+    from pipeline.product_registry import ProductBuild
+
+    if fetch is None:
+        fetch = http_fetch
+    if today is None:
+        today = today_iso()
+    records = build_records(fetch, sources_mod.RELEASE_NOTES_BASE, today=today)
+    return ProductBuild(sources_mod.PRODUCT_ID, sources_mod.PRODUCT_LABEL, records, {})
+
 def main():
+    from pipeline.product_registry import build_all_products
+
     repo_root = pathlib.Path(__file__).resolve().parents[1]
-    records = build_records(http_fetch, sources_mod.RELEASE_NOTES_BASE)
-    write_release_outputs(records, repo_root / "data")
+    products = build_all_products(fetch=http_fetch, today=today_iso())
+    write_all_product_outputs(products, repo_root / "data")
 
 if __name__ == "__main__":
     main()
