@@ -200,17 +200,21 @@ def extract_candidates(api_key, product_id, product_label, existing_versions, pa
         pages,
         model=model,
     )
-    response = post(
-        OPENAI_RESPONSES_URL,
-        headers={
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json",
-        },
-        json=payload,
-        timeout=60,
-    )
     try:
+        response = post(
+            OPENAI_RESPONSES_URL,
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            },
+            json=payload,
+            timeout=60,
+        )
         response.raise_for_status()
     except requests.RequestException as exc:
         _raise_openai_http_error(exc)
-    return parse_response_json(response.json())
+    try:
+        response_payload = response.json()
+    except ValueError as exc:
+        raise OpenAIExtractionError("OpenAI response was not valid JSON") from exc
+    return parse_response_json(response_payload)

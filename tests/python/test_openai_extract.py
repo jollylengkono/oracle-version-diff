@@ -15,15 +15,18 @@ from pipeline.oracle_discovery import OraclePage
 
 
 class FakeResponse:
-    def __init__(self, payload, status_error=None):
+    def __init__(self, payload, status_error=None, json_error=None):
         self._payload = payload
         self._status_error = status_error
+        self._json_error = json_error
 
     def raise_for_status(self):
         if self._status_error:
             raise self._status_error
 
     def json(self):
+        if self._json_error:
+            raise self._json_error
         return self._payload
 
 
@@ -32,7 +35,7 @@ def _valid_candidate_payload():
         "product": "oracle-database",
         "versions": [
             {
-                "index": {"label": "Oracle Database 27ai"},
+                "index": {"label": "Oracle Database 27ai", "support_track": None},
                 "record": {
                     "product": "oracle-database",
                     "version": "27ai",
@@ -213,3 +216,35 @@ def test_extract_candidates_wraps_http_error_without_sensitive_details():
         )
 
     assert "sk-secret" not in str(exc.value)
+
+
+def test_extract_candidates_wraps_request_exception_without_sensitive_details():
+    def post(url, headers, json, timeout):
+        raise requests.Timeout("request timed out for sk-secret")
+
+    with pytest.raises(OpenAIExtractionError, match="OpenAI request failed") as exc:
+        extract_candidates(
+            api_key="sk-secret",
+            product_id="oracle-database",
+            product_label="Oracle Database",
+            existing_versions=["26ai"],
+            pages=[OraclePage("https://docs.oracle.com/a", "<html></html>")],
+            post=post,
+        )
+
+    assert "sk-secret" not in str(exc.value)
+
+
+def test_extract_candidates_wraps_invalid_transport_json():
+    def post(url, headers, json, timeout):
+        return FakeResponse({}, json_error=ValueError("not json"))
+
+    with pytest.raises(OpenAIExtractionError, match="OpenAI response was not valid JSON"):
+        extract_candidates(
+            api_key="sk-test",
+            product_id="oracle-database",
+            product_label="Oracle Database",
+            existing_versions=["26ai"],
+            pages=[OraclePage("https://docs.oracle.com/a", "<html></html>")],
+            post=post,
+        )
