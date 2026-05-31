@@ -25,7 +25,7 @@ Implemented continuation:
    baseline records.
 3. `js/diff.js` exposes `aggregateRange()`.
 4. `js/app.js` loads all records and renders aggregated range results.
-5. UI defaults to an OpenClaw-inspired light card theme, with the prior GitHub
+5. UI defaults to a Supabase-inspired light card theme, with the prior GitHub
    dark theme preserved as a fallback.
 6. `README.md` and the design spec have been updated to reflect the range model.
 
@@ -34,7 +34,7 @@ Implemented continuation:
 ## CURRENT STATE (working & deployed)
 
 - Static site: vanilla HTML/CSS/JS ES modules, no framework, served from repo root.
-- OpenClaw-inspired light card theme is the default (`css/theme-openclaw-light.css`);
+- Supabase-inspired light card theme is the default (`css/theme-supabase-light.css`);
   the prior GitHub dark theme is preserved as `css/theme-github-dark.css` for a
   one-line fallback in `index.html`.
 - Data-access seam: `js/config.js` (`DATA_BASE`) + `js/datasource.js` (only place
@@ -150,7 +150,7 @@ Implemented with TDD. Relevant files:
 ### 5. UI copy (`index.html`)
 - App name is Oracle Release Delta.
 - Subtitle and delta summary reflect the directional release-delta model.
-- Theme defaults to the OpenClaw-inspired light card UI, with the GitHub dark
+- Theme defaults to the Supabase-inspired light card UI, with the GitHub dark
   theme preserved as a fallback.
 
 ### 6. Tests + finish
