@@ -13,14 +13,32 @@ function ruleBody(css, selector) {
   return match[1];
 }
 
+function mediaBlockBody(css, query) {
+  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const startMatch = css.match(new RegExp(`@media\\s*\\(${escaped}\\)\\s*\\{`));
+  assert.ok(startMatch, `Missing @media (${query}) block`);
+
+  const start = startMatch.index + startMatch[0].length;
+  let depth = 1;
+  for (let i = start; i < css.length; i += 1) {
+    if (css[i] === '{') depth += 1;
+    if (css[i] === '}') depth -= 1;
+    if (depth === 0) return css.slice(start, i);
+  }
+  assert.fail(`Unclosed @media (${query}) block`);
+}
+
 function assertResponsiveCardGrid(css) {
   const rangeList = ruleBody(css, '.range-list');
   assert.match(rangeList, /display:\s*grid;/);
   assert.match(rangeList, /grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\);/);
   assert.match(rangeList, /gap:\s*\.9rem;/);
 
-  assert.match(css, /@media\s*\(max-width:\s*959px\)\s*\{[\s\S]*\.range-list\s*\{\s*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);/);
-  assert.match(css, /@media\s*\(max-width:\s*699px\)\s*\{[\s\S]*\.range-list\s*\{\s*grid-template-columns:\s*1fr;/);
+  const tabletRangeList = ruleBody(mediaBlockBody(css, 'max-width: 959px'), '.range-list');
+  assert.match(tabletRangeList, /grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);/);
+
+  const mobileRangeList = ruleBody(mediaBlockBody(css, 'max-width: 699px'), '.range-list');
+  assert.match(mobileRangeList, /grid-template-columns:\s*1fr;/);
 
   const item = ruleBody(css, '.item');
   assert.match(item, /display:\s*flex;/);
