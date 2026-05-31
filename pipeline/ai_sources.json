@@ -1,0 +1,16 @@
+{
+  "oracle-database": {
+    "label": "Oracle Database",
+    "seed_urls": [
+      "https://docs.oracle.com/en/database/oracle/oracle-database/index.html",
+      "https://docs.oracle.com/en/database/oracle/oracle-database/26/index.html"
+    ]
+  },
+  "oracle-weblogic-server": {
+    "label": "Oracle WebLogic Server",
+    "seed_urls": [
+      "https://docs.oracle.com/en/middleware/standalone/weblogic-server/index.html",
+      "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/index.html"
+    ]
+  }
+}

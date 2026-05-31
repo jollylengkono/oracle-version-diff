@@ -59,6 +59,13 @@ Implemented continuation:
 - GitHub Action `.github/workflows/refresh-data.yml`: weekly (Mon 06:00 UTC) +
   manual; runs pytest, `python -m pipeline.build`, refreshes all registered products,
   and opens a review PR.
+- GitHub Action `.github/workflows/ai-refresh-data.yml`
+  (`AI Assist Oracle Release Delta data`): manual-only AI-assisted refresh for
+  Oracle Database and Oracle WebLogic Server curated source definitions. It
+  requires `OPENAI_API_KEY` in GitHub Actions secrets, updates
+  `pipeline/curated_sources/`, runs `python -m pipeline.build`, and opens or
+  updates a review PR when changes are produced. The browser UI and deployed
+  Vercel site never receive the OpenAI API key.
 - Tests: JS (`node --test`) and Python (`pytest`) suites cover range aggregation,
   schema validation, release parsing, and legacy baselines.
 - Oracle Database and Oracle WebLogic Server are not auto-discovered yet; adding
