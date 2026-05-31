@@ -16,20 +16,39 @@ def _contains_line_starting_with(lines, expected):
     return any(line.strip().startswith(expected) for line in lines)
 
 
+def _top_level_keys_after(lines, parent_key):
+    parent_index = _line_index(lines, parent_key)
+    keys = []
+
+    for line in lines[parent_index + 1:]:
+        if not line.strip():
+            continue
+
+        indentation = len(line) - len(line.lstrip(" "))
+        if indentation == 0:
+            break
+        if indentation == 2 and line.strip().endswith(":"):
+            keys.append(line.strip()[:-1])
+
+    return keys
+
+
 def test_ai_refresh_workflow_is_manual_only(repo_root):
     workflow = (repo_root / ".github" / "workflows" / "ai-refresh-data.yml").read_text()
     lines = workflow.splitlines()
 
     assert "name: AI Assist Oracle Release Delta data" in workflow
-    assert _contains_line_starting_with(lines, "workflow_dispatch:")
-    assert not _contains_line_starting_with(lines, "schedule:")
+    assert _top_level_keys_after(lines, "on:") == ["workflow_dispatch"]
 
 
-def test_ai_refresh_workflow_uses_required_permissions_and_secret(repo_root):
+def test_ai_refresh_workflow_uses_required_dependencies_permissions_and_secret(repo_root):
     workflow = (repo_root / ".github" / "workflows" / "ai-refresh-data.yml").read_text()
     lines = workflow.splitlines()
 
+    assert _contains_line(lines, "python -m pip install -r pipeline/requirements.txt")
+    assert _contains_line(lines, "python -m venv --system-site-packages .venv")
     assert _contains_line(lines, "OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}")
+    assert _contains_line(lines, "test -n \"$OPENAI_API_KEY\"")
     assert _contains_line(lines, "contents: write")
     assert _contains_line(lines, "pull-requests: write")
 
