@@ -4,7 +4,6 @@
   "release_label": "Oracle WebLogic Server 15c (15.1.1.0.0)",
   "record_type": "release",
   "released": "2025-10-01",
-  "last_updated": "2026-05-31",
   "sections": {
     "certification": [],
     "whats_new": [
@@ -79,5 +78,6 @@
       }
     ],
     "desupported": []
-  }
+  },
+  "last_updated": "2026-05-31"
 }

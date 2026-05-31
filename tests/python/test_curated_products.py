@@ -84,3 +84,16 @@ def test_database_and_weblogic_source_definitions_build_current_versions():
     assert [record["version"] for record in weblogic.records] == ["15c", "14c", "12c", "11g"]
     assert weblogic.index_metadata["15c"]["label"] == "WebLogic Server 15c (15.1.1.0.0)"
     assert weblogic.index_metadata["15c"]["label"] != "15c"
+
+
+def test_database_19c_uses_current_new_features_category_pages():
+    database = build_oracle_database_product(fetch=lambda url: "ok", today="2026-05-31")
+    record = next(record for record in database.records if record["version"] == "19c")
+    source_urls = {
+        item["source_url"]
+        for item in record["sections"]["whats_new"]
+    }
+
+    assert "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html" not in source_urls
+    assert "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/big-data-and-data-warehousing-solutions.html" in source_urls
+    assert "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/performance.html" in source_urls

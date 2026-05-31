@@ -227,27 +227,27 @@
             {
               "title": "Automatic indexing",
               "description": "Oracle Database 19c can automatically create, rebuild, and drop indexes based on application workload changes.",
-              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/big-data-and-data-warehousing-solutions.html"
             },
             {
               "title": "Real-time statistics",
               "description": "Oracle Database 19c automatically gathers online statistics during conventional DML operations.",
-              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/big-data-and-data-warehousing-solutions.html"
             },
             {
               "title": "SQL quarantine",
               "description": "Oracle Database 19c can quarantine execution plans for SQL statements that consume excessive CPU or I/O resources.",
-              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/performance.html"
             },
             {
               "title": "Hybrid partitioned tables",
               "description": "Hybrid partitioned tables allow partitions to reside in both database segments and external files or sources.",
-              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/big-data-and-data-warehousing-solutions.html"
             },
             {
               "title": "Memoptimized rowstore fast ingest",
               "description": "Oracle Database 19c adds fast ingest support for high-frequency single-row inserts into the memoptimized rowstore.",
-              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+              "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/performance.html"
             }
           ],
           "behavior_changes": [
