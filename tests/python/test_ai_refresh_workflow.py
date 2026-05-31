@@ -122,10 +122,11 @@ def test_ai_refresh_workflow_opens_review_pull_request(repo_root):
 def test_docs_describe_manual_ai_refresh(repo_root):
     readme = (repo_root / "README.md").read_text()
     handover = (repo_root / "docs" / "HANDOVER.md").read_text()
+    docs = [" ".join(document.split()) for document in [readme, handover]]
 
-    assert "AI Assist Oracle Release Delta data" in readme
-    assert "OPENAI_API_KEY" in readme
-    assert "manual-only" in readme
-    assert "AI Assist Oracle Release Delta data" in handover
-    assert "OPENAI_API_KEY" in handover
-    assert "manual-only" in handover
+    for document in docs:
+        assert "AI Assist Oracle Release Delta data" in document
+        assert "OPENAI_API_KEY" in document
+        assert "manual-only" in document
+        assert "browser UI and deployed Vercel site never receive the OpenAI API key" in document
+        assert "opens or updates a review PR when changes are produced" in document

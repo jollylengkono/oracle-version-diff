@@ -65,8 +65,9 @@ such as `docs.oracle.com` or `blogs.oracle.com`). Each record keeps its exact
 The `AI Assist Oracle Release Delta data` workflow is manual-only. It runs from
 GitHub Actions, reads `OPENAI_API_KEY` from GitHub Actions secrets, asks OpenAI
 to assist with Oracle Database and Oracle WebLogic Server curated-source updates,
-then runs the deterministic `pipeline.build` step and opens a review PR. The
-browser UI and deployed Vercel site never receive the OpenAI API key.
+then runs the deterministic `pipeline.build` step and opens or updates a review
+PR when changes are produced. The browser UI and deployed Vercel site never
+receive the OpenAI API key.
 
 ## Future backend (Supabase-ready)
 

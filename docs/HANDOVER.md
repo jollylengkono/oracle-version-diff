@@ -63,9 +63,9 @@ Implemented continuation:
   (`AI Assist Oracle Release Delta data`): manual-only AI-assisted refresh for
   Oracle Database and Oracle WebLogic Server curated source definitions. It
   requires `OPENAI_API_KEY` in GitHub Actions secrets, updates
-  `pipeline/curated_sources/`, runs `python -m pipeline.build`, and opens a
-  review PR. The deployed Vercel site remains static and never receives the
-  OpenAI API key.
+  `pipeline/curated_sources/`, runs `python -m pipeline.build`, and opens or
+  updates a review PR when changes are produced. The browser UI and deployed
+  Vercel site never receive the OpenAI API key.
 - Tests: JS (`node --test`) and Python (`pytest`) suites cover range aggregation,
   schema validation, release parsing, and legacy baselines.
 - Oracle Database and Oracle WebLogic Server are not auto-discovered yet; adding
