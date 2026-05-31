@@ -11,6 +11,8 @@ from pipeline.ai_refresh import (
     run_ai_refresh,
     validate_candidate_payload,
 )
+from pipeline.openai_extract import OpenAIExtractionError
+from pipeline.oracle_discovery import OracleSourceError
 
 
 def _source_definition():
@@ -246,3 +248,23 @@ def test_main_reports_ai_refresh_errors_concisely(monkeypatch, capsys):
 
     assert exc.value.code == 1
     assert capsys.readouterr().err == "::error::candidate payload invalid\n"
+
+
+@pytest.mark.parametrize(
+    ("error", "message"),
+    [
+        (OpenAIExtractionError("OpenAI request failed: 401 Unauthorized"), "OpenAI request failed"),
+        (OracleSourceError("HTTPS Oracle URL required: http://docs.oracle.com/start"), "HTTPS Oracle URL required"),
+    ],
+)
+def test_main_reports_expected_dependency_errors_concisely(monkeypatch, capsys, error, message):
+    def fail_refresh(**kwargs):
+        raise error
+
+    monkeypatch.setattr(ai_refresh, "run_ai_refresh", fail_refresh)
+
+    with pytest.raises(SystemExit) as exc:
+        main(["--products", "oracle-database"])
+
+    assert exc.value.code == 1
+    assert capsys.readouterr().err.startswith(f"::error::{message}")

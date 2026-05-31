@@ -7,8 +7,14 @@ import pathlib
 import sys
 import tempfile
 
-from pipeline.openai_extract import DEFAULT_MODEL, extract_candidates, require_openai_api_key
+from pipeline.openai_extract import (
+    DEFAULT_MODEL,
+    OpenAIExtractionError,
+    extract_candidates,
+    require_openai_api_key,
+)
 from pipeline.oracle_discovery import (
+    OracleSourceError,
     discover_oracle_pages,
     load_ai_source_targets,
     oracle_owned_url,
@@ -213,7 +219,7 @@ def main(argv=None):
     args = parse_args(argv)
     try:
         run_ai_refresh(products=args.products, model=args.model)
-    except AIRefreshError as exc:
+    except (AIRefreshError, OpenAIExtractionError, OracleSourceError) as exc:
         print(f"::error::{exc}", file=sys.stderr)
         raise SystemExit(1) from None
 
