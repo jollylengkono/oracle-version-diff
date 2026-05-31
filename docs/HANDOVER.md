@@ -168,7 +168,7 @@ Implemented with TDD. Relevant files:
   format checks (already in requirements.txt).
 - pytest: do NOT create `tests/python/__init__.py`; `conftest.py` inserts REPO_ROOT
   into sys.path.
-- No customer data, official Oracle docs only, no live browser fetching (CORS) —
+- No customer data, Oracle-owned public sources only, no live browser fetching (CORS) —
   all crawling happens in the Action.
 - Design spec: `docs/superpowers/specs/2026-05-30-oracle-version-diff-design.md`
   records the current range-aggregation model.
@@ -178,6 +178,6 @@ Implemented with TDD. Relevant files:
 ## Definition of done
 A user picks current + target → sees one combined, deduped, correctly-ordered list per
 section of everything introduced after the current release through the target
-release, each item linking to its official Oracle doc and showing its source
-version prominently. Auto-crawler still produces correct ordered/deduped data
-weekly via PR. Live and verified.
+release, each item linking to its Oracle-owned source and showing its source version
+prominently. Auto-crawler still produces correct ordered/deduped data weekly via PR.
+Live and verified.
