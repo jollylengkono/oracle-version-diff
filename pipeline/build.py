@@ -194,6 +194,20 @@ def write_outputs(sources, version_order, fetch=http_fetch, data_dir=None, today
     }]}
     (data_dir / "index.json").write_text(json.dumps(index, indent=2), encoding="utf-8")
 
+def today_iso():
+    return datetime.date.today().isoformat()
+
+
+def build_goldengate_product(fetch=None, today=None):
+    from pipeline.product_registry import ProductBuild
+
+    if fetch is None:
+        fetch = http_fetch
+    if today is None:
+        today = today_iso()
+    records = build_records(fetch, sources_mod.RELEASE_NOTES_BASE, today=today)
+    return ProductBuild(sources_mod.PRODUCT_ID, sources_mod.PRODUCT_LABEL, records, {})
+
 def main():
     repo_root = pathlib.Path(__file__).resolve().parents[1]
     records = build_records(http_fetch, sources_mod.RELEASE_NOTES_BASE)
