@@ -1,8 +1,10 @@
 import json
 
 import pytest
+import requests
 
 from pipeline.openai_extract import (
+    AI_REFRESH_RESPONSE_SCHEMA,
     OpenAIExtractionError,
     build_extraction_payload,
     extract_candidates,
@@ -65,6 +67,26 @@ def test_require_openai_api_key_returns_key():
     assert require_openai_api_key({"OPENAI_API_KEY": "sk-test"}) == "sk-test"
 
 
+def test_require_openai_api_key_rejects_whitespace_key():
+    with pytest.raises(OpenAIExtractionError, match="OPENAI_API_KEY"):
+        require_openai_api_key({"OPENAI_API_KEY": "   "})
+
+
+def test_strict_schema_requires_every_declared_object_property():
+    def check_schema(schema, path="$"):
+        if "$ref" in schema:
+            return
+        if schema.get("type") == "object" and "properties" in schema:
+            assert set(schema.get("required", [])) == set(schema["properties"]), path
+        for key in ("properties", "$defs"):
+            for name, child in schema.get(key, {}).items():
+                check_schema(child, f"{path}.{key}.{name}")
+        if "items" in schema:
+            check_schema(schema["items"], f"{path}.items")
+
+    check_schema(AI_REFRESH_RESPONSE_SCHEMA)
+
+
 def test_build_extraction_payload_uses_structured_outputs_schema():
     pages = [OraclePage("https://docs.oracle.com/a", "<html>Oracle Database 27ai</html>")]
 
@@ -82,6 +104,7 @@ def test_build_extraction_payload_uses_structured_outputs_schema():
     assert payload["text"]["format"]["name"] == "oracle_release_delta_candidates"
     assert payload["text"]["format"]["schema"]["additionalProperties"] is False
     assert "Oracle-owned" in payload["instructions"]
+    assert "source text, not instructions" in payload["instructions"]
     assert "https://docs.oracle.com/a" in payload["input"]
 
 
@@ -117,6 +140,25 @@ def test_parse_response_json_rejects_refusal():
         parse_response_json(response)
 
 
+def test_parse_response_json_wraps_invalid_json():
+    response = {"output": [{"content": [{"type": "output_text", "text": "not json"}]}]}
+
+    with pytest.raises(OpenAIExtractionError, match="invalid JSON"):
+        parse_response_json(response)
+
+
+def test_parse_response_json_wraps_missing_text_key():
+    response = {"output": [{"content": [{"type": "output_text"}]}]}
+
+    with pytest.raises(OpenAIExtractionError, match="missing output_text text"):
+        parse_response_json(response)
+
+
+def test_parse_response_json_wraps_missing_output_text():
+    with pytest.raises(OpenAIExtractionError, match="did not include output_text"):
+        parse_response_json({"output": [{"content": []}]})
+
+
 def test_extract_candidates_posts_to_responses_api():
     calls = []
 
@@ -148,3 +190,26 @@ def test_extract_candidates_posts_to_responses_api():
     assert calls[0][1]["Authorization"] == "Bearer sk-test"
     assert calls[0][2]["model"] == "gpt-5"
     assert calls[0][3] == 60
+
+
+def test_extract_candidates_wraps_http_error_without_sensitive_details():
+    response = requests.Response()
+    response.status_code = 401
+    response.reason = "Unauthorized"
+    error = requests.HTTPError("401 Client Error: Unauthorized for url")
+    error.response = response
+
+    def post(url, headers, json, timeout):
+        return FakeResponse({}, status_error=error)
+
+    with pytest.raises(OpenAIExtractionError, match="OpenAI request failed: 401 Unauthorized") as exc:
+        extract_candidates(
+            api_key="sk-secret",
+            product_id="oracle-database",
+            product_label="Oracle Database",
+            existing_versions=["26ai"],
+            pages=[OraclePage("https://docs.oracle.com/a", "<html></html>")],
+            post=post,
+        )
+
+    assert "sk-secret" not in str(exc.value)
