@@ -10,8 +10,6 @@ permissions:
 jobs:
   ai-refresh:
     runs-on: ubuntu-latest
-    env:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
     steps:
       - uses: actions/checkout@v4
 
@@ -25,10 +23,14 @@ jobs:
           python -m venv --system-site-packages .venv
 
       - name: Verify OpenAI API key
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           test -n "$OPENAI_API_KEY"
 
       - name: Run AI-assisted source refresh
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: .venv/bin/python -m pipeline.ai_refresh --products oracle-database oracle-weblogic-server
 
       - name: Rebuild generated data

@@ -12,10 +12,6 @@ def _contains_line(lines, expected):
     return any(line.strip() == expected for line in lines)
 
 
-def _contains_line_starting_with(lines, expected):
-    return any(line.strip().startswith(expected) for line in lines)
-
-
 def _top_level_keys_after(lines, parent_key):
     parent_index = _line_index(lines, parent_key)
     keys = []
@@ -33,6 +29,32 @@ def _top_level_keys_after(lines, parent_key):
     return keys
 
 
+def _step_lines(lines, step_name):
+    step_index = _line_index(lines, f"- name: {step_name}")
+    step_lines = []
+
+    for line in lines[step_index + 1:]:
+        if line.startswith("      - "):
+            break
+        step_lines.append(line)
+
+    return step_lines
+
+
+def _step_names_with_line(lines, expected):
+    matching_step_names = []
+    current_step_name = None
+
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith("- name: "):
+            current_step_name = stripped.removeprefix("- name: ")
+        elif stripped == expected and current_step_name:
+            matching_step_names.append(current_step_name)
+
+    return matching_step_names
+
+
 def test_ai_refresh_workflow_is_manual_only(repo_root):
     workflow = (repo_root / ".github" / "workflows" / "ai-refresh-data.yml").read_text()
     lines = workflow.splitlines()
@@ -44,13 +66,29 @@ def test_ai_refresh_workflow_is_manual_only(repo_root):
 def test_ai_refresh_workflow_uses_required_dependencies_permissions_and_secret(repo_root):
     workflow = (repo_root / ".github" / "workflows" / "ai-refresh-data.yml").read_text()
     lines = workflow.splitlines()
+    lines_before_steps = lines[:_line_index(lines, "steps:")]
 
     assert _contains_line(lines, "python -m pip install -r pipeline/requirements.txt")
     assert _contains_line(lines, "python -m venv --system-site-packages .venv")
-    assert _contains_line(lines, "OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}")
     assert _contains_line(lines, "test -n \"$OPENAI_API_KEY\"")
     assert _contains_line(lines, "contents: write")
     assert _contains_line(lines, "pull-requests: write")
+    assert not _contains_line(lines_before_steps, "OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}")
+    assert _contains_line(
+        _step_lines(lines, "Verify OpenAI API key"),
+        "OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}",
+    )
+    assert _contains_line(
+        _step_lines(lines, "Run AI-assisted source refresh"),
+        "OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}",
+    )
+    assert _step_names_with_line(
+        lines,
+        "OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}",
+    ) == [
+        "Verify OpenAI API key",
+        "Run AI-assisted source refresh",
+    ]
 
 
 def test_ai_refresh_runs_before_build_and_tests(repo_root):
