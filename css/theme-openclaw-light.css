@@ -22,9 +22,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   color: var(--ink);
-  background:
-    radial-gradient(circle at top left, rgba(199, 70, 52, .08), transparent 28rem),
-    var(--bg);
+  background: var(--bg);
   line-height: 1.5;
 }
 
@@ -37,7 +35,7 @@ body {
 .masthead__title {
   margin: 0;
   color: var(--ink);
-  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-size: 3rem;
   font-weight: 750;
   letter-spacing: 0;
   line-height: 1.08;
@@ -202,7 +200,7 @@ body {
 .item__version {
   flex: 0 0 auto;
   color: rgba(17, 24, 39, .18);
-  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-size: 2.5rem;
   font-weight: 800;
   letter-spacing: 0;
   line-height: .92;
