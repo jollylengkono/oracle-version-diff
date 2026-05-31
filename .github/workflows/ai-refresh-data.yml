@@ -1,0 +1,52 @@
+name: AI Assist Oracle Release Delta data
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  ai-refresh:
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install -r pipeline/requirements.txt
+          python -m venv --system-site-packages .venv
+
+      - name: Verify OpenAI API key
+        run: |
+          test -n "$OPENAI_API_KEY"
+
+      - name: Run AI-assisted source refresh
+        run: .venv/bin/python -m pipeline.ai_refresh --products oracle-database oracle-weblogic-server
+
+      - name: Rebuild generated data
+        run: .venv/bin/python -m pipeline.build
+
+      - name: Run Python tests
+        run: .venv/bin/python -m pytest tests/python/ -q
+
+      - name: Run JavaScript tests
+        run: npm test
+
+      - name: Open pull request with AI-assisted data refresh
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "data: AI-assisted Oracle Release Delta refresh"
+          branch: data/ai-refresh
+          title: "AI data refresh: Oracle Release Delta"
+          body: |
+            AI-assisted refresh of Oracle Release Delta curated source definitions.
+            Review all Oracle source URLs and generated JSON before merging.
+          labels: data-refresh
