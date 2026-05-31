@@ -171,7 +171,7 @@ def run_ai_refresh(
 ):
     try:
         api_key = require_openai_api_key(env)
-    except Exception as exc:
+    except OpenAIExtractionError as exc:
         raise AIRefreshError(str(exc)) from exc
     if today is None:
         today = today_iso()

@@ -268,3 +268,13 @@ def test_main_reports_expected_dependency_errors_concisely(monkeypatch, capsys, 
 
     assert exc.value.code == 1
     assert capsys.readouterr().err.startswith(f"::error::{message}")
+
+
+def test_main_preserves_unexpected_api_key_errors(monkeypatch):
+    def fail_api_key(env=None):
+        raise RuntimeError("programmer error")
+
+    monkeypatch.setattr(ai_refresh, "require_openai_api_key", fail_api_key)
+
+    with pytest.raises(RuntimeError, match="programmer error"):
+        main(["--products", "oracle-database"])
