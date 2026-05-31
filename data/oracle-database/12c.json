@@ -22,6 +22,16 @@
         "title": "Online table redefinition improvements",
         "description": "Online redefinition gains restart, rollback, progress monitoring, and broader table support.",
         "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/newft/new-features.html"
+      },
+      {
+        "title": "Online conversion to partitioned tables",
+        "description": "Nonpartitioned tables can be converted to partitioned tables online while indexes are maintained and DML continues.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/newft/new-features.html"
+      },
+      {
+        "title": "Online table move",
+        "description": "Nonpartitioned tables can be moved online without blocking concurrent DML, with automatic index maintenance as part of the move.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/newft/new-features.html"
       }
     ],
     "behavior_changes": [
@@ -29,12 +39,22 @@
         "title": "Grid Infrastructure installation uses zip images",
         "description": "Oracle Grid Infrastructure 12c Release 2 installation media is delivered as a zip image for the installer.",
         "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/newft/new-features.html"
+      },
+      {
+        "title": "12.2 upgrade planning requires behavior-change review",
+        "description": "Oracle documents 12c Release 2 behavior changes separately from new features so upgrade projects can review compatibility impacts before moving forward.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/upgrd/behavior-change-deprecate-desupport-oracle-12c-rel-2.html"
       }
     ],
     "deprecated": [
       {
         "title": "12c Release 2 upgrade changes should be reviewed",
         "description": "Oracle documents behavior changes, deprecated features, and desupported features for Oracle Database 12c Release 2 upgrade planning.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/upgrd/behavior-change-deprecate-desupport-oracle-12c-rel-2.html"
+      },
+      {
+        "title": "Non-CDB architecture deprecated",
+        "description": "Oracle Database 12c Release 2 upgrade documentation identifies the non-CDB architecture as deprecated and directs users toward multitenant architecture planning.",
         "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/12.2/upgrd/behavior-change-deprecate-desupport-oracle-12c-rel-2.html"
       }
     ],

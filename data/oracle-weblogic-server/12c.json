@@ -22,12 +22,32 @@
         "title": "WebLogic Kubernetes Toolkit integration",
         "description": "Oracle documents Kubernetes tooling for migration, domain management, deployment, monitoring, and image patching of WebLogic Server environments.",
         "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/kubernetes_toolkit.html"
+      },
+      {
+        "title": "WebLogic Server slim installer",
+        "description": "WebLogic Server 12.2.1.4 adds a lightweight slim installer that can be run from the command line.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+      },
+      {
+        "title": "SNMPv3 default protocol",
+        "description": "When SNMP is enabled in WebLogic Server 12.2.1.4.0 and later, SNMPv3 is enabled by default.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
       }
     ],
     "behavior_changes": [
       {
         "title": "Application name behavior change",
         "description": "WebLogic Server 12.2.1 includes deployment behavior changes, including behavior for application names.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+      },
+      {
+        "title": "SNMPv3 replaces older SNMP defaults",
+        "description": "The default SNMP protocol changes to SNMPv3 when SNMP is enabled, because SNMPv1 and SNMPv2 use clear text passwords.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+      },
+      {
+        "title": "Latest REST management resource version changes",
+        "description": "In WebLogic Server 12.2.1.4.0, the latest REST management resource version becomes 12.2.1.4.0 while older REST resource versions are deprecated.",
         "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
       }
     ],
@@ -40,6 +60,31 @@
       {
         "title": "JAXR removed",
         "description": "The Java API for XML Registries is removed from Oracle WebLogic Server as of version 12.2.1.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+      },
+      {
+        "title": "SNMP v1 and v2 deprecated",
+        "description": "WebLogic Server 12.2.1.4.0 deprecates SNMPv1 and SNMPv2 configuration in favor of SNMPv3.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+      },
+      {
+        "title": "WebLogic jCOM deprecated",
+        "description": "WebLogic jCOM is deprecated as of WebLogic Server 12.2.1.4.0.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+      },
+      {
+        "title": "OPatchAutoFMW deprecated",
+        "description": "OPatchAutoFMW is deprecated as of WebLogic Server 12.2.1.4.0.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+      },
+      {
+        "title": "WebLogic full client deprecated",
+        "description": "The WebLogic full client wlfullclient.jar is deprecated; Oracle recommends T3 client or Install client alternatives.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
+      },
+      {
+        "title": "Log4j integration deprecated",
+        "description": "Using Log4j with the WebLogic logging service is deprecated; Log4j 2 and later are not supported in WebLogic Server.",
         "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/12.2.1.4/notes/whatsnew.html"
       }
     ],

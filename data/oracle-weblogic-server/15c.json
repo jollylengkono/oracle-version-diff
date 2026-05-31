@@ -22,6 +22,16 @@
         "title": "OpenRewrite upgrade recipes",
         "description": "WebLogic Server application upgrade tooling provides OpenRewrite recipes for Jakarta namespace, descriptor, Java, Maven, and Spring migration tasks.",
         "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+      },
+      {
+        "title": "Certificate Management Service technical preview",
+        "description": "WebLogic Server 15c introduces a Certificate Management Service technical preview for obtaining and storing certificates in domain keystores.",
+        "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+      },
+      {
+        "title": "Separate XA recovery database credentials",
+        "description": "XA data sources can use separate database credentials for XA recovery processing and application processing.",
+        "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
       }
     ],
     "behavior_changes": [
@@ -34,12 +44,37 @@
         "title": "Applications must be modified and recompiled",
         "description": "Oracle documents that applications from WebLogic Server 12.2.1.4.0, 14.1.1.0.0, and 14.1.2.0.0 must be modified and recompiled for WebLogic Server 15.1.1.0.0.",
         "source_url": "https://docs.oracle.com/pls/topic/lookup?ctx=en%2Fmiddleware%2Fstandalone%2Fweblogic-server%2F15.1.1%2Fintro&id=WLUPG107"
+      },
+      {
+        "title": "Jakarta EE namespace changes from javax to jakarta",
+        "description": "The primary Jakarta EE 9.1 platform change is the package namespace move from javax.* to jakarta.* APIs.",
+        "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+      },
+      {
+        "title": "Technical preview certificate service is not production-ready",
+        "description": "Oracle marks the Certificate Management Service as a technical preview for testing only, not for production environments.",
+        "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
       }
     ],
     "deprecated": [
       {
         "title": "Legacy Jakarta EE specifications removed",
         "description": "Jakarta EE 9 removes legacy specifications such as JAXR, XML RPC, Deployment, Management, and Distributed Interoperability.",
+        "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+      },
+      {
+        "title": "javax namespace no longer matches the target platform",
+        "description": "Applications using Java EE javax.* APIs must be migrated to Jakarta EE jakarta.* APIs for WebLogic Server 15.1.1.0.0.",
+        "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+      },
+      {
+        "title": "Legacy XML RPC specification removed from Jakarta EE 9",
+        "description": "XML RPC 1.1 is among the legacy specifications removed from the Jakarta EE 9 platform supported by WebLogic Server 15c.",
+        "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
+      },
+      {
+        "title": "Legacy JAXR specification removed from Jakarta EE 9",
+        "description": "Jakarta XML Registries, formerly Java API for XML Registries, is among the specifications removed from Jakarta EE 9.",
         "source_url": "https://docs.oracle.com/en/middleware/standalone/weblogic-server/15.1.1/notes/whatsnew.html"
       }
     ],

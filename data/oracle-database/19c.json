@@ -22,12 +22,27 @@
         "title": "SQL quarantine",
         "description": "Oracle Database 19c can quarantine execution plans for SQL statements that consume excessive CPU or I/O resources.",
         "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+      },
+      {
+        "title": "Hybrid partitioned tables",
+        "description": "Hybrid partitioned tables allow partitions to reside in both database segments and external files or sources.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
+      },
+      {
+        "title": "Memoptimized rowstore fast ingest",
+        "description": "Oracle Database 19c adds fast ingest support for high-frequency single-row inserts into the memoptimized rowstore.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/newft/new-features.html"
       }
     ],
     "behavior_changes": [
       {
         "title": "Oracle Database changes, desupports, and deprecations consolidated",
         "description": "Oracle Database 19c upgrade documentation consolidates release behavior changes, deprecations, and desupport notices to help upgrade planning.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "Release update model replaces patch sets",
+        "description": "Oracle Database 19c upgrade guidance aligns with the release update model rather than older patch set delivery patterns.",
         "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/oracle-database-changes-deprecations-desupports.html"
       }
     ],
@@ -40,6 +55,11 @@
       {
         "title": "Oracle Text URL_DATASTORE deprecated",
         "description": "Starting with Oracle Database 19c, the Oracle Text URL_DATASTORE type is deprecated; Oracle recommends NETWORK_DATASTORE.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "Oracle Streams desupported",
+        "description": "Oracle Streams is desupported in Oracle Database 19c upgrade planning guidance.",
         "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/oracle-database-changes-deprecations-desupports.html"
       }
     ],

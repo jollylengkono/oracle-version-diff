@@ -32,6 +32,21 @@
         "title": "Globally Distributed Database Raft replication",
         "description": "Oracle Globally Distributed Database adds built-in Raft replication for distributed database deployments.",
         "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+      },
+      {
+        "title": "SQL Firewall",
+        "description": "Oracle AI Database 26ai adds SQL Firewall capabilities to control which SQL can execute against the database.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+      },
+      {
+        "title": "True Cache",
+        "description": "True Cache provides an automatically managed, consistent, mostly diskless cache for read-only workloads against Oracle AI Database.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+      },
+      {
+        "title": "UCP asynchronous extension",
+        "description": "Universal Connection Pool adds asynchronous database-call support for scalable Java applications.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
       }
     ],
     "behavior_changes": [
@@ -49,6 +64,16 @@
         "title": "SYSDATE and SYSTIMESTAMP reflect PDB time zone",
         "description": "SYSDATE and SYSTIMESTAMP can be managed separately for each database using the individual database time zone setting.",
         "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "Installation archives are digitally signed",
+        "description": "Oracle AI Database 26ai digitally signs installation archive files so deployments can verify package integrity.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/all-nfg.html"
+      },
+      {
+        "title": "Version banner uses 26ai release numbering",
+        "description": "Oracle AI Database 26ai updates release-number reporting while retaining the underlying full version format used by the database.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-release-numbers.html"
       }
     ],
     "deprecated": [
@@ -75,6 +100,16 @@
       {
         "title": "Oracle JDBC-OCI thick driver deprecated",
         "description": "The Oracle JDBC OCI Type 2 client driver is deprecated in Oracle AI Database 26ai.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "RASADM desupported",
+        "description": "The Real Application Security GUI administration tool RASADM is desupported in Oracle AI Database 26ai; Oracle recommends using the RAS PL/SQL API.",
+        "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
+      },
+      {
+        "title": "Legacy Oracle XML DB repository access paths reviewed",
+        "description": "Oracle AI Database 26ai upgrade guidance includes legacy XML DB and related component changes that require review during upgrade planning.",
         "source_url": "https://docs.oracle.com/en/database/oracle/oracle-database/26/upgrd/oracle-database-changes-deprecations-desupports.html"
       }
     ],

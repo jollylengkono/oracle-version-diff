@@ -22,6 +22,26 @@
         "title": "WebLogic Migration Analysis Tool",
         "description": "WebLogic Server 14.1.2.0.0 adds a command line migration analysis utility that identifies removed or unused APIs in WebLogic applications.",
         "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+      },
+      {
+        "title": "OpenRewrite recipes",
+        "description": "WebLogic Server 14.1.2.0.0 provides OpenRewrite recipes to simplify migrating WebLogic applications to a new WebLogic and Java version.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+      },
+      {
+        "title": "Secured production mode enabled by default",
+        "description": "When production mode is selected in WebLogic Server 14.1.2.0.0, secured production mode defaults are automatically enabled.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+      },
+      {
+        "title": "OpenID Connect authentication provider",
+        "description": "WebLogic Server 14.1.2.0.0 adds a WebLogic OpenID Connect provider for authentication and identity assertion.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+      },
+      {
+        "title": "Cluster-targeted JMS automatic rebalance",
+        "description": "WebLogic Server 14.1.2.0.0 adds an option to automatically rebalance running cluster-targeted JMS instances when the system is idle.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
       }
     ],
     "behavior_changes": [
@@ -29,6 +49,16 @@
         "title": "14c JDK interoperability limitations",
         "description": "Oracle documents interoperability limitations for WebLogic Server 14.1.2.0.0 instances and Java IIOP clients running on JDK 17 or 21.",
         "source_url": "https://docs.oracle.com/pls/topic/lookup?ctx=en%2Fmiddleware%2Ffusion-middleware%2Fweblogic-server%2F14.1.2%2Fdepgd&id=INTRO-GUID-A8ABF11F-230E-4959-9B91-8AE1E7E43750"
+      },
+      {
+        "title": "Production mode enables stricter security defaults",
+        "description": "Selecting production mode automatically enables secured production mode, changing default security behavior for new domains.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
+      },
+      {
+        "title": "Demo certificate authority is per-domain",
+        "description": "The demonstration certificate authority is unique to each new domain and uses PKCS12 identity and trust keystores.",
+        "source_url": "https://docs.oracle.com/en/middleware/fusion-middleware/weblogic-server/14.1.2/notes/whatsnew.html"
       }
     ],
     "deprecated": [
