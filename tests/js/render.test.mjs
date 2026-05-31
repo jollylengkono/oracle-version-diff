@@ -73,7 +73,7 @@ test('renderAggregated marks release versions for card styling', () => {
   assert.doesNotMatch(html, /Release 23\.6/);
 });
 
-test('renderItem marks source links as documentation buttons', () => {
+test('renderItem marks source links as generic source buttons', () => {
   const html = renderItem({
     title: 'DocsFeature',
     description: 'links to docs',
@@ -81,5 +81,5 @@ test('renderItem marks source links as documentation buttons', () => {
   });
 
   assert.match(html, /class="item__source"/);
-  assert.match(html, />Official doc</);
+  assert.match(html, />Official source</);
 });

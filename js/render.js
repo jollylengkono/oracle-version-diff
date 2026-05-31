@@ -13,7 +13,7 @@ export function renderItem(item) {
     ? `<span class="item__version">${escapeHtml(versionLabel)}</span>`
     : '';
   const link = item.source_url
-    ? `<a class="item__source" href="${escapeHtml(item.source_url)}" target="_blank" rel="noopener">Official doc</a>`
+    ? `<a class="item__source" href="${escapeHtml(item.source_url)}" target="_blank" rel="noopener">Official source</a>`
     : '';
   return `<article class="item">
   <div class="item__head">
