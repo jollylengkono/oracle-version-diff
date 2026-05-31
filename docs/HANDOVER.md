@@ -25,7 +25,8 @@ Implemented continuation:
    baseline records.
 3. `js/diff.js` exposes `aggregateRange()`.
 4. `js/app.js` loads all records and renders aggregated range results.
-5. UI is a GitHub-style dark card theme with large muted version numbers.
+5. UI defaults to an OpenClaw-inspired light card theme, with the prior GitHub
+   dark theme preserved as a fallback.
 6. `README.md` and the design spec have been updated to reflect the range model.
 
 ---
@@ -33,8 +34,9 @@ Implemented continuation:
 ## CURRENT STATE (working & deployed)
 
 - Static site: vanilla HTML/CSS/JS ES modules, no framework, served from repo root.
-- GitHub-style dark card theme (`css/theme.css`) with dark cards, muted version
-  labels, compact official-doc buttons, and blue active/focus accents.
+- OpenClaw-inspired light card theme is the default (`css/theme-openclaw-light.css`);
+  the prior GitHub dark theme is preserved as `css/theme-github-dark.css` for a
+  one-line fallback in `index.html`.
 - Data-access seam: `js/config.js` (`DATA_BASE`) + `js/datasource.js` (only place
   data is fetched) — kept intact for a future Supabase swap.
 - Current UI = **range aggregation** (`js/diff.js` → `aggregateRange`,
@@ -64,6 +66,8 @@ Implemented continuation:
   `12c -> 26ai`; it is not yet crawler-backed.
 - Oracle WebLogic Server currently has a curated seed under
   `data/oracle-weblogic-server/` for `11g -> 15c`; it is not yet crawler-backed.
+- Source policy is Oracle-owned web properties: `oracle.com` or any subdomain.
+  Curated Database and WebLogic tests reject non-Oracle source hosts.
 
 ---
 
@@ -146,7 +150,8 @@ Implemented with TDD. Relevant files:
 ### 5. UI copy (`index.html`)
 - App name is Oracle Release Delta.
 - Subtitle and delta summary reflect the directional release-delta model.
-- Theme is a GitHub-style dark card UI.
+- Theme defaults to the OpenClaw-inspired light card UI, with the GitHub dark
+  theme preserved as a fallback.
 
 ### 6. Tests + finish
 - Run full JS + Python tests before completion.

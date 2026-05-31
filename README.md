@@ -1,15 +1,15 @@
 # Oracle Release Delta
 
 A static website that shows what changed after a current Oracle release through a
-target release, using data sourced from official Oracle documentation.
+target release, using data sourced from Oracle-owned web properties.
 
 ## How it works
 
 - **Front-end** (`index.html`, `css/`, `js/`): vanilla static site with a
-  GitHub-style dark card UI. Loads JSON from `data/` through a single data-access
-  seam (`js/datasource.js`, configured in `js/config.js`) and renders one combined
-  list of release-note items introduced after the current release through the
-  target release. No backend.
+  OpenClaw-inspired light card UI and a preserved GitHub dark fallback theme.
+  Loads JSON from `data/` through a single data-access seam (`js/datasource.js`,
+  configured in `js/config.js`) and renders one combined list of release-note
+  items introduced after the current release through the target release. No backend.
 - **Pipeline** (`pipeline/`): a Python crawler+parser run weekly by GitHub Actions.
   It fetches the public GoldenGate rolling release notes from Oracle docs, parses
   each release section, combines those records with a static `19c` anchor and a
@@ -56,6 +56,10 @@ records or add product-specific crawlers before treating them as exhaustive.
 Release selectors intentionally show clean release names; support-track metadata
 is kept in `data/index.json` only where Oracle documentation explicitly provides
 that label.
+
+Curated records may use any Oracle-owned source host (`oracle.com` or a subdomain
+such as `docs.oracle.com` or `blogs.oracle.com`). Each record keeps its exact
+`source_url` visible through the Official source button.
 
 ## Future backend (Supabase-ready)
 
