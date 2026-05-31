@@ -6,12 +6,28 @@ const lightCss = readFileSync('css/theme-supabase-light.css', 'utf8');
 const darkCss = readFileSync('css/theme-github-dark.css', 'utf8');
 const html = readFileSync('index.html', 'utf8');
 
+function ruleBody(css, selector) {
+  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const match = css.match(new RegExp(`${escaped}\\s*\\{([^}]*)\\}`));
+  assert.ok(match, `Missing ${selector} rule`);
+  return match[1];
+}
+
 function assertResponsiveCardGrid(css) {
-  assert.match(css, /\.range-list\s*\{\s*display:\s*grid;\s*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\);[\s\S]*gap:\s*\.9rem;/);
+  const rangeList = ruleBody(css, '.range-list');
+  assert.match(rangeList, /display:\s*grid;/);
+  assert.match(rangeList, /grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\);/);
+  assert.match(rangeList, /gap:\s*\.9rem;/);
+
   assert.match(css, /@media\s*\(max-width:\s*959px\)\s*\{[\s\S]*\.range-list\s*\{\s*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);/);
   assert.match(css, /@media\s*\(max-width:\s*699px\)\s*\{[\s\S]*\.range-list\s*\{\s*grid-template-columns:\s*1fr;/);
-  assert.match(css, /\.item\s*\{[\s\S]*display:\s*flex;[\s\S]*flex-direction:\s*column;/);
-  assert.match(css, /\.item__source\s*\{[\s\S]*margin-top:\s*auto;/);
+
+  const item = ruleBody(css, '.item');
+  assert.match(item, /display:\s*flex;/);
+  assert.match(item, /flex-direction:\s*column;/);
+
+  const source = ruleBody(css, '.item__source');
+  assert.match(source, /margin-top:\s*auto;/);
 }
 
 test('hidden comparison panels stay hidden when tabs switch sections', () => {
