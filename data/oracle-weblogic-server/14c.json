@@ -4,7 +4,6 @@
   "release_label": "Oracle WebLogic Server 14c (14.1.2.0.0)",
   "record_type": "release",
   "released": "2024-12-01",
-  "last_updated": "2026-05-31",
   "sections": {
     "certification": [],
     "whats_new": [
@@ -69,5 +68,6 @@
       }
     ],
     "desupported": []
-  }
+  },
+  "last_updated": "2026-05-31"
 }
