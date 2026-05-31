@@ -4,6 +4,31 @@ import { readFileSync } from 'node:fs';
 
 const index = JSON.parse(readFileSync('data/index.json', 'utf8'));
 
+function sourceHostsForProduct(productId) {
+  const product = index.products.find(p => p.id === productId);
+  assert.ok(product, `missing product ${productId}`);
+  return product.versions.flatMap(version => {
+    const record = JSON.parse(readFileSync(`data/${version.file}`, 'utf8'));
+    return ['certification', 'whats_new', 'behavior_changes', 'deprecated', 'desupported']
+      .flatMap(section => record.sections[section] || [])
+      .map(item => new URL(item.source_url).hostname);
+  });
+}
+
+function isOracleOwnedHost(hostname) {
+  return hostname === 'oracle.com' || hostname.endsWith('.oracle.com');
+}
+
+test('curated Database and WebLogic records use Oracle-owned source hosts', () => {
+  const hosts = [
+    ...sourceHostsForProduct('oracle-database'),
+    ...sourceHostsForProduct('oracle-weblogic-server')
+  ];
+
+  assert.ok(hosts.length > 0);
+  assert.deepEqual(hosts.filter(host => !isOracleOwnedHost(host)), []);
+});
+
 test('index includes Oracle Database from 12c to latest 26ai with source-backed support metadata', () => {
   const product = index.products.find(p => p.id === 'oracle-database');
 
