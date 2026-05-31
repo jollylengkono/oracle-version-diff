@@ -158,6 +158,30 @@ def test_discover_oracle_pages_deduplicates_linked_urls_across_seeds():
     ]
 
 
+def test_discover_oracle_pages_skips_http_oracle_candidates():
+    seed_html = """
+    <html><body>
+      <a href="http://docs.oracle.com/en/database/oracle/oracle-database/release-notes.html">HTTP release</a>
+      <a href="https://docs.oracle.com/en/database/oracle/oracle-database/whats-new.html">HTTPS release</a>
+    </body></html>
+    """
+    session = FakeSession([
+        FakeResponse(seed_html, "https://docs.oracle.com/seed.html"),
+        FakeResponse("<html>release</html>", "https://docs.oracle.com/en/database/oracle/oracle-database/whats-new.html"),
+    ])
+
+    pages = discover_oracle_pages(["https://docs.oracle.com/seed.html"], session=session)
+
+    assert [page.url for page in pages] == [
+        "https://docs.oracle.com/seed.html",
+        "https://docs.oracle.com/en/database/oracle/oracle-database/whats-new.html",
+    ]
+    assert [call[0] for call in session.calls] == [
+        "https://docs.oracle.com/seed.html",
+        "https://docs.oracle.com/en/database/oracle/oracle-database/whats-new.html",
+    ]
+
+
 def test_ai_source_targets_include_database_and_weblogic(repo_root):
     targets = load_ai_source_targets(repo_root / "pipeline" / "ai_sources.json")
 

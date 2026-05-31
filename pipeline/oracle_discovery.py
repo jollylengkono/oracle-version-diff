@@ -90,7 +90,7 @@ def _candidate_links(page):
     urls = unique_oracle_urls(hrefs, page.url)
     return [
         url for url in urls
-        if any(hint in url.lower() for hint in LINK_HINTS)
+        if oracle_source_url(url) and any(hint in url.lower() for hint in LINK_HINTS)
     ]
 
 
