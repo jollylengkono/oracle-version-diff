@@ -45,6 +45,7 @@ function assertResponsiveCardGrid(css) {
   assert.match(item, /flex-direction:\s*column;/);
 
   const source = ruleBody(css, '.item__source');
+  assert.match(source, /align-self:\s*flex-start;/);
   assert.match(source, /margin-top:\s*auto;/);
 }
 
