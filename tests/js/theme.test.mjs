@@ -6,6 +6,14 @@ const lightCss = readFileSync('css/theme-supabase-light.css', 'utf8');
 const darkCss = readFileSync('css/theme-github-dark.css', 'utf8');
 const html = readFileSync('index.html', 'utf8');
 
+function assertResponsiveCardGrid(css) {
+  assert.match(css, /\.range-list\s*\{\s*display:\s*grid;\s*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\);[\s\S]*gap:\s*\.9rem;/);
+  assert.match(css, /@media\s*\(max-width:\s*959px\)\s*\{[\s\S]*\.range-list\s*\{\s*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);/);
+  assert.match(css, /@media\s*\(max-width:\s*699px\)\s*\{[\s\S]*\.range-list\s*\{\s*grid-template-columns:\s*1fr;/);
+  assert.match(css, /\.item\s*\{[\s\S]*display:\s*flex;[\s\S]*flex-direction:\s*column;/);
+  assert.match(css, /\.item__source\s*\{[\s\S]*margin-top:\s*auto;/);
+}
+
 test('hidden comparison panels stay hidden when tabs switch sections', () => {
   assert.match(lightCss, /\.panel\[hidden\]\s*\{\s*display:\s*none;\s*\}/);
   assert.match(darkCss, /\.panel\[hidden\]\s*\{\s*display:\s*none;\s*\}/);
@@ -41,4 +49,9 @@ test('Supabase light theme keeps source buttons dark and active tabs green', () 
   assert.match(lightCss, /\.item__source:hover\s*\{[\s\S]*background:\s*var\(--button-hover\);/);
   assert.match(lightCss, /\.tab--active\s*\{[\s\S]*border-color:\s*var\(--accent\);/);
   assert.match(lightCss, /\.tab--active\s*\{[\s\S]*background:\s*var\(--accent-soft\);/);
+});
+
+test('themes use a responsive equal-height card grid', () => {
+  assertResponsiveCardGrid(lightCss);
+  assertResponsiveCardGrid(darkCss);
 });
