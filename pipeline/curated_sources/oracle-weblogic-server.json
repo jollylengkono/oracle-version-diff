@@ -5,7 +5,9 @@
   },
   "versions": [
     {
-      "index": {},
+      "index": {
+        "label": "WebLogic Server 15c (15.1.1.0.0)"
+      },
       "record": {
         "product": "oracle-weblogic-server",
         "version": "15c",
@@ -90,7 +92,9 @@
       }
     },
     {
-      "index": {},
+      "index": {
+        "label": "WebLogic Server 14c (14.1.2.0.0)"
+      },
       "record": {
         "product": "oracle-weblogic-server",
         "version": "14c",
@@ -165,7 +169,9 @@
       }
     },
     {
-      "index": {},
+      "index": {
+        "label": "WebLogic Server 12c (12.2.1.4.0)"
+      },
       "record": {
         "product": "oracle-weblogic-server",
         "version": "12c",
@@ -260,7 +266,9 @@
       }
     },
     {
-      "index": {},
+      "index": {
+        "label": "WebLogic Server 11g (10.3.6)"
+      },
       "record": {
         "product": "oracle-weblogic-server",
         "version": "11g",

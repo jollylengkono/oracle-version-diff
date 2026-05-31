@@ -6,6 +6,7 @@
   "versions": [
     {
       "index": {
+        "label": "Oracle AI Database 26ai",
         "support_track": "Long Term Support Release"
       },
       "record": {
@@ -128,6 +129,7 @@
     },
     {
       "index": {
+        "label": "Oracle Database 21c",
         "support_track": "Innovation Release"
       },
       "record": {
@@ -210,6 +212,7 @@
     },
     {
       "index": {
+        "label": "Oracle Database 19c",
         "support_track": "Long Term Support Release"
       },
       "record": {
@@ -281,7 +284,9 @@
       }
     },
     {
-      "index": {},
+      "index": {
+        "label": "Oracle Database 12c Release 2"
+      },
       "record": {
         "product": "oracle-database",
         "version": "12c",

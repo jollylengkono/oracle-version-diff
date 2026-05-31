@@ -110,3 +110,37 @@ def test_build_goldengate_product_preserves_explicit_falsy_fetch_and_today(monke
 
     assert product.records == []
     assert calls == [(falsy_fetch, build_module.sources_mod.RELEASE_NOTES_BASE, "")]
+
+
+def _registered_fetch(url):
+    release_page = """
+    <html><body>
+      <h3 class="sect3">Release 23.26.2.0.0: May 2026</h3>
+      <p class="subhead2">Generated test item</p>
+      <p>Generated test description.</p>
+    </body></html>
+    """
+    if url.endswith("toc.js"):
+        return json.dumps({
+            "toc": [{
+                "topics": [
+                    {"title": "New Features", "href": "new-features.html"},
+                    {"title": "Default Behavior Changes", "href": "default-behaviour.html"},
+                    {"title": "Deprecated and Desupported", "href": "deprecated-features.html"},
+                ]
+            }]
+        })
+    host = urlparse(url).hostname or ""
+    if host == "oracle.com" or host.endswith(".oracle.com"):
+        return release_page
+    raise AssertionError(f"unexpected URL: {url}")
+
+
+def test_registered_products_build_against_fake_fetch():
+    products = build_all_products(fetch=_registered_fetch, today="2026-05-31")
+
+    assert {product.product_id for product in products} == {
+        "oracle-goldengate",
+        "oracle-database",
+        "oracle-weblogic-server",
+    }
