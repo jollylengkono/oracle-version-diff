@@ -40,3 +40,5 @@ jobs:
             Automated refresh of Oracle Release Delta data from Oracle-owned sources.
             Review the diff before merging; parser drift or source drift will show up here.
           labels: data-refresh
+          add-paths: |
+            data/

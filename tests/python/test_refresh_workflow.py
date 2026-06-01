@@ -38,6 +38,16 @@ def test_refresh_workflow_uses_all_product_copy(repo_root):
     assert _contains_line(lines, "labels: data-refresh")
 
 
+def test_refresh_workflow_does_not_commit_virtualenv(repo_root):
+    workflow = (repo_root / ".github" / "workflows" / "refresh-data.yml").read_text()
+    gitignore = (repo_root / ".gitignore").read_text().splitlines()
+
+    assert ".venv/" in gitignore
+    assert "add-paths: |" in workflow
+    assert "data/" in workflow
+    assert ".venv" not in workflow.split("add-paths: |", 1)[1]
+
+
 def test_docs_describe_all_product_periodic_refresh(repo_root):
     readme = (repo_root / "README.md").read_text()
     handover = (repo_root / "docs" / "HANDOVER.md").read_text()
