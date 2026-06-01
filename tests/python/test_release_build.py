@@ -71,7 +71,8 @@ def test_build_records_includes_curated_legacy_baselines():
     recs = build_records(fake_fetch_factory(), BASE, today="2026-05-30")
     versions = [r["version"] for r in recs]
 
-    assert versions[-2:] == ["21c", "19c"]
+    assert versions[-3:] == ["21c", "19c", "12c"]
+    assert next(r for r in recs if r["version"] == "12c")["record_type"] == "baseline"
     assert next(r for r in recs if r["version"] == "19c")["record_type"] == "baseline"
     assert next(r for r in recs if r["version"] == "23.26.2.0.0")["record_type"] == "release"
 

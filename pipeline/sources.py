@@ -11,6 +11,20 @@ RELEASE_NOTES_BASE = "https://docs.oracle.com/en/database/goldengate/core/26/rel
 STATIC_LEGACY_BASELINES = [
     {
         "product": PRODUCT_ID,
+        "version": "12c",
+        "release_label": "Oracle GoldenGate 12c (12.3.0.1)",
+        "record_type": "baseline",
+        "released": "2017-08-01",
+        "sections": {
+            "certification": [],
+            "whats_new": [],
+            "behavior_changes": [],
+            "deprecated": [],
+            "desupported": [],
+        },
+    },
+    {
+        "product": PRODUCT_ID,
         "version": "19c",
         "release_label": "Oracle GoldenGate 19c",
         "record_type": "baseline",

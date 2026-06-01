@@ -29,6 +29,16 @@ test('curated Database and WebLogic records use Oracle-owned source hosts', () =
   assert.deepEqual(hosts.filter(host => !isOracleOwnedHost(host)), []);
 });
 
+test('index includes Oracle GoldenGate from 12c to latest release stream', () => {
+  const product = index.products.find(p => p.id === 'oracle-goldengate');
+
+  assert.ok(product);
+  assert.equal(product.label, 'Oracle GoldenGate');
+  assert.deepEqual(product.versions.slice(-3).map(v => v.version), ['21c', '19c', '12c']);
+  assert.equal(product.versions.at(-1).record_type, 'baseline');
+  assert.equal(product.versions.at(-1).file, 'oracle-goldengate/12c.json');
+});
+
 test('index includes Oracle Database from 12c to latest 26ai with source-backed support metadata', () => {
   const product = index.products.find(p => p.id === 'oracle-database');
 
