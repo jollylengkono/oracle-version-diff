@@ -68,6 +68,8 @@ def build_records(fetch, base_url, today=None):
             for rel in section_releases.get(section, []):
                 if rel["version"] == version:
                     sections[section].extend(rel["items"])
+        if not any(sections[section] for section in FEATURE_SECTIONS):
+            continue
         record = {
             "product": sources_mod.PRODUCT_ID,
             "version": version,
@@ -103,7 +105,11 @@ def build_legacy_release_note_record(source, fetch=None, today=None):
         if isinstance(section_urls, str):
             section_urls = [section_urls]
         for url in section_urls:
-            releases = parse_release_sections(fetch(url), url)
+            releases = parse_release_sections(
+                fetch(url),
+                url,
+                section_title=source.get("section_titles", {}).get(section),
+            )
             for release in releases:
                 sections[section].extend(release["items"])
     return {

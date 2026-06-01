@@ -4,12 +4,340 @@
   "release_label": "Oracle GoldenGate 12c (12.3.0.1)",
   "record_type": "baseline",
   "released": "2017-08-01",
+  "last_updated": "2026-06-01",
   "sections": {
     "certification": [],
-    "whats_new": [],
-    "behavior_changes": [],
-    "deprecated": [],
+    "whats_new": [
+      {
+        "title": "Microsoft Azure SQL Database Support",
+        "description": "Oracle GoldenGate now supports delivery to Microsoft Azure SQL Database targets. Capture from Microsoft Azure SQL Database is not supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "SQL Server 2017 Support",
+        "description": "Oracle GoldenGate now supports SQL Server 2017 Enterprise edition for capture and delivery.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "System Requirements for Windows",
+        "description": "Before installing Oracle GoldenGate on a Windows system, install the Microsoft Visual C ++ 2010 SP1 Redistributable Package and the Microsoft Visual C++ 2013 Redistributable Package ( vcredist_x64.exe ). These packages install the runtime components of Visual C++ Libraries that are required for Oracle GoldenGate processes. To download the Visual C++ 2010 SP1 package, go to: https://www.microsoft.com/en-us/download/details.aspx?id=13523 To download the Visual C++ 2013 package, go to: https://www.microsoft.com/en-us/download/details.aspx?id=40784",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "MySQL MariaDB Support",
+        "description": "Support for the use of the MariaDB RDBMS fork of the MySQL database was added.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "INFO EXTRACT group_name CONTAINERS",
+        "description": "New command that lists the Pluggable Databases (PDBs) that are registered with a specified Extract group name.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "File-based Initial Load Replication in Microservices Architecture",
+        "description": "The Microservices Architecture fully supports initial-load replication using file-based .initial load processing.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Performance Metrics Server with the Classic Architecture",
+        "description": "The monitoring functionality previously provided by the Manager process is now provided using the new Performance Metrics server process.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "ENABLEMONITORING Parameter",
+        "description": "The GLOBALS parameter ENABLEMONITORING is enhanced to add the UDPPORT and HTTPPORT options for use with the UDP mode. This allows for monitoring by Performance Metrics Server in the Classic Architecture .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Admin Client Changes",
+        "description": "For the MA Administration Server, a new endpoint is created at /services/v2/enckeys , providing an API for generating AES encryption keys and using them to encrypt data. In addition, support for managing ENCKEYS is added to the /services/v2/config/files endpoint. The EDIT ENCKEYS , ENCRYPT PASSWORD , and VIEW ENCKEYS commands were added.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "New option",
+        "description": "The TRANLOGOPTIONS SOURCE_OS_TIMEZONE time zone option was added for Integrated Extract so that you can set the Extract to the system time zone of the source database, when the Integrated Extract is installed on a remote server of a different time zone.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "New option",
+        "description": "The TRANLOGOPTIONS DB2ZV11COMPATIBILITYMODE option was added so that you can set the DB2 z/OS version.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Microservices Architecture",
+        "description": "All APIs are accessible and available under standard Oracle GoldenGate Licensing, except for the APIs associated with the Performance Metric Service. To access the Performance Metric Service APIs, it requires additional licensing through Oracle GoldenGate Management Pack or Oracle GoldenGate Foundation Suite.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Single Service Manager per Installation",
+        "description": "Oracle recommends that you create only one Service Manager on a system where you install Microservices Architecture to facilitate easy upgrades.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Oracle Database Sharding",
+        "description": "All the functionality of a sharded database, in addition to providing pre-configured Oracle GoldenGate replication as part of the GDSCTL DEPLOY command, is included.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Parallel Replicat",
+        "description": "Parallel Replicat is a new variant of Replicat that applies transactions in parallel to improve performance. It takes into account dependencies between transactions, similar to Integrated Replicat. The dependency computation, parallelism of the mapping and apply is performed outside the database so it can be off-loaded to a middle-tier server. The transaction integrity is calculated and maintained within this process. In addition, Parallel Replicat supports the parallel apply of large transactions by splitting a large transaction into chunks and applying them in parallel.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Procedural Replication",
+        "description": "Integrated Replicat has been enhanced to allow you to replicate certain Oracle-supplied PL/SQL procedures that cannot be replicated as DML or DDL. This requires that the source and target databases are Oracle Database 12 c Release 2 (12.2) and later.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Automatic Conflict Detection and Resolution",
+        "description": "You can configure and manage Oracle GoldenGate to automate conflict detection and resolution when it is configured in Oracle Database 12 c Release 2 (12.2) and later.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "DBA_GOLDENGATE_SUPPORT_MODE has a new value PLSQL",
+        "description": "This view has a new value, PL/SQL .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "PMSRVR Commands",
+        "description": "The PMSRVR commands control the Performance Metrics Server.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "ADD TRANDATA , INFO TRANDATA , and ADD SCHEMATRANDATA enhancements",
+        "description": "These commands are enhanced to provide additional table handling information by adding the NOVALIDATE option: Warning on object type table, xmltype table, iot table, cluster table Support mode, including full support, support using fetch, or not supported List of Oracle GoldenGate key columns Columns and their types that caused the table to be unsupported or fetch supported Fetch restrictions Warning on lack of unique key",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "TRANLOGOPTIONS",
+        "description": "The FETCHINLINESFLOB and VALIDATEINLINESFLOB options are added to the TRANLOGOPTIONS parameter. The DLFAILOVER_TIMEOUT seconds option provides a configurable timeout in seconds to allow for standby database reinstatement post-role transition. The DISABLESOFTEOFDELAY option sets the wait time that the EOFDELAY will take effect when an EOF is reported along with records to be returned. The SUPPRESSNOOOPUPDATES option allows you to control whether no-op updates are filtered or not in Integrated Extract.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "GETENV",
+        "description": "The JULIANTIMESTAMP_PRECISE option is added to the GETENV parameter.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "ALLOWNULLABLEKEYS | NOALLOWNULLABLEKEYS",
+        "description": "The ALLOWNULLABLEKEYS | NOALLOWNULLABLEKEYS GLOBALS parameter changes the key selection logic.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "ADD HEARTBEATTABLE and ALTER HEARTBEATTABLE",
+        "description": "The TARGETONLY and NOTARGETONLY options are added to these parameters. This is available with Oracle Database only.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "MAPALLCOLUMNS | NOMAPALLCOLUMNS",
+        "description": "MAPALLCOLUMNS | NOMAPALLCOLUMNS are added as Global parameters and as an option to the MAP parameter to control whether or not Replicat obtains non-key columns.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Error Log Enhancements",
+        "description": "You can control the ggserr.log file behavior by changing appender-ref from ggserr.Standard to one of these options: ggserr.Legacy ggserr.None ggserr.Syslog",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "OUTPUTFORMAT",
+        "description": "Use the OUTPUTFORMAT parameter to output data in text, SQL, and XML formats.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "CACHEMGR",
+        "description": "The CACHEMGR CACHEVMUSAGE option was added and returns the statistics for the virtual memory use.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "SQLEXEC on Before and After Images",
+        "description": "This functionality should work for any type of Extract or Replicat including Integrated Replicat. It allows a SQLEXEC to call the stored procedure and return the masked value for BAN , and then use that returned value in the WHERE CLAUSE similar to: SQLEXEC (BEFOREFILTER, SPNAME MASK_COL, PARAMS (in_mask = BAN, mask_type = \u00e2\u0080\u0098CHARACTER\u00e2\u0080\u0099, OPTIONS = \u00e2\u0080\u0098N\u00e2\u0080\u0099), Where the return value, MASK_RESULT , returns the masked value of the BAN column. The other options are to mask it using only character data (A-Z, a-z, 0-9), and the last OPTIONS is a list of possible options, such as whether the value should be deterministic or which values to encrypt. In processing UPDATE and DELETE statements, you want the stored procedure to take the BEFORE image of the value and use that masked value in the WHERE CLAUSE . However, Oracle GoldenGate does not do this by default, so the MOD_COMPARE_COLS option is introduced so that you can control the values that are used in the WHERE CLAUSE .The MOD_COMPARE_COLS option works similar to COLMAP except that the values for the assigned columns are used in the WHERE CLAUSE instead of as values in the actual SET clause. IGNOREINSERTS GETUPDATES GETDELETES TABLE ADM. MESSAGE_LOG, TARGET ADM. MESSAGE_LOG, SQLEXEC (BEFOREFILTER, SPNAME MASK_COL, PARAMS (in_mask = BEFORE.BAN, mask_type = \u00e2\u0080\u0098CHARACTER\u00e2\u0080\u0099, OPTIONS = \u00e2\u0080\u0098N\u00e2\u0080\u0099), COLMAP (USEDEFAULTS, pk_col = @GETVAL(MASK_COL.mask_result)), MOD_COMPARE_COLS (BAN = MASK_COL.MASK_RESULT); In this example, the WHERE CLAUSE for UPDATE s and DELETE s (since we are using IGNOREINSERTS ) are modified to use the MASK_COL.MASK_RESULT value from the SQLEXEC statement instead of using the actual before image of the BAN column from the trail.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "MySQL",
+        "description": "Support for extraction and replication of DDL (data definition language) operations is introduced. InnoDB now supports up to 1017 columns. Support added for Capture and Delivery to MySQL Database with TDE Enabled. MySQL has been certified for delivery to Amazon Aurora, which is derived from MySQL v5.6 for both a single instance and a cluster setup of Amazon Aurora.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "SQL Server",
+        "description": "A new change data capture (CDC)-based Extract is introduced. The CDC-based Extract supports capture from SQL Server 2008 - 2016 databases enabled with TDE, and remote capture. Capture from a source database configured as a Primary or readable Synchronous mode Secondary of an AlwaysOn Availability group. Delivery to SQL Server 2016 targets. New parameters TRANLOGOPTIONS NO and MANAGECDCCLEANUP added for SQL Server CDC Extract. MANAGECDCCLEANUP is the default and instructs the CDC Extract to check for the Oracle GoldenGate Cleanup task objects. For the CDC Extract, there is a new utility ogg_cdc_cleanup_setup.bat , which is used to create the Oracle GoldenGate CDC Cleanup job and associated objects, for controlling data retention in the CDC tables. TLS 1.2 support has been added for Oracle GoldenGate for SQL Server, and requires the Extract to run with the new DBOPTIONS DRIVER SQLNCLI11 parameter. Single user TRANLOGOPTIONS EXCLUDEUSER functionality has been added for the SQL Server Classic Extract. However, multiple excluded users are not supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "DB2 z/OS",
+        "description": "There is no longer a native DB2 z/OS build. This allows Oracle GoldenGate for DB2 z/OS to maintain compatibility with the other platform features and significantly reduces the MIPs costs associated with running the product. Extract uses stored procedures to read the transaction log. AES encryption and 64\u2013bit support is included. BATCHSQL is now supported for DB2 z/OS",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "IBM for I",
+        "description": "COLCHARSET support now functional in TABLE specifications in Extract TEXT data conversions significantly more efficient in Extract when writing Unicode trails",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      }
+    ],
+    "behavior_changes": [
+      {
+        "title": "Removed support for file to database load utilities",
+        "description": "Oracle GoldenGate no longer supports the ability to generate data and control files for database load utilities such as SQLLOADER and BCP .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Coordinated Replicat doesn\u00e2\u0080\u0099t do dependency calculations",
+        "description": "Coordinated Replicat doesn't do dependency calculations for non-barrier transactions when a mapped table is partitioned based on THNREADRANGE . It relies on specified THREADRANGE columns to compute a hash value. It partitions the incoming data based on the hash value and sends all the records that match this hash value to same thread.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "The TIMESTAMP_PRECISE option is available with @GETENV ('TRANSACTION', 'TIMESTAMP_PRECISE') and @GETENV ('RECORD', 'TIMESTAMP_PRECISE')",
+        "description": "The TIMESTAMP_PRECISE option is used with TRANSACTION and RECORD options. @GETENV ('TRANSACTION', 'TIMESTAMP_PRECISE') returns information about a source transaction, but with fraction precision. It returns the timestamp from year to microseconds. @GETENV ('RECORD', 'TIMESTAMP_PRECISE') returns the location or the Oracle rowid of a record in an Oracle GoldenGate trail file, with fraction precision. This option returns the timestamp from year to microseconds. However, depending on the database, the value can be in milliseconds with 0 microseconds.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "The @GETENV COMPATIBILITY option values are from 0 to 6 .",
+        "description": "The actual values for the COMPATIBILITY option are from 0 to 6 . A value of 5 means that the trail file is of Oracle GoldenGate version 12.2.0.1 and a value of 6 is for a trail file of Oracle GoldenGate version 12.3.0.1. These values are increasing as per Oracle GoldenGate versions depending on the trail file version.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "The @GETENV options, TRANSACTION transaction_info , USERID , USERNAME are not valid for Pump Extract or Replicat. GGFILEHEADER is only valid for Replicat",
+        "description": "The @GETENV options TRANSACTION transaction_info , USERID , USERNAME work on the main Extract and not on the pump Extract and Replicat. GGFILEHEADER is valid only for Replicat.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Admin Client CONNECT command supports the ! modifier",
+        "description": "Admin Client does not allow connecting to a server through HTTPS when the server certificate is invalid. To override this behavior, use the ! modifier with the CONNECT command. For example, when using the Admin Client to connect to the Oracle GoldenGate Microservices Architecture services that are secured with a self-signed SSL certificate, you must use a command with the ! modifier: CONNECT https://myserver.example.org as oggadmin !",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "PASSTHRU and NOPASSTHRU parameters with data pump are deprecated",
+        "description": "The PASSTHRU and NOPASSTHRU parameters in the data pump as standalone parameters indicate whether the pump is reading a trail and sending to a remote system with no further processing ( PASSTHRU ) or may perform some processing on the data ( NOPASSTHRU ). These parameters in this context only were deprecated.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Supported EXTTRAIL , RMTTRAIL , EXTFILE , and RMTFILE Settings for FORMAT RELEASE with Oracle Database 12.2",
+        "description": "When using the FORMAT RELEASE option, the following settings are supported in Oracle Database 12.2: Non-CDB with compatibility set to 12.1, FORMAT RELEASE 12.2 or above is supported. Non-CDB with compatibility set to 12.2, FORMAT RELEASE 12.2 or above is supported. CDB/PDB with compatibility set to 12.2, only FORMAT RELEASE 12.3 is supported. This is due to the use of local undo for PDBs, which requires augmenting the transaction ID with the PDB number to ensure uniqueness of trx IDs.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Log Miner does not Support Parallelism on Oracle Database Standard Edition",
+        "description": "Log Miner does not support parallelism because of certain restrictions in Oracle Database Standard Edition. The default parallelism value in Oracle Database Standard Edition is 1, and if you specify a value of greater than 1, Integrated Extract abends. Similarly for Integrated Replicat, internal apply engine does not support parallelism on Oracle Database Standard Edition. Integrated Replicat abends if a value greater than 1 value is specified.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Converting Regular Deployment to XAG Managed Deployment is Not Supported",
+        "description": "The option to support conversion of regular deployment to XAG-managed deployment is not available. For Oracle GoldenGate Microservices Architecture , the XAG managed property needs to be specified at deployment creation time.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "System Change Number",
+        "description": "The value size is expanded from 6 bytes to 8 bytes. This is applicable to Oracle Database 12 c Release 2 (12.2) and later.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Extract",
+        "description": "Checkpointing was changed to support the 8-byte representation for both classic and integrated Extract.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Long Identifiers",
+        "description": "Support for long identifiers limit of 128 bytes was added. This is applicable to Oracle Database 12 c Release 2 (12.2) and later.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Oracle Database",
+        "description": "Support for the Local Undo Oracle Database 12.2 feature, which allowed each PDB to use its own, local undo tablespace, has been added. Classic capture mode when replicating a CREATE USER command using the DDL trigger was changed and now the trigger owner and the Extract login user must match.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Character Sets for Pluggable Databases",
+        "description": "Oracle GoldenGate now provides replication support for pluggable databases with different character sets.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "DB2 LUW EOFDELAY",
+        "description": "The EOFDELAY wait time will take effect even when an EOF is reported along with records to be returned.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "DB2 for i",
+        "description": "The default behavior of a DB2 for I Extract has been reverted to convert all character data to Unicode. Extracts with multiple journals are no longer allowed by default",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "SQL Server (CDC Extract) ADD TRANDATA",
+        "description": "If you encounter the following error: Could not find stored procedure 'sys.sp_cdc_parse_captured_column_list' When adding TRANDATA to an SQL Server 2016 table, you may need to install a patch related to the following SQL Server bug: SQL Server 2016 Patch",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "@RANGE",
+        "description": "The @RANGE function now abends when there are missing or NULL columns.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      }
+    ],
+    "deprecated": [
+      {
+        "title": "GENLOADFILES support in Oracle GoldenGate",
+        "description": "The GENLOADFILES parameter is deprecated from Oracle GoldenGate 12.1 and higher.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "USERSUBDIRS , NOUSESUBDIRS for Extract and Replicat",
+        "description": "The parameters USERSUBDIRS , NOUSESUBDIRS have been deprecated for Extract and Replicat.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "VAMTRAILSOURCE for Teradata",
+        "description": "The parameter VAMTRAILSOURCE has been deprecated for Teradata.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Oracle GoldenGate Director",
+        "description": "Oracle GoldenGate Director is not supported with Oracle GoldenGate 12.3.0.1 release. Use Oracle GoldenGate Studio instead.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "SYSLOG",
+        "description": "The SYSLOG parameter for GLOBALS and MGR.PRM is removed. To control where messages are written, see Using the Error Log in the Administering Oracle GoldenGate .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "Reverse Utility",
+        "description": "The reverse utility is deprecated.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "INFO MARKER",
+        "description": "The INFO MARKER command is deprecated. Extract and Replicat no longer check the marker table history from NKS source.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "NOASYNCTRANSPROCESSING",
+        "description": "The NOASYNCTRANSPROCESSING option of TRANLOGOPTIONS is deprecated. There is no default behavior change.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "FORMATASCII , FORMATSQL , and FORMATXML",
+        "description": "The new OUTPUTFORMAT parameter replaces the deprecated FORMATASCII , FORMATSQL , and FORMATXML parameters.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "CACHEMGR",
+        "description": "The CACHEPOOL n and CACHEFSOPTION { MS_SYNC | MS_ASYNC options are deprecated.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "FORMAT RELEASE, TRAILBYTEORDER",
+        "description": "These two options of EXTFILE , EXTTRAIL , RMTFILE , and RMTTRAIL have been deprecated for the data pump. The data pump writes the output trail in the same format and metadata endian as the input source trail file.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "TRAILCHARSETUNICODE",
+        "description": "The Extract TRAILCHARSETUNICODE parameter has been deprecated because the default behavior of a DB2 for I Extract is now reverted to convert all character data to Unicode. The character conversion efficiency has been significantly improved., however if a table must be sent without conversion, COLCHARSET(PASSTHRU) may be used on the TABLE statement.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      },
+      {
+        "title": "USEANSISQLQUOTES | NOUSEANSISQLQUOTES",
+        "description": "The GLOBALS USEANSISQLQUOTES | NOUSEANSISQLQUOTES parameters have been deprecated.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html"
+      }
+    ],
     "desupported": []
-  },
-  "last_updated": "2026-06-01"
+  }
 }

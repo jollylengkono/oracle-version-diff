@@ -8,19 +8,24 @@ DOCS_INDEX_URL = "https://docs.oracle.com/en/middleware/goldengate/index.html"
 # so adding a future doc line only requires updating this base.
 RELEASE_NOTES_BASE = "https://docs.oracle.com/en/database/goldengate/core/26/release-notes/"
 
-STATIC_LEGACY_BASELINES = [
+STATIC_LEGACY_BASELINES = []
+
+LEGACY_RELEASE_NOTE_SOURCES = [
     {
         "product": PRODUCT_ID,
         "version": "12c",
         "release_label": "Oracle GoldenGate 12c (12.3.0.1)",
         "record_type": "baseline",
         "released": "2017-08-01",
-        "sections": {
-            "certification": [],
-            "whats_new": [],
-            "behavior_changes": [],
-            "deprecated": [],
-            "desupported": [],
+        "urls": {
+            "whats_new": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html",
+            "behavior_changes": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html",
+            "deprecated": "https://docs.oracle.com/en/middleware/goldengate/core/12.3.0.1/oggrn/whats-new-this-release.html",
+        },
+        "section_titles": {
+            "whats_new": "New Features",
+            "behavior_changes": "Default Behavior Changes",
+            "deprecated": "Deprecated Features",
         },
     },
     {
@@ -29,17 +34,12 @@ STATIC_LEGACY_BASELINES = [
         "release_label": "Oracle GoldenGate 19c",
         "record_type": "baseline",
         "released": "2019-01-01",
-        "sections": {
-            "certification": [],
-            "whats_new": [],
-            "behavior_changes": [],
-            "deprecated": [],
-            "desupported": [],
+        "urls": {
+            "whats_new": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html",
+            "behavior_changes": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html",
+            "deprecated": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/deprecated-features.html",
         },
     },
-]
-
-LEGACY_RELEASE_NOTE_SOURCES = [
     {
         "product": PRODUCT_ID,
         "version": "21c",

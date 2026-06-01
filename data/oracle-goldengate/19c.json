@@ -4,12 +4,480 @@
   "release_label": "Oracle GoldenGate 19c",
   "record_type": "baseline",
   "released": "2019-01-01",
+  "last_updated": "2026-06-01",
   "sections": {
     "certification": [],
-    "whats_new": [],
-    "behavior_changes": [],
-    "deprecated": [],
+    "whats_new": [
+      {
+        "title": "Oracle GoldenGate for Amazon RDS for SQL Server 2019 is supported",
+        "description": "Oracle GoldenGate supports Amazon RDS for SQL Server 2019.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Oracle GoldenGate for Sybase is supported",
+        "description": "Oracle GoldenGate supports Sybase version 16.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "PostgreSQL on Azure is supported",
+        "description": "Oracle GoldenGate has been enhanced to support Azure database for PostgreSQL instance.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Extract support for PostgreSQL version 10 and above",
+        "description": "PostgreSQL enhanced to provide Extract support for PostgreSQL version 10 and above. This allows for the same heterogeneous replication that is common for all Oracle GoldenGate supported platforms, and you can replicate from PostgreSQL to Oracle. See the Using Oracle GoldenGate for Heterogeneous Databases to know more about supported features and requriements..",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "SSL support for PostgreSQL",
+        "description": "Enhanced Oracle GoldenGate to enable configuring one-way and two-way SSL to connect to the database using GGSCI, Extract, Replicat and other processes.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Support MONEY datatype for all locales",
+        "description": "Enhanced support for MONEY datatype for all locales.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Amazon RDS for PostgreSQL support",
+        "description": "Amazon RDS for PostgreSQL remote capture and delivery is supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Amazon Aurora PostgreSQL",
+        "description": "Amazon Aurora PostgreSQL remote capture and delivery is supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Remote capture and delivery support",
+        "description": "Remote capture and delivery is supported for all PostgreSQL versions.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Interval data type support",
+        "description": "Support for interval data type in capture and delivery.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Heartbeat support",
+        "description": "Heartbeat support for PostgreSQL.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "WILDCARDRESOLVE DYNAMIC support",
+        "description": "Support for wildcardresolve dynamic is available.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "NLS globalization support for object names in PostgreSQL capture",
+        "description": "Capture and delivery supports globalization of object names and column data.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Extract should capture the records after positioning by time is issued (BEGIN NOW)",
+        "description": "Extract supports positioning by TIMESTAMP EOF , LSN , and START .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Bidirectional loop detection and support",
+        "description": "PostgreSQL supports bidirectional replication including various bidirectional filtering parameters ( GETREPLICATES , IGNOREREPLICATES , GETAPPLOPS ).",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Support for MANAGESECONDARYTRUNCATIONPOINT and NOMANAGESECONDARYTRUNCATIONPOINT",
+        "description": "PostgreSQL supports managing of secondary truncation point.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Handling the unsupported data types",
+        "description": "Handling of unsupported datatypes.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Change Data Capture and Initial Load Support",
+        "description": "Change Data Capture and initial load is supported by PostgreSQL capture.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "MariaDB 10.4 Support",
+        "description": "Local or remote capture and delivery are now supported for MariaDB 10.4.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Amazon RDS support for MariaDB",
+        "description": "Amazon RDS for MariaDB for remote capture and delivery is now supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Amazon RDS for SQL Server is supported",
+        "description": "Remote capture and delivery is now supported for Amazon RDS for SQL Server.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Support Delivery to Teradata 17.0",
+        "description": "Delivery to Teradata 17.0 is supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "SQL Server: Support capture and delivery for Azure SQL Database Managed Instance",
+        "description": "Oracle GoldenGate has been enhanced to support Azure SQL Database managed instance.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "SQL Server: Support capture and delivery for SQL Server 2019 Enterprise and Standard Editions",
+        "description": "Oracle GoldenGate has been enhanced to support SQL Server 2019.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "MySQL: Support capture and delivery for Azure Database for MySQL",
+        "description": "Oracle GoldenGate has been enhanced to support Azure Database for MySQL instance.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "DB2 LUW: Support for DB2 LUW verison 11.5",
+        "description": "Oracle GoldenGate has been enhanced to support DB2 LUW version 11.5.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "SQL Server 2017 for Capture and Delivery is Supported",
+        "description": "Capture and delivery is supported for SQL Server 2017.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "New TRANLOGOPTIONS Parameter ALWAYSONREADONLYROUTING",
+        "description": "The TRANLOGOPTIONS ALWAYSONREADONLYROUTING parameter allows Extract for SQL Server to route its read-only processing to an available read-intent Secondary when connected to an Always On availability group listener.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "New FILEGROUP Option for ADD TRANDATA and GLOBALS File",
+        "description": "The FILEGROUP option can be used with ADD TRANDATA per table, or within the GLOBALS file to affect all tables added for TRANDATA , and creates the CDC staging tables on the listed filegroup rather than the database's default filegroup.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "TRANCOUNT Option with TRANLOGOPTIONS",
+        "description": "The new TRANCOUNT option allows you to set a specific number of transactions to be fetched from SQL Server CDC tables at a time.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "New HEARTBEATTABLE Options",
+        "description": "This feature allows installing the Oracle GoldenGate Heartbeat implementation for a database used as a target only, and does not enable features that would be necessary for a source database implementation of the Heartbeat table. The following options are now available for heartbeat tables from the GGSCI Command Interface: ADD HEARTBEATTABLE [TARGETONLY] ALTER HEARTBEATTABLE [TARGETONLY|NOTARGETONLY]",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Support for remote Capture/Delivery with Oracle GoldenGate on Linux, for SQL Server on Windows",
+        "description": "Oracle GoldenGate for SQL Server can now run on Linux, providing remote Capture and Delivery support for SQL Server running on Windows.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Microsoft ODBC Driver Support",
+        "description": "The Microsoft ODBC drivers for SQL Server are now supported by Extract and Replicat.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "SQL Server CDC Object Versioning",
+        "description": "Oracle GoldenGate now provides a version tracking subsystem to track the CDC objects that are placed on the database. If the version numbers don't match, the Extract abends with an error, which requires TRANDATA be reissued for existing tables previously enabled with supplemental logging.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Delivery Support for Oracle TimesTen",
+        "description": "Delivery support for Oracle TimesTen 18c for both Classic and Scaleout Architectures is available.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Online Schema Change Support",
+        "description": "Support for online CREATE TABLE , DROP TABLE and ADD , ALTER , DROP COLUMN commands in the Extract without stopping and restarting the Extract to get the new table metadata for the Extract. Full table version history is supported. This feature is controlled using the TRANLOGOPTIONS TRACKSCHEMACHANGES parameter.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Managing Encryption Using a Key Management Service in Oracle GoldenGate Microservices Architecture",
+        "description": "Oracle GoldenGate Microservices Architecture provides integration with Oracle Key Vault (OKV) to centralize and manage encryption keys. Also see Using a KMS with Oracle GoldenGate .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Target-Initiated Paths",
+        "description": "Target-initiated paths for microservices enable the Receiver Server to initiate a path to the Distribution Service on the target deployment and pull trail files. This feature allows the Receiver Server to create a target initiated path for environments such as Demilitarized Zone Paths (DMZ) or Cloud to on-premise, where the Distribution Server in the source Oracle GoldenGate deployment cannot open network connections in the target environment to the Receiver Server due to network security policies.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "New Admin Client Commands",
+        "description": "The following Admin Client commands are added to Oracle GoldenGate 19c (19.1.0) to work with target-initiated distribution paths: ADD RECVPATH START RECVPATH STOP RECVPATH DELETE RECVPATH ALTER RECVPATH This following commands are designed to support improved scripting (using the OBEY Admin Client command) so that the username and password does not need to be included in the script itself, and instead you can use an alias : ADD CREDENTIALS INFO CREDENTIALS DELETE CREDENTIALS The command UPGRADE HEARTBEATTABLE is available to alter heartbeat table generated by the ADD HEARTBEATTABLE command using a previous Oracle GoldenGate release. The following commands have been added to allow users with security role to enable and disable services for any update operation by non-secure users. DISABLE SERVICE ENABLE SERVICE The following commands used to controls Profiles that allow performing automatic start and restart for Extract and Replicat processes: ADD PROFILE DELETE PROFILE",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "New column conversion function @BINTOBASE64",
+        "description": "New column conversion function to convert supplied binary data into BASE64 text.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "New LAG TASK feature",
+        "description": "Oracle GoldenGate Microservices now has the lag tasks feature in the Tasks tab, which allows you to set up the thresholds for lag in each Extract, Replicat, or Distribution Path processes.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "TLS 1.2 Support",
+        "description": "TLS 1.2 is now the default for secured deployments in Microservices.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "New REST Endpoint to Retrieve Active Transactions and Current SCN Details",
+        "description": "",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "New HEARTBEATTABLE Option",
+        "description": "The UPGRADE HEARTBEATTABLE option is now available for heartbeat tables from the GGSCI Command Interface:",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Improved Initial Load in Microservices",
+        "description": "The consistent SCN used for the initial load is automatically stored in the report file generated by an initial load Extract, so it can be used to precisely position the Extract and Replicat processes to avoid duplicate records.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Enhanced the Heartbeat Table to include details for rebuilding Extract",
+        "description": "This feature allows Replicats to maintain a more recent source restart position and minimize the redo retention periods. This feature is enabled by default for new heartbeat tables. Existing heartbeat tables are upgraded to support this enhancement. The enhanced heartbeat tables interoperate with heartbeat tables in deployments running older version of Oracle GoldenGate . With more recent restart positions, you can configure deleting tombstone tables for Automatic Conflict Detection Resolution (ACDR) tables (an Oracle-to-Oracle CDR feature) to be purged more aggressively. ACDR tombstone tables is only pertinent if you are rebuilding an Extract and using automatic CDR. For this feature to work, both the source and target versions of Oracle GoldenGate must be 19c or higher.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Cross Endian Support for Remote Integrated Extract",
+        "description": "Cross endian interoperability for Integrated Extract is automatically enabled when the endianess of the server where the Integrated Extract is running is different from the endianess of the server where the Oracle instance is running. When the Integrated Extract process is running in Oracle Database 19c with Oracle GoldenGate 19c, it can capture from redo logs with COMPATABILITY 11.2.0.4 or higher. This implies that an Oracle GoldenGate cloud environment configured on Linux can perform remote capture from any endian platform including Linux, Windows, AIX, Tru64, OpenVMS, solaris SPARC, Solaris x86, HP-UX, and so on, running Oracle Database. This also works with both multitenant and non-CDB architectures.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Support for TIMESTAMP (12)",
+        "description": "Oracle GoldenGate for DB2 for i now supports TIMESTAMP (12)",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "DBOPTIONS Parameter USEDATABASEENCODING",
+        "description": "The DBOPTIONS USEDATABASEENCODING parameter is introduced to allow Extract to store all text data in the trail in its native character encoding for non-DBCS data.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "TRANLOGOPTIONS BUFSIZE Parameter is available with DB2 for i",
+        "description": "The TRANLOGOPTIONS BUFSIZE parameter is available with DB2 for i.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Improved Extract throughput",
+        "description": "Extract efficiency has been substantially improved over previous releases. Throughput is enhanced while reducing overall processing resources for the same workload. Difference in throughput between the default conversion of text to UNICODE and \u00e2\u0080\u0098COLCHARSET(PASSTHRU,*\u00e2\u0080\u0099) , which does not convert text, has been substantially reduced for Oracle GoldenGate supported character sets.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Security Options",
+        "description": "AES encryption, credential store, and Oracle Wallet are now available.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "TRANLOGOPTIONS MAXAUTOCMTTRANSSIZE",
+        "description": "This parameter sets the maximum number of records that are included in an implicitly created transaction. This affects the maximum number of records that are not part of an explicit transaction (have a 0 CCID) can be grouped together into a single implicit transaction.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "CSN Requirements",
+        "description": "System sequence number is no longer required for single journal Extracts. It is recommended that you use RCVSIZOPT(*MAXOPT3) for their journals to enable a full 64-bit journal sequence number which will eliminate the need to reset journal sequence numbers periodically.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "DECFLOAT data type",
+        "description": "DECFLOAT data type is supported. Oracle GoldenGate can automatically map DECFLOAT to any other numeric datatype, however, it may have more precision or larger values. Ensure that target datatype can support the values that are being inserted into the source. @COMPUTE on DECFLOAT can only be used on values that are 17 digits or fewer. You may need to use @STRNUM some cases.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Long Running Transactions (LRT) support",
+        "description": "LRT features SHOWTRANS , SKIPTRANS , FORCETRANS are supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Support for TIMESTAMP (12)",
+        "description": "Oracle GoldenGate for DB2 LUW now supports TIMESTAMP (12).",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "DECFLOAT data type",
+        "description": "DECFLOAT data type is supported. Oracle GoldenGate can automatically map DECFLOAT to any other numeric datatype, however, it may have more precision or larger values. Ensure that target datatype can support the values that are being inserted into the source. @COMPUTE on DECFLOAT can only be used on values that are 17 digits or fewer. You may need to use @STRNUM some cases.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "LRT support",
+        "description": "LRT features SHOWTRANS , SKIPTRANS , FORCETRANS is supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Online Schema Change Support",
+        "description": "Support for online TABLE CREATE , DROP and ADD , ALTER , DROP COLUMN commands in the Extract without stopping and restarting the Extract to get the new table metadata for the Extract. Full table version history is supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Support for TIMESTAMP (12)",
+        "description": "Oracle GoldenGate for DB2 z/OS supports TIMESTAMP (12).",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Support for TIME ZONE WITH TIMESTAMP",
+        "description": "Oracle GoldenGate for DB2 z/OS now supports TIME ZONE WITH TIMESTAMP .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "LRT support",
+        "description": "LRT features SHOWTRANS , SKIPTRANS , FORCETRANS is supported.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "DECFLOAT data type",
+        "description": "DECFLOAT data type is supported. Oracle GoldenGate can automatically map DECFLOAT to any other numeric datatype, however, it may have more precision or larger values. Ensure that target datatype can support the values that are being inserted into the source. @COMPUTE on DECFLOAT can only be used on values that are 17 digits or fewer. You may need to use @STRNUM some cases.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "Two-way SSL Support in MySQL Capture and Delivery",
+        "description": "Oracle GoldenGate for MySQL supports an SSL connection of Extract or Replicat to the MySQL database server.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      },
+      {
+        "title": "MySQL 8.0 Support",
+        "description": "Oracle GoldenGate supports MySQL 8.0.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/new-features.html"
+      }
+    ],
+    "behavior_changes": [
+      {
+        "title": "Bug 37909236: MariaDB - Remove the requirement for MariaDB binlog_annotate_row_events=OFF",
+        "description": "Starting with this version of Oracle GoldenGate, the requirement to set binlog_annotate_row_events to OFF has been removed for MariaDB.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Bug 37757820: Generic - Enable NOCHECKUNIQUEKEYS as default for BATCHSQL for all Non-Oracle Databases",
+        "description": "Enabled NOCHECKUNIQUEKEYS as default for BATCHSQL for all non-Oracle databases.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Bug 37576949: Generic - Require new integrated replicat (IR ) to have a checkpoint table",
+        "description": "Oracle GoldenGate will require a checkpoint table when creating an integrated Replicat. Any existing integrated Replicats must be rebuilt to include a checkpoint table. The ALTER REPLICAT command cannot be used to add a checkpoint table to an existing Replicat process that was created with NODBCHECKPOINT .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Auto-login property removed from the Oracle GoldenGate wallets",
+        "description": "To enhance the security of Oracle GoldenGate wallets that store credential information (login information of Microservices users), the auto-login property of Oracle GoldenGate wallets has been removed. As a result, after the deployment has been patched to Oracle GoldenGate release 19.25 and higher and started, rolling back to the previous Oracle GoldenGate release of 19.24 or lower, is not feasible as the password protected wallets cannot be converted back to auto-login wallets automatically. A short-term workaround to get the information stored in the wallets before patching to Oracle GoldenGate Release 19.25 or higher, is to save the auto-login wallets from the earlier version and manually restore these wallets on a rollback.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Opatches bundled with JDK for Oracle",
+        "description": "The JDK is now packaged in the Oracle GoldenGate patch starting release version 21.10 and 19.1.0.0.230418. Please note that only <GG_HOME>/jdk directory is updated with the GoldenGate patch releases. See Doc ID 2359395.1 for more information and additional references for updating JDK either through GoldenGate patch or independently. You still have the option to install the latest JDK patch into <GG_HOME>/jdk directory independently at any time. See Doc ID 1492980.1 for more information.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Parameter TransactionErrorBehavior must be set to 2 while specifying data",
+        "description": "For PostgreSQL Replicat to be able to handle the database error conditions appropriately the value of the parameter TransactionErrorBehavior must be set to 2. It is a required parameter for Oracle GoldenGate, which needs to be specified inside the odbc.ini file under the DSN. Following is a sample DSN specifying the parameter: [ODBC] IANAAppCodePage=4 InstallDir=/u01/ggate [pgdsn] Driver=/u01/ggate/lib/GGpsql25.so Description=DataDirect 7.1 PostgreSQL Wire Protocol Database=mypgdb HostName=mypghost PortNumber=5432 LogonID=mypguser Password=********** TransactionErrorBehavior=2",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "DEFERAPPLYINTERVAL not working as expected for PostgreSQL Replicat",
+        "description": "If the time zone is not same for the database and operating system, then Replicat waits until the local GMT time of the source system is greater than record commit timestamp + DEFERAPPLYINTERVAL delay.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Replicat is unable to identify the checkpoint table when created in mixed case after Replicat restart",
+        "description": "The checkpointtable name must be in lower case without quote and without any special character in it.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Oracle GoldenGate Configuration Assistant doesn't run if there is a space in the Oracle GoldenGate home directory name",
+        "description": "Oracle GoldenGate Configuration Assistant (OGGCA) on Windows does not run if the Oracle GoldenGate home directory name or OGG_HOME has space in it, for example OGG HOME .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "INFO HEARTBEATTABLE",
+        "description": "The INFO HEARTBEATTABLE command for SQL Server now reports heartbeat frequency interval, purge frequency interval, and retention time.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "TRANLOGOPTION QUERYTIMEOUT default value",
+        "description": "For SQL Server, the default QUERYTIMEOUT has been extended from 30 seconds to 300 seconds.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Adding Validation After DDL Change",
+        "description": "Extract for SQL Server will abend if it detects a difference in table structure between the source table and the Change Data Capture table.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "TLS 1.2 Connection Support",
+        "description": "For SQL Server, TLS 1.2 connection support, if enabled, is provided automatically by the Extract and Replicat.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Prerequisites for Using Oracle GoldenGate 19c with MySQL",
+        "description": "Oracle GoldenGate for MySQL has a dependency on OpenSSL library, so availability of OpenSSL library is a prerequisite. Linux: Set LD_LIBRARY_PATH to include the path where OpenSSL library is installed. Windows: For MySQL 8.0 and higher, the OpenSSL library is shipped with MySQL server and is kept in the \\bin directory of the MySQL home directory. You must ensure that the location of the OpenSSL is added to the path environment variable. For example, D:\\path\\to\\MySQLServer_install_dir\\bin directory needs to be added to the PATH environment variable. Alternatively, you can install the latest MySQL C++ connector (MySQL 8.0 or greater), which contains OpenSSL library and make sure that the location of the OpenSSL is added to the path environment variable. For example, C:\\Program Files\\MySQL\\Connector C++ 8.0\\lib64 directory needs to be added to the PATH environment variable. With MySQL 5.7 or less, you need to install the latest MySQL C++ connector (MySQL 8.0 or greater), which contains the OpenSSL library and make sure that location of the OpenSSL is added to the PATH environment variable. For example: C:\\Program Files\\MySQL\\Connector C++ 8.0\\lib64 directory needs to be added to the PATH environment variable. Oracle GoldenGate for MySQL 8.0 has a dependency on OpenSSL library so the availability of this library is a prerequisite. You need to ensure that the library is installed on the system running Oracle GoldenGate and path to this library is set appropriately.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "No pattern restriction for Oracle GoldenGate user name but maximum length is 512 characters",
+        "description": "Constraints for Oracle GoldenGate user name have been removed but the maximum length is 512 characters. For Basic and Certificate type users there are no constraints on special characters for the user name in REST API. However, in the Microservice Architecture web interface, the user name can only include specific special characters for a Basic type user. These characters are: at sign ( @ ), period ( . ) , dash ( - ), comma ( , ), underscore ( _ ), number sign ( # ), dollar sign ( $ ), plus sign ( + ), backslash ( \\ ), slash ( / ), equal sign ( = ), less than sign ( < ), or greater than sign ( > ).",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Microservices implementation requires stronger passwords",
+        "description": "The passwords for users in Microservices implementation require stronger passwords, with a capital letter, a number, and a special character.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Trail File Format",
+        "description": "After Extract update, if a newer trail file format is specified then the primary Extract will automatically rollover to the next trail file and writer in the specified trail file format. There is no need to run the ALTER EXTRACT ETROLLOVER command.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Extract Default Trail File Version",
+        "description": "The primary Extract writes trail file in the same format as existing trail file format when you upgrade to Oracle GoldenGate 19c, unless you explicitly specify the trail file format version using the FORMAT RELEASE option. This behavior change prevents subsequent Replicat to abend if replicat is not upgraded.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "_INFINITYTOZERO parameter is no longer required",
+        "description": "The _INFINITYTOZERO parameter is no longer required. When Oracle GoldenGate detects the +INF or -INF values in an Oracle numeric field, it is handled automatically as if this parameter is already set. If the target is Oracle Replicat 19c release, +INF, and -INF are applied properly. For all other databases including older Oracle Replicat, 0 value is applied.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Oracle TIMESTAMP WITH TIME ZONE capture",
+        "description": "TIMESTAMP with TIMEZONE with region ID data is now supported for FETCH and initial load. For details, see TRANLOGOPTIONS in Reference for Oracle GoldenGate This feature is enabled automatically if needed and you no longer need to specify TRANLOGOPTIONS INCLUDEREGIONID . For non-Oracle target, use TRANLOGOPTIONS INCLUDEREGIONIDWITHOFFSET to convert region ID to time offset from UTC.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "GETCTASDML option default setting",
+        "description": "GETCTASDML option available with TRANLOGOPTIONS parameter is enabled by default.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "NOALLOWNULLABLEKEYS default setting",
+        "description": "",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      },
+      {
+        "title": "Change in Binlog Format Support",
+        "description": "(MySQL only) Capture silently ignores the binlog events that are not written in the ROW format instead of abending when it detects a binlog_format other than ROW .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/default-behavior-changes.html"
+      }
+    ],
+    "deprecated": [
+      {
+        "title": "DBOPTIONS SQLNCLI11",
+        "description": "For DBOPTIONS , the DRIVER SQLNCLI11 parameters have been deprecated. TLS 1.2 connection support, if enabled, is provided automatically with an Extract and Replicat.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/deprecated-features.html"
+      },
+      {
+        "title": "Classic Extract for SQL Server",
+        "description": "The transaction log based Extract (Classic Extract) is desupported and the Extract that uses Change Data Capture (CDC Extract) that was introduced with Oracle GoldenGate 12 c (12.3.0.1) will be used for Oracle GoldenGate for SQL Server going forward.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/deprecated-features.html"
+      },
+      {
+        "title": "ADD HEARTBEATTABLE NOADDTRANDATA",
+        "description": "NOADDTRANDATA option of ADD HEARTBEATTABLE has been deprecated.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/deprecated-features.html"
+      },
+      {
+        "title": "TRANLOGOPTIONS INCLUDEREGIONID",
+        "description": "TRANLOGOPTIONS INCLUDEREGIONID parameter is deprecated. The parameter is not required to capture Oracle TIMESTAMP with TIME ZONE with region ID time zone value. If the parameter is specified, a warning message is issued at startup. TIMESTAMP with TIMEZONE with region ID data is now supported for FETCH and initial load. For details, see TRANLOGOPTIONS in Reference for Oracle GoldenGate .",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/deprecated-features.html"
+      }
+    ],
     "desupported": []
-  },
-  "last_updated": "2026-06-01"
+  }
 }
