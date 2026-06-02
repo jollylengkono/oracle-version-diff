@@ -32,4 +32,5 @@ test('productIconSvg returns fallback SVG for unknown products', () => {
   assert.match(svg, /data-product-icon="default"/);
   assert.match(svg, /product-icon-svg--default/);
   assert.match(svg, /<svg[^>]+viewBox="0 0 32 32"/);
+  assert.doesNotMatch(svg, /<image|href=|https?:\/\//);
 });
