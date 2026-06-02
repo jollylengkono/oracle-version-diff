@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
 :root {
   --oracle-red: #E8001B;
   --accent: #E8001B;
@@ -14,7 +16,10 @@
   --button: #3D1220;
   --button-hover: #5A1A2E;
   --focus: #E8001B;
-  --shadow: 4px 4px 0 #000;
+  --pixel-display-font: 'Press Start 2P', monospace;
+  --pixel-body-font: 'VT323', 'Courier New', monospace;
+  --pixel-shadow: 4px 4px 0 #000, 8px 8px 0 rgba(232, 0, 27, .22);
+  --shadow: var(--pixel-shadow);
   --pixel-glow: 0 0 8px rgba(232, 0, 27, 0.55), 0 0 20px rgba(232, 0, 27, 0.2);
 }
 
@@ -24,24 +29,37 @@ body::after {
   content: '';
   position: fixed;
   inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.06) 2px,
-    rgba(0, 0, 0, 0.06) 4px
-  );
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(0, 0, 0, 0.18) 3px,
+      rgba(0, 0, 0, 0.18) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+  mix-blend-mode: multiply;
+  opacity: .78;
   pointer-events: none;
   z-index: 9998;
 }
 
 body {
   margin: 0;
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-body-font);
   font-size: 18px;
   color: var(--ink);
   background: var(--bg);
   line-height: 1.5;
+  -webkit-font-smoothing: none;
+  font-variant-ligatures: none;
+  text-rendering: geometricPrecision;
 }
 
 .masthead {
@@ -52,13 +70,14 @@ body {
 }
 .masthead__title {
   margin: 0;
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-display-font);
   font-size: clamp(.9rem, 2.2vw, 1.65rem);
   font-weight: 400;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   line-height: 1.7;
   color: var(--oracle-red);
-  text-shadow: var(--pixel-glow), 3px 3px 0 rgba(0, 0, 0, .85);
+  text-shadow: var(--pixel-glow), 3px 3px 0 rgba(0, 0, 0, .85), 1px 0 0 currentColor;
+  text-transform: uppercase;
 }
 .masthead__subtitle {
   margin: .8rem 0 0;
@@ -107,13 +126,25 @@ body {
   border-radius: 0;
   background: var(--surface);
   box-shadow: var(--shadow);
+  position: relative;
+}
+.delta-summary::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(232, 0, 27, .24);
+  pointer-events: none;
 }
 .delta-summary__icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  flex: 0 0 2.5rem;
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 3rem;
   display: grid;
   place-items: center;
+  border: 2px solid var(--oracle-red);
+  background: var(--surface-soft);
+  box-shadow: var(--pixel-shadow);
+  image-rendering: pixelated;
   color: var(--oracle-red);
   --product-icon-bg: var(--surface-soft);
   --product-icon-accent: var(--oracle-red);
@@ -132,7 +163,7 @@ body {
 .delta-summary h2 {
   margin: 0;
   color: var(--ink);
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-display-font);
   font-size: .78rem;
   font-weight: 400;
   line-height: 1.6;
@@ -148,7 +179,7 @@ body {
   flex-direction: column;
   gap: .35rem;
   color: var(--oracle-red);
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-display-font);
   font-size: .55rem;
   font-weight: 400;
   text-transform: uppercase;
@@ -162,7 +193,7 @@ body {
   border-radius: 0;
   background: var(--surface-raised);
   color: var(--ink);
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-body-font);
   font-size: 1.1rem;
   cursor: pointer;
 }
@@ -173,7 +204,7 @@ body {
 }
 .picker__vs {
   color: var(--oracle-red);
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-display-font);
   font-size: .55rem;
   font-weight: 400;
   padding: 0 .25rem .55rem;
@@ -194,7 +225,7 @@ body {
   background: var(--surface);
   color: var(--muted);
   cursor: pointer;
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-display-font);
   font-size: .55rem;
   font-weight: 400;
   padding: .7rem .9rem;
@@ -224,7 +255,7 @@ body {
 .group__label {
   margin: 0 0 .5rem;
   color: var(--oracle-red);
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-display-font);
   font-size: .55rem;
   font-weight: 400;
   text-transform: uppercase;
@@ -238,7 +269,7 @@ body {
   border-radius: 0;
   background: var(--oracle-red);
   color: #fff;
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-display-font);
   font-size: .5rem;
   text-align: center;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, .55);
@@ -283,7 +314,7 @@ body {
   min-width: 0;
   margin: 0;
   color: var(--ink);
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-body-font);
   font-size: 1.15rem;
   line-height: 1.4;
   overflow-wrap: anywhere;
@@ -291,7 +322,7 @@ body {
 .item__version {
   flex: 0 0 auto;
   color: rgba(232, 0, 27, 0.18);
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-display-font);
   font-size: clamp(1rem, 2.5vw, 1.65rem);
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -301,7 +332,7 @@ body {
 .item__desc {
   margin: .55rem 0 .85rem;
   color: var(--muted);
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-body-font);
   font-size: 1.05rem;
 }
 .item__source {
@@ -316,7 +347,7 @@ body {
   border-radius: 0;
   background: var(--button);
   color: var(--oracle-red);
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-display-font);
   font-size: .5rem;
   font-weight: 400;
   line-height: 1;
@@ -341,7 +372,7 @@ body {
   border: 2px dashed var(--border);
   border-radius: 0;
   color: var(--muted);
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-display-font);
   font-size: .6rem;
   line-height: 1.8;
 }
@@ -353,7 +384,7 @@ body {
 .updated {
   margin-top: 1.25rem;
   color: var(--muted);
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-body-font);
   font-size: 1rem;
 }
 .footer {
@@ -361,7 +392,7 @@ body {
   margin: 0 auto;
   padding: 1rem 1.5rem 1.5rem;
   color: var(--muted);
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-body-font);
   font-size: 1rem;
 }
 
@@ -376,7 +407,7 @@ body {
   border-bottom: 3px solid var(--oracle-red);
   background: var(--bg);
   color: var(--oracle-red);
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-display-font);
   font-size: .6rem;
   font-weight: 400;
   letter-spacing: 0.06em;
@@ -399,7 +430,7 @@ body {
   background: var(--surface);
   color: var(--muted);
   cursor: pointer;
-  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-family: var(--pixel-display-font);
   font-size: .45rem;
   text-transform: uppercase;
   letter-spacing: .04em;
