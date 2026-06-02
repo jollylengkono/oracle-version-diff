@@ -89,7 +89,7 @@ body {
   --product-icon-bg: var(--surface-raised);
   --product-icon-accent: var(--oracle-red);
   --product-icon-ink: var(--ink);
-  --product-icon-muted: var(--border-strong);
+  --product-icon-muted: var(--muted-strong);
 }
 .delta-summary__icon svg {
   width: 100%;
