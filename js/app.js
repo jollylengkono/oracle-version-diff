@@ -2,6 +2,7 @@
 import { aggregateRange } from './diff.js';
 import { renderAggregated } from './render.js';
 import { loadIndex, loadRecord } from './datasource.js';
+import { productIconSvg } from './productIcons.js';
 
 // Sections shown in the UI. The rolling release notes populate these three;
 // certification/desupported are reserved in the schema but not shown in v1.
@@ -91,6 +92,7 @@ async function main() {
   const updated = document.getElementById('updated');
   const deltaHeading = document.getElementById('delta-heading');
   const deltaSubheading = document.getElementById('delta-subheading');
+  const productIcon = document.getElementById('product-icon');
 
   const defProduct = pickDefaultProduct(index.products);
   fillProductSelect(productSel, index.products, defProduct.id);
@@ -98,6 +100,7 @@ async function main() {
 
   async function refresh() {
     const product = index.products.find(p => p.id === productSel.value) || index.products[0];
+    productIcon.innerHTML = productIconSvg(product.id);
     const aggregated = aggregateRange(records, olderSel.value, newerSel.value);
     const panels = renderComparison(panelsHost, aggregated);
     renderTabs(tabsHost, panels);

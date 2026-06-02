@@ -70,6 +70,11 @@ test('index uses pixel dark theme by default', () => {
   assert.doesNotMatch(html, /href="css\/theme-openclaw-light\.css"/);
 });
 
+test('delta summary includes product icon host and text wrapper', () => {
+  assert.match(html, /<div id="product-icon" class="delta-summary__icon" aria-hidden="true"><\/div>/);
+  assert.match(html, /<div class="delta-summary__body">\s*<h2 id="delta-heading">Release delta<\/h2>\s*<p id="delta-subheading"><\/p>\s*<\/div>/);
+});
+
 test('theme restoration only loads whitelisted stored values', () => {
   assert.match(html, /var THEMES = \['theme-supabase-light', 'theme-github-dark', 'theme-pixel-dark'\];/);
   assert.match(html, /THEMES\.indexOf\(t\) !== -1 \? t : DEFAULT_THEME/);
