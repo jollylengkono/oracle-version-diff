@@ -69,6 +69,10 @@ function assertDeltaSummaryIconLayout(css) {
   assert.match(icon, /flex:\s*0 0 2\.5rem;/);
   assert.match(icon, /display:\s*grid;/);
   assert.match(icon, /place-items:\s*center;/);
+  assert.match(icon, /--product-icon-bg:/);
+  assert.match(icon, /--product-icon-accent:/);
+  assert.match(icon, /--product-icon-ink:/);
+  assert.match(icon, /--product-icon-muted:/);
 
   const iconSvg = ruleBody(css, '.delta-summary__icon svg');
   assert.match(iconSvg, /width:\s*100%;/);
@@ -132,6 +136,11 @@ test('Supabase light theme keeps source buttons dark and active tabs green', () 
   assert.match(lightCss, /\.item__source:hover\s*\{[\s\S]*background:\s*var\(--button-hover\);/);
   assert.match(lightCss, /\.tab--active\s*\{[\s\S]*border-color:\s*var\(--accent\);/);
   assert.match(lightCss, /\.tab--active\s*\{[\s\S]*background:\s*var\(--accent-soft\);/);
+});
+
+test('Supabase light product icon muted color uses stronger contrast token', () => {
+  const icon = ruleBody(lightCss, '.delta-summary__icon');
+  assert.match(icon, /--product-icon-muted:\s*var\(--muted-strong\);/);
 });
 
 test('themes use a responsive equal-height card grid', () => {
