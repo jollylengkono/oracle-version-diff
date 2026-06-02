@@ -57,6 +57,32 @@ function assertResponsiveCardGrid(css) {
   assert.match(source, /margin-top:\s*auto;/);
 }
 
+function assertDeltaSummaryIconLayout(css) {
+  const summary = ruleBody(css, '.delta-summary');
+  assert.match(summary, /display:\s*flex;/);
+  assert.match(summary, /align-items:\s*center;/);
+  assert.match(summary, /gap:\s*\.85rem;/);
+
+  const icon = ruleBody(css, '.delta-summary__icon');
+  assert.match(icon, /width:\s*2\.5rem;/);
+  assert.match(icon, /height:\s*2\.5rem;/);
+  assert.match(icon, /flex:\s*0 0 2\.5rem;/);
+  assert.match(icon, /display:\s*grid;/);
+  assert.match(icon, /place-items:\s*center;/);
+  assert.match(icon, /--product-icon-bg:/);
+  assert.match(icon, /--product-icon-accent:/);
+  assert.match(icon, /--product-icon-ink:/);
+  assert.match(icon, /--product-icon-muted:/);
+
+  const iconSvg = ruleBody(css, '.delta-summary__icon svg');
+  assert.match(iconSvg, /width:\s*100%;/);
+  assert.match(iconSvg, /height:\s*100%;/);
+  assert.match(iconSvg, /image-rendering:\s*pixelated;/);
+
+  const body = ruleBody(css, '.delta-summary__body');
+  assert.match(body, /min-width:\s*0;/);
+}
+
 test('hidden comparison panels stay hidden when tabs switch sections', () => {
   assert.match(lightCss, /\.panel\[hidden\]\s*\{\s*display:\s*none;\s*\}/);
   assert.match(darkCss, /\.panel\[hidden\]\s*\{\s*display:\s*none;\s*\}/);
@@ -68,6 +94,11 @@ test('index uses pixel dark theme by default', () => {
   assert.match(html, /var DEFAULT_THEME = 'theme-pixel-dark';/);
   assert.doesNotMatch(html, /href="css\/theme\.css"/);
   assert.doesNotMatch(html, /href="css\/theme-openclaw-light\.css"/);
+});
+
+test('delta summary includes product icon host and text wrapper', () => {
+  assert.match(html, /<div id="product-icon" class="delta-summary__icon" aria-hidden="true"><\/div>/);
+  assert.match(html, /<div class="delta-summary__body">\s*<h2 id="delta-heading">Release delta<\/h2>\s*<p id="delta-subheading"><\/p>\s*<\/div>/);
 });
 
 test('theme restoration only loads whitelisted stored values', () => {
@@ -107,8 +138,26 @@ test('Supabase light theme keeps source buttons dark and active tabs green', () 
   assert.match(lightCss, /\.tab--active\s*\{[\s\S]*background:\s*var\(--accent-soft\);/);
 });
 
+test('Supabase light product icon muted color uses stronger contrast token', () => {
+  const icon = ruleBody(lightCss, '.delta-summary__icon');
+  assert.match(icon, /--product-icon-muted:\s*var\(--muted-strong\);/);
+});
+
 test('themes use a responsive equal-height card grid', () => {
   assertResponsiveCardGrid(lightCss);
   assertResponsiveCardGrid(darkCss);
   assertResponsiveCardGrid(pixelCss);
+});
+
+test('themes define compact delta summary product icon layout', () => {
+  assertDeltaSummaryIconLayout(lightCss);
+  assertDeltaSummaryIconLayout(darkCss);
+  assertDeltaSummaryIconLayout(pixelCss);
+});
+
+test('app stylesheets do not import external assets', () => {
+  [lightCss, darkCss, pixelCss].forEach((css) => {
+    assert.doesNotMatch(css, /@import\s+url\(/i);
+    assert.doesNotMatch(css, /https?:\/\//i);
+  });
 });
