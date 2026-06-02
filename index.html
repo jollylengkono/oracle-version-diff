@@ -4,7 +4,46 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oracle Release Delta</title>
-  <link rel="stylesheet" href="css/theme-supabase-light.css" />
+  <style>
+    .theme-switcher {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      z-index: 1000;
+      display: flex;
+      flex-direction: row;
+      gap: .4rem;
+    }
+    .theme-btn {
+      padding: .35rem .65rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: .75rem;
+      font-family: inherit;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .theme-btn:hover {
+      border-color: var(--border-strong);
+      color: var(--ink);
+      background: var(--surface-raised);
+    }
+    .theme-btn--active {
+      border-color: var(--oracle-red);
+      color: var(--oracle-red);
+      background: var(--surface-raised);
+    }
+  </style>
+  <link id="themeLink" rel="stylesheet" href="css/theme-supabase-light.css" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('oracle-diff-theme');
+      if (t) document.getElementById('themeLink').href = 'css/' + t + '.css';
+    })();
+  </script>
 </head>
 <body>
   <header class="masthead">
@@ -41,6 +80,33 @@
     Oracle-inspired theme for an educational tool; not affiliated with or endorsed by Oracle.
   </footer>
 
+  <div class="theme-switcher" id="themeSwitcher">
+    <button class="theme-btn" data-theme="theme-supabase-light" title="Supabase Light">&#9728; Light</button>
+    <button class="theme-btn" data-theme="theme-github-dark" title="GitHub Dark">&#9680; Dark</button>
+    <button class="theme-btn" data-theme="theme-pixel-dark" title="Pixel Dark">&#9632; Pixel</button>
+  </div>
+
   <script type="module" src="js/app.js"></script>
+  <script>
+    (function () {
+      var THEMES = ['theme-supabase-light', 'theme-github-dark', 'theme-pixel-dark'];
+      var link = document.getElementById('themeLink');
+      var current = localStorage.getItem('oracle-diff-theme') || 'theme-supabase-light';
+
+      function apply(name) {
+        link.href = 'css/' + name + '.css';
+        localStorage.setItem('oracle-diff-theme', name);
+        document.querySelectorAll('.theme-btn').forEach(function (btn) {
+          btn.classList.toggle('theme-btn--active', btn.dataset.theme === name);
+        });
+      }
+
+      document.querySelectorAll('.theme-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () { apply(btn.dataset.theme); });
+      });
+
+      apply(current);
+    })();
+  </script>
 </body>
 </html>
