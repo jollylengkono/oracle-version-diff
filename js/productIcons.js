@@ -39,5 +39,5 @@ const FALLBACK_ICON = `<svg class="product-icon-svg product-icon-svg--default" d
 </svg>`;
 
 export function productIconSvg(productId) {
-  return ICONS[productId] || FALLBACK_ICON;
+  return Object.hasOwn(ICONS, productId) ? ICONS[productId] : FALLBACK_ICON;
 }
