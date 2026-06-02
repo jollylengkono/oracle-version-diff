@@ -161,3 +161,19 @@ test('app stylesheets do not import external assets', () => {
     assert.doesNotMatch(css, /https?:\/\//i);
   });
 });
+
+test('pixel dark theme keeps local pixel typography styling', () => {
+  const root = ruleBody(pixelCss, ':root');
+  assert.match(root, /--pixel-display-font:/);
+  assert.match(root, /--pixel-body-font:/);
+
+  const body = ruleBody(pixelCss, 'body');
+  assert.match(body, /font-family:\s*var\(--pixel-body-font\);/);
+  assert.match(body, /-webkit-font-smoothing:\s*none;/);
+  assert.match(body, /text-rendering:\s*geometricPrecision;/);
+
+  const title = ruleBody(pixelCss, '.masthead__title');
+  assert.match(title, /font-family:\s*var\(--pixel-display-font\);/);
+  assert.match(title, /text-transform:\s*uppercase;/);
+  assert.match(title, /text-shadow:\s*var\(--pixel-glow\),\s*3px 3px 0 rgba\(0,\s*0,\s*0,\s*\.85\),\s*1px 0 0 currentColor;/);
+});
