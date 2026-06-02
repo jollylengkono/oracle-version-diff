@@ -57,16 +57,17 @@ function assertResponsiveCardGrid(css) {
   assert.match(source, /margin-top:\s*auto;/);
 }
 
-function assertDeltaSummaryIconLayout(css) {
+function assertDeltaSummaryIconLayout(css, iconSize = '2.5rem') {
   const summary = ruleBody(css, '.delta-summary');
   assert.match(summary, /display:\s*flex;/);
   assert.match(summary, /align-items:\s*center;/);
   assert.match(summary, /gap:\s*\.85rem;/);
 
   const icon = ruleBody(css, '.delta-summary__icon');
-  assert.match(icon, /width:\s*2\.5rem;/);
-  assert.match(icon, /height:\s*2\.5rem;/);
-  assert.match(icon, /flex:\s*0 0 2\.5rem;/);
+  const escapedIconSize = iconSize.replace('.', '\\.');
+  assert.match(icon, new RegExp(`width:\\s*${escapedIconSize};`));
+  assert.match(icon, new RegExp(`height:\\s*${escapedIconSize};`));
+  assert.match(icon, new RegExp(`flex:\\s*0 0 ${escapedIconSize};`));
   assert.match(icon, /display:\s*grid;/);
   assert.match(icon, /place-items:\s*center;/);
   assert.match(icon, /--product-icon-bg:/);
@@ -152,12 +153,46 @@ test('themes use a responsive equal-height card grid', () => {
 test('themes define compact delta summary product icon layout', () => {
   assertDeltaSummaryIconLayout(lightCss);
   assertDeltaSummaryIconLayout(darkCss);
-  assertDeltaSummaryIconLayout(pixelCss);
+  assertDeltaSummaryIconLayout(pixelCss, '3rem');
 });
 
-test('app stylesheets do not import external assets', () => {
-  [lightCss, darkCss, pixelCss].forEach((css) => {
+test('non-pixel app stylesheets do not import external assets', () => {
+  [lightCss, darkCss].forEach((css) => {
     assert.doesNotMatch(css, /@import\s+url\(/i);
     assert.doesNotMatch(css, /https?:\/\//i);
   });
+});
+
+test('pixel dark theme restores visible pixel font treatment', () => {
+  assert.match(pixelCss, /@import\s+url\('https:\/\/fonts\.googleapis\.com\/css2\?family=Press\+Start\+2P&family=VT323&display=swap'\);/);
+
+  const root = ruleBody(pixelCss, ':root');
+  assert.match(root, /--pixel-display-font:\s*'Press Start 2P', monospace;/);
+  assert.match(root, /--pixel-body-font:\s*'VT323', 'Courier New', monospace;/);
+  assert.match(root, /--pixel-shadow:\s*4px 4px 0 #000,\s*8px 8px 0 rgba\(232,\s*0,\s*27,\s*\.22\);/);
+
+  const body = ruleBody(pixelCss, 'body');
+  assert.match(body, /font-family:\s*var\(--pixel-body-font\);/);
+  assert.match(body, /-webkit-font-smoothing:\s*none;/);
+  assert.match(body, /font-variant-ligatures:\s*none;/);
+  assert.match(body, /text-rendering:\s*geometricPrecision;/);
+
+  const overlay = ruleBody(pixelCss, 'body::after');
+  assert.match(overlay, /repeating-linear-gradient\(\s*0deg,/);
+  assert.match(overlay, /repeating-linear-gradient\(\s*90deg,/);
+
+  const title = ruleBody(pixelCss, '.masthead__title');
+  assert.match(title, /font-family:\s*var\(--pixel-display-font\);/);
+  assert.match(title, /text-transform:\s*uppercase;/);
+  assert.match(title, /text-shadow:\s*var\(--pixel-glow\),\s*3px 3px 0 rgba\(0,\s*0,\s*0,\s*\.85\),\s*1px 0 0 currentColor;/);
+});
+
+test('pixel dark theme makes product summary badge sprite-like', () => {
+  const icon = ruleBody(pixelCss, '.delta-summary__icon');
+  assert.match(icon, /width:\s*3rem;/);
+  assert.match(icon, /height:\s*3rem;/);
+  assert.match(icon, /flex:\s*0 0 3rem;/);
+  assert.match(icon, /border:\s*2px solid var\(--oracle-red\);/);
+  assert.match(icon, /box-shadow:\s*var\(--pixel-shadow\);/);
+  assert.match(icon, /image-rendering:\s*pixelated;/);
 });
