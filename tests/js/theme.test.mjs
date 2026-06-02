@@ -154,3 +154,10 @@ test('themes define compact delta summary product icon layout', () => {
   assertDeltaSummaryIconLayout(darkCss);
   assertDeltaSummaryIconLayout(pixelCss);
 });
+
+test('app stylesheets do not import external assets', () => {
+  [lightCss, darkCss, pixelCss].forEach((css) => {
+    assert.doesNotMatch(css, /@import\s+url\(/i);
+    assert.doesNotMatch(css, /https?:\/\//i);
+  });
+});
