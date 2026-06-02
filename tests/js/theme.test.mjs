@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 
 const lightCss = readFileSync('css/theme-supabase-light.css', 'utf8');
 const darkCss = readFileSync('css/theme-github-dark.css', 'utf8');
+const pixelCss = readFileSync('css/theme-pixel-dark.css', 'utf8');
 const html = readFileSync('index.html', 'utf8');
 
 function ruleBody(css, selector) {
@@ -59,13 +60,25 @@ function assertResponsiveCardGrid(css) {
 test('hidden comparison panels stay hidden when tabs switch sections', () => {
   assert.match(lightCss, /\.panel\[hidden\]\s*\{\s*display:\s*none;\s*\}/);
   assert.match(darkCss, /\.panel\[hidden\]\s*\{\s*display:\s*none;\s*\}/);
+  assert.match(pixelCss, /\.panel\[hidden\]\s*\{\s*display:\s*none;\s*\}/);
 });
 
 test('index uses pixel dark theme by default', () => {
   assert.match(html, /href="css\/theme-pixel-dark\.css"/);
-  assert.match(html, /localStorage\.getItem\('oracle-diff-theme'\) \|\| 'theme-pixel-dark'/);
+  assert.match(html, /var DEFAULT_THEME = 'theme-pixel-dark';/);
   assert.doesNotMatch(html, /href="css\/theme\.css"/);
   assert.doesNotMatch(html, /href="css\/theme-openclaw-light\.css"/);
+});
+
+test('theme restoration only loads whitelisted stored values', () => {
+  assert.match(html, /var THEMES = \['theme-supabase-light', 'theme-github-dark', 'theme-pixel-dark'\];/);
+  assert.match(html, /THEMES\.indexOf\(t\) !== -1 \? t : DEFAULT_THEME/);
+  assert.doesNotMatch(html, /if \(t\) document\.getElementById\('themeLink'\)\.href = 'css\/' \+ t \+ '\.css';/);
+});
+
+test('theme preference is saved only after explicit button clicks', () => {
+  assert.doesNotMatch(html, /function apply\(name\) \{[\s\S]*?localStorage\.setItem\('oracle-diff-theme', name\);[\s\S]*?\}/);
+  assert.match(html, /btn\.addEventListener\('click', function \(\) \{[\s\S]*?apply\(btn\.dataset\.theme\);[\s\S]*?localStorage\.setItem\('oracle-diff-theme', btn\.dataset\.theme\);[\s\S]*?\}\);/);
 });
 
 test('fallback GitHub dark theme is preserved', () => {
@@ -97,4 +110,5 @@ test('Supabase light theme keeps source buttons dark and active tabs green', () 
 test('themes use a responsive equal-height card grid', () => {
   assertResponsiveCardGrid(lightCss);
   assertResponsiveCardGrid(darkCss);
+  assertResponsiveCardGrid(pixelCss);
 });
