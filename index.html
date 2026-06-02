@@ -37,7 +37,7 @@
       background: var(--surface-raised);
     }
   </style>
-  <link id="themeLink" rel="stylesheet" href="css/theme-supabase-light.css" />
+  <link id="themeLink" rel="stylesheet" href="css/theme-pixel-dark.css" />
   <script>
     (function () {
       var t = localStorage.getItem('oracle-diff-theme');
@@ -91,7 +91,7 @@
     (function () {
       var THEMES = ['theme-supabase-light', 'theme-github-dark', 'theme-pixel-dark'];
       var link = document.getElementById('themeLink');
-      var current = localStorage.getItem('oracle-diff-theme') || 'theme-supabase-light';
+      var current = localStorage.getItem('oracle-diff-theme') || 'theme-pixel-dark';
 
       function apply(name) {
         link.href = 'css/' + name + '.css';

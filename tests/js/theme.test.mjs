@@ -61,8 +61,9 @@ test('hidden comparison panels stay hidden when tabs switch sections', () => {
   assert.match(darkCss, /\.panel\[hidden\]\s*\{\s*display:\s*none;\s*\}/);
 });
 
-test('index uses Supabase-inspired light theme by default', () => {
-  assert.match(html, /href="css\/theme-supabase-light\.css"/);
+test('index uses pixel dark theme by default', () => {
+  assert.match(html, /href="css\/theme-pixel-dark\.css"/);
+  assert.match(html, /localStorage\.getItem\('oracle-diff-theme'\) \|\| 'theme-pixel-dark'/);
   assert.doesNotMatch(html, /href="css\/theme\.css"/);
   assert.doesNotMatch(html, /href="css\/theme-openclaw-light\.css"/);
 });
