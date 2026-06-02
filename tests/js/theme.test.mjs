@@ -57,6 +57,28 @@ function assertResponsiveCardGrid(css) {
   assert.match(source, /margin-top:\s*auto;/);
 }
 
+function assertDeltaSummaryIconLayout(css) {
+  const summary = ruleBody(css, '.delta-summary');
+  assert.match(summary, /display:\s*flex;/);
+  assert.match(summary, /align-items:\s*center;/);
+  assert.match(summary, /gap:\s*\.85rem;/);
+
+  const icon = ruleBody(css, '.delta-summary__icon');
+  assert.match(icon, /width:\s*2\.5rem;/);
+  assert.match(icon, /height:\s*2\.5rem;/);
+  assert.match(icon, /flex:\s*0 0 2\.5rem;/);
+  assert.match(icon, /display:\s*grid;/);
+  assert.match(icon, /place-items:\s*center;/);
+
+  const iconSvg = ruleBody(css, '.delta-summary__icon svg');
+  assert.match(iconSvg, /width:\s*100%;/);
+  assert.match(iconSvg, /height:\s*100%;/);
+  assert.match(iconSvg, /image-rendering:\s*pixelated;/);
+
+  const body = ruleBody(css, '.delta-summary__body');
+  assert.match(body, /min-width:\s*0;/);
+}
+
 test('hidden comparison panels stay hidden when tabs switch sections', () => {
   assert.match(lightCss, /\.panel\[hidden\]\s*\{\s*display:\s*none;\s*\}/);
   assert.match(darkCss, /\.panel\[hidden\]\s*\{\s*display:\s*none;\s*\}/);
@@ -116,4 +138,10 @@ test('themes use a responsive equal-height card grid', () => {
   assertResponsiveCardGrid(lightCss);
   assertResponsiveCardGrid(darkCss);
   assertResponsiveCardGrid(pixelCss);
+});
+
+test('themes define compact delta summary product icon layout', () => {
+  assertDeltaSummaryIconLayout(lightCss);
+  assertDeltaSummaryIconLayout(darkCss);
+  assertDeltaSummaryIconLayout(pixelCss);
 });
