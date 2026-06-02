@@ -7,7 +7,8 @@ The badge changes when the selected product changes.
 
 ## Visual Direction
 
-Use concrete product metaphors:
+Use concrete product metaphors, informed by Oracle-hosted product imagery and
+product descriptions:
 
 - `oracle-database`: pixel database cylinder.
 - `oracle-weblogic-server`: pixel server rack.
@@ -16,6 +17,33 @@ Use concrete product metaphors:
 The icon should be a compact badge, about 40px wide and tall in the summary
 area. It should support the Pixel Dark default theme while remaining legible in
 Supabase Light and GitHub Dark.
+
+The implementation should not copy, trace, or embed Oracle artwork. It should
+use the reference material only to choose recognizable product metaphors and
+then create original, simplified pixel SVGs.
+
+## Reference Material
+
+Use these Oracle-hosted references while designing the original pixel SVGs:
+
+- Oracle Database: Oracle's AI Database page references database services,
+  Exadata, Autonomous AI Database, and multiple data models in one database
+  engine. Use this to support a database-cylinder/storage metaphor. Reference:
+  `https://www.oracle.com/database/`
+- Oracle WebLogic Server: Oracle documentation describes WebLogic Server as an
+  application server and runtime platform for enterprise Java applications. Use
+  this to support a server-rack/runtime metaphor. Reference:
+  `https://docs.oracle.com/en/middleware/standalone/weblogic-server/`
+- Oracle GoldenGate: Oracle documentation describes GoldenGate as foundational
+  for data replication and change data capture. Oracle's GoldenGate data sheet
+  also emphasizes real-time replication, data pipelines, and connected data
+  fabric. Use this to support a linked-systems/replication metaphor. References:
+  `https://docs.oracle.com/en/database/goldengate/index.html` and
+  `https://www.oracle.com/a/ocom/docs/oracle-goldengate-datasheet.pdf`
+
+If implementation work needs direct visual references, use Oracle-hosted images
+from those pages as rough inspiration only; do not include external image assets
+in the app.
 
 ## Architecture
 
