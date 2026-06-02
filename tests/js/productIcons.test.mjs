@@ -15,6 +15,10 @@ test('productIconSvg returns original inline SVG for known products', () => {
     assert.match(svg, /<svg[^>]+viewBox="0 0 32 32"/);
     assert.match(svg, new RegExp(`data-product-icon="${productId}"`));
     assert.match(svg, /class="product-icon-svg product-icon-svg--/);
+    assert.match(svg, /width="40"/);
+    assert.match(svg, /height="40"/);
+    assert.match(svg, /aria-hidden="true"/);
+    assert.match(svg, /focusable="false"/);
     assert.match(svg, /shape-rendering="crispEdges"/);
     assert.doesNotMatch(svg, /<image|href=|https?:\/\//);
   });
@@ -33,4 +37,11 @@ test('productIconSvg returns fallback SVG for unknown products', () => {
   assert.match(svg, /product-icon-svg--default/);
   assert.match(svg, /<svg[^>]+viewBox="0 0 32 32"/);
   assert.doesNotMatch(svg, /<image|href=|https?:\/\//);
+});
+
+test('productIconSvg returns fallback SVG for inherited object property names', () => {
+  const fallbackSvg = productIconSvg('unknown-product');
+
+  assert.equal(productIconSvg('toString'), fallbackSvg);
+  assert.equal(productIconSvg('constructor'), fallbackSvg);
 });
