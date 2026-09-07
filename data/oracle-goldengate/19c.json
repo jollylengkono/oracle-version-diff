@@ -4,7 +4,7 @@
   "release_label": "Oracle GoldenGate 19c",
   "record_type": "baseline",
   "released": "2019-01-01",
-  "last_updated": "2026-06-29",
+  "last_updated": "2026-09-07",
   "sections": {
     "certification": [],
     "whats_new": [
@@ -457,6 +457,11 @@
       }
     ],
     "deprecated": [
+      {
+        "title": "Certification not supported with Oracle 18c",
+        "description": "Oracle GoldenGate for Oracle is not longer tested or certified with Oracle 18c.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/19.1/release-notes/deprecated-features.html"
+      },
       {
         "title": "DBOPTIONS SQLNCLI11",
         "description": "For DBOPTIONS , the DRIVER SQLNCLI11 parameters have been deprecated. TLS 1.2 connection support, if enabled, is provided automatically with an Extract and Replicat.",
