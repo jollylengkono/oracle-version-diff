@@ -4,7 +4,7 @@
   "release_label": "Oracle GoldenGate 21c",
   "record_type": "baseline",
   "released": "2021-01-01",
-  "last_updated": "2026-06-29",
+  "last_updated": "2026-09-07",
   "sections": {
     "certification": [],
     "whats_new": [
@@ -327,6 +327,11 @@
       }
     ],
     "deprecated": [
+      {
+        "title": "TRANLOGOPTIONS MINEFROMSNAPSHOTSTBY parameter is desupported",
+        "description": "The TRANLOGOPTIONS MINEFROMSNAPSHOTSTBY parameter is desupported. This parameter was added to the Extract parameter file to configure Extract to run on a snapshot standby database.",
+        "source_url": "https://docs.oracle.com/en/middleware/goldengate/core/21.3/release-notes/deprecated-features.html"
+      },
       {
         "title": "DBOPTIONS USEREPLICATIONUSER is deprecated for Microsoft SQL Server Replicat for Windows",
         "description": "With Oracle GoldenGate for Microsoft SQL Server release 21.14, the DBOPTIONS USEREPLICATIONUSER option is deprecated. With Oracle GoldenGate for Microsoft SQL Server release 21.14, all SQL Server builds automatically set the connection with Replication=yes option and the functionality of DBOPTIONS USEREPLICATIONUSER remains the same as long as the SQL Server ODBC driver is version 17.8.1 or higher.",
